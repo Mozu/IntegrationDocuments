@@ -1,0 +1,288 @@
+﻿<html>
+    <head><title>Kount by Mozu</title>
+        <meta name="author" content="Mozu" />
+        <meta name="description" content="User content for Kount by Mozu" />
+        <meta name="keywords" content="Kount,Mozu" />
+		<link rel="shortcut icon" href="http://www.mozu.com/favicon.ico" />
+		
+		<!-- Required for Scrollspy -->
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/scrollspy.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/affix.js"></script>
+		<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+		
+		<!-- Mozu CSS developed by Mozu Docs -->
+		<link href="mozu-bootswatch.css" rel="stylesheet" type="text/css" />	
+		
+		<!-- Scrollspy active link script -->
+		<script>
+		$( document ).ready(function() {
+		$('body').scrollspy({
+			target: '.bs-docs-sidebar',
+			offset: 20
+		});
+		});        
+		</script>
+		
+		<!-- Anchor Ease Script -->
+		<script>
+		 $(function() {
+			  $('a[href*=#]:not([href=#])').click(function() {
+				if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') 
+			&& location.hostname == this.hostname) {
+
+				  var target = $(this.hash);
+				  target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+				  if (target.length) {
+					$('html,body').animate({
+					  scrollTop: target.offset().top - 75 //offsets for fixed header
+					}, 1000);
+					return false;
+				  }
+				}
+			  });
+			  //Executed on page load with URL containing an anchor tag.
+			  if($(location.href.split("#")[1])) {
+				  var target = $('#'+location.href.split("#")[1]);
+				  if (target.length) {
+					$('html,body').animate({
+					  scrollTop: target.offset().top - 75 //offset height of header here too.
+					}, 1000);
+					return false;
+				  }
+				}
+		});
+		</script>
+		
+		<!-- Affix Javascript -->
+		
+		<script>$(function(){
+ 
+			var stickyElement = '.bs-docs-sidebar', 
+			bottomElement = '.footer'; 
+			
+			if($( stickyElement ).length){
+			$( stickyElement ).each(function(){
+		   
+			var fromTop = $( this ).offset().top,
+		   
+			fromBottom = $( document ).height()-($( this ).offset().top + $( this ).outerHeight()),
+			
+			stopOn = $( document ).height()-( $( bottomElement ).offset().top)+($( this ).outerHeight() - $( this ).height());
+			
+			if( (fromBottom-stopOn) > 200 ){
+			
+			$( this ).css('width', $( this ).width()).css('top', 0).css('position', '');
+			
+			$( this ).affix({
+			offset: {
+			
+			top: fromTop,
+			
+			bottom: stopOn
+			}
+			
+			}).on('affix.bs.affix', function(){ $( this ).css('top', 0).css('position', ''); });
+			}
+			
+			$( window ).trigger('scroll');
+			});
+			}
+		});
+		</script>
+	</head>
+    <body>
+	<div id="main">
+	<div class="container">
+		<!-- Top Nav - Mozu -->
+			<nav class="navbar navbar-default navbar-fixed-top">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                        </button> <a href="#"><img src="logo-m-red-medium.png" style="margin-top:3px;"/></a></div>
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav navbar-right">
+							<li><a href="//developer.mozu.com/learn/mozu-concepts"><span>Mozu Concepts</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+			
+		<!--Side Navigation TOC -->
+		<div class="row">
+		<div class="landing-title">
+			<h1>Kount Application by Mozu Configuration Guide</h1>	
+		</div>
+			<div class="col-md-3" >
+				<nav class="bs-docs-sidebar" >
+					<ul class="nav nav-stacked" >
+						<div class="side-heading">Table of Contents</div>
+							<li><a href="#intro">Welcome to Kount and Mozu</a></li>
+							<li><a href="#install">Install Kount</a>
+								<ul class="nav nav-stacked" >
+								 <li><a href="#configreq">Requirements</a></li>
+								</ul>
+							</li>
+							<li><a href="#configapp">Configure the App</a>
+								<ul class="nav nav-stacked">
+									<li><a href="#configacct">Configure Kount Account Settings</a></li>
+									<li><a href="#configwidget">Configure the Kount Widget</a></li>
+								</ul>
+							</li>
+							<li><a href="#enable">Enable the App</a></li>
+					</ul>
+				</nav>
+			</div>
+                    
+            <div class="col-md-9 content" >
+                <!-- Documentation content -->
+				<section id="intro">
+					<h2>Welcome to Kount and Mozu</h2>
+					<p><a href="http://www.kount.com">Kount</a> provides online services to determine the legitimacy and potential risk of shopper orders submitted through your storefront, specifically at the order level. The service reviews every submitted order for pertinent data including the shopper’s identity, the initial order submitted, the IP and origin location, and the device and browser to calculate a fraud score. Kount compares and assesses the risk of the order’s data and score per the rules you configure to identify legitimate and potentially fraudulent orders. </p>
+					<p><a href="http://www.mozu.com">Mozu</a> offers an app to leverage Kount’s rules and fraud detection to review your shoppers’ orders submitted through your storefront. All orders are determined as accepted, rejected, and failed according to the rules you configure and Kount’s services. </p>
+				</section>
+				<section id="install">
+					<h2 >Install Kount Application by Mozu on Your Tenant</h2>
+                        <p>After purchasing the Kount Application by Mozu, call your sales or professional services representative and request installation on your tenant. Mozu staff will install the app to your tenant, making it available for further configuration and usage in your storefront.</p>
+                        <p>This custom app integrates Kount with Mozu to support the following:</p>
+                        <ul>
+                            <li>Sync your Kount account with Mozu to review orders submitted through your storefront.</li>
+							<li>Validate shopper purchases against your Kount rules to determine fraud scores and legitimacy of the purchaser. </li>
+                            <li>Update the order status as pass/fail/rejected per the calculated fraud score and your Kount rules in Mozu.</li>
+							<li>Provide orders to review and manage through Mozu with Kount’s final determination.</li>
+                        </ul>
+						<p>When a shopper purchases their order, the following occurs between Mozu and the Kount app:</p>
+						<ul>
+							<li>Mozu sends collected data to Kount including the browser used, desktop or device used to enter the order, order origin address, the IP of the purchasing system, and additional data as needed. </li>
+							<li>Kount verifies the legitimacy of the order against set rules on your Kount account. Kount determines the IP location, validity of the payment method, customer data, browser data, and further items.</li>
+							<li>Kount calculates a fraud score for the order and returns the order's status as accepted, failed, or rejected. If rejected, the order data did not clearly calculate as accepted or failed. You can review and actively accept or reject these orders through Mozu.</li>
+							<li>Mozu notifies you when purchases have returned as failed or rejected. These orders do require your review and final actions to accept the payment or cancel the order due to potential fraudulent activity through the Orders section.</li>
+						</ul>
+                        
+					<h3 id="configreq">Configuration Requirements</h3>
+						 <p>To configure Kount to work seamlessly with Mozu, you need specific items installed and settings provided. These sections detail each step from requirements to final configuration for reviewing order for legitimacy and fraud potential.</p>
+                        
+                        <p>You must meet the following criteria to configure the Kount app:</p>
+                        <ul>
+                            <li>You must have the Kount Application by Mozu installed into your tenant.</li>
+                            <li>You must have an active <a href="http://www.kount.com/">Kount</a> account and obtain your account ID. This ID may be designated as Volusion (the ID number) when accessing your account.</li>
+                            <li>You must create and configure your fraud score and purchasing rules in Kount.</li>
+							<li>You must have access to modify and update your storefront theme.</li>
+                        </ul>
+                        
+				</section>
+				
+				<section id="configapp">				
+                    <h2 >Configure the Application</h2>
+						<p>To integrate your Kount services with Mozu, you will modify the app settings using your Kount information and add a widget to your storefront theme. You may need to save information to add to these pages from Kount and within Mozu. Keep a notepad open as needed to help! </p>
+						
+						<h3 id="configacct">Configure Kount Account Settings</h3>
+                        <ol>
+                            <li>On the Mozu Admin top bar, select <b>Settings</b>&gt;<b>Applications</b>.</li>
+                            <li>Double-click <b>Kount</b>.</li>
+                            <li>Click the <b>Configuration</b> link to open configuration settings.</li>
+                            <li>On the Account Settings tab, enter your Kount account ID.</br>
+								<b>Note:</b> Need your ID? Click the Kount link on the Info tag and login to the opened page. The ID displays as a number, such as Volusion (12345).</li>
+							<img src="kount-info.png" class="img-mozu"/>
+							<li>Click <b>Save</b>. This step connects Mozu to your Kount account.</li>
+							<li>Copy the URL provided on the Account Settings tab, for example: <i>https://sample.site.mozu.com/KountExt</i>. This URL directs the Kount widget to send order data to the Kount Web Console (where data collection occurs). Save this link for the next step of configuration.</li>
+							<img src="kount-acctsettings.png" class="img-mozu"/>
+                        </ol>
+                        
+						<h3 id="configwidget">Configure the Kount Widget</h3>
+                        <p>With your Mozu and Kount accounts connected, you need to add and configure a widget to your checkout page in your storefront theme.</p>
+                        <ol>
+                            <li>Open Sitebuilder.</li>
+                            <li>Select <b>Edit</b> for the theme that includes your Kount widget.</li>
+                            <li>On the Page Editor, expand the Templates folder on the right. Select <b>Checkout</b>.</li>
+							<li>Scroll down to the widget zone located at the bottom that holds your Kount widget. Double-click the Kount widget to configure the settings.</li>
+							<li>When added, provide the URL saved after configuring the app on Account Settings. This link connects the data collection between Mozu to Kount.</li>
+                            <li>Click <b>Save</b> to commit your changes.</li>
+							<img src="kount-widgetsettings.png" class="img-mozu"/>
+                        </ol>
+						
+						                        
+				</section>
+				
+				<section id="enable">
+                    <h2 >Enable the Kount Application by Mozu</h2>
+                        <ol>
+                            <li>On the Mozu Admin top bar, select <b>Settings</b>&gt;<b>Applications</b>.</li>
+                            <li>Double-click <b>Kount</b>.</li>
+                            <li>Click <b>Enable App</b> on the Kount page.</li>
+                        </ol>
+				</section>
+				
+						</div>
+                    </div>
+                </div>
+           </div>
+		</div>
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="footer__logo">
+                            <a href="http://www.mozu.com" target="_blank"><img src="http://www.mozu.com/sites/all/themes/mozu_aurora/logo.png" style="padding-top:7px;"/></a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 text-center">
+                        
+                    </div>
+                    <div class="col-md-3">
+                        <p class="pull-right footer__icons" style="padding-right:40px;"><a href="KountApplicationbyMozu_ConfigurationGuide.pdf"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-file-pdf-o"></i></button></a><a href="http://www.mozu.com/contact"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-comments-o"></i></button></a><a href="http://www.mozu.com/contact"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-copyright"></i></button></a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+		
+	<!-- Back to top -->
+	<div class="scroll-top-wrapper ">
+    <span class="scroll-top-inner">
+        <i class="fa fa-2x fa-arrow-circle-up"></i>
+    </span>
+	</div>
+	<!-- Back to top - show hide -->
+	<script>
+ 
+	$(function(){
+	 
+		$(document).on( 'scroll', function(){
+	 
+			if ($(window).scrollTop() > 100) {
+				$('.scroll-top-wrapper').addClass('show');
+			} else {
+				$('.scroll-top-wrapper').removeClass('show');
+			}
+		});
+	});
+	</script>
+	<!-- Back to top - to top -->
+	<script>
+ 
+	$(function(){
+	 
+		$(document).on( 'scroll', function(){
+	 
+			if ($(window).scrollTop() > 100) {
+				$('.scroll-top-wrapper').addClass('show');
+			} else {
+				$('.scroll-top-wrapper').removeClass('show');
+			}
+		});
+	 
+		$('.scroll-top-wrapper').on('click', scrollToTop);
+	});
+	 
+	function scrollToTop() {
+		verticalOffset = typeof(verticalOffset) != 'undefined' ? verticalOffset : 0;
+		element = $('body');
+		offset = element.offset();
+		offsetTop = offset.top;
+		$('html, body').animate({scrollTop: offsetTop}, 500, 'linear');
+	}
+	</script>
+    </body>
+</html>

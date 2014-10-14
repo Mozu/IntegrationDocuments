@@ -1,0 +1,356 @@
+<html>
+    <head><title>MailChimp by Mozu</title>
+        <meta name="author" content="Mozu" />
+        <meta name="description" content="User content for MailChimp by Mozu" />
+        <meta name="keywords" content="MailChimp,Mozu" />
+		<link rel="shortcut icon" href="http://www.mozu.com/favicon.ico" />
+		
+		<!-- Required for Scrollspy -->
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/scrollspy.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/affix.js"></script>
+		<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+		
+		<!-- Mozu CSS developed by Mozu Docs -->
+		<link href="mozu-bootswatch.css" rel="stylesheet" type="text/css" />	
+		
+		<!-- Scrollspy active link script -->
+		<script>
+		$( document ).ready(function() {
+		$('body').scrollspy({
+			target: '.bs-docs-sidebar',
+			offset: 20
+		});
+		});        
+		</script>
+		
+		<!-- Anchor Ease Script -->
+		<script>
+		 $(function() {
+			  $('a[href*=#]:not([href=#])').click(function() {
+				if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') 
+			&& location.hostname == this.hostname) {
+
+				  var target = $(this.hash);
+				  target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+				  if (target.length) {
+					$('html,body').animate({
+					  scrollTop: target.offset().top - 75 //offsets for fixed header
+					}, 1000);
+					return false;
+				  }
+				}
+			  });
+			  //Executed on page load with URL containing an anchor tag.
+			  if($(location.href.split("#")[1])) {
+				  var target = $('#'+location.href.split("#")[1]);
+				  if (target.length) {
+					$('html,body').animate({
+					  scrollTop: target.offset().top - 75 //offset height of header here too.
+					}, 1000);
+					return false;
+				  }
+				}
+		});
+		</script>
+		
+		<!-- Affix Javascript -->
+		
+		<script>$(function(){
+ 
+			var stickyElement = '.bs-docs-sidebar', 
+			bottomElement = '.footer'; 
+			
+			if($( stickyElement ).length){
+			$( stickyElement ).each(function(){
+		   
+			var fromTop = $( this ).offset().top,
+		   
+			fromBottom = $( document ).height()-($( this ).offset().top + $( this ).outerHeight()),
+			
+			stopOn = $( document ).height()-( $( bottomElement ).offset().top)+($( this ).outerHeight() - $( this ).height());
+			
+			if( (fromBottom-stopOn) > 200 ){
+			
+			$( this ).css('width', $( this ).width()).css('top', 0).css('position', '');
+			
+			$( this ).affix({
+			offset: {
+			
+			top: fromTop,
+			
+			bottom: stopOn
+			}
+			
+			}).on('affix.bs.affix', function(){ $( this ).css('top', 0).css('position', ''); });
+			}
+			
+			$( window ).trigger('scroll');
+			});
+			}
+		});
+		</script>
+	</head>
+    <body>
+	<div id="main">
+	<div class="container">
+		<!-- Top Nav - Mozu -->
+			<nav class="navbar navbar-default navbar-fixed-top">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                        </button> <a href="#"><img src="logo-m-red-medium.png" style="margin-top:3px;"/></a></div>
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav navbar-right">
+							
+                            <li><a href="//developer.mozu.com/learn/mozu-concepts"><span>Mozu Concepts</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+			
+		<!--Side Navigation TOC -->
+		<div class="row">
+		<div class="landing-title">
+			<h1>MailChimp Application by Mozu Configuration Guide</h1>	
+		</div>
+			<div class="col-md-3" >
+				<nav class="bs-docs-sidebar" >
+					<ul class="nav nav-stacked" >
+						<div class="side-heading">Table of Contents</div>
+							<li><a href="#intro">Welcome to MailChimp and Mozu</a></li>
+							<li><a href="#install">Install MailChimp</a>
+								<ul class="nav nav-stacked" >
+								 <li><a href="#configreq">Requirements</a></li>
+								</ul>
+							</li>
+							<li><a href="#enable">Initialize and Enable the MailChimp App</a>
+								<ul class="nav nav-stacked" >
+								 <li><a href="#initialize">Initialize the MailChimp App</a></li>
+								 <li><a href="#apikey">Find the MailChimp API Key</a></li>
+								 <li><a href="#enableapp">Enable the MailChimp App</a></li>
+								</ul>
+							</li>
+							<li><a href="#configapp">Configure the App</a>
+								<ul class="nav nav-stacked">
+									<li><a href="#sync">Sync the MailChimp App</a></li>
+								</ul>
+							</li>
+							<li><a href="#configapp">Create a MailChimp Campaign</a>
+								<ul class="nav nav-stacked">
+									<li><a href="#assodiscounts">Create and Associate Discounts</a></li>
+									<li><a href="#mapdiscounts">Map Discounts to a Campaign</a></li>
+									<li><a href="#send">Send Emails</a></li>
+								</ul>
+							</li>
+					</ul>
+				</nav>
+			</div>
+                    
+            <div class="col-md-9 content" >
+                <!-- Documentation content -->
+				<section id="intro">
+					<h2>Welcome to MailChimp and Mozu</h2>
+					<p><a href="http://www.mailchimp.com">MailChimp</a> provides online services for crafting and generating refined email campaigns to promote your business to current and potential customers and shoppers. With a few images, written content, and selections, your emails go from simple data with a few links to stylish, informative marketing pieces sent to key audiences based on subscriptions and configured settings. MailChimp helps you generate better business by integrating with your discounts and marketing through campaigns, reducing costs and lost time and money spent on design. </p>
+					<p><a href="http://www.mozu.com">Mozu</a> offers an app to leverage MailChimp's services to integrate with your Mozu customer list and subscribed shoppers. Through your Mozu app, you can sync your MailChimp mailing lists with Mozu subscribers, build email campaigns in MailChimp, and generate emails using the discounts in your Mozu store.</p>
+				</section>
+				<section id="install">
+					<h2 >Install MailChimp Application by Mozu on Your Tenant</h2>
+                        <p>After purchasing the MailChimp Application by Mozu, call your sales or professional services representative and request installation on your tenant. Mozu staff will install the app to your tenant, making it available for further configuration and usage in your storefront.</p>
+                        <p>This custom app integrates MailChimp with Mozu to support the following:</p>
+                        <ul>
+                            <li>Sync your MailChimp account with Mozu to add current subscribers to your MailChimp mailing list. All additional and removed subscribers automatically sync between Mozu and MailChimp.</li>
+							<li>Create email campaigns in MailChimp using discount codes from your Mozu store’s discount mappings.</li>
+                            <li>Associate and send Mozu discounts and email codes to your MailChimp campaigns for mass email sending.</li>
+							<li>Review a history of data syncs between Mozu and MailChimp.</li>
+                        </ul>
+						<p>When an email campaign is built, the following occurs between Mozu and the MailChimp app:</p>
+						<ul>
+							<li>You only need to sync Mozu once to add subscribed customers from Mozu into your MailChimp contacts. Additional syncs may be needed in case of MailChimp maintenance or server outages to verify all subscribers.</li>
+							<li>As shoppers select to join the mailing list by subscribing, or click the unsubscribe link, the customer settings in Mozu and contacts in MailChimp automatically update and sync.</li>
+							<li>The Mozu app sends an association of Mozu discounts with MailChimp campaigns for sending emails. The Mozu email codes send to your MailChimp campaign to be used in campaigns. When you build emails in MailChimp, three new Mozu codes add to your MailChimp account:
+							<ul><li>DIS_TY : Discount Type</li>
+							<li>DIS_NM : Discount Name</li>
+							<li>DIS_VL : Discount Value</li>
+							</ul></li>
+							<li>Mozu provides a history of sync jobs.</li>
+						</ul>
+                        
+					<h3 id="configreq">Configuration Requirements</h3>
+					<p>To configure MailChimp to work seamlessly with Mozu, you need specific items installed and settings provided. This guide details each step from requirements to final configuration for syncing contacts and generating email campaigns.</p>
+						 
+                        
+                        <p>You must meet the following criteria to configure the MailChimp app:</p>
+                        <ul>
+                            <li>You must have the MailChimp Application by Mozu installed into your tenant.</li>
+                            <li>You must have an active <a href="http://www.mailchimp.com/">MailChimp</a> account with an API Key. When added, the available list and site names on your account display in the app.</li>
+                            <li>You must maintain all campaign designs, rules, and settings in your MailChimp account.</li>
+							<li>You must have discounts defined in your Mozu store.</li>
+                        </ul>
+                        
+				</section>
+				<section id="enable">
+                    <h2 >Initialize and Enable the MailChimp App</h2>
+					<p>Prior to creating campaigns and sending emails, you must initialize then enable the MailChimp app.</p>
+					<h3 id="initialize">Configure MailChimp Account Settings</h3>
+					<p>To initialize the app, you add the API Key and link one site to one list. Mozu only supports one site per tenant at this time.</p>
+                        <ol>
+                            <li>On the Mozu Admin top bar, select <b>Settings > Applications</b>.</li>
+							<li>Double-click <b>MailChimp</b>.</li>
+							<li>Click the <b>Configuration</b> link to open configuration settings. </li>
+							<li>On the <b>Settings</b> tab, enter your <b>MailChimp API Key</b>. If you need help finding your API Key, see the next section <a href="apikey"><i>Find the MailChimp API Key</i></a>. When you click outside of the field, Mozu contacts MailChimp to establish the connection. On success, a green checkmark displays.</li>
+							<li>Data of available sites and lists fills the drop-down menus.</li>
+							<li>Select a <b>List Name</b> and a <b>Site Name</b> to associate the connection. Mozu only supports one site per tenant at this time. </li>
+							<li>When selected, the association automatically verifies and displays.</li>
+							The app page updates displaying <b>Initialized: true</b>.</li>
+                        </ol>
+						<img src="mailchimp-settings.png" class="img-mozu" />
+					<h3 id="apikey">Find the MailChimp API Key</h3>
+					<p>If you are unsure <a href="http://kb.mailchimp.com/accounts/management/about-api-keys">where to find this key</a>, do the following:</p>
+                        <ol>
+                            <li>Log in to your MailChimp account online.</li>
+							<li>Open the <b>Account</b> page and click <b>Extras > API keys</b>.</li>
+							<li>A list of keys will display on the page. If not, click <b>Create a Key</b> and continue those steps. </li>
+							<li>Copy and paste the long API Key into the Mozu App.</li>
+                        </ol>
+					<p>The API Key grants access to sync contacts and send email campaigns from Mozu via MailChimp. When synced, three Mozu discount codes are added to your MailChimp account, available when creating your campaign email.</p>
+					<h3 id="enableapp">Enable the MailChimp App</h3>
+					<p>With the app initialized, you can enable the app:</p>
+                        <ol>
+                            <li>On the Mozu Admin top bar, select <b>Settings > Applications</b>.</li>
+							<li>Double-click <b>MailChimp</b>.</li>
+							<li>Click <b>Enable App</b> on the MailChimp page. </li>
+                        </ol>
+				</section>
+				
+				<section id="configapp">				
+                    <h2 >Configure the Application</h2>
+						<p>To integrate your MailChimp services with Mozu, you need to sync the data. The applications require at least one sync to connect and update. </p>
+						
+						<h3 id="sync">Sync the MailChimp App</h3>
+						<p>With your Mozu and MailChimp accounts connected, you need to sync the Mozu customers with MailChimp contacts. Once synced, Mozu adds any current subscribers to MailChimp contacts. Any new or removed subscribers automatically update between Mozu and MailChimp.</p>
+                        <ol>
+                            <li>On the Mozu Admin top bar, select <b>Settings > Applications</b>.</li>
+                            <li>Double-click <b>MailChimp</b>.</li>
+                            <li>Click the <b>Configuration</b> link to open configuration settings. </li>
+                            <li>On the <b>Customers</b> tab, select the <b>Synchronization Type</b> and <b>MailChimp List</b>.</li>
+                            <li>Click <b>Schedule Sync</b>. A job issues to update subscribed and unsubscribed customers with your contact list.</li>
+							<img src="mailchimp-customers.png" class="img-mozu" />
+							<li>A new record adds to the <b>History</b> tab.</li>
+							<img src="mailchimp-history.png" class="img-mozu" />
+                        </ol>
+				</section>
+				<section id="sendemail">
+                        <h2>Create a MailChimp Campaign</h2>
+						<p>Creating a MailChimp campaign requires a couple steps completed in Mozu and continued and finished in your MailChimp account. You should have a campaign started and saved in your MailChimp account. These sections detail how to integrate Mozu discounts and send to customers.</p>
+						<h3 id="assocdiscounts">Create and Associate Discounts</h3>
+                        <p>The first step is to associate your current campaign started and saved in MailChimp.</p>
+						<p><b>Note:</b> You must create a campaign in MailChimp prior to associating a discount.</p>
+                        <ol>
+                            <li>On the Mozu Admin top bar, select <b>Settings > Applications</b>.</li>
+                            <li>Double-click <b>MailChimp</b>.</li>
+                            <li>Click the <b>Configuration</b> link to open configuration settings. </li>
+							<li>On the Discounts tab, select your MailChimp campaign and the Mozu Discount Code. The associated data and three discount codes transfer automatically to MailChimp.<br />
+							<b>Note:</b> The Send link sends emails to the mailing list.</li>
+                        </ol>
+						<img src="mailchimp-discounts.png" class="img-mozu" />
+						
+						<h3 id="mapdiscounts">Map Discounts to a Campaign</h3>
+                        <p>Once sent, you can add the Mozu discount codes to the specific campaign email:</p>
+						
+                        <ol>
+                            <li>1.	Open your MailChimp campaign in your MailChimp account. This is the campaign you previously created and associated with a Mozu discount.</li>
+							<img src="template1.png" class="img-mozu" />
+                            <li>Modify any information and options, as in the example. Continue to edit the content of the email.</li>
+							<img src="template2.png" class="img-mozu" />
+                            <li>On the left side, enter content for your email. You can drag and drop the three new Mozu discount codes from the right side variables into the email. Or you can use the codes specifically:
+							<ul>
+							<li>*|DIS_TY|* : Discount Type</li>
+							<li>*|DIS_NM|* : Discount Name</li>
+							<li>*|DIS_VL|* : Discount Value</li>
+							</ul>
+							</li>
+							<li>Preview or save as needed. </br>
+                        </ol>
+						
+						<h3 id="send">Send Emails</h3>
+						<p>You can send the emails through Mozu when ready!</p>
+						<ol>
+						<li>To send the emails, open your MailChimp App in Mozu.</li>
+						<li>On the Discounts tab, click <b>SEND</b>. The emails send to the mailing list, populating the email codes with the associated Mozu discount information.</li>
+						</ol>
+				</section>
+				
+						</div>
+                    </div>
+                </div>
+           </div>
+		</div>
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="footer__logo">
+                            <a href="http://www.mozu.com" target="_blank"><img src="http://www.mozu.com/sites/all/themes/mozu_aurora/logo.png" style="padding-top:7px;"/></a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 text-center">
+                        
+                    </div>
+                    <div class="col-md-3">
+                        <p class="pull-right footer__icons" style="padding-right:40px;"><a href="MailChimpApplicationbyMozu_ConfigurationGuide.pdf"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-file-pdf-o "></i></button></a><a href="http://www.mozu.com/contact"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-comments-o"></i></button></a><a href="http://www.mozu.com/contact"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-copyright"></i></button></a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+		
+	<!-- Back to top -->
+	<div class="scroll-top-wrapper ">
+    <span class="scroll-top-inner">
+        <i class="fa fa-2x fa-arrow-circle-up"></i>
+    </span>
+	</div>
+	<!-- Back to top - show hide -->
+	<script>
+ 
+	$(function(){
+	 
+		$(document).on( 'scroll', function(){
+	 
+			if ($(window).scrollTop() > 100) {
+				$('.scroll-top-wrapper').addClass('show');
+			} else {
+				$('.scroll-top-wrapper').removeClass('show');
+			}
+		});
+	});
+	</script>
+	<!-- Back to top - to top -->
+	<script>
+ 
+	$(function(){
+	 
+		$(document).on( 'scroll', function(){
+	 
+			if ($(window).scrollTop() > 100) {
+				$('.scroll-top-wrapper').addClass('show');
+			} else {
+				$('.scroll-top-wrapper').removeClass('show');
+			}
+		});
+	 
+		$('.scroll-top-wrapper').on('click', scrollToTop);
+	});
+	 
+	function scrollToTop() {
+		verticalOffset = typeof(verticalOffset) != 'undefined' ? verticalOffset : 0;
+		element = $('body');
+		offset = element.offset();
+		offsetTop = offset.top;
+		$('html, body').animate({scrollTop: offsetTop}, 500, 'linear');
+	}
+	</script>
+    </body>
+</html>
