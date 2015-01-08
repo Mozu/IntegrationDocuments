@@ -130,6 +130,7 @@
 								</ul>
 							</li>
 							<li><a href="#enable">Enable the App</a></li>
+							<li><a href="#ens">Enable Event Notification System</a></li>
 					</ul>
 				</nav>
 			</div>
@@ -212,6 +213,21 @@
                             <li>Click <b>Enable App</b> on the Kount page.</li>
                         </ol>
 				</section>
+				<section id="ens">
+                    <h2 >Enable Event Notification System </h2>
+					<p>With the systems connected, you need to enable the Event Notification System (ENS) in your Kount account to synchronize data and enable actions with Mozu. On shopper purchases, Mozu processes the order and sends data to Kount, which calculates the fraud score and provides data back to Mozu.</p>
+					<p>While we highly recommend performing all order review and reporting directly through Mozu, you can use Kount services and sync any actions back into Mozu. Kount provides fraud score reviewing, management, and in-depth reports for purchases made through Mozu storefronts. You can review and approve the order within Kount, add history content, and update addresses. ENS syncs this data back into Mozu within a minute of entered changes.</p>
+					<p>Specific data changed within Kount syncs to Mozu including edits to the content, history, shipping and billing addresses, and state changes such as from review (R) to approve (A). If you change the state of an order in Kount, additional processes enact in Mozu when synced as if you had made that change directly in Mozu. </p>
+                        <ol>
+                            <li>In your Kount account site, select Fraud Control tab and select <b>Websites</b>.</br>
+							<img src="kount-admin1.png" class="img-mozu"/></li>
+                            <li>You will have a “DEFAULT” website available in the list. You can edit this website using the gear icon. Select <b>Edit</b>. </br>
+							<img src="kount-admin2.png" class="img-mozu"/></li></li>
+                            <li>Select Website Enabled and ENS Enabled as <b>Yes</b>.</li>
+							<li>For the Merchant ENS URL, enter https://Integrations2-hp.mozu.com/Kount/api/ens/<tenant Id>. For example, https://Integrations2-hp.mozu.com/Kount/api/ens/5555.</li>
+							<li>Click <b>Update Website</b>.</li>
+                        </ol>
+				</section>
 				
 						</div>
                     </div>
@@ -231,7 +247,7 @@
                         
                     </div>
                     <div class="col-md-3">
-                        <p class="pull-right footer__icons" style="padding-right:40px;"><a href="KountApplicationbyMozu_ConfigurationGuide.pdf"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-file-pdf-o"></i></button></a><a href="http://www.mozu.com/ecommerce-app-center" target="_blank"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-code-fork"></i></button></a><a href="http://www.mozu.com/contact"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-comments-o"></i></button></a><a href="http://www.mozu.com/contact"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-copyright"></i></button></a>
+                        <p class="pull-right footer__icons" style="padding-right:40px;"><a href="KountApplicationbyMozu_ConfigurationGuide.pdf"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-file-pdf-o"></i></button></a><a href="http://www.mozu.com/ecommerce-app-center" target="_blank"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-code-fork"></i></button></a><a href="http://www.mozu.com/contact"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-comments-o"></i></button></a><a href="http://www.mozu.com/legal"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-copyright"></i></button></a>
                         </p>
                     </div>
                 </div>
