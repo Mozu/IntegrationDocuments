@@ -156,13 +156,14 @@
                             <li>Complete an initial sync between your MailChimp account with Mozu to share data between the services, including contacts and completed orders.</li>
 							<li>Data syncs automatically occur between the systems per specific events including subscription opt in/opt out, creating customer account, creating new customer segments in Mozu, adding/removing customers in segments, and completing an order. Additional syncs may be needed in case of MailChimp maintenance or server outages to verify all subscribers.</li>
                             <li>Create and send email campaigns in MailChimp to your Mozu customers.</li>
-							<li>Review a history of data syncs between Mozu and MailChimp, automatic and manual.</li>
+							<li>Review a history of manual data syncs between Mozu and MailChimp.</li>
                         </ul>
 						<p>The following occurs between Mozu and the MailChimp app:</p>
 						<ul>
 							<li>As shoppers select to join the mailing list by subscribing, Mozu updates MailChimp with the opt-in setting for that customer. </li>
 							<li>If a shopper clicks to unsubscribe from an email, MailChimp updates Mozu with the opt-out setting.</li>
 							<li>A customer completes an order. Mozu sends an update automatically to MailChimp.</li>
+							<li>A customer is added or removed from a customer segment in Mozu. This data is updated for the account. </li>
 						</ul>
                         
 					<h3 id="configreq">Configuration Requirements</h3>
@@ -172,7 +173,7 @@
                         <p>You must meet the following criteria to configure the MailChimp app:</p>
                         <ul>
                             <li>You must have the MailChimp Application by Mozu installed into your tenant.</li>
-                            <li>You must have an active <a href="http://www.mailchimp.com/">MailChimp</a> account with an API Key. When added, the available list and site names on your account display in the app.</li>
+                            <li>You must have an active <a href="http://www.mailchimp.com/">MailChimp</a> account with an API Key. When added, the available list and tenant names on your account display in the app.</li>
                             <li>You must maintain all campaign designs, rules, and settings in your MailChimp account.</li>
 							<li>You must create only one mailing list in MailChimp for use in Mozu. Mozu supports one mailing list at this time.</li>
 							<li>You can create customer segments at any time in Mozu. This data updates into MailChimp as created, edited, and removed.</li>
@@ -215,11 +216,11 @@
 				
 				<section id="configapp">				
                     <h2 >Configure the Application</h2>
-						<p>To integrate your MailChimp services with Mozu, you need to sync the data. The applications require at least one import and export to connect and update. Syncs occur constantly between the applications and services while the app is initialized and enabled. If you ever want to manually sync data, you can run these commands as needed.</p>
+						<p>To integrate your MailChimp services with Mozu, you need to sync the data. The applications require at least one import and export to connect and update. You can perform a manual sync of data through imports and exports. Any manual jobs add a completed log file to the History tab. </p>
+						<p>Once connected, MailChimp and Mozu share data for customer accounts and contacts. All new accounts are created in Mozu. MailChimp manages and provides updated opt in/out settings from received email requests. All data is maintained in Mozu and shared with MailChimp.</p>
 						
 						<h3 id="importmail">Import MailChimp Contacts</h3>
-						<p>With your Mozu and MailChimp accounts newly connected, you should import your MailChimp contacts. These contacts add as new Mozu customers or update the subscription settings for current customers. </p>
-						<p>Once synced, MailChimp adds any current subscribers to Mozu customers. Any new or removed subscribers automatically update between Mozu and MailChimp. Once synced, if a MailChimp contact changes their status, it automatically syncs and updates to Mozu.</p>
+						<p>With your Mozu and MailChimp accounts newly connected, you should import your MailChimp contacts. The shared data updates the opt in/out settings for your Mozu customer accounts/contacts. Once synced, if a MailChimp contact changes their status, it automatically syncs and updates to Mozu.</p>
                         <ol>
                             <li>On the Mozu Admin top bar, select <b>Settings > Applications</b>.</li>
                             <li>Double-click <b>MailChimp</b>.</li>
