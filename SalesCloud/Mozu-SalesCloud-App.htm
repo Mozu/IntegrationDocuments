@@ -93,20 +93,307 @@
 		</script>
 	</head>
     <body>
-			<div class="landing-heading">
-				<div class="landing-heading__content">
-					<h1>Coming soon, a new Sales Cloud App by Mozu!</h1>
-					<h2>Watch for updates and information for integrating Sales Cloud with Mozu!</h2>
-					
-				
-					
-				</div>
+	<div id="main">
+	<div class="container">
+		<!-- Top Nav - Mozu -->
+			<nav class="navbar navbar-default navbar-fixed-top">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                        </button> <a href="#"><img src="logo-m-red-medium.png" style="margin-top:3px;"/></a></div>
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav navbar-right">
+							
+                            <li><a href="//developer.mozu.com/learn/mozu-concepts"><span>Mozu Concepts</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+			
+		<!--Side Navigation TOC -->
+		<div class="row">
+		<div class="landing-title">
+			<h1>Sales Cloud Application by Mozu Configuration Guide</h1>	
+		</div>
+			<div class="col-md-3" >
+				<nav class="bs-docs-sidebar" >
+					<ul class="nav nav-stacked" >
+						<div class="side-heading">Table of Contents</div>
+							<li><a href="#intro">Welcome to Sales Cloud and Mozu</a></li>
+							<li><a href="#install">Install Sales Cloud</a></li>
+							<li><a href="#configapp">Configure the App</a>
+								<ul class="nav nav-stacked">
+									<li><a href="#config">Configure Sales Cloud</a></li>
+									<li><a href="#enable">Enable Sales Cloud</a></li>
+								</ul>
+							</li>
+							<li><a href="#maporder">Map Order Status</a>
+								<ul class="nav nav-stacked" >
+								 <li><a href="#createstatus">Create Sales Cloud Status</a></li>
+								 <li><a href="#mapordermozu">Map Order Status in Mozu</a></li>
+								</ul>
+							</li>
+							<li><a href="#mappricebk">Map Price Books</a>
+								<ul class="nav nav-stacked" >
+								 <li><a href="#createpricebk">Create Price Books</a></li>
+								 <li><a href="#mappricebkmozu">Map Price Books in Mozu</a></li>
+								</ul>
+							</li>
+							<li><a href="#mapcustomer">Map Customer Attributes</a>
+								<ul class="nav nav-stacked" >
+								 <li><a href="#createattrib">Create New Attribute</a></li>
+								 <li><a href="#mapattrib">Map Attributes in Mozu</a></li>
+								</ul>
+							</li>
+							<li><a href="#export">Export Data to Sales Cloud</a></li>
+							<li><a href="#pglayout">Customize Sales Cloud Page Layouts</a></li>
+					</ul>
+				</nav>
 			</div>
-			<div class="landing-method-theme"></div>
-			
-			
-		
-		<!-- Footer -->
+                    
+            <div class="col-md-9 content" >
+                <!-- Documentation content -->
+				<section id="intro">
+					<h2>Welcome to Sales Cloud and Mozu</h2>
+					<p><a href="http://www.salesforce.com/sales-cloud/overview/">Sales Cloud</a>, by Salesforce, provides a cloud service to track customer information and interactions, complete and review purchases, manage leads, and much more. Salesforce features that support all areas of your business has moved into the cloud with the capability of managing all customer, product, marketing, and order interactions and data within your business. Through the Sales Cloud, your business records, customers, transactions, inventory, and email messaging is maintained with processes and workflows via any device and browser. </p>
+					<p><a href="http://www.mozu.com">Mozu</a> offers an app to leverage your Sales Cloud account, services, workflows, and data. Through the app, you can sync all customer accounts and contacts, products, price lists, orders, and returns between Mozu and your current Sales Cloud account and features. Once integrated, all new customers and orders automatically transfer into Sales Cloud.</p>
+				</section>
+				<section id="install">
+					<h2 >Install MailChimp Integration by Mozu on Your Tenant</h2>
+                        <p>After purchasing the Sales Cloud Connector by Mozu, call your sales or professional services representative and request installation on your tenant. Mozu staff will install the app to your tenant, making it available for further configuration and usage in your storefront.</p>
+                        <p>This custom app integrates Sales Cloud with Mozu to support the following:</p>
+                        <ul>
+                            <li>Authenticate your Sales Cloud account with Mozu to sync customer accounts and contacts, products, price lists, orders, and returns.</li>
+							<li>Export one or more products, customers, and orders (including returns) from Mozu into Sales Cloud. Existing content will need to be exported from Mozu after initial authentication.</li>
+                            <li>Map Mozu order status with Sales Cloud status. You can map multiple Mozu order statuses to one Sales Cloud status to refine order processing. </li>
+							<li>	Add Mozu fields to Sales Cloud receipts and forms to display synced data including Order Discount, Order Adjustment, Order Shipping Total, Order Shipping Adjustment, Order Shipping Discount, and Order Tax Total and additional fields for products, status, and account attributes.</li>
+                        </ul>
+						<p>Data syncs between Mozu and the Sales Cloud app as follows:</p>
+						<ul>
+							<li>You can manually export existing data for products, customers, and orders directly into Sales Cloud.</li>
+							<li>Once authenticated, the system will share data as customers are created, products are created and updated, and orders are submitted through to completion. </li>
+							<li>You can modify and map content on-the-fly between the systems for custom attributes, changes in mappings, and page layout content in your Sales Cloud forms.</li>
+						</ul>
+                        
+					<h3 id="configreq">Configuration Requirements</h3>
+					<p>To configure Sales Cloud to work seamlessly with Mozu, you need specific items installed and settings provided. This guide details each step from requirements to final configuration for managing shipments.</p>
+                        
+                        <p>You must meet the following criteria to configure the Sales Cloud app:</p>
+                        <ul>
+                            <li>You must have the Sales Cloud Application by Mozu installed into your tenant.</li>
+                            <li>You must have access to modify and update your store settings in Sales Cloud.</li>
+                            <li>You must have an active Sales Cloud account. You will authenticate this account to link both systems together. </li>
+                        </ul>
+                        
+				</section>
+				<section id="configapp">
+                    <h2 >Configure the Application</h2>
+					<p>To integrate your Sales Cloud services with Mozu, you will authenticate your Salesforce account with the app and configure any settings as needed. Additional work may be needed in your Salesforce account outside of the app to complete mapping and export of data.</p>
+					<p>When your account is authenticated, the Info tab will display the maximum limit of daily API calls allowed by Salesforce and your currently available amount. </p>
+					<p>Once your accounts are authenticated, any current data in Mozu should be exported directly to Sales Cloud. Any new entries automatically populate into Sales Cloud, including products, customer accounts/contacts, and orders. See additional sections for this data export, mapping, and syncing.</p>
+					<h3 id="initialize">Configure Sales Cloud Connector in Mozu</h3>
+					<p>To initialize the app, you add the API Key and link one site to one list. Mozu only supports one site per tenant at this time.</p>
+                        <ol>
+                            <li>On the Mozu Admin top bar, select <b>Settings > Applications</b>.</li>
+							<li>Double-click <b>Sales Cloud</b>.</li>
+							<li>Click the <b>Configuration</b> link to open the app. </li>
+							<li>On the Info tab, you need to connect and authenticate your Salesforce Sales Cloud.</li>
+							<li>Click <b>Authenticate</b>. The Salesforce Account Login page opens. Enter your credentials to login and authenticate. If you do not have an account, you can create a new account through the same page.</li>
+							The app page updates displaying <b>Initialized: true</b>.<br/>
+							<img src="salescloud-login.png" class="img-mozu" /></li>
+							<li>The Info tab updates indicating your account has been authenticated. You can Re-Authenticate to login as needed. <br/>
+							<img src="salescloud-info.png" class="img-mozu" /></li>
+                        </ol>
+						
+					<h3 id="enable">Enable Sales Cloud Application by Mozu</h3>
+					
+                        <ol>
+                            <li>On the Mozu Admin top bar, select <b>Settings > Applications</b>.</li>
+							<li>Double-click <b>Sales Cloud</b>.</li>
+							<li>Click <b>Enable App</b> on the Info tab to enable the app.</li>
+                        </ol>
+					<p>The API Key grants access to sync contacts and send email campaigns. </p>
+					<h3 id="enableapp">Enable the MailChimp App</h3>
+					<p>With the app initialized, you can enable the app:</p>
+                        <ol>
+                            <li>On the Mozu Admin top bar, select <b>Settings > Applications</b>.</li>
+							<li>Double-click <b>MailChimp</b>.</li>
+							<li>Click <b>Enable App</b> on the MailChimp page. </li>
+                        </ol>
+				</section>
+				
+				<section id="maporder">				
+                    <h2 >Map Order Status</h2>
+						<p>Mozu includes a number of order statuses: Abandoned, Accepted, Cancelled, Closed, Completed, Pending, Processing, Rejected, and Submitted. You can map these status values in the app with available Sales Cloud status options. You can add and remap order status as needed.</p>
+						
+						<h3 id="createstatus">Create Sales Cloud Status</h3>
+						<p>You can create new or edit current order status options in Sales Cloud at any time. If you do not need to create new status options, continue to the next section.</p>
+                        <ol>
+                            <li>Log into your Sales Cloud account in a web browser.</li>
+                            <li>Click <b>Setup</b>.</li>
+                            <li>In the left-side nav options, scroll under Build to expand sections. </li>
+                            <li>Expand Customize > Orders and click <b>Fields</b>. </li>
+                            <li>Scroll through the list of fields to locate Status. Click the linked name to edit the field content.</li>
+							<li>On the Order Field Status page, you can scroll to the Order Status Picklist Values.<br/> 
+							<img src="salescloud-newstatus.png" class="img-mozu" /></li>
+							<li>Click <b>New</b> to add a status. You can also click <b>Edit</b> per existing status.</li>
+							<li>On the Picklist Edit Order Status, enter a name for the <b>Order Status</b>.</li>
+							<li>Select the Status Category, typically as <b>Activated</b>. If you select none, Draft is used by default.</li>
+							<li>Optionally, select a color. Salesforce will select a color automatically.<br/> 
+							<img src="salescloud-newstatus2.png" class="img-mozu" /></li>
+							<li>Click <b>Save</b>. This new status can be selected in Mozu for mapping.</li>
+                        </ol>
+						<h3 id="mapstatus">Map Order Status in Mozu</h3>
+						<p>You can map more than one Mozu status to the same Sales Cloud status.</p>
+						<ol>
+                            <li>On the Mozu Admin top bar, select <b>Settings > Applications</b>.</li>
+                            <li>Double-click <b>Sales Cloud</b>.</li>
+                            <li>Click the <b>Configuration</b> link to open the app. </li>
+                            <li>Click the Order Status tab.</li>
+                            <li>For each Mozu Order Status, select an available Salesforce Order Status. You can map multiple Mozu statuses to the same Sales Cloud status.<br/>
+							<img src="salescloud-orderstatus.png" class="img-mozu" /></li>
+							<li>Click <b>Save</b>.</li>
+                        </ol>
+				</section>
+				<section id="mappricebk">				
+                    <h2 >Map Price Books</h2>
+						<p>You must create a new price book per each Mozu catalog. You can name these price books anything you like in Sales Cloud, though we recommend using similar names to those in Mozu. If you already have price books for each catalog in Mozu, make note of the names to map through the app. You can also edit the names of the price books as needed in Sales Cloud.</p>
+						
+						<h3 id="createpricebk">Create Price Books</h3>
+						
+                        <ol>
+                            <li>Log into your Sales Cloud account in a web browser.</li>
+                            <li>Click the <b>Products</b> tab.</li>
+                            <li>For Price Books, click <b>Create New View</b>.  <br/> 
+							<img src="salescloud-pricebookadd.png" class="img-mozu" /></li>
+                            <li>Enter a <b>View Name</b> to match to a Mozu catalog.</li>
+                            <li>The <b>View Unique Name</b> will auto-populate using the View Name. </li>
+							<li>Select and modify any other settings for the price book as needed. Review your Sales Cloud documentation for details on settings.</li>
+                        </ol>
+						<h3 id="mappricebk">Map Price Books in Mozu</h3>
+						<p>You can map more than one Mozu status to the same Sales Cloud status.</p>
+						<ol>
+                            <li>On the Mozu Admin top bar, select <b>Settings > Applications</b>.</li>
+                            <li>Double-click <b>Sales Cloud</b>.</li>
+                            <li>Click the <b>Configuration</b> link to open the app. </li>
+                            <li>Click the <b>Price Lists</b> tab.<br/>
+							<img src="salescloud-pricelist.png" class="img-mozu" /></li>
+                            <li>For each listed Mozu catalog, select a Pricebook from the drop-down menu. </li>
+							<li>Click <b>Save</b>.</li>
+                        </ol>
+				</section>
+				
+				<section id="mapcustomer">				
+                    <h2 >Map Customer Attributes</h2>
+						<p>You can create and map custom attributes for a product in Mozu to attributes in Sales Cloud. As you create these attributes in Mozu for current or new customer accounts, the app provides a mapping page for associating the data into Sales Force. </p>
+						<p>We recommend performing another export into Sales Force after mapping existing attributes. If this is a new attribute without entered data, you do not need to perform an export. The mapped attribute will automatically share data as it is entered.</p>
+						
+						<h3 id="createattrib">Create a New Attribute in Salesforce</h3>
+						<p>If you do not have a matching attribute in Salesforce to map for your Mozu attributes, you need to create the attribute(s) then map. If you have existing attributes ready to map, continue to the next section.</p>
+                        <ol>
+                            <li>Log into your Sales Cloud account in a web browser.</li>
+                            <li>In the left-side nav options, scroll under Build to expand sections.</li>
+                            <li>Expand Customize > Accounts and click <b>Fields</b>.<br/> 
+							<img src="salescloud-attribcustom.png" class="img-mozu" /></li>
+                            <li>Scroll to the bottom of the page to the Account Custom Fields & Relationships table. Click <b>New</b> to create a new attribute.</li>
+                            <li>In Step 1, select the field type. These include checkboxes, text fields, selectable options, dates, and more. We recommend the attribute content type matching the Mozu attribute. Click <b>Next</b>.</li>
+							<li>In Step 2, enter all data for the attribute. Depending on the type of field you selected in step 1, you may need to enter the length of a text field (max characters), date formats, options for customers to select from, and so on. The options do not have to match the full descriptions or names, as the mapping from Mozu to Salesforce will provide that data. You can map down to the attribute content level. We recommend you consider matching this content between the systems.</li>
+							<li>Click <b>Next</b>.</li>
+							<li>Depending on the attribute content and location, you may need to edit the Page Layout for Accounts in Salesforce to display the new mapped attribute.</li>
+                        </ol>
+						<h3 id="mappricebk">Map Attributes in Mozu</h3>
+						
+						<ol>
+                            <li>Log into the Mozu Admin.</li>
+                            <li>Click <b>Customers</b>.</li>
+                            <li>As needed, create your custom attribute(s) in Mozu for your customers. For example, you may want to add a Date of Birth or Gender attribute.</li>
+                            <li>Along the menu bar, select <b>Extensions > Salesforce</b>. From the options, select <b>Attribute Mapping</b>.<br/>
+							<img src="customerpg.png" class="img-mozu" /></li>
+                            <li>A list of existing customer Mozu Attributes displays with Salesforce Attributes to map.<br/>
+							<img src="salescloud-attribmapping.png" class="img-mozu" /></li>
+							<li>For each Mozu Attribute, select a Salesforce Attribute from the drop-down list. </li>
+							<li>Click the <b>Map Values</b> link. Depending on the type of attribute, you may need to link the Mozu options for the attribute with the available options in Salesforce. For example, Gender attributes would have Male or Female selectable values. In Mozu, this value may be Male with a Salesforce value of M. You can map these specific values, regardless of label, on this screen.<br/>
+							<img src="salescloud-attribvalue.png" class="img-mozu" /></li>
+							<li>Click <b>Save</b>.</li>
+                        </ol>
+				</section>
+				
+				<section id="export">				
+                    <h2 >Export Data to Sales Cloud</h2>
+						<p>After the initial authentication with Sales Cloud, any existing data in Mozu should be exported to Sales Cloud. You can perform these exports through the products, customers, and orders pages in the Mozu Admin. The app adds extended pages to export one or all of your products, product attributes (with mappings), customers, and orders. After the data is exported, you can click the provided links to directly open Sales Cloud to that record through the SalesForce portal. </p>
+						
+						<h3 id="exportproducts">Export Single or All Products</h3>
+						<p>You have a choice of exporting one or all products.</p>
+                        <ol>
+                            <li>Log into the Mozu Admin.</li>
+                            <li>Click <b>Catalog</b>.</li>
+                            <li>Along the menu bar, select <b>Extensions > Salesforce</b>. You have the choice of Export (opens the export options) or Product (displays successful exported data with links).<br/> 
+							<img src="productsmenu.png" class="img-mozu" /></li>
+                            <li>Select <b>Export</b>.<br/> 
+							<img src="salescloud-export-singleproducts.png" class="img-mozu" /><br/> 
+							<img src="salescloud-export-allproducts.png" class="img-mozu" /></li>
+                            <li>Select <b>Single Product</b> or <b>All Products</b>.</li>
+							<li>If Single Product, select the <b>Master Catalog</b> and enter a <b>Product Code</b>. Click <b>Export</b>.</li>
+							<li>If All Products, click <b>Export All</b>. A table displays the full list of exports with results.</li>
+							<li>Products will export to Sales Cloud. Completed exports provide links on the Product page into Sales Cloud.<br/> 
+							<img src="salescloud-export-productlist.png" class="img-mozu" /></li>
+                        </ol>
+						<h3 id="exportaccounts">Export Single or All Accounts</h3>
+						<p>You have a choice of exporting one or all customer accounts.</p>
+                        <ol>
+                            <li>Log into the Mozu Admin.</li>
+                            <li>Click <b>Customers</b>.</li>
+                            <li>Along the menu bar, select <b>Extensions > Salesforce</b>. You have the choice of Export (opens the export options) or Accounts (displays successful exported data with links).<br/> 
+							<img src="customerpg.png" class="img-mozu" /></li>
+                            <li>Select <b>Export</b>.<br/> 
+							<img src="salescloud-export-singleaccounts.png" class="img-mozu" /><br/> 
+							<img src="salescloud-export-allaccounts.png" class="img-mozu" /></li>
+                            <li>Select <b>Single Account</b> or <b>All Accounts</b>.</li>
+							<li>If Single Account, enter an <b>Account Id</b> or scroll through the list of customer accounts. Click <b>Export</b>.</li>
+							<li>If All Accounts, click <b>Export All</b>. A table displays the full list of exports with results.</li>
+							<li>Customer accounts will export to Sales Cloud. Completed exports provide links on the Accounts page into Sales Cloud.<br/> 
+							<img src="salescloud-export-accountlist.png" class="img-mozu" /></li>
+                        </ol>
+						<h3 id="exportorders">Export Single or All Orders</h3>
+						<p>You have a choice of exporting one or all orders.</p>
+                        <ol>
+                            <li>Log into the Mozu Admin.</li>
+                            <li>Click <b>Orders</b>.</li>
+                            <li>Along the menu bar, select <b>Extensions > Salesforce</b>. You have the choice of Export (opens the export options) or Orders (displays successful exported data with links).<br/> 
+							<img src="orderpg.png" class="img-mozu" /></li>
+                            <li>Select <b>Export</b>.<br/> 
+							<img src="salescloud-export-singleorders.png" class="img-mozu" /><br/> 
+							<img src="salescloud-export-allaorders.png" class="img-mozu" /></li>
+                            <li>Select <b>Single Order</b> or <b>All Orders</b>.</li>
+							<li>If Single Order, select an order <b>Type</b> as <b>Order</b> or <b>Return</b>. Enter the <b>Order/Return Number</b>. Click <b>Export</b>.</li>
+							<li>If All Orders, click <b>Export All</b>. A table displays the full list of exports with results.</li>
+							<li>Orders accounts will export to Sales Cloud. Completed exports provide links on the Orders page into Sales Cloud.<br/> 
+							<img src="salescloud-export-orderlist.png" class="img-mozu" /></li>
+                        </ol>
+				</section>
+				
+				<section id="pglayout">				
+                    <h2 >Customize Sales Cloud Page Layouts</h2>
+						<p>You can add Mozu fields to display additional Mozu data in your Account Details and Order Details. For each page layout display, a floating section of Fields displays across the top including all Mozu fields. You can drag and drop these fields into the page layouts. This section details how to add these fields to account and order details pages, but you can add them to other pages as you need.</p>
+						
+                        <ol>
+                            <li>Log into your Sales Cloud account in a web browser.</li>
+                            <li>Click <b>Setup</b>.<br/> 
+							<img src="salescloud-setup1.png" class="img-mozu" /></li>
+                            <li>In the left-side nav options, scroll under Build to expand sections.</li>
+                            <li>Expand Customize > Accounts and click <b>Page Layout</b>. Drag and drop the new Mozu fields into the page. You can rearrange the details as needed.<br/> 
+							<img src="salescloud-setupacct.png" class="img-mozu" /></li>
+                            <li>Expand Customize > Orders and click <b>Page Layout</b>. Drag and drop the new Mozu fields into the page. You can rearrange the details as needed on the page. <br/> 
+							<img src="salescloud-setuporder.png" class="img-mozu" /></li>
+                        </ol>
+						
+				</section>
+						</div>
+                    </div>
+                </div>
+           </div>
+		</div>
+        <!-- Footer -->
         <footer class="footer">
             <div class="container">
                 <div class="row">
@@ -119,14 +406,21 @@
                         
                     </div>
                     <div class="col-md-3">
-                        <p class="pull-right footer__icons"><a href="https://twitter.com/MozuCommerce"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-twitter"></i></button></a><a href="http://www.mozu.com/ecommerce-app-center" target="_blank"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-code-fork"></i></button></a><a href="http://www.mozu.com/contact"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-comments-o"></i></button></a><a href="http://www.mozu.com/contact"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-copyright"></i></button></a></a>
+                        <p class="pull-right footer__icons" style="padding-right:40px;"><a href="SalesCloudAppforMozuConfigurationGuide.pdf"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-file-pdf-o "></i></button></a><a href="http://www.mozu.com/ecommerce-app-center" target="_blank"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-code-fork"></i></button></a><a href="http://www.mozu.com/contact"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-comments-o"></i></button></a><a href="http://www.mozu.com/legal"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-copyright"></i></button></a>
                         </p>
                     </div>
                 </div>
             </div>
         </footer>
 		
-		<script>
+	<!-- Back to top -->
+	<div class="scroll-top-wrapper ">
+    <span class="scroll-top-inner">
+        <i class="fa fa-2x fa-arrow-circle-up"></i>
+    </span>
+	</div>
+	<!-- Back to top - show hide -->
+	<script>
  
 	$(function(){
 	 
