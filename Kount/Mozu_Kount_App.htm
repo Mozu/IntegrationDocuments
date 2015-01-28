@@ -6,6 +6,7 @@
 		<link rel="shortcut icon" href="http://www.mozu.com/favicon.ico" />
 		
 		<!-- Required for Scrollspy -->
+		<script src="http://code.jquery.com/jquery-2.0.2.min.js"></script>
 		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 		<script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/scrollspy.js"></script>
 		<script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/affix.js"></script>
@@ -159,8 +160,8 @@
 							<li>Kount calculates a fraud score for the order and returns the order's status as accepted, failed, or rejected. If rejected, the order data did not clearly calculate as accepted or failed. You can review and actively accept or reject these orders through Mozu.</li>
 							<li>Mozu notifies you when purchases have returned as failed or rejected. These orders do require your review and final actions to accept the payment or cancel the order due to potential fraudulent activity through the Orders section.</li>
 						</ul>
-                        
-					<h3 id="configreq">Configuration Requirements</h3>
+                    <div id="configreq">  					   
+					<h3 >Configuration Requirements</h3></div>
 						 <p>To configure Kount to work seamlessly with Mozu, you need specific items installed and settings provided. These sections detail each step from requirements to final configuration for reviewing order for legitimacy and fraud potential.</p>
                         
                         <p>You must meet the following criteria to configure the Kount app:</p>
@@ -176,8 +177,8 @@
 				<section id="configapp">				
                     <h2 >Configure the Application</h2>
 						<p>To integrate your Kount services with Mozu, you will modify the app settings using your Kount information and add a widget to your storefront theme. You may need to save information to add to these pages from Kount and within Mozu. Keep a notepad open as needed to help! </p>
-						
-						<h3 id="configacct">Configure Kount Account Settings</h3>
+						<div id="configacct">
+						<h3 >Configure Kount Account Settings</h3></div>
                         <ol>
                             <li>On the Mozu Admin top bar, select <b>Settings</b>&gt;<b>Applications</b>.</li>
                             <li>Double-click <b>Kount</b>.</li>
@@ -189,8 +190,8 @@
 							<li>Copy the URL provided on the Account Settings tab, for example: <i>https://sample.site.mozu.com/KountExt</i>. This URL directs the Kount widget to send order data to the Kount Web Console (where data collection occurs). Save this link for the next step of configuration.</li>
 							<img src="kount-acctsettings.png" class="img-mozu"/>
                         </ol>
-                        
-						<h3 id="configwidget">Configure the Kount Widget</h3>
+                        <div id="configwidget">
+						<h3 >Configure the Kount Widget</h3></div>
                         <p>With your Mozu and Kount accounts connected, you need to add and configure a widget to your checkout page in your storefront theme.</p>
                         <ol>
                             <li>Open Sitebuilder.</li>
@@ -237,20 +238,13 @@
         <!-- Footer -->
         <footer class="footer">
             <div class="container">
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="footer__logo">
-                            <a href="http://www.mozu.com" target="_blank"><img src="http://www.mozu.com/sites/all/themes/mozu_aurora/logo.png" style="padding-top:7px;"/></a>
-                        </div>
-                    </div>
-                    <div class="col-md-6 text-center">
-                        
-                    </div>
-                    <div class="col-md-3">
-                        <p class="pull-right footer__icons" style="padding-right:40px;"><a href="KountApplicationbyMozu_ConfigurationGuide.pdf"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-file-pdf-o"></i></button></a><a href="http://www.mozu.com/ecommerce-app-center" target="_blank"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-code-fork"></i></button></a><a href="http://www.mozu.com/contact"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-comments-o"></i></button></a><a href="http://www.mozu.com/legal"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-copyright"></i></button></a>
-                        </p>
-                    </div>
-                </div>
+			<div class="pull-left footer__logo">
+                <a href="http://www.mozu.com" target="_blank"><img src="http://www.mozu.com/sites/all/themes/mozu_aurora/logo.png" style="padding-top:7px;"/></a>
+            </div>
+			<p class="pull-right footer__icons" style="padding-right:40px;"><a href="KountApplicationbyMozu_ConfigurationGuide.pdf"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-file-pdf-o"></i></button></a><a href="http://www.mozu.com/ecommerce-app-center" target="_blank"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-code-fork"></i></button></a><a href="http://www.mozu.com/contact"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-comments-o"></i></button></a><a href="http://www.mozu.com/legal"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-copyright"></i></button></a>
+            </p>
+			
+			
             </div>
         </footer>
 		
