@@ -5891,8 +5891,8 @@ nav#sidebar .toggler {
 
 /* footer styles */
 .footer {
-	background-color: #2d2d2d;
-	color: #ffffff;
+	background-color: #ffffff;
+	color: #000000;
 	position: relative;
 	margin-top: -100px; /* negative value of footer height */
 	height: 115px;
@@ -5923,11 +5923,13 @@ nav#sidebar .toggler {
 .footer__icons .btn-primary {
 	background-color: transparent;
 	border: 0px;
+	color: #000000;
 }
 
 .footer__icons .btn-primary:hover, .footer__icons .btn-primary:focus, .footer__icons .btn-primary:active, .footer__icons .btn-primary.active {
 	background-color: #871D0F;
 	border-color: #871D0F;
+	color: #ffffff;
 }
 
 
@@ -6046,100 +6048,13 @@ img.screenshot {
 	padding: 100px 0;
 }
 
-/* ============== sidenav formatting ============== */
-/* sidebar */
-.bs-docs-sidebar {
-	padding-left: 20px;
-	margin-bottom: 20px;
-}
 
-.side-heading {
-	margin-top: 30px;
-	margin-bottom: 10px;
-	color: #df3018;
-}
-/* all links */
-.bs-docs-sidebar .nav > li > a {
-	color: #383B3C;
-	padding: 4px 10px;
-	font-size: 13px;
-	font-weight: 400;
-	/*add transparent border */
-	border-left: 2px solid transparent;
-}
-
-/* nested links */
-.bs-docs-sidebar .nav .nav > li {
-	list-style-type: none;
-	color: #383B3C;
-	padding: 4px 30px;
-}
-
-.bs-docs-sidebar .nav .nav > li > a {
-	color: #383B3C;
-	padding: 4px 10px;
-	font-size: 12px;
-	font-weight: 400;
-	/*add transparent border */
-	text-decoration: none;
-	border-left: 2px solid transparent;
-}
-/* active & hover links */
-.bs-docs-sidebar .nav > .active > a,
-.bs-docs-sidebar .nav > li > a:hover,
-.bs-docs-sidebar .nav > li > a:focus
-{
-	color: #df3018;
-	text-decoration: none;
-	background-color: transparent;
-	border-left: 2px solid #df3018;
-}
-
-.bs-docs-sidebar .nav .nav > .active > a,
-.bs-docs-sidebar .nav .nav > li > a:hover,
-.bs-docs-sidebar .nav .nav > li > a:focus 
-{
-	color: #df3018;
-	text-decoration: none;
-	background-color: transparent;
-	border-left: 2px solid #df3018;
-}
-
-/* collapse - hide all (inactive) nested list */
-.bs-docs-sidebar .nav ul.nav, 
- {
-	display: none;
-}
-/* expand - show active nested list */
-.bs-docs-sidebar .nav > .active > ul.nav {
-	display: block;
-}
-/* .active i.icon-folder-open {
-	display: inline-block;
-}
-.active i.icon-folder-close {
-	display: none;
-}
-.inactive i.icon-folder-close {
-	display: inline-block;
-}
-.inactive i.icon-folder-open {
-	display: none;
-} */
-/* testing active menu link idea 
-ul.sidenavigation .li.highlight {
-	font-weight: bold;
-}
-ul.sidenavigation .li.highlight a {
-	color: #eef0f0;
-	cursor: default;
-}*/
 
 
 /* Affix styles */
 .affix {
 	position: fixed;
-	top: 60px !important;
+	top: 50px !important;
 }
 .affix-bottom {
 	position: absolute;
@@ -6193,4 +6108,64 @@ ul.sidenavigation .li.highlight a {
 }
 .scroll-top-wrapper i.fa {
     line-height: inherit;
+}
+
+/* ============== sidenav formatting ============== */
+
+.group {
+    width: 200px;
+    height: 500px;
+}
+.group .subgroup {
+    width: 150px;
+    height: 200px;
+}
+.fixed {
+    position: fixed;
+}
+.bs-docs-sidebar {
+    padding-left: 5px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.bs-docs-sidebar .nav>li>a {
+    color: #383b3c;
+    border-left: 2px solid transparent;
+    padding: 4px 10px;
+    font-size: 13px;
+    font-weight: 400;
+}
+.bs-docs-sidebar .nav .nav>li>a {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 20px;
+    font-size: 12px;
+}
+.bs-docs-sidebar .nav>.active>a, 
+.bs-docs-sidebar .nav>li>a:hover, 
+.bs-docs-sidebar .nav>li>a:focus {
+    color: #df3018;                 
+    text-decoration: none;          
+    background-color: transparent;  
+    border-left-color: #df3018; 
+}
+.bs-docs-sidebar .nav>.active>a, 
+.bs-docs-sidebar .nav>.active:hover>a,
+.bs-docs-sidebar .nav>.active:focus>a {
+    font-weight: 700;
+}
+.bs-docs-sidebar .nav .nav>.active>a, 
+.bs-docs-sidebar .nav .nav>.active:hover>a,
+.bs-docs-sidebar .nav .nav>.active:focus>a {
+    font-weight: 500;
+}
+.bs-docs-sidebar .nav ul.nav {
+    display: none;           
+}
+.bs-docs-sidebar .nav>.active>ul.nav {
+    display: block;           
+}
+.group, .subgroup {
+    padding-top: 50px;
+    margin-top: -50px;
 }

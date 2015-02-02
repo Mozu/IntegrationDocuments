@@ -5891,8 +5891,8 @@ nav#sidebar .toggler {
 
 /* footer styles */
 .footer {
-	background-color: #2d2d2d;
-	color: #ffffff;
+	background-color: #ffffff;
+	color: #000000;
 	position: relative;
 	margin-top: -100px; /* negative value of footer height */
 	height: 115px;
@@ -5923,11 +5923,13 @@ nav#sidebar .toggler {
 .footer__icons .btn-primary {
 	background-color: transparent;
 	border: 0px;
+	color: #000000;
 }
 
 .footer__icons .btn-primary:hover, .footer__icons .btn-primary:focus, .footer__icons .btn-primary:active, .footer__icons .btn-primary.active {
 	background-color: #871D0F;
 	border-color: #871D0F;
+	color: #ffffff;
 }
 
 
