@@ -13,7 +13,7 @@
 		<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 		
 		<!-- Mozu CSS developed by Mozu Docs -->
-		<link href="mozu-splash-bootswatch.css" rel="stylesheet" type="text/css" />	
+		<link href="mozu-bootswatch.css" rel="stylesheet" type="text/css" />	
 		
 		<!-- Scrollspy active link script -->
 		<script>
@@ -93,40 +93,200 @@
 		</script>
 	</head>
     <body>
-			<div class="landing-heading">
-				<div class="landing-heading__content">
-					<h1>Coming soon, a new BazaarVoice App by Mozu!</h1>
-					<h2>Watch for updates and information for integrating BazaarVoice with Mozu!</h2>
-					
-				
-					
-				</div>
+		<div id="main">
+	<div class="container">
+		<!-- Top Nav - Mozu -->
+			<nav class="navbar navbar-default navbar-fixed-top">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                        </button> <a href="#"><img src="logo-m-red-medium.png" style="margin-top:3px;"/></a></div>
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav navbar-right">
+							
+                            <li><a href="//developer.mozu.com/learn/mozu-concepts"><span>Mozu Concepts</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+			
+		<!--Side Navigation TOC -->
+		<div class="row">
+		<div class="landing-title">
+			<h1>BazaarVoice Conversations Application by Mozu Configuration Guide</h1>	
+		</div>
+			<div class="col-md-3" >
+				<nav class="bs-docs-sidebar" >
+					<ul class="nav nav-stacked" >
+						<div class="side-heading">Table of Contents</div>
+							<li><a href="#intro">Welcome to BazaarVoice Conversations and Mozu</a></li>
+							<li><a href="#install">Install BazaarVoice Conversations</a>
+								<ul class="nav nav-stacked" >
+								 <li><a href="#configreq">Requirements</a></li>
+								</ul>
+							</li>
+							<li><a href="#configapp">Configure the App</a></li>
+							<li><a href="#enable">Enable the App</a></li>
+							<li><a href="#data">Import and Export Data</a>
+								<ul class="nav nav-stacked">
+									<li><a href="#exportproduct">Product Export</a></li>
+									<li><a href="#importratings">Ratings Import</a></li>
+									<li><a href="#importseo">SEO Import</a></li>
+								</ul>
+							</li>
+							<li><a href="#widget">Add Widgets to Storefront</a></li>
+					</ul>
+				</nav>
 			</div>
-			<div class="landing-method-theme"></div>
-			
-			
-		
-		<!-- Footer -->
+                    
+            <div class="col-md-9 content" >
+                <!-- Documentation content -->
+				<section id="intro">
+					<h2>Welcome to BazaarVoice Conversations and Mozu</h2>
+					<p><a href="http://www.bazaarvoice.com/research-and-insight/video-gallery/Bazaarvoice-Conversations.html">BazaarVoice Conversations</a> provides services to capture, calculate, and display shopper thoughts and experiences with your products based on a set of criteria. The account tracks customer interactions through their entered reviews and ratings, questions and answers, and stories and campaigns. All ratings captured and calculated are based on the imported products and categories and specific ratings criteria configured in your BazaarVoice account. For further details, see the BazaarVoice documentation. </p>
+					<p><a href="http://www.mozu.com">Mozu</a> Bazaarvoice Conversations connector seamlessly integrates your Mozu and BazaarVoice Conversations account to share data for captured content through your storefront and BazaarVoice. The app connects the Mozu environment (staging or production) with your BazaarVoice Conversations account. All content is imported and exported as enabled per a scheduled time or on-demand per a button click. </p>
+				</section>
+				<section id="install">
+					<h2 >Install BazaarVoice Conversations Connector App by Mozu on Your Tenant</h2>
+                        <p>After purchasing the BazaarVoice Application by Mozu, call your sales or professional services representative and request installation on your tenant. Mozu staff will install the app to your tenant, making it available for further configuration and usage in your storefront.</p>
+                        <p>This custom app integrates BazaarVoice with Mozu to support the following:</p>
+                        <ul>
+                            <li>Map your BazaarVoice Conversations and Mozu accounts with enabled/disabled export and import jobs.</li>
+							<li>Export product and category data from Mozu to BazaarVoice. This sets the available products and categories within BazaarVoice to capture and track reviews and ratings accordingly.</li>
+							<li>Import ratings tracked and stored from BazaarVoice to Mozu. </li>
+							<li>Import SEO data tracked and stored from BazaarVoice to Mozu. This data is used by search engine bots crawling the storefront site. All jobs are tracked with a log details.</li>
+							<li>Provide logging details per scheduled and on-demand jobs with clickable error log.</li>
+							<li>Displays BazaarVoice Conversations data through widgets added to Mozu Site Builder pages for ratings summary, customer reviews, questions and answers, and SEO. </li>
+                        </ul>
+						<p>When a shopper enters a review or rating, the following occurs between Mozu and the BazaarVoice app:</p>
+						<ul>
+							<li>Customers enter a review, select a rating, ask a question, or post an answer to a viewed product in the Mozu Storefront via customized widgets for BazaarVoice Conversations. </li>
+							<li>Data saves and transfers between BazaarVoice and Mozu through automated import/export triggered at specific times or manually as needed.</li>
+							<li>BazaarVoice Conversations captures and saves reviews, questions and answers, and ratings entered by shoppers per the associated product and category.</li>
+							<li>Mozu receives the imported data per a scheduled job from BazaarVoice to update the storefront ratings and reviews.</li>
+						</ul>
+                        
+					<h3 id="configreq">Configuration Requirements</h3>
+					<p>To configure BazaarVoice Conversations to work seamlessly with Mozu, you need specific items installed and settings provided. This guide details each step from requirements to final configuration for reviewing order for legitimacy and fraud potential.</p>
+						 
+                        
+                        <p>You must meet the following criteria to configure the BazaarVoice app:</p>
+                        <ul>
+                            <li>You must have the Mozu BazaarVoice Conversations Connector installed into your tenant.</li>
+							<li>You must have an active BazaarVoice Conversations account. You may need to login to the portal for managing settings and options.
+							<li>You must have access to modify and update your storefront theme.</li>
+                        </ul>
+                        
+				</section>
+				<section id="configapp">				
+                    <h2 >Configure the Application</h2>
+						<p>To integrate your BazaarVoice services with Mozu, you will modify the app settings using your BazaarVoice information and add a widget to your storefront theme. You may need to save information to add to these pages from BazaarVoice and within Mozu. </p>
+						
+						<h3>Configure BazaarVoice Account Settings</h3>
+						<p>When configuring the app and accounts, you will need access credentials, FTP information, deployment target, and optionally SEO cloud keys for these steps. Click the BazaarVoice client login link on the Information tab and login. All information should be provided on the BazaarVoice Configuration Hub.</p>
+						<p>When entering data from BazaarVoice, you can select between the staging and production implementations. You can locate the BazaarVoice specific data from your account by logging in to the portal and opening an implementation. FTP information uses the login credentials for the account or configured accounts. The SEO Cloud Key is located in the Main Implementation > Pages & States > Technical Setup in the SEO Configuration page.</p>
+						<p><img src="bv-seokey.png" class="img-mozu" /></p>
+                        <ol>
+                            <li>On the Mozu Admin top bar, select <b>Settings>Applications</b>.
+							<li>Double-click <b>BazaarVoice Conversations</b>.
+							<li>Click the <b>Configuration</b> link to open configuration settings. 
+							<li>On the Configuration tab, enter your BazaarVoice information and configure settings for the app integration. 
+							<li>Select the Mozu site from the Site Selector drop-down.
+							<li>Click the checkbox to <b>Enable Site for Product Export and Ratings Import</b>. 
+							<li>For <b>Client Name</b>, enter your BazaarVoice client credentials.
+							<li>For the <b>FTP Username</b>, you can select to Use Client Name, or enter an account name. These are credentials provided by BazaarVoice. The FTP location is used for imports and exports of data.
+							<li>Enter the FTP Password for the account.
+							<li>Enter the <b>Deployment Zone</b> for the BazaarVoice target deployment. 
+							<li>Optional, enter the <b>SEO Cloud Key</b>.
+							<li>Enter the <b>Site Custom URL</b>.
+							<li>Click <b>Save</b>. </li>
+							<img src="bv-config1.png" class="img-mozu" /><br/><img src="bv-config2.png" class="img-mozu" />
+                        </ol>
+				</section>
+				<section id="enable">
+                    <h2 >Enable the App</h2>
+                        <ol>
+                            <li>On the Mozu Admin top bar, select <b>Settings > Applications</b>.</li>
+							<li>Double-click <b>Mozu BazaarVoice Conversations Connector</b>.</li>
+							<li>Click <b>Enable App</b> on the Mozu BazaarVoice Conversations Connector page. </li>
+                        </ol>
+					
+				</section>
+				<section id="data">				
+                    <h2 >Import and Export Data</h2>
+						<p>When you complete the settings and save, you should manually import and export data between the systems. Onward, all imports and exports of data begin automatically during scheduled times. Scheduled times can be configured within BazaarVoice, displayed in the Mozu app. </p>
+						<p>To manually start a job, select the tab and click Export/Import Now. Data transfers using the FTP login credentials entered in the settings. Remember, this data affects the configured environment type of staging or production. To affect live production data, you need to select the environment as Production.</p>
+						<p>Every tab includes a log for all sent and received data. Each line item includes the associated Site ID, status (COMPLETED or FAILED), start date and time, duration, number of products, and a link to any errors.</p>
+						
+						<h3 id="exportproduct">Product Exports</h3>
+						<p>The Product Export tab displays a log of exports. By default, Mozu exports data files to the FTP at 2:00 AM CST on a nightly basis. BazaarVoice accesses the files at 3:00 AM CST on a nightly basis.</p>
+						<p>To manually start a job, select the tab and click Export Now. Data transfers using the FTP login credentials entered in the settings.  </p>
+						<p><img src="bv-prodexport.png" class="img-mozu" /></p>
+						
+						<h3 id="importratings">Ratings Import</h3>
+						<p>The Ratings Import tab displays a log of imports. By default, Mozu imports data files from the FTP at 8:00 AM CST daily from BazaarVoice. </p>
+						<p>To manually start a job, select the tab and click <b>Get Ratings</b>. Data transfers using the FTP login credentials entered in the settings. Remember, this data affects the configured environment type of staging or production. To affect live production data, you need to select the environment as Production. </p>
+						<p><img src="bv-ratingimport.png" class="img-mozu" /></p>
+						<p>You can view the imported ratings per product through the Mozu Catalog. Open the Mozu Catalog > Inventory > Product. Select a product. In the Properties section, you will see a Rating field. The populated rating data is synced from BazaarVoice using a calculated average rating from all calculated shopper ratings entered through the storefront.</p>
+						<p>The storefront theme uses the Rating property as one option to facet and filter displayed products in the storefront. Shoppers can use the ratings to see product matching ratings they select. Some customization may be required depending on the theme you use through Mozu Site Builder.</p>
+						
+						<h3 id="importseo">SEO Import</h3>
+						<p>The SEO Import tab displays a log of imports of SEO tracked data. This data is optional and requires the SEO key added to the configuration tab. By default, Mozu imports data files from the FTP at 3:00 AM CST daily from BazaarVoice.  </p>
+						<p>To manually start a job, select the tab and click <b>Import SEO Ratings</b>. Data transfers using the FTP login credentials entered in the settings. Remember, this data affects the configured environment type of staging or production. To affect live production data, you need to select the environment as Production.</p>
+						<p><img src="bv-seoimport.png" class="img-mozu" /></p>
+						
+				</section>
+				
+				<section id="widget">
+					<h2>Add Widgets to Your Storefront</h2>
+					<p>Shoppers interact with BazaarVoice in your storefront through widgets you add to pages. These pages are maintained in the Mozu Site Builder. </p>
+					<p>The available widget types include:</p>
+					<ul>
+						<li>The Summary widget displays a detailed summary of reviews. You can enter JavaScript code in the Tab Code to have the summary open the Reviews or Q&A tabs on-click by shoppers. </li>
+						<li>Custom Reviews widget displays all customer reviews and ratings entered for the product.  </li>
+						<li>Q&A widget provides questions and answers for interactions about the product.  </li>
+						<li>SEO widget tracks SEO ratings. When added, it does not display content to the page, capturing and saving data on SEO. </li>
+					</ul>
+					<p>The widgets can be used in the Product page. Adding these widgets to additional pages may require dropzone code.</p>
+					<p>To add a widget, you may need aid with customized code for adding dropzones or JavaScript code. Your implementation partners and Mozu staff can aid with this content.</p>
+                        <ol>
+                            <li>In Mozu, select <b>Site Builder</b>.</li>
+							<li>Hover over your theme and select <b>Edit</b>.</li>
+							<li>In the right-side list of pages, expand the Templates section to locate pages such as Product. Open to edit.</li>
+							<li>Select a dropzone to add your widget. If you have trouble viewing dropzones, click the <b>View dropzones</b> option.</li> 
+							<li>Click <b>Widgets</b>. From the options, select the BazaarVoice Conversations Ratings widget. <br/>
+							<img src="bv-widget1.png" class="img-mozu" /></li>
+							<li>A configuration screen displays with the widget type to add. Select a type, enter Tab Code as needed (for Summary), and click <b>Save</b>. You can stack multiple widget types on the page, such as Summary followed by Reviews and Q&amp;A.<br/>
+							<img src="bv-widget2.png" class="img-mozu" /></li>
+							<li>Save the template changes. You can preview the changes on your storefront.</li>
+                        </ol>
+				</section>
+				
+				
+						</div>
+                    </div>
+                </div>
+           </div>
+		</div>
+        <!-- Footer -->
         <footer class="footer">
             <div class="container">
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="footer__logo">
-                            <a href="http://www.mozu.com" target="_blank"><img src="http://www.mozu.com/sites/all/themes/mozu_aurora/logo.png" style="padding-top:7px;"/></a>
-                        </div>
-                    </div>
-                    <div class="col-md-6 text-center">
-                        
-                    </div>
-                    <div class="col-md-3">
-                        <p class="pull-right footer__icons"><a href="https://twitter.com/MozuCommerce"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-twitter"></i></button></a><a href="http://www.mozu.com/ecommerce-app-center" target="_blank"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-code-fork"></i></button></a><a href="http://www.mozu.com/contact"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-comments-o"></i></button></a><a href="http://www.mozu.com/contact"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-copyright"></i></button></a></a>
-                        </p>
-                    </div>
+				<div class="pull-left footer__logo">
+                    <a href="http://www.mozu.com" target="_blank"><img src="http://www.mozu.com/sites/all/themes/mozu_aurora/logo.png" style="padding-top:7px;"/></a>
+                </div>
+                <div class="pull-right footer__icons" style="padding-right:40px;"><a href="MozuBazaarVoiceApp_ConfigurationGuide.pdf"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-file-pdf-o "></i></button></a><a href="http://www.mozu.com/ecommerce-app-center" target="_blank"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-code-fork"></i></button></a><a href="http://www.mozu.com/contact"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-comments-o"></i></button></a><a href="http://www.mozu.com/legal"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-copyright"></i></button></a>
                 </div>
             </div>
         </footer>
 		
-		<script>
+		<!-- Back to top -->
+	<div class="scroll-top-wrapper ">
+    <span class="scroll-top-inner">
+        <i class="fa fa-2x fa-arrow-circle-up"></i>
+    </span>
+	</div>
+	<!-- Back to top - show hide -->
+	<script>
  
 	$(function(){
 	 
