@@ -128,10 +128,10 @@
 								<ul class="nav nav-stacked">
 									<li><a href="#configacct">Configure Account Settings</a></li>
 									<li><a href="#configcompany">Configure Company Codes</a></li>
+									<li><a href="#territories">Configure Taxable Territories</a></li>
 									<li><a href="#configtax">Configure Tax Codes</a></li>
 									<li><a href="#importtax">Import Tax Codes</a></li>
 									<li><a href="#addtax">Manually Add Tax Codes</a></li>
-									<li><a href="#mozutax">Select States in Mozu</a></li>
 								</ul>
 							</li>
 							<li><a href="#enable">Enable the App</a></li>
@@ -178,19 +178,36 @@
 						 
                         <h3 id="configacct">Configure Account Settings</h3>
                         <ol>
-                            <li>In the Account Settings tab, enter your Avalara account number and license key. You receive this information from Avalara.</li>
-                            <li>Select the environment to use. Use Development if you are testing your account in the Avalara sandbox. Use Production for live tax calculations.</li>
+                            <li>Click the <b>Account</b> tab.</li>
+							<li>Enter your Avalara <b>Account Number</b> and <b>License Key</b>. You receive this information from Avalara.</li>
+                            <li>Select the environment to use. Use <b>Development</b> if you are testing your account in the Avalara sandbox. Use <b>Production</b> for live tax calculations.</li>
                             <li>Click <b>Test Account</b> to ensure you can successfully connect to your Avalara account from Mozu and that there are no errors in your credentials.</li>
                             <li>Click <b>Save</b> to commit your changes.</li>
                         </ol>
-                        <img src="AvalaraSettings.png" class="img-mozu"/>
+                        <img src="avalara-acct.png" class="img-mozu"/>
 						 
                         <h3 id="configcompany">Configure Company Codes</h3>
+						<p>The Company Codes tab allows you to map your tenant and sites to corresponding company codes defined in your Avalara account.</p>
+						<p>The app automatically populates the tab with the sites available in your tenant. You can select different company codes for each level so that different sites log tax transactions to different company names in Avalara. You must have at least one company code that maps to a tenant or a site.</p>
                         <ol>
-                            <li>On the Company Codes tab, map your tenant and sites to the corresponding company code or codes that you have defined in Avalara.<p><b>Note:</b> The application automatically populates the Company Codes tab with the sites available in your tenant. You can select different company codes for each level so that different sites log tax transactions to different company names in Avalara. You must have at least one company code that maps to a tenant or a site.</p></li>
-                            <li>When you are done mapping, click <b>Verify Company Codes</b> to ensure the information you entered into the Mozu application matches the information you have stored in Avalara. Names must be an exact match; otherwise, the application returns an error.</li>
+                            <li>Click the Company Codes tab.</li>
+							<li>The Name column displays each tenant with the associated sites in Mozu, as marked in the Type column. </li>
+							<li>Enter an Avalara code in the Company Code column per tenant/site as needed.  If the names do not exactly match, the application returns an error.</li>
+							<li>When you are done mapping, click Verify Company Codes to ensure the information you entered into the Mozu application matches the information you have stored in Avalara.</li>
+							<li>Click Save.</li>
                         </ol>
-                        <img src="AvalaraCompanyCodes.png" class="img-mozu"/>
+                        <img src="avalara-companycodes.png" class="img-mozu"/>
+						
+						<h3 id="territories">Configure Taxable Territores</h3>
+						<p>You can select countries/nations for taxable purchases through the Taxable Territories tab. Each territory may include states and provinces, displayed in the table. These territories can be set as taxable per Mozu site, associated through the company code associations made between Mozu and Avalara.</p>
+						<ol>
+						<li>Click the <b>Taxable Territories</b> tab.</li>
+						<li>Select a Mozu site from the drop-down menu.</li>
+						<li>Select checkboxes per territory you want to set as taxable for purchases.</li>
+						<li>Click <b>Verify Company Codes</b> to have Avalara validate the associations and configurations in Avalara to support the selections made.</li>
+						<li>Click <b>Save</b>.</li>
+						</ol>
+						<img src="avalara-taxterritories.png" class="img-mozu"/>
 						 
                         <h3 id="configtax">Configure Tax Codes</h3>
                         <p>Tax Code is a required field for products, so you must select a code for every new product you configure. Tax codes are available in a pull-down menu in your Product configuration page. One company code can have multiple tax codes. You can enter tax codes individually, but Mozu recommends importing your tax code information from Avalara.</p>
@@ -198,32 +215,25 @@
                         <h4 id="importtax">Import Tax Codes</h4>
                         <ol>
                             <li>In Avalara, export your tax codes. You must format the exported file with each Tax Code and Description separated by a Tab stop character.</li>
+							<li>Click the <b>Tax Codes</b> tab.</li>
                             <li>Click <b>Import</b> in the Tax Codes dialog.</li>
-                            <li>Click <b>Save</b> to commit your changes. <p><b>Caution:</b> Deleting entries from the Tax Code grid is only available <i>before</i> saving your settings. Once you save, you cannot edit or delete existing Tax code entries.</p></li>
+                            <li>Click <b>Save</b> to commit your changes. <br/><b>Caution:</b> Deleting entries from the Tax Code grid is only available <i>before</i> saving your settings. Once you save, you cannot edit or delete existing Tax code entries.</li>
                         </ol>
 						
                         <h4 id="addtax">Manually Add Tax Codes</h4>
                         <ol>
-                            <li>Enter your tax code and description.</li>
-                            <li>Click <b>Add</b>.</li>
-                            <li>Click <b>Save</b> to commit your changes. <p><b>Caution:</b> Deleting entries from the Tax Code grid is only available <i>before</i> saving your settings. Once you save, you cannot edit or delete existing Tax code entries.</p></li>
+                            <li>Click the <b>Tax Codes</b> tab.</li>
+							<li>Enter a <b>Shipping Taxcode</b>.</li>
+							<li>Enter a <b>Handling Free Taxcode</b>.</li>
+							<li>For Product Tax Codes, enter a <b>Tax Code</b> and <b>Description</b>. Click <b>Add</b>. Repeat for every tax code you need to add. </li>
+                            <li>Click <b>Save</b> to commit your changes. <br/><b>Caution:</b> Deleting entries from the Tax Code grid is only available <i>before</i> saving your settings. Once you save, you cannot edit or delete existing Tax code entries.</li>
                         </ol>
-                        <img src="AvalaraTaxCodes.png" class="img-mozu" />
-						<h4 id="mozutax">Select States in Mozu</h4>
-						<p>To ensure all taxes are calculated correctly with the addition of AvaTax and this app, you should also select the taxable states in Mozu. </p>
-                        <ol>
-                            <li>On the Mozu Admin top bar, select <b>Settings > Tax</b>.</li>
-                            <li><b>Tax Exempt</b> should not be checked. </li>
-                            <li>Select one or more states to apply tax from the drop-down menu. You can use shift and control keys to select groups or specific states. The states selected should match your configured taxes in Avalara app by Mozu. </li>
-							<li>As you select states, they display in the section. To remove a state, click the X button for each state.</li>
-							<li>Click <b>Save</b>.</li>
-                        </ol>
-						
+                        <img src="avalara-taxcodes.png" class="img-mozu" />
 				</section>
 				<section id="enable">
                         <h2 >Enable the Avalara Application by Mozu</h2>
                         <ol>
-                            <li>On the Mozu Admin top bar, select Settings > Applications.</li>
+                            <li>On the Mozu Admin top bar, select <b>Settings > Applications</b>.</li>
                             <li>Double-click <b>Avalara</b>.</li>
                             <li>Click <b>Enable App</b> on the Avalara page.</li>
                         </ol>
@@ -236,11 +246,19 @@
         <!-- Footer -->
         <footer class="footer">
             <div class="container">
-                <div class="pull-left footer__logo">
-                    <a href="http://www.mozu.com" target="_blank"><img src="http://www.mozu.com/sites/all/themes/mozu_aurora/logo.png" style="padding-top:7px;"/></a>
-                </div>
-                <div class="pull-right footer__icons" style="padding-right:40px;">
-					<a href="AvalaraApplicationbyMozu_ConfigurationGuide.pdf"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-file-pdf-o"></i></button></a><a href="http://www.mozu.com/ecommerce-app-center" target="_blank"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-code-fork"></i></button></a><a href="http://www.mozu.com/contact"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-comments-o"></i></button></a><a href="http://www.mozu.com/contact"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-copyright"></i></button></a>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="footer__logo">
+                            <a href="http://www.mozu.com" target="_blank"><img src="http://www.mozu.com/sites/all/themes/mozu_aurora/logo.png" style="padding-top:7px;"/></a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 text-center">
+                        
+                    </div>
+                    <div class="col-md-3">
+                        <p class="pull-right footer__icons" style="padding-right:40px;"><a href="AvalaraApplicationbyMozu_ConfigurationGuide.pdf"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-file-pdf-o"></i></button></a><a href="http://www.mozu.com/contact"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-comments-o"></i></button></a><a href="http://www.mozu.com/contact"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-copyright"></i></button></a>
+                        </p>
+                    </div>
                 </div>
             </div>
         </footer>
