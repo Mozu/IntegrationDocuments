@@ -1,0 +1,53 @@
+/*<meta />*/
+
+/*
+Theme Name: Flare + Bootstrap 
+Description: A Bootstrap/swatch theme for Madcap Flare's HTML5 webhelp target.
+Author: Lori Krell and Ken Jackson
+*/
+
+/* This imports the core Bootstrap styles from the Volusion minified theme. You'll see errors in when you build the target. That's because Flare doesn't like HTML5+CSS3 code. But do not remove this import line if you want Flarestrap to work. */
+
+@import url('http://fonts.googleapis.com/css?family=Lato:400,300,700');
+
+@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css');
+
+@import url('http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700,600,300italic,400italic,600italic,700italic');
+
+html
+{
+	font-family: sans-serif;
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+}
+
+body
+{
+	margin: 0;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section,
+summary
+{
+	display: block;
+}
+
+audio,
+canvas,
+progress,
+video
+{
+	display: inline-block;
+	vertical-align: baseline;
+}
+
