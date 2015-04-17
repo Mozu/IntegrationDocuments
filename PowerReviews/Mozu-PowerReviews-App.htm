@@ -1,79 +1,72 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="11" MadCap:lastHeight="5859" MadCap:lastWidth="610">
-    <head><title>Mozu PowerReviews Enterprise Application</title>
+﻿<!DOCTYPE html>
+<html>
+    <head><title>Mozu PowerReviews Enterprise Application Configuration Guide</title>
         <meta name="author" content="Mozu" />
-        <meta name="description" content="User content for PowerReviews by Mozu" />
+        <meta name="description" content="User content for Mozu PowerReviews Enterprise Application" />
         <meta name="keywords" content="PowerReviews,Mozu" />
-        <link rel="shortcut icon" href="http://www.mozu.com/favicon.ico" />
-        <!-- Required for Scrollspy -->
-        <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js">
-        </script>
-        <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/scrollspy.js">
-        </script>
-        <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/affix.js">
-        </script>
-        <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js">
-        </script>
-        <!-- Mozu CSS developed by Mozu Docs -->
-        <link href="mozu-bootswatch.css" rel="stylesheet" type="text/css" />
-        <!-- Scrollspy active link script -->
-        <script>
-/*<![CDATA[*/
-
+		<link rel="shortcut icon" href="http://www.mozu.com/favicon.ico" />
+		
+		<!-- Required for Scrollspy -->
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/scrollspy.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/affix.js"></script>
+		<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+		
+		<!-- Mozu CSS developed by Mozu Docs -->
+		<link href="mozu-bootswatch.css" rel="stylesheet" type="text/css" />	
+		
+		<!-- Scrollspy active link script -->
+		<script>
 		$( document ).ready(function() {
 		$('body').scrollspy({
 			target: '.bs-docs-sidebar',
 			offset: 20
 		});
-		}); 
+		});        
+		</script>
 		
-/*]]>*/
-</script>
-        <!-- Anchor Ease Script -->
-        <script>
-/*<![CDATA[*/
-
+		<!-- Anchor Ease Script -->
+		<script>
 		 $(function() {
-			 $('a[href*=#]:not([href=#])').click(function() {
+			  $('a[href*=#]:not([href=#])').click(function() {
 				if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') 
 			&& location.hostname == this.hostname) {
-				 var target = $(this.hash);
-				 target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-				 if (target.length) {
+
+				  var target = $(this.hash);
+				  target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+				  if (target.length) {
 					$('html,body').animate({
-					 scrollTop: target.offset().top - 75 //offsets for fixed header
+					  scrollTop: target.offset().top - 75 //offsets for fixed header
 					}, 1000);
 					return false;
-				 }
+				  }
 				}
-			 });
-			 //Executed on page load with URL containing an anchor tag.
-			 if($(location.href.split("#")[1])) {
-				 var target = $('#'+location.href.split("#")[1]);
-				 if (target.length) {
+			  });
+			  //Executed on page load with URL containing an anchor tag.
+			  if($(location.href.split("#")[1])) {
+				  var target = $('#'+location.href.split("#")[1]);
+				  if (target.length) {
 					$('html,body').animate({
-					 scrollTop: target.offset().top - 75 //offset height of header here too.
+					  scrollTop: target.offset().top - 75 //offset height of header here too.
 					}, 1000);
 					return false;
-				 }
+				  }
 				}
 		});
+		</script>
 		
-/*]]>*/
-</script>
-        <!-- Affix Javascript -->
-        <script>
-/*<![CDATA[*/
-$(function(){
+		<!-- Affix Javascript -->
+		
+		<script>$(function(){
  
 			var stickyElement = '.bs-docs-sidebar', 
 			bottomElement = '.footer'; 
 			
 			if($( stickyElement ).length){
 			$( stickyElement ).each(function(){
-		 
+		   
 			var fromTop = $( this ).offset().top,
-		 
+		   
 			fromBottom = $( document ).height()-($( this ).offset().top + $( this ).outerHeight()),
 			
 			stopOn = $( document ).height()-( $( bottomElement ).offset().top)+($( this ).outerHeight() - $( this ).height());
@@ -97,33 +90,31 @@ $(function(){
 			});
 			}
 		});
-		
-/*]]>*/
-</script>
-    </head>
+		</script>
+	</head>
     <body>
-        <div id="main">
-            <div class="container">
-                <!-- Top Nav - Mozu -->
-                <nav class="navbar navbar-default navbar-fixed-top">
-                    <div class="container-fluid">
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
-                            </button> <a href="#"><img src="logo-m-red-medium.png" style="margin-top: 3px;" /></a></div>
-                        <div class="navbar-collapse collapse">
-                            <ul class="nav navbar-nav navbar-right">
-                                <li><a href="//developer.mozu.com/learn/mozu-concepts"><span>Mozu Concepts</span></a>
-                                </li>
-                            </ul>
-                        </div>
+	<div id="main">
+	<div class="container">
+		<!-- Top Nav - Mozu -->
+			<nav class="navbar navbar-default navbar-fixed-top">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                        </button> <a href="#"><img src="logo-m-red-medium.png" style="margin-top:3px;"/></a></div>
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav navbar-right">
+							<li><a href="//developer.mozu.com/learn/mozu-concepts"><span>Mozu Concepts</span></a></li>
+                        </ul>
                     </div>
-                </nav>
-                <!--Side Navigation TOC -->
-                <div class="row">
-                    <div class="landing-title">
-                        <h1>Mozu PowerReviews Enterprise Application Configuration Guide</h1>
-                    </div>
-                    <div class="col-md-3">
+                </div>
+            </nav>
+			
+		<!--Side Navigation TOC -->
+		<div class="row">
+		<div class="landing-title">
+			<h1>Mozu PowerReviews Enterprise Application Configuration Guide</h1>	
+		</div>
+			<div class="col-md-3">
                         <nav class="bs-docs-sidebar">
                             <ul class="nav nav-stacked">
                                 <div class="side-heading">Table of Contents</div>
@@ -146,9 +137,10 @@ $(function(){
                             </ul>
                         </nav>
                     </div>
-                    <div class="col-md-9 content">
-                        <!-- Documentation content -->
-                        <section id="intro">
+                    
+            <div class="col-md-9 content" >
+                <!-- Documentation content -->
+				<section id="intro">
                             <h2>Welcome to PowerReviews and Mozu</h2>
                             <p><a href="http://www.powerreviews.com">PowerReviews</a> provides ratings and reviews that help increase buyer confidence and stimulate sales for your products. With PowerReviews, customers can leave ratings, write reviews, and ask questions directly on your product pages. PowerReviews can syndicate product reviews from all major retailers and search engines, increasing the reach of the reviews on your storefront.</p>
                             <p>The <a href="http://www.mozu.com">Mozu</a> PowerReviews Enterprise Application seamlessly integrates your PowerReviews account with your storefront so that you can start displaying and generating reviews on your product and category pages. With the Mozu PowerReviews Enterprise Application, you can import and export PowerReviews content on demand or at scheduled intervals, ensuring that your storefront is kept up to date with the latest available reviews.</p>
@@ -183,16 +175,16 @@ $(function(){
                             <ol>
                                 <li>Log in to your PowerReviews account.</li>
                                 <li style="font-weight: normal;">Click <b>Configuration»Configure Reviews</b> to display the general configuration settings for your PowerReviews account.</li>
-                                <li style="font-weight: normal;">Note the <i>Merchant Group ID</i>, <i>Merchant ID</i>, <i>Site ID</i>, <i>FTP Site</i>, <i>FTP username</i>, <i>FTP password</i>, and <i>ZIP File Name</i>. You need to enter these settings in Mozu.<br /><img src="powerreviews_config.png" style="border-left-style: solid;border-left-width: 1px;border-left-color: ;border-right-style: solid;border-right-width: 1px;border-right-color: ;border-top-style: solid;border-top-width: 1px;border-top-color: ;border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: ;" /></li>
+                                <li style="font-weight: normal;">Note the <i>Merchant Group ID</i>, <i>Merchant ID</i>, <i>Site ID</i>, <i>FTP Site</i>, <i>FTP username</i>, <i>FTP password</i>, and <i>ZIP File Name</i>. You need to enter these settings in Mozu.<br /><img src="powerreviews_config.png" class="img-mozu" /></li>
                                 <li>Log in to Mozu Admin.</li>
                                 <li>On the Mozu Admin top bar, select <b>Settings»Applications</b>.</li>
                                 <li>Click <b>Mozu PowerReviews Enterprise Application</b>.</li>
                                 <li>Click the <b>Configuration</b> link to open configuration settings.</li>
                                 <li>Open the Settings tab.</li>
                                 <li style="font-weight: normal;">Click <b>Add Merchant Group</b> to add your PowerReview account information to Mozu.
-									<ol><li style="font-weight: normal;">Enter the <b>Merchant Group ID</b>.</li><li style="font-weight: normal;">Enter the <b>FTP Username</b>.</li><li style="font-weight: normal;">Enter the <b>FTP Password</b>.</li><li style="font-weight: normal;">In the <b>PowerReview Import Frequency</b> drop-down, choose a frequency for importing content from PowerReviews to your Mozu site.</li><li style="font-weight: normal;">Click <b>Show Advanced Settings</b>.</li><li style="font-weight: normal;">Enter the <b>FTP Location</b> using the FTP site from your PowerReviews account.</li><li style="font-weight: normal;background-color: #ffff00;">Enter the <b>PowerReview Import Filename</b> using the ZIP file name from your PowerReviews account.</li><li style="font-weight: normal;background-color: #ffff00;">Create a <b>PowerReview Import Ready Filename</b> of your choice. What does this do? Name?</li></ol><img src="powerreviews_merchant.png" style="border-left-style: solid;border-left-width: 1px;border-left-color: ;border-right-style: solid;border-right-width: 1px;border-right-color: ;border-top-style: solid;border-top-width: 1px;border-top-color: ;border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: ;" /></li>
+									<ol><li style="font-weight: normal;">Enter the <b>Merchant Group ID</b>.</li><li style="font-weight: normal;">Enter the <b>FTP Username</b>.</li><li style="font-weight: normal;">Enter the <b>FTP Password</b>.</li><li style="font-weight: normal;">In the <b>PowerReview Import Frequency</b> drop-down, choose a frequency for importing content from PowerReviews to your Mozu site.</li><li style="font-weight: normal;">Click <b>Show Advanced Settings</b>.</li><li style="font-weight: normal;">Enter the <b>FTP Location</b> using the FTP site from your PowerReviews account.</li><li style="font-weight: normal;background-color: #ffff00;">Enter the <b>PowerReview Import Filename</b> using the ZIP file name from your PowerReviews account.</li><li style="font-weight: normal;background-color: #ffff00;">Create a <b>PowerReview Import Ready Filename</b> of your choice. What does this do? Name?</li></ol><img src="powerreviews_merchant.png" class="img-mozu" /></li>
                                 <li style="font-weight: normal;">Click <b>Add Mozu Site</b> to configure PowerReviews for your storefront.
-								<ol><li style="font-weight: normal;">Select your storefront from the <b>Mozu Site</b> drop-down.</li><li style="font-weight: normal;">Choose to enable exports to PowerReviews of your product and order ratings using <b>Enable Product Export</b> and <b>Enable Order Export</b>. <span style="background-color: #ffff00;">What's the difference between product export and order export?</span></li><li style="font-weight: normal;">Enter the <b>Merchant ID</b>.</li><li style="font-weight: normal;">Enter the <b>Merchant Site ID</b>.</li><li style="font-weight: normal;"><span style="background-color: #ffff00;">Enter the </span><b><span style="background-color: #ffff00;">Locale</span></b><span style="background-color: #ffff00;">. Need more guidance on this.</span></li><li style="font-weight: normal;">Choose how much data to export using the <b>Number of days to include in order export</b>.</li></ol><img src="powerreviews_site.png" style="border-left-style: solid;border-left-width: 1px;border-left-color: ;border-right-style: solid;border-right-width: 1px;border-right-color: ;border-top-style: solid;border-top-width: 1px;border-top-color: ;border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: ;" /></li>
+								<ol><li style="font-weight: normal;">Select your storefront from the <b>Mozu Site</b> drop-down.</li><li style="font-weight: normal;">Choose to enable exports to PowerReviews of your product and order ratings using <b>Enable Product Export</b> and <b>Enable Order Export</b>. <span style="background-color: #ffff00;">What's the difference between product export and order export?</span></li><li style="font-weight: normal;">Enter the <b>Merchant ID</b>.</li><li style="font-weight: normal;">Enter the <b>Merchant Site ID</b>.</li><li style="font-weight: normal;"><span style="background-color: #ffff00;">Enter the </span><b><span style="background-color: #ffff00;">Locale</span></b><span style="background-color: #ffff00;">. Need more guidance on this.</span></li><li style="font-weight: normal;">Choose how much data to export using the <b>Number of days to include in order export</b>.</li></ol><img src="powerreviews_site.png" class="img-mozu" /></li>
                                 <li style="font-weight: normal;">Click <b>Save</b>.</li>
                             </ol>
                         </section>
@@ -254,8 +246,8 @@ $(function(){
                                 <li>Hover over your theme and select <b>Edit</b>.</li>
                                 <li>In the list of pages, expand the Templates section and select <b>Product</b>.</li>
                                 <li>Enable <b>View dropzones</b>.</li>
-                                <li>Click <b>Widgets</b> and drag <b>PowerReviews Product Reviews</b> into a dropzone.<br /><img src="powerreviews_widgets.png" style="border-left-style: solid;border-left-width: 1px;border-left-color: ;border-right-style: solid;border-right-width: 1px;border-right-color: ;border-top-style: solid;border-top-width: 1px;border-top-color: ;border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: ;" /></li>
-                                <li>A configuration window displays. Choose a widget type and <span style="background-color: #ffff00;">specify tab details</span>. You can stack multiple widget types on the same page.<br /><img src="powerreviews_widgconfig.png" style="border-left-style: solid;border-left-width: 1px;border-left-color: ;border-right-style: solid;border-right-width: 1px;border-right-color: ;border-top-style: solid;border-top-width: 1px;border-top-color: ;border-bottom-style: solid;border-bottom-width: 1px;border-bottom-color: ;" /></li>
+                                <li>Click <b>Widgets</b> and drag <b>PowerReviews Product Reviews</b> into a dropzone.<br /><img src="powerreviews_widgets.png" class="img-mozu"/></li>
+                                <li>A configuration window displays. Choose a widget type and <span style="background-color: #ffff00;">specify tab details</span>. You can stack multiple widget types on the same page.<br /><img src="powerreviews_widgconfig.png" class="img-mozu" /></li>
                                 <li>Click <b>Save</b>.</li>
                             </ol>
                             <p>Congratulations! You can now preview PowerReviews functionality on your storefront.</p>
@@ -267,19 +259,23 @@ $(function(){
         <!-- Footer -->
         <footer class="footer">
             <div class="container">
-                <div class="pull-left footer__logo"><a href="http://www.mozu.com" target="_blank"><img src="http://www.mozu.com/sites/all/themes/mozu_aurora/logo.png" style="padding-top: 7px;" /></a>
+                <div class="pull-left footer__logo">
+                    <a href="http://www.mozu.com" target="_blank"><img src="http://www.mozu.com/sites/all/themes/mozu_aurora/logo.png" style="padding-top:7px;"/></a>
                 </div>
-                <div class="pull-right footer__icons" style="padding-right: 40px;"><a href="AvalaraApplicationbyMozu_ConfigurationGuide.pdf"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-file-pdf-o"></i></button></a><a href="http://www.mozu.com/ecommerce-app-center" target="_blank"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-code-fork"></i></button></a><a href="http://www.mozu.com/contact"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-comments-o"></i></button></a><a href="http://www.mozu.com/contact"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-copyright"></i></button></a>
+                <div class="pull-right footer__icons" style="padding-right:40px;">
+					<a href="AvalaraApplicationbyMozu_ConfigurationGuide.pdf"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-file-pdf-o"></i></button></a><a href="http://www.mozu.com/ecommerce-app-center" target="_blank"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-code-fork"></i></button></a><a href="http://www.mozu.com/contact"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-comments-o"></i></button></a><a href="http://www.mozu.com/contact"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-copyright"></i></button></a>
                 </div>
             </div>
         </footer>
-        <!-- Back to top -->
-        <div class="scroll-top-wrapper"><span class="scroll-top-inner"><i class="fa fa-2x fa-arrow-circle-up"></i></span>
-        </div>
-        <!-- Back to top - show hide -->
-        <script>
-/*<![CDATA[*/
-
+		
+	<!-- Back to top -->
+	<div class="scroll-top-wrapper ">
+    <span class="scroll-top-inner">
+        <i class="fa fa-2x fa-arrow-circle-up"></i>
+    </span>
+	</div>
+	<!-- Back to top - show hide -->
+	<script>
  
 	$(function(){
 	 
@@ -292,13 +288,9 @@ $(function(){
 			}
 		});
 	});
-	
-/*]]>*/
-</script>
-        <!-- Back to top - to top -->
-        <script>
-/*<![CDATA[*/
-
+	</script>
+	<!-- Back to top - to top -->
+	<script>
  
 	$(function(){
 	 
@@ -321,8 +313,6 @@ $(function(){
 		offsetTop = offset.top;
 		$('html, body').animate({scrollTop: offsetTop}, 500, 'linear');
 	}
-	
-/*]]>*/
-</script>
+	</script>
     </body>
 </html>
