@@ -155,7 +155,7 @@
                                 <li>Import product reviews from PowerReviews to Mozu.</li>
                                 <li>Export product reviews received on your storefront to PowerReviews.</li>
                                 <li>Schedule imports/exports between PowerReviews and Mozu at set intervals or on demand.</li>
-                                <li style="background-color: #ffff00;">Generate SEO data from visible reviews on your product pages. This data is used by search engine bots to index your page and can bolster search results.</li>
+                                <li>Generate SEO data from visible reviews on your product pages. This data is used by search engine bots to index your page and can bolster search results.</li>
                                 <li>Provide logging details for scheduled and on-demand jobs.</li>
                             </ul>
                             <h3 id="configreq">Configuration Requirements</h3>
@@ -182,9 +182,9 @@
                                 <li>Click the <b>Configuration</b> link to open configuration settings.</li>
                                 <li>Open the Settings tab.</li>
                                 <li style="font-weight: normal;">Click <b>Add Merchant Group</b> to add your PowerReview account information to Mozu.
-									<ol><li style="font-weight: normal;">Enter the <b>Merchant Group ID</b>.</li><li style="font-weight: normal;">Enter the <b>FTP Username</b>.</li><li style="font-weight: normal;">Enter the <b>FTP Password</b>.</li><li style="font-weight: normal;">In the <b>PowerReview Import Frequency</b> drop-down, choose a frequency for importing content from PowerReviews to your Mozu site.</li><li style="font-weight: normal;">Click <b>Show Advanced Settings</b>.</li><li style="font-weight: normal;">Enter the <b>FTP Location</b> using the FTP site from your PowerReviews account.</li><li style="font-weight: normal;background-color: #ffff00;">Enter the <b>PowerReview Import Filename</b> using the ZIP file name from your PowerReviews account.</li><li style="font-weight: normal;background-color: #ffff00;">Create a <b>PowerReview Import Ready Filename</b> of your choice. What does this do? Name?</li></ol><img src="powerreviews_merchant.png" class="img-mozu" /></li>
+									<ol><li style="font-weight: normal;">Enter the <b>Merchant Group ID</b>.</li><li style="font-weight: normal;">Enter the <b>FTP Username</b>.</li><li style="font-weight: normal;">Enter the <b>FTP Password</b>.</li><li style="font-weight: normal;">In the <b>PowerReview Import Frequency</b> drop-down, choose a frequency for importing content from PowerReviews to your Mozu site.</li><li style="font-weight: normal;">Click <b>Show Advanced Settings</b>.</li><li style="font-weight: normal;">Enter the <b>FTP Location</b> using the FTP site from your PowerReviews account.</li><li>Enter the <b>PowerReview Import Filename</b> using the ZIP file name from your PowerReviews account.</li><li>Create a <b>PowerReview Import Ready Filename</b> of your choice. What does this do? Name?</li></ol><img src="powerreviews_merchant.png" class="img-mozu" /></li>
                                 <li style="font-weight: normal;">Click <b>Add Mozu Site</b> to configure PowerReviews for your storefront.
-								<ol><li style="font-weight: normal;">Select your storefront from the <b>Mozu Site</b> drop-down.</li><li style="font-weight: normal;">Choose to enable exports to PowerReviews of your product and order ratings using <b>Enable Product Export</b> and <b>Enable Order Export</b>. <span style="background-color: #ffff00;">What's the difference between product export and order export?</span></li><li style="font-weight: normal;">Enter the <b>Merchant ID</b>.</li><li style="font-weight: normal;">Enter the <b>Merchant Site ID</b>.</li><li style="font-weight: normal;"><span style="background-color: #ffff00;">Enter the </span><b><span style="background-color: #ffff00;">Locale</span></b><span style="background-color: #ffff00;">. Need more guidance on this.</span></li><li style="font-weight: normal;">Choose how much data to export using the <b>Number of days to include in order export</b>.</li></ol><img src="powerreviews_site.png" class="img-mozu" /></li>
+								<ol><li style="font-weight: normal;">Select your storefront from the <b>Mozu Site</b> drop-down.</li><li style="font-weight: normal;">Choose to enable exports to PowerReviews of your product and order ratings using <b>Enable Product Export</b> and <b>Enable Order Export</b>.</li><li style="font-weight: normal;">Enter the <b>Merchant ID</b>.</li><li style="font-weight: normal;">Enter the <b>Merchant Site ID</b>.</li><li style="font-weight: normal;">Enter the <b>Locale</b> to match your site settings.</li><li style="font-weight: normal;">Choose how much data to export using the <b>Number of days to include in order export</b>.</li></ol><img src="powerreviews_site.png" class="img-mozu" /></li>
                                 <li style="font-weight: normal;">Click <b>Save</b>.</li>
                             </ol>
                         </section>
@@ -200,10 +200,12 @@
                                 <li>Hover over the PowerReviews theme and click <b>Apply</b>.</li>
                                 <li>Click <b>Site Builder</b> to return to the Site Builder landing page.</li>
                                 <li>Hover over your site and select <b>Edit</b>.</li>
-                                <li style="background-color: #ffff00;">Add a <b>Write a Review</b> page to your site. (seems like just a blank page)</li>
-                                <li style="background-color: #ffff00;">Add PowerReviews widgets to your Product page (see the <i>Add Widgets to Your Storefront</i> section of this guide for details).</li>
+                                <li>On the site map, click <b>Single Pages&#0187;Add Page</b>.</li>
+								<li>Add a <b>Write a Review</b> page by entering <font face="Courier">Write a Review</font> for the <b>Page Title</b>, accepting the default <b>Page Url</b>, and selecting <b>Write a Review</b> from the template drop-down.</li>
+								<li>Click <b>Save</b>.</li>
+                                <li>Add PowerReviews widgets to your Product page (see the <i>Add Widgets to Your Storefront</i> section of this guide for details).</li>
                             </ol>
-                            <p style="background-color: #ffff00;"><b>Note:</b> PowerReviews widgets may not display until after the first import of PowerReviews content.</p>
+                            <p><b>Note:</b> PowerReviews widgets may not display until after the first import of PowerReviews content.</p>
                         </section>
                         <section id="import">
                             <h2>Import and Export Data</h2>
@@ -225,7 +227,7 @@
                                 <li>On the Import tab, click <b>Import Now</b>.</li>
                             </ol>
                             <p>After you import data for the first time, Mozu automatically imports data based on the settings you set during configuration.</p>
-                            <p>The Import tab in the application configuration settings displays a log of imports. By default, Mozu imports data files at <span style="background-color: #ffff00;">8:00 AM CST daily</span> from PowerReviews. You can view imported ratings per product using the Catalog page in Mozu Admin (select <b>Catalog»Inventory</b> and search for a product). A Rating field displays in the Properties section, showing a calculated average of all PowerReview shopper ratings entered through your storefront, or syndicated from external sites if your PowerReview account provides syndication services. The PowerReviews storefront theme uses the Rating property as one option to facet and filter products on your storefront.</p>
+                            <p>The Import tab in the application configuration settings displays a log of imports. By default, Mozu imports data files at 8:00 AM CST daily from PowerReviews. You can view imported ratings per product using the Catalog page in Mozu Admin (select <b>Catalog»Inventory</b> and search for a product). A Rating field displays in the Properties section, showing a calculated average of all PowerReview shopper ratings entered through your storefront, or syndicated from external sites if your PowerReview account provides syndication services. The PowerReviews storefront theme uses the Rating property as one option to facet and filter products on your storefront.</p>
                         </section>
                         <section id="widgets">
                             <h2>Add Widgets to Your Storefront</h2>
@@ -247,7 +249,7 @@
                                 <li>In the list of pages, expand the Templates section and select <b>Product</b>.</li>
                                 <li>Enable <b>View dropzones</b>.</li>
                                 <li>Click <b>Widgets</b> and drag <b>PowerReviews Product Reviews</b> into a dropzone.<br /><img src="powerreviews_widgets.png" class="img-mozu"/></li>
-                                <li>A configuration window displays. Choose a widget type and <span style="background-color: #ffff00;">specify tab details</span>. You can stack multiple widget types on the same page.<br /><img src="powerreviews_widgconfig.png" class="img-mozu" /></li>
+                                <li>A configuration window displays. Choose a widget type and specify tab details. You can stack multiple widget types on the same page.<br /><img src="powerreviews_widgconfig.png" class="img-mozu" /></li>
                                 <li>Click <b>Save</b>.</li>
                             </ol>
                             <p>Congratulations! You can now preview PowerReviews functionality on your storefront.</p>
