@@ -1,0 +1,246 @@
+﻿<!DOCTYPE html>
+<html>
+    <head><title>APPLICATION NAME Configuration Guide</title>
+        <meta name="author" content="Mozu" />
+        <meta name="description" content="User content for Mozu PowerReviews Enterprise Application" />
+        <meta name="keywords" content="PowerReviews,Mozu" />
+		<link rel="shortcut icon" href="http://www.mozu.com/favicon.ico" />
+		
+		<!-- Required for Scrollspy -->
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/scrollspy.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/affix.js"></script>
+		<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+		
+		<!-- Mozu CSS developed by Mozu Docs -->
+		<link href="mozu-bootswatch.css" rel="stylesheet" type="text/css" />	
+		
+		<!-- Scrollspy active link script -->
+		<script>
+		$( document ).ready(function() {
+		$('body').scrollspy({
+			target: '.bs-docs-sidebar',
+			offset: 20
+		});
+		});        
+		</script>
+		
+		<!-- Anchor Ease Script -->
+		<script>
+		 $(function() {
+			  $('a[href*=#]:not([href=#])').click(function() {
+				if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') 
+			&& location.hostname == this.hostname) {
+
+				  var target = $(this.hash);
+				  target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+				  if (target.length) {
+					$('html,body').animate({
+					  scrollTop: target.offset().top - 75 //offsets for fixed header
+					}, 1000);
+					return false;
+				  }
+				}
+			  });
+			  //Executed on page load with URL containing an anchor tag.
+			  if($(location.href.split("#")[1])) {
+				  var target = $('#'+location.href.split("#")[1]);
+				  if (target.length) {
+					$('html,body').animate({
+					  scrollTop: target.offset().top - 75 //offset height of header here too.
+					}, 1000);
+					return false;
+				  }
+				}
+		});
+		</script>
+		
+		<!-- Affix Javascript -->
+		
+		<script>$(function(){
+ 
+			var stickyElement = '.bs-docs-sidebar', 
+			bottomElement = '.footer'; 
+			
+			if($( stickyElement ).length){
+			$( stickyElement ).each(function(){
+		   
+			var fromTop = $( this ).offset().top,
+		   
+			fromBottom = $( document ).height()-($( this ).offset().top + $( this ).outerHeight()),
+			
+			stopOn = $( document ).height()-( $( bottomElement ).offset().top)+($( this ).outerHeight() - $( this ).height());
+			
+			if( (fromBottom-stopOn) > 200 ){
+			
+			$( this ).css('width', $( this ).width()).css('top', 0).css('position', '');
+			
+			$( this ).affix({
+			offset: {
+			
+			top: fromTop,
+			
+			bottom: stopOn
+			}
+			
+			}).on('affix.bs.affix', function(){ $( this ).css('top', 0).css('position', ''); });
+			}
+			
+			$( window ).trigger('scroll');
+			});
+			}
+		});
+		</script>
+	</head>
+    <body>
+	<div id="main">
+	<div class="container">
+		<!-- Top Nav - Mozu -->
+			<nav class="navbar navbar-default navbar-fixed-top">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                        </button> <a href="#"><img src="logo-m-red-medium.png" style="margin-top:3px;"/></a></div>
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav navbar-right">
+							<li><a href="//developer.mozu.com/learn/mozu-concepts"><span>Mozu Concepts</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+			
+		<!--Side Navigation TOC -->
+		<div class="row">
+		<div class="landing-title">
+			<h1><font color="red">Application Name</font> Configuration Guide</h1>	
+		</div>
+			<div class="col-md-3">
+                        <nav class="bs-docs-sidebar">
+                            <ul class="nav nav-stacked">
+                                <div class="side-heading">Table of Contents</div>
+                                <li><a href="#intro">Welcome to <font color="red">Partner Company</font> and Mozu</a>
+                                </li>
+                                <li><a href="#install">Install the <font color="red">Application Name</font></a>
+                                    <ul class="nav nav-stacked">
+                                        <li><a href="#configreq">Requirements</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li><a href="#configapp">Configure the App</a>
+                                </li>
+                                <li><a href="#enable">Enable the App</a>
+                                </li>
+                                <li><a href="#custom">Custom Section(s)</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    
+            <div class="col-md-9 content" >
+                <!-- Documentation content -->
+				<section id="intro">
+                            <h2>Welcome to <font color="red">Partner Company</font> and Mozu</h2>
+                            <p><font color="red">Partner Company's</font> <a href="http://www.sumologic.com">Product</a> provides these services...</p>
+                            <p>The <a href="http://www.mozu.com">Mozu</a> <font color="red">Application Name</font> integrates these services to add this functionality to your site...</p>
+                        </section>
+                        <section id="install">
+                            <h2>Install the <font color="red">Application Name</font> on Your Tenant</h2>
+                            <p>After purchasing the <font color="red">Application Name</font>, call your sales or professional services representative and request installation on your tenant. Mozu staff will install the app to your tenant, making it available for further configuration and usage in your storefront.</p>
+                            <p>This application includes the following functionality:</p>
+                            <ul>
+								<li>Feature list...</li>
+                            </ul>
+							
+                            <h3 id="configreq">Configuration Requirements</h3>
+                            <p>To configure the <font color="red">Application Name</font>, you must have the following:</p>
+                            <ul>
+                                <li>The <font color="red">Application Name</font> installed on your tenant.</li>
+                                <li>An active <font color="red">Partner Company</font> account.
+								</li>
+                                <li>Access to modify and update your storefront theme.</li>
+                            </ul>
+                       
+                        </section>
+                        <section id="configapp">
+                            <h2>Configure the Application</h2>
+                            <p>To integrate your <font color="red">Partner Company</font> services with Mozu, you need to do this...</p>
+                            <h3 id="configacct">Configure <font color="red">Partner Compnay</font> Account Settings</h3>
+                            <ol>
+                                <li>Log in to your <font color="red">Partner Company</font> account.</li>
+                            </ol>
+                        </section>
+                        <section id="enable">
+                            <h2>Enable the App</h2>
+                            <p>After configuration, enable the <font color="red">Application Name</font> in Mozu:</p>
+                            <ol>
+                                <li>On the Mozu Admin top bar, select <b>Settings»Applications</b>.</li>
+                            </ol>
+                        </section>
+                        <section id="custom">
+                            <h2>Custom Section</h2>
+                            <p>Placeholder.</p>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="pull-left footer__logo">
+                    <a href="http://www.mozu.com" target="_blank"><img src="http://www.mozu.com/sites/all/themes/mozu_aurora/logo.png" style="padding-top:7px;"/></a>
+                </div>
+                <div class="pull-right footer__icons" style="padding-right:40px;">
+					<a href="AvalaraApplicationbyMozu_ConfigurationGuide.pdf"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-file-pdf-o"></i></button></a><a href="http://www.mozu.com/ecommerce-app-center" target="_blank"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-code-fork"></i></button></a><a href="http://www.mozu.com/contact"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-comments-o"></i></button></a><a href="http://www.mozu.com/contact"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-copyright"></i></button></a>
+                </div>
+            </div>
+        </footer>
+		
+	<!-- Back to top -->
+	<div class="scroll-top-wrapper ">
+    <span class="scroll-top-inner">
+        <i class="fa fa-2x fa-arrow-circle-up"></i>
+    </span>
+	</div>
+	<!-- Back to top - show hide -->
+	<script>
+ 
+	$(function(){
+	 
+		$(document).on( 'scroll', function(){
+	 
+			if ($(window).scrollTop() > 100) {
+				$('.scroll-top-wrapper').addClass('show');
+			} else {
+				$('.scroll-top-wrapper').removeClass('show');
+			}
+		});
+	});
+	</script>
+	<!-- Back to top - to top -->
+	<script>
+ 
+	$(function(){
+	 
+		$(document).on( 'scroll', function(){
+	 
+			if ($(window).scrollTop() > 100) {
+				$('.scroll-top-wrapper').addClass('show');
+			} else {
+				$('.scroll-top-wrapper').removeClass('show');
+			}
+		});
+	 
+		$('.scroll-top-wrapper').on('click', scrollToTop);
+	});
+	 
+	function scrollToTop() {
+		verticalOffset = typeof(verticalOffset) != 'undefined' ? verticalOffset : 0;
+		element = $('body');
+		offset = element.offset();
+		offsetTop = offset.top;
+		$('html, body').animate({scrollTop: offsetTop}, 500, 'linear');
+	}
+	</script>
+    </body>
+</html>
