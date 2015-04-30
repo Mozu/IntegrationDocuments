@@ -137,7 +137,7 @@
                 <!-- Documentation content -->
 				<section id="intro">
                             <h2>Welcome to the Mozu Import-Export Application</h2>
-                            <p>The <a href="http://www.mozu.com">Mozu</a> Import-Export Application collects a wide array of real-time information about your site useful for IT analytics, including error incidents, performance metrics, and unavailable links. The Mozu Import-Export Application logs this important information to help you troubleshoot issues and maximize uptime, and allows you to send the logs to an Amazon Simple Storage Service (S3) account or to an FTP server.</p>
+                            <p>The <a href="http://www.mozu.com" target="_blank">Mozu</a> Import-Export Application collects a wide array of real-time information about your site useful for IT analytics, including error incidents, performance metrics, and unavailable links. The Mozu Import-Export Application logs this important information to help you troubleshoot issues and maximize uptime, and allows you to send the logs to an Amazon Simple Storage Service (S3) account or to an FTP server.</p>
 							<p>Application Features:</p>
                             <ul>
 								<li>Collect real-time information about your site(s) that helps you monitor errors, warnings, performance metrics, unavailable links, and uptime issues.</li>
@@ -155,19 +155,19 @@
                         </section>
                         <section id="configapp">
                             <h2>Configure the Application</h2>
-                            <p>To integrate the functionality of the Mozu Import-Export Application with your site, review the configuration requirements to ensure you have everything you need to be successful with this guide, and then complete the steps in this section.</p>
+                            <p>To integrate the functionality of the Mozu Import-Export Application with your site, review the configuration requirements to ensure you have everything you need to be successful before you begin, and then complete the steps in this section.</p>
                             
 							<h3 id="configreq">Configuration Requirements</h3>
                             <ul>
                                 <li>The Mozu Import-Export Application must be installed on your tenant.</li>
-								<li>You must have an <a href="http://aws.amazon.com/s3/">Amazon S3 account</a> or access to an FTP server if you want to export logged data from your site.<br>
-								<br>If you use an Amazon S3 account, ensure your account has a bucket in which to store files. The Mozu Import-Export Application sends the logs from your site to a bucket on your S3 account. You can create a bucket using the S3 Console in <a href="http://www.aws.amazon.com">Amazon Web Services</a>.<br><br>If you use an FTP server, ensure you have access to a directory in which to store the logs sent from the Mozu Import-Export Application. Your IT department or FTP administrator can help identify a suitable directory.</li>
+								<li>You must have an <a href="http://aws.amazon.com/s3/" target="_blank">Amazon S3 account</a> or access to an FTP server if you want to export logged data from your site.<br>
+								<br>If you use an Amazon S3 account, ensure your account has a bucket in which to store files. The Mozu Import-Export Application sends the logs from your site to a bucket on your S3 account. You can create a bucket using the S3 Console in <a href="http://www.aws.amazon.com" target="_blank">Amazon Web Services</a>.<br><br>If you use an FTP server, ensure you have access to a directory in which to store the logs sent from the Mozu Import-Export Application. Your IT department or FTP administrator can help identify a suitable directory.</li>
                             </ul>
 							
 							<h3 id="s3">(Optional) Obtain Amazon S3 Security Credentials</h3>
 							<p>If you want to export logs to an Amazon S3 account, note the security credentials for the account:</p>
 							<ol>
-							<li>Log in to <a href="http://www.aws.amazon.com">Amazon Web Services</a>.</li>
+							<li>Log in to <a href="http://www.aws.amazon.com" target="_blank">Amazon Web Services</a>.</li>
 							<li>Navigate to the <b>Security Credentials</b> page under your account drop-down.<br><img src="s3security.png" class="img-mozu"></li>
 							<li>Note your <b>Access Key ID</b>.<br><img src="keys.png" class="img-mozu">
 							<p><b>Note:</b> You also need to know your secret access key. However, you cannot view the secret access key on your Amazon account after the initial creation process. If you have lost or forgotten your secret access key, you need to create a new set of access keys. You can create new access keys for the account by going to the <b>Security Credentials</b> page. In the <b>Access Keys</b> section, click <b>Create New Access Key</b>.</p></li>
@@ -194,7 +194,7 @@
                                 <li>Click <b>Mozu Import-Export Application</b>.</li>
                                 <li>Click the <b>Configuration</b> link to open configuration settings.</li>
                                 <li>Open the <b>Options</b> tab.</li>
-								<li>Configure the options for the Mozu Import-Export Application:<br><img src="options.png" class="img-mozu">
+								<li>Configure the options for the Mozu Import-Export Application. You can enter configuration information for both an Amazon S3 account and an FTP server.<br><img src="options.png" class="img-mozu">
 								<ol>
 								<li>If you want to export data to an Amazon S3 account, enable <b>Enable S3 Account</b>.</li>
 								<li>Enter your access key ID, secret key, and the service region for your Amazon S3 account.</li>
@@ -218,13 +218,13 @@
 							<ol>
                                 <li>On the Mozu Admin top bar, select <b>Settings»Applications</b>.</li>
                                 <li>Click <b>Mozu Import-Export Application</b>.</li>
-                                <li>Click the <b>Configuration</b> link to open configuration settings.</li>
+                                <li>Click the <b>Configuration</b> link to open the configuration settings.</li>
 								<li>Click <b>Web Logs</b>.</li>
 								<li>Click <b>Show Export Config</b> to configure export settings.<br><img src="export.png" class="img-mozu"></li>
-								<li>Using the <b>Select External Storage</b> drop-down, choose to export data to Amazon S3 or to an FTP server. You cannot export data to both destinations simultaneously.</li>
+								<li>Using the <b>Select External Storage</b> drop-down, choose to export data to Amazon S3 or to an FTP server. Note that you cannot export data to both destinations simultaneously. If you want to switch between destinations, you will have to stop an export and configure a new one.</li>
 								<li>Using the <b>Export Interval (minutes)</b> drop-down, choose how frequently to export data.</li>
-								<li>(Amazon S3) Using the <b>S3 Bucket</b> drop-down, choose the Amazon S3 bucket to receive the logs.</li>
-								<li>(FTP) Enter the directory on the FTP server to receive the logs in <b>FTP Directory</b>.</li>
+								<li>(Amazon S3) Using the <b>S3 Bucket</b> drop-down, choose an Amazon S3 bucket to receive the logs in.</li>
+								<li>(FTP) In <b>FTP Directory</b>, enter the directory on the FTP server to receive the logs.</li>
 								<li>Click <b>Save</b>.</li>
 							</ol>
 							
