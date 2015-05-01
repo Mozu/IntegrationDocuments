@@ -140,17 +140,18 @@
                 <!-- Documentation content -->
 				<section id="intro">
                             <h2>Welcome to PowerReviews and Mozu</h2>
-                            <p><a href="http://www.powerreviews.com" target="_blank">PowerReviews</a> provides ratings and reviews that help increase buyer confidence and stimulate sales for your products. With PowerReviews, customers can leave ratings, write reviews, and ask questions directly on your product pages. PowerReviews can syndicate product reviews from all major retailers and search engines, increasing the reach of the reviews on your storefront.</p>
-                            <p>The <a href="http://www.mozu.com" target="_blank">Mozu</a> PowerReviews Enterprise Application seamlessly integrates your PowerReviews account with your storefront so that you can start displaying and generating reviews on your product and category pages. With the Mozu PowerReviews Enterprise Application, you can import the following PowerReviews content on demand or at scheduled intervals between 1 to 12 hours, ensuring that your storefront is kept up to date with the latest available reviews:</p>
+                            <p><a href="http://www.powerreviews.com" target="_blank">PowerReviews</a> provides ratings and reviews that help increase buyer confidence and stimulate sales for your products. With PowerReviews, customers can leave ratings, write reviews, and ask questions directly on your product pages. PowerReviews is also capable of syndicating product reviews from all major retailers and search engines, increasing the reach of the reviews on your storefront.</p>
+                            <p>The <a href="http://www.mozu.com" target="_blank">Mozu</a> PowerReviews Enterprise Application seamlessly integrates your PowerReviews account with your storefront so that you can start displaying and generating reviews on your product and category pages. With the Mozu PowerReviews Enterprise Application, you can import PowerReviews content on demand or at scheduled intervals between 1 to 12 hours, ensuring that your storefront is kept up to date with the latest available reviews.</p>
 							<p>Application Features:</p>
 							 <ul>
-                                <li>Display PowerReviews ratings summaries, detailed reviews, Write a Review links, and Question and Answer boxes using widgets in Site Builder.</li>
+                                <li>Display PowerReviews ratings summaries, detailed reviews, Write a Review links, and Question and Answer boxes (Social Answers) using widgets in Site Builder.</li>
                                 <li>Incorporate PowerReviews ratings into your storefront's faceting filters.</li>
                                 <li>Import product reviews from PowerReviews to Mozu.</li>
                                 <li>Export products and categories from your site to PowerReviews.</li>
+								<li>Export order history from your site to PowerReviews (to solicit revies in follow-up emails)</li>
 								<li>Send customer reviews received on your storefront to PowerReviews.</li>
                                 <li>Schedule imports between PowerReviews and Mozu at set intervals or on demand.</li>
-                                <li>Increase your site's search engine optimization using reviews on your product pages. Search engine bots can use reviews content to index your page and bolster search results.</li>
+                                <li>Increase your site's search engine optimization using reviews on your product pages. Search engine bots use reviews content to index your page and bolster search results.</li>
                                 <li>Place web beacon widgets on your checkout page to measure the impact that reviews and Q&A have on sale conversion.</li>
                             </ul>
                         </section>
@@ -169,9 +170,9 @@
                                 <li>The Mozu PowerReviews Enterprise Application must be installed on your tenant.</li>
                                 <li>You must have an active PowerReviews account.
 								</li>
-                                <li>Access to modify and update your storefront theme.</li>
+                                <li>You must have access to modify and update your site's theme.</li>
                             </ul>
-                            <p style="font-weight: normal;"><b>Note:</b> If you are switching from Volusion to Mozu and want to transfer your existing Volusion reviews, contact our support team. If you are switching from a third-party site to Mozu and want to transfer your reviews, contact PowerReviews or an implementation engineer.</p>
+                            <p style="font-weight: normal;"><b>Note:</b> If you are switching from Volusion to Mozu and want to transfer your existing Volusion reviews to your Mozu site, contact our support team. If you are switching from a third-party site to Mozu and want to transfer your reviews, contact PowerReviews or an implementation engineer.</p>
 							
                             
                             <h3 id="configacct">Obtain PowerReviews Account Credentials</h3>
@@ -182,15 +183,29 @@
                                 <li style="font-weight: normal;">Note the <i>Merchant Group ID</i>, <i>Merchant ID</i>, <i>Site ID</i>, <i>FTP Site</i>, <i>FTP username</i>, <i>FTP password</i>, and <i>ZIP File Name</i>.<br /><img src="powerreviews_config.png" class="img-mozu" /></li>
                                 </ol>
 								
-								<h3>Configuring PowerReviews to Automatically Receive Order Information</h3>
-								<p>During configuration of the Mozu PowerReviews Enterprise Application, you can choose to enable scheduled exports of order information from Mozu to PowerReviews. For PowerReviews to receive this data, enable automatic imports of order information in your PowerReviews account:</p>
+								<h3 id="feeds">Configuring PowerReviews to Automatically Receive Product and Order Information</h3>
+								<p>One of the features of the Mozu PowerReviews Enterprise Application is the ability to schedule recurring exports of product and order information from Mozu to PowerReviews. Scheduling these exports allows PowerReviews to utilize the latest version of your catalog and to gather feedback from shoppers about their shopping experience. For PowerReviews to pull the data that Mozu sends to it, enable automatic imports of product and order feeds in your PowerReviews account.</p>
+								
+								<p>To configure PowerReviews to receive automatic imports of product feeds from Mozu:</p>
+								<ol>
+								<li>Contact PowerReviews support.</li>
+								<li>Ask your PowerReviews support contact to configure your account to receive automatic product feeds on a daily basis.</li>
+								<li>Mozu exports product information in a CSV file with the following naming convention: products_<em>merchant_group_id</em>_<em>merchant_id</em>.csv. You will need to provide this information to your support contact.</li>
+								</ol>
+								
+								<p>To configure PowerReviews to receive automatic imports of order feeds from Mozu:</p>
 								<ol>
 								<li>In your PowerReviews account, click <b>Configuration»Configure Follow Up Email</b>.</li>
 								<li>Click <b>Upload Orders</b> to configure your order feed:<br><img src="pr_orders.png" class="img-mozu"></li>
 								<li>Under <b>Set Up Your Order Feed</b>, select <b>Get File From FTP</b> and enable <b>Automatically Import Daily</b>.</li>
 								<li>Enter the FTP URL, username, and password to match the values of your PowerReviews configuration.</li>
 								<li>Click <b>Next</b> to test the order feed.</li>
+								<li>On the following screen, enter the name of the order export feed. Mozu exports order information in a CSV file with the following naming convention: orders_<em>merchant_group_id</em>_<em>merchant_id</em>.csv.<br><br><b>Note: </b>If you encounter issues during this process, contact PowerReviews support.</li>
 								</ol>
+						
+								
+								
+								
 								<h3>Configure the Mozu PowerReviews Enterprise Application</h3>
 								<ol>
 								<li>Log in to Mozu Admin.</li>
@@ -201,8 +216,9 @@
                                 <li style="font-weight: normal;">Click <b>Add Merchant Group</b> to add your PowerReview account information to Mozu:<br><img src="powerreviews_merchant.png" class="img-mozu" />
 									<ol><li style="font-weight: normal;">Enter the <b>Merchant Group ID</b>.</li><li style="font-weight: normal;">Enter the <b>FTP Username</b>.</li><li style="font-weight: normal;">Enter the <b>FTP Password</b>.</li><li style="font-weight: normal;">In the <b>PowerReview Import Frequency</b> drop-down, choose a frequency for importing content from PowerReviews to your Mozu site.</li><li style="font-weight: normal;">Click <b>Show Advanced Settings</b>.</li><li style="font-weight: normal;">Enter the <b>FTP Location</b> using the FTP site from your PowerReviews account.</li><li>Enter the <b>PowerReview Import Filename</b> using the ZIP file name from your PowerReviews account.</li><li>Enter a <b>PowerReview Import Ready Filename</b>. If your PowerReview Import Filename is <font face="Courier New">pwr.zip</font>, enter <font face="Courier New">done.txt</font>. If your PowerReview Import Filename is <font face="Courier New">pwr-<em>something</em>.zip</font>, enter <font face="Courier New">done-<em>something</em>.txt</font>. In this example, we enter <font face="Courier New">done-locale2.txt</font> because the PowerReviews Import Filename is <font face="Courier New">pwr-locale2.zip</font>.</li></ol></li>
                                 <li style="font-weight: normal;">Click <b>Add Mozu Site</b> to configure PowerReviews for your storefront:<br><img src="powerreviews_site.png" class="img-mozu" />
-								<ol><li style="font-weight: normal;">Select your storefront from the <b>Mozu Site</b> drop-down.</li><li style="font-weight: normal;">Enable <b>Enable Product Export</b> to send product information from your Mozu site to PowerReviews. This checkbox is required in order for PowerReviews to match reviews content with the products on your site.</li>
-								<li>Enable <b>Enable Order Export</b> to send order history information to PowerReviews. This information helps PowerReviews to remind shoppers about reviewing recently purchased products, suggest other products shoppers may enjoy, and provide other similar benefits that you can configure within your PowerReviews account.</li><li style="font-weight: normal;">Enter the <b>Merchant ID</b>.</li><li style="font-weight: normal;">Enter the <b>Merchant Site ID</b>.</li><li style="font-weight: normal;">Enter the <b>Locale</b> to match your site settings.</li><li style="font-weight: normal;">Choose how much data to export using the <b>Number of days to include in order export</b>.</li></ol></li>
+								<ol><li style="font-weight: normal;">Select your storefront from the <b>Mozu Site</b> drop-down.</li><li style="font-weight: normal;">Enable <b>Enable Product Export</b> to send product information from your Mozu site to PowerReviews. This checkbox is required in order for PowerReviews to match reviews content with the products on your site.<br><br><b>Note: </b>For PowerReviews to pull in the product export sent by Mozu, <a href="#feeds">configure your PowerReviews account to receive automatic product feeds</a>.<br><br></li>
+								<li>Enable <b>Enable Order Export</b> to send order history information to PowerReviews. This information helps PowerReviews to remind shoppers about reviewing recently purchased products, suggest other products shoppers may enjoy, and provide other similar benefits that you can configure within your PowerReviews account.<br><br><b>Note: </b>For PowerReviews to pull in the order export sent by Mozu, <a href="#feeds">configure your PowerReviews account to receive automatic order feeds</a>.<br><br></li>
+								<li style="font-weight: normal;">Enter the <b>Merchant ID</b>.</li><li style="font-weight: normal;">Enter the <b>Merchant Site ID</b>.</li><li style="font-weight: normal;">Enter the <b>Locale</b> to match your site settings.</li><li style="font-weight: normal;">Choose how much data to export using the <b>Number of days to include in order export</b>.</li></ol></li>
                                 <li style="font-weight: normal;">Click <b>Save</b> to save changes to the Mozu Site configuration.</li>
 								<li>Click <b>Save</b> to save changes to the Merchant Group configuration.</li>
                             </ol>
@@ -271,7 +287,8 @@
                                 <li>Click <b>Extensions»PowerReviews»Export</b>.</li>
                                 <li>Click <b>Export Now</b>.</li>
                             </ol>
-                            <p>If you encounter any errors, click on the error number in the list to identify the category or product that is causing the error. After the first manual export, Mozu automatically exports data if you enabled scheduled exports during configuration. Exports occur once a day between 2 and 3 am CST.</p>
+                            <p>If you encounter any errors, click on the error number in the list to identify the category or product that is causing the error. After the first manual export, Mozu automatically exports data if you enabled scheduled exports during configuration. Exports occur once a day between 2 and 3 am CST. You can view your exports through your PowerReviews account.</p>
+							<p><b>Note:</b> Mozu recommends specifying a brand for your products when using the export feature of the Mozu PowerReviews Enterprise Application. PowerReviews uses the brand attribute when it mentions products in emails and reviews. If you don't specify a brand attribute (optional in Mozu), then PowerReviews displays blank information where otherwise it would display the brand. You can specify a brand for a product using the Catalog module. Open the Products editor and fill in the <b>Brand</b> field under <b>Properties</b>.</p>
                             <h3>Import Data</h3>
                             <p>You can import reviews data for your products using the configuration page for the Mozu PowerReviews Enterprise Application:</p>
                             <ol>
