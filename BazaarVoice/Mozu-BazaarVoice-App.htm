@@ -186,21 +186,25 @@
 						<p>When configuring the app and accounts, you will need access credentials, FTP information, deployment target, and optionally SEO cloud keys for these steps. Click the BazaarVoice client login link on the Information tab and login. All information should be provided on the BazaarVoice Configuration Hub.</p>
 						<p>When entering data from BazaarVoice, you can select between the staging and production implementations. You can locate the BazaarVoice specific data from your account by logging in to the portal and opening an implementation. FTP information uses the login credentials for the account or configured accounts. The SEO Cloud Key is located in the Main Implementation > Pages & States > Technical Setup in the SEO Configuration page.</p>
 						<p><img src="bv-seokey.png" class="img-mozu" /></p>
+						<p>After obtaining your BazaarVoice account data, configure the Mozu BazaarVoice Conversations Application:</p>
                         <ol>
-                            <li>On the Mozu Admin top bar, select <b>Settings>Applications</b>.
-							<li>Double-click <b>BazaarVoice Conversations</b>.
-							<li>Click the <b>Configuration</b> link to open configuration settings. 
-							<li>On the Configuration tab, enter your BazaarVoice information and configure settings for the app integration. 
-							<li>Select the Mozu site from the Site Selector drop-down.
-							<li>Click the checkbox to <b>Enable Site for Product Export and Ratings Import</b>. 
-							<li>For <b>Client Name</b>, enter your BazaarVoice client credentials.
-							<li>For the <b>FTP Username</b>, you can select to Use Client Name, or enter an account name. These are credentials provided by BazaarVoice. The FTP location is used for imports and exports of data.
-							<li>Enter the FTP Password for the account.
-							<li>Enter the <b>Deployment Zone</b> for the BazaarVoice target deployment. 
-							<li>Optional, enter the <b>SEO Cloud Key</b>.
-							<li>Enter the <b>Site Custom URL</b>.
+                            <li>On the Mozu Admin top bar, select <b>Settings>Applications</b>.</li>
+							<li>Double-click <b>BazaarVoice Conversations</b>.</li>
+							<li>Click the <b>Configuration</b> link to open configuration settings. </li>
+							<li>On the Configuration tab, enter your BazaarVoice information and configure settings for the app integration.<br><img src="bv-config1.png" class="img-mozu" />
+							<ol>
+							<li>Select the Mozu site from the Site Selector drop-down.</li>
+							<li>Click the checkbox to <b>Enable Site for Product Export and Ratings Import</b>.</li>
+							<li>(Optional) By default, the <b>Include Product Variants in Product Feed</b> checkbox is disabled. For most use cases, it is sufficient to use the BazaarVoice content associated with the parent product with every product variant (for example, reviews associated with a type of shirt are the same for all color variations of the shirt). However, if you want to export BazaarVoice content for each product variant as duplicates of the parent product, enable this checkbox.</li>
+							<li>For <b>Client Name</b>, enter your BazaarVoice client credentials.</li>
+							<li>For the <b>FTP Username</b>, you can select to Use Client Name, or enter an account name. These are credentials provided by BazaarVoice. The FTP location is used for imports and exports of data.</li>
+							<li>Enter the FTP Password for the account.</li>
+							<li>Enter the <b>Deployment Zone</b> for the BazaarVoice target deployment.</li>
+							<li>()Optional) enter the <b>SEO Cloud Key</b>.</li>
+							<li>Enter the <b>Site Custom URL</b>.</li>
+							</ol></li>
 							<li>Click <b>Save</b>. </li>
-							<img src="bv-config1.png" class="img-mozu" /><br/><img src="bv-config2.png" class="img-mozu" />
+							
                         </ol>
 				</section>
 				<section id="enable">
