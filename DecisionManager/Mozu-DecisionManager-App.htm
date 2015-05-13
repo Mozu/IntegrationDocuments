@@ -1,20 +1,20 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="15" MadCap:lastHeight="488" MadCap:lastWidth="1168">
-    <head><title>Coming Soon</title>
+﻿<!DOCTYPE html>
+<html>
+    <head><title>Mozu CyberSource Decision Manager Application Configuration Guide</title>
         <meta name="author" content="Mozu" />
-        <meta name="description" content="User content for Cybersource Decision Manager Application by Mozu" />
-        <meta name="keywords" content="Decision Manager,Mozu" />
+        <meta name="description" content="User content for Mozu PowerReviews Enterprise Application" />
+        <meta name="keywords" content="PowerReviews,Mozu" />
 		<link rel="shortcut icon" href="http://www.mozu.com/favicon.ico" />
-
+		
 		<!-- Required for Scrollspy -->
 		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 		<script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/scrollspy.js"></script>
 		<script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/affix.js"></script>
 		<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-
+		
 		<!-- Mozu CSS developed by Mozu Docs -->
-		<link href="mozu-splash-bootswatch.css" rel="stylesheet" type="text/css" />
-
+		<link href="mozu-bootswatch.css" rel="stylesheet" type="text/css" />	
+		
 		<!-- Scrollspy active link script -->
 		<script>
 		$( document ).ready(function() {
@@ -22,14 +22,14 @@
 			target: '.bs-docs-sidebar',
 			offset: 20
 		});
-		});
+		});        
 		</script>
-
+		
 		<!-- Anchor Ease Script -->
 		<script>
 		 $(function() {
 			  $('a[href*=#]:not([href=#])').click(function() {
-				if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+				if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') 
 			&& location.hostname == this.hostname) {
 
 				  var target = $(this.hash);
@@ -54,38 +54,38 @@
 				}
 		});
 		</script>
-
+		
 		<!-- Affix Javascript -->
-
+		
 		<script>$(function(){
-
-			var stickyElement = '.bs-docs-sidebar',
-			bottomElement = '.footer';
-
+ 
+			var stickyElement = '.bs-docs-sidebar', 
+			bottomElement = '.footer'; 
+			
 			if($( stickyElement ).length){
 			$( stickyElement ).each(function(){
-
+		   
 			var fromTop = $( this ).offset().top,
-
+		   
 			fromBottom = $( document ).height()-($( this ).offset().top + $( this ).outerHeight()),
-
+			
 			stopOn = $( document ).height()-( $( bottomElement ).offset().top)+($( this ).outerHeight() - $( this ).height());
-
+			
 			if( (fromBottom-stopOn) > 200 ){
-
+			
 			$( this ).css('width', $( this ).width()).css('top', 0).css('position', '');
-
+			
 			$( this ).affix({
 			offset: {
-
+			
 			top: fromTop,
-
+			
 			bottom: stopOn
 			}
-
+			
 			}).on('affix.bs.affix', function(){ $( this ).css('top', 0).css('position', ''); });
 			}
-
+			
 			$( window ).trigger('scroll');
 			});
 			}
@@ -93,45 +93,176 @@
 		</script>
 	</head>
     <body>
-			<div class="landing-heading">
-				<div class="landing-heading__content">
-					<h1>Coming soon, a new CyberSource Decision Manager App by Mozu!</h1>
-					<h2>Watch for updates and information for integrating Decision Manager with Mozu!</h2>
-
-
-
-				</div>
-			</div>
-			<div class="landing-method-theme"></div>
-
-
-
-		<!-- Footer -->
-        <footer class="footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="footer__logo">
-                            <a href="http://www.mozu.com" target="_blank"><img src="http://www.mozu.com/sites/all/themes/mozu_aurora/logo.png" style="padding-top:7px;"/></a>
-                        </div>
+	<div id="main">
+	<div class="container">
+		<!-- Top Nav - Mozu -->
+			<nav class="navbar navbar-default navbar-fixed-top">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                        </button> <a href="#"><img src="logo-m-red-medium.png" style="margin-top:3px;"/></a></div>
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav navbar-right">
+							<li><a href="versionhistory.html"><span>Version History</span></a></li>
+							<li><a href="//developer.mozu.com/learn/mozu-concepts"><span>Mozu Concepts</span></a></li>
+                        </ul>
                     </div>
-                    <div class="col-md-6 text-center">
-
+                </div>
+            </nav>
+			
+		<!--Side Navigation TOC -->
+		<div class="row">
+		<div class="landing-title">
+			<h1>Mozu CyberSource Decision Manager Application Configuration Guide</h1>	
+		</div>
+			<div class="col-md-3">
+                        <nav class="bs-docs-sidebar">
+                            <ul class="nav nav-stacked">
+                                <div class="side-heading">Table of Contents</div>
+                                <li><a href="#intro">Welcome to Decision Manager and Mozu</a>
+                                </li>
+                                <li><a href="#install">Install Decision Manager</a>
+                                </li>
+                                <li><a href="#configapp">Configure the App</a>
+                                </li>
+                                <li><a href="#enable">Enable the App</a>
+                                </li>
+                                <li><a href="#orders">Handling Orders Flagged for Further Review</a>
+                                </li>
+								<li><a href="#rules">Customizing Fraud Detection Rules</a>
+								</li>
+                            </ul>
+                        </nav>
                     </div>
-                    <div class="col-md-3">
-                        <p class="pull-right footer__icons"><a href="https://twitter.com/MozuCommerce"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-twitter"></i></button></a><a href="http://www.mozu.com/ecommerce-app-center" target="_blank"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-code-fork"></i></button></a><a href="http://www.mozu.com/contact"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-comments-o"></i></button></a><a href="http://www.mozu.com/contact"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-copyright"></i></button></a></a>
-                        </p>
+                    
+            <div class="col-md-9 content" >
+                <!-- Documentation content -->
+				<section id="intro">
+                            <h2>Welcome to Decision Manager and Mozu</h2>
+                            <p>CyberSource's <a href="http://www.cybersource.com/products/fraud_management/decision_manager/" target="_blank">Decision Manager</a> provides a fraud protection platform that features the World's Largest Fraud Detection Radar as well as a flexible rules engine that lets you customize rules to suit your business case. With Decision Manager, you can screen orders for risk in an effort to prevent fraud.</p>
+                            <p>The <a href="http://www.mozu.com" target="_blank">Mozu</a> CyberSource Decision Manager Application integrates your Decision Manager account with your site so that any order you receive on your site is automatically screened by Decision Manager. With the Mozu CyberSource Decision Manager Application, every order receives a fraud score and a validation result from Decision Manager. Based on these metrics, orders are either accepted in Mozu or marked as needing further review.</p>
+							<p>Application Features:</p>
+                            <ul>
+								<li>Automatically sends information about submitted orders to Decision Manager, including the shopper's browser type, IP address, device type, billing information, etc.</li>
+								<li>Validates shopper purchases against your Decision Manager rules to determine a fraud score and validation result (accept, review, decline).</li>
+								<li>Based on the validation result, changes the order status in Mozu to Accepted or Pending Review.</li>
+								<li>Supports syncing order status information with Decison Manager at scheduled intervals. If you enable syncing, the status of an order that is pending review automatically updates in Mozu if you accept or cancel the order through the Decision Manager website.</li>
+								<li>Set a monetary threshold below which orders are not screened for fraud to avoid excessive overhead for low-value orders.</li>
+							</ul>
+                        </section>
+                        <section id="install">
+                            <h2>Install the Mozu CyberSource Decision Manager Application on Your Tenant</h2>
+                            <p>After purchasing the Mozu CyberSource Decision Manager Application, call your sales or professional services representative and request installation on your tenant. Mozu staff will install the app to your tenant, making it available for further configuration and usage in your storefront.</p>
+                            
+                           
+                        </section>
+                        <section id="configapp">
+                            <h2>Configure the Application</h2>
+							<p>To integrate your Decision Manager services with Mozu, review the configuration requirements to ensure you have everything you need to be successful before you begin, and then complete the steps in this section.</p>
+							
+							<h3 id="configreq">Configuration Requirements</h3>
+                            <ul>
+                                <li>The Mozu CyberSource Decision Manager Application must be installed on your tenant.</li>
+                                <li>You must have an active Decision Manager account.
+								</li>
+                            </ul>
+							
+                            
+                            <h3 id="configacct">Obtain Decision Manager Account Information</h3>
+							<p>Note your Decision Manager account credentials. You will enter these credentials in Mozu.</p>
+                            <ol>
+                                <li>Log in to the <a href="https://ebc.cybersource.com/ebc/login/Login.do" target="blank">CyberSource  Business Center</a>.</li>
+								<li>Note the username and password that you use to log in to the CyberSource Business Center.</li>
+								<li>Note your <em>Account ID</em> and <em>Merchant ID</em>.<br><img src="credentials.png" class="img-mozu"></li>
+								<li>Create and note a <em>Transaction Security Key</em> for the <b>SOAP Toolkit API</b>.<br><img src="key.png" class="img-mozu"><br><b>Note:</b> If you have already created this key but lost or forgotten it, you will have to generate a new key.</li>
+								
+                            </ol>
+							
+							<h3 id="configmozu">Configure the Mozu CyberSource Decision Manager Application</h3>
+							<p>After obtaining your Decision Manager account information, enter the information in Mozu and configure the settings for the Mozu CyberSource Decision Manager Application:</p>
+                            <ol>
+								<li>Log in to Mozu Admin.</li>
+                                <li>On the Mozu Admin top bar, select <b>Settings»Applications</b>.</li>
+                                <li>Click <b>CyberSource Decision Manager</b>.</li>
+                                <li>Click the <b>Configuration</b> link to open configuration settings.</li>
+                                <li>Open the <b>Settings</b> tab.</li>
+								<li>Add your CyberSource account information to Mozu:<br><img src="config.png" class="img-mozu">
+								<ol>
+								<li>Enter your <b>Organization ID</b>.</li>
+								<li>Enter your <b>Merchant ID</b>.</li>
+								<li>Enter your <b>Transaction Key</b>.</li>
+								<li>(Optional) Enable <b>Threshold Enabled</b> to set a <b>Threshold Value</b> below or at which orders are not screened by Decision Manager. For example, you may want Decision Manager to only screen orders over $10 for fraud.</li>
+								<li>Choose which <b>Environment</b> the Mozu CyberSource Decision Manager Application screens orders in. If you select the <b>Test</b> environment, the application sends order information to Decision Manager's test site, where you can evaluate fraud detection rules in a sandbox setting. When you are satisfied with the rules you set in Decision Manager, choose the <b>Production</b> environment to enable live fraud detection on your site.</li>
+								<li>Select an <b>Order Synch Frequency</b> to specify how often Mozu queries Decision Manager for updates on orders that are pending review. If you accept or reject an order that is pending review using the Decision Manager website instead of Mozu, then the order sync frequency determines how long it takes for the new order status to update in  Mozu.<br><br><b>Tip:</b> Balance the frequency at which you receive updates in Mozu with the amount of bandwidth you are comfortable using to send order sync queries from Mozu to Decision Manager.<br><br></li>
+								<li>If you specify an order synch frequency, enter the <b>User Name</b> and <b>Password</b> that you use to log into the CyberSource Business Center.</li>
+								</ol>
+								</li>
+								<li>(Optional) If you have more than one site, the settings you specify for the Mozu CyberSource Decision Manager Application apply to every site. However, if you want to configure different settings for a particular site, click <b>Add Site</b> (e.g., you want to use different Decision Manager accounts/transaction keys for a particular site). Any settings you configure in the new dialog apply specifically to the site you select in the drop-down.</li>
+								<li>Click <b>Save</b>.</li>
+                            </ol>
+							
+							
+                        </section>
+                        <section id="enable">
+                            <h2>Enable the App</h2>
+                            <p>After configuration, enable the Mozu CyberSource Decision Manager Application in Mozu.</p>
+                            <ol>
+                                <li>On the Mozu Admin top bar, select <b>Settings»Applications</b>.</li>
+                                <li>Click <b>CyberSource Decision Manager Application</b>.</li>
+                                <li>Click <b>Enable App</b>.</li>
+                            </ol>
+                            
+							<p>Congratulations! You can now preview Decision Manager functionality on your site.</p>
+                        </section>
+                        <section id="orders">
+                            <h2>Handling Orders Flagged for Further Review</h2>
+                            <p>When Decision Manager screens orders it receives from Mozu, it attaches one of the following validation results to the order: accept, review, or reject. Orders tagged with "accept" change the order status in Mozu to <span style="font-family: Courier New"><b>Accepted</b></span>. No further action is required for these orders from a fraud screening perspective. Orders tagged with "review" or "reject" change the order status in Mozu to <span style="font-family: Courier New"><b>Pending Review</b></span>. To continue with the order process, accept or cancel the order in Mozu Admin:</p>
+							<ol>
+							<li>In Mozu Admin, open the <b>Orders</b> module.</li>
+							<li>Open the Orders editor for an order that is pending review.</li>
+							<li>Under <b>Attributes</b>, use the <b>Decision Manager Fraud Results</b> to review the reasons the order is pending review.</li>
+							<li>If you think the order is fraudulent, click <b>Cancel Order</b>. Otherwise, click <b>Accept Order</b>.</li>
+							</ol>
+                            
+							<p>You can also use the Decision Manager website to accept or cancel orders pending review. If you update an order through the Decision Manager website, you see the update in Mozu in accordance with the order synchronization interval you set in the configuration settings.</p>
+							
+                            
+                        </section>
+						
+						<section id="rules">
+                            <h2>Customizing Fraud Detection Rules</h2>
+							<p>If you want to change the rules that Decision Manager uses to screen an order for fraud risk, use the Decision Manager website to modify the existing rules or create new custom rules. CyberSource recommends making use of the first two merchant-defined data fields (MDD1 and MDD2) for custom testing. For more information on creating custom rules and fields in Decision Manager, refer to the <em>Decision Manager User Guide</em> available through the CyberSource Business Center.</p>
+                            
+                        </section>
                     </div>
                 </div>
             </div>
+        </div>
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="pull-left footer__logo">
+                    <a href="http://www.mozu.com" target="_blank"><img src="http://www.mozu.com/sites/all/themes/mozu_aurora/logo.png" style="padding-top:7px;"/></a>
+                </div>
+                <div class="pull-right footer__icons" style="padding-right:40px;">
+					<a href="http://www.mozu.com/ecommerce-app-center" target="_blank"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-code-fork"></i></button></a><a href="http://www.mozu.com/contact"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-comments-o"></i></button></a><a href="http://www.mozu.com/contact"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-copyright"></i></button></a>
+                </div>
+            </div>
         </footer>
-
-		<script>
-
+		
+	<!-- Back to top -->
+	<div class="scroll-top-wrapper ">
+    <span class="scroll-top-inner">
+        <i class="fa fa-2x fa-arrow-circle-up"></i>
+    </span>
+	</div>
+	<!-- Back to top - show hide -->
+	<script>
+ 
 	$(function(){
-
+	 
 		$(document).on( 'scroll', function(){
-
+	 
 			if ($(window).scrollTop() > 100) {
 				$('.scroll-top-wrapper').addClass('show');
 			} else {
@@ -142,21 +273,21 @@
 	</script>
 	<!-- Back to top - to top -->
 	<script>
-
+ 
 	$(function(){
-
+	 
 		$(document).on( 'scroll', function(){
-
+	 
 			if ($(window).scrollTop() > 100) {
 				$('.scroll-top-wrapper').addClass('show');
 			} else {
 				$('.scroll-top-wrapper').removeClass('show');
 			}
 		});
-
+	 
 		$('.scroll-top-wrapper').on('click', scrollToTop);
 	});
-
+	 
 	function scrollToTop() {
 		verticalOffset = typeof(verticalOffset) != 'undefined' ? verticalOffset : 0;
 		element = $('body');
