@@ -222,6 +222,9 @@
 							<li>Open the Orders editor for an order that is pending review.</li>
 							<li>Under <b>Attributes</b>, use the <b>Decision Manager Fraud Results</b> to review the reasons the order is pending review.
 							<br><img src="dmresults.png" class="img-mozu">
+							<ol>
+							<li>Note whether Decision Manager accepted, rejected, or marked the order for further review.</li>
+							<li>Consider fraud risk information such as the fraud score result (<b>afsResult</b>), risk factor codes (<b>afsFactorCode</b>), and reason code (<b>ReasonCode</b>). For help interpreting all the values listed in the Decision Manager results, refer to the <em>Decision Manager User Guide</em> available through the CyberSource Business Center.<br><br><b>Example:</b> In the preceding screenshot, you can determine that Decision Manager rejected the order due to a fraud score result that may be above your ignore threshold based on risk factor codes that include phone inconsistencies and high account usage.<br><br></li>
 							</li>
 							<li>If you think the order is fraudulent, click <b>Cancel Order</b>. Otherwise, click <b>Accept Order</b>.</li>
 							</ol>
