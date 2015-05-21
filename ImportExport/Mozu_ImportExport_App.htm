@@ -360,6 +360,7 @@
 					
 					<h3 id="attribs">Attributes Sheet</h3>
 					<p>Depending on the settings of your Tenant, you may be required to add specific attributes. Verify the attributes per the Tenant settings. All attributes are added to this sheet with the available values on the next sheet AttributeValues. After editing both sheets, you may want to import and export to update other sheets with new columns.</p>
+					<p><b>Note:</b> The Import / Export tool only exports attributes that have a value of "Tenant" for the namespace. All attributes you create through Mozu Admin have a "Tenant" namespace, so the tool processes these attributes. However, most attributes created via the API layer have a custom namespace, which varies depending on the application that creates the attribute. To avoid overwriting values set by a custom application, the Import / Export tool does not process these attributes.</p>
 					
 					<table class="table table-hover">
 					<thead>
@@ -519,6 +520,7 @@
 					
 					<h3 id="prodtypesattribs">ProductTypeAttributes Sheet</h3>
 					<p>Every product type has one or more attributes. The attributes are associated by ProductType and AttributeCode.</p>
+					<p><b>Note:</b> The Import / Export tool only exports attributes that have a value of "Tenant" for the namespace. All attributes you create through Mozu Admin have a "Tenant" namespace, so the tool processes these attributes. However, most attributes created via the API layer have a custom namespace, which varies depending on the application that creates the attribute. To avoid overwriting values set by a custom application, the Import / Export tool does not process these attributes.</p>
 					<table class="table table-hover">
 					<thead>
 					  <tr>
