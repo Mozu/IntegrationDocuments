@@ -119,18 +119,13 @@
 					<ul class="nav nav-stacked" >
 						<div class="side-heading">Table of Contents</div>
 							<li><a href="#intro">Welcome to Bronto and Mozu</a></li>
-							<li><a href="#install">Install Bronto</a>
+							<li><a href="#install">Install the App</a>
 							</li>
 							<li><a href="#configapp">Configure the App</a>
 							</li>
 							<li><a href="#enable">Enable the App</a>
 							</li>
-							<li><a href="#customers">Customers Module Extension</a>
-							</li>
-							<li><a href="#orders">Orders Module Extension</a>
-							</li>
-							<li><a href="#variables">Email Variables</a>
-							</li>
+							<li><a href="#use">Use the App</a></li>
 					</ul>
 				</nav>
 			</div>
@@ -143,6 +138,7 @@
 					<p>The <a href="http://www.mozu.com" target="_blank">Mozu</a> Bronto Application integrates the benefits of Bronto with your Mozu account. After configuring and enabling the Mozu Bronto Application, you can access the functionality of the application using extensions that install in the Customers and Orders modules.</p>
 					<p>Application Features:</p>
                             <ul>
+							<li>High level of granularity for choosing which marketing and transactional emails to send to shoppers, as well as what information to send between Bronto and Mozu regarding shoppers and orders</li>
                             <li>Sync the marketing preferences for your shoppers between your Bronto and Mozu accounts.</li>
 							<li>Export shopper and order information from Mozu to Bronto to take advantage of follow-up email campaigns.</li>
 							<li>Enable Bronto email campaigns in Mozu, such as order confirmations, wishlist reminders, order abandonment follow-ups, and in-stock notifications.</li>
@@ -170,7 +166,7 @@
 							
                             
                             <h3 id="configacct">Obtain Your Bronto API Key</h3>
-                            <p>The Bronto SOAP API Key grants Mozu access to sync contacts from Bronto and send templated emails to shoppers. You need to note this key and enter it in Mozu:</p>
+                            <p>The Bronto SOAP API Key grants Mozu access to your Bronto contacts and email templates without requiring you to enter your Bronto credentials in Mozu. Note this API key and enter it in Mozu during configuration:</p>
                         <ol>
                             <li>Log in to your Bronto account.</li>
 							<li>Find the list of SOAP API Access Tokens for your account. At the time of this writing, you could find this list on the <b>Data Exchange</b> page.
@@ -193,7 +189,7 @@
 							<p>A Features tab displays.</p>
 							<ol>
 							<li>Open the <b>Features</b> tab.</li>
-							<li>Choose which features to enable for the Mozu Bronto Application. Many of the features require you to select a template for the emails sent to shoppers. If you want to add or edit these templates, you can do so from within your Bronto account.
+							<li>Choose which features to enable or disable for the Mozu Bronto Application. Many of the features require you to select a template for the emails sent to shoppers. If you want to add or edit these templates, you can do so from within your Bronto account.
 							<br><img src="features1.png" class="img-mozu"><br><img src="features2.png" class="img-mozu">
 							<ol>
 							<li><b>Enable Opt in/Out Sync from Mozu to Bronto</b>&mdash;Sends shopper information from Mozu to Bronto about shoppers who opted into email marketing during the checkout process.<br><br>If you do not enable this feature, Bronto classifies shoppers who receive non-transactional emails (wishlist reminder, welcome email, store credit) as "Onboarding Contacts", and classifies shoppers who receive transactional emails (in-stock notification, order confirmation, order shipment, RMA emails, password reset, and order abandonment) as "Transactional Contacts".<br><br></li>
@@ -230,7 +226,7 @@
                         
 					<section id="enable">
                             <h2>Enable the App</h2>
-                            <p>After configuration, enable the Mozu Bronto Application in Mozu.</p>
+                            <p>After configuration, enable the Mozu Bronto Application in Mozu to apply its functionality to your tenant.</p>
                             <ol>
                                 <li>On the Mozu Admin top bar, select <b>Settings</b> > <b>Applications</b>.</li>
                                 <li>Click <b>Mozu Bronto Application</b>.</li>
@@ -272,8 +268,10 @@
 				
 				
 				
-				<section id="customers">				
-                    <h2>Customer Module Extension: Sync Contacts, Send Wishlist Reminders, View Logs, and Preview Emails</h2>
+				<section id="use">
+<h2>Use the App</h2>
+<ul><li><a href="#customer">Customer Module Extension: Sync Contacts, Send Wishlist Reminders, View Logs, and Preview Emails</a></li><li><a href="#orders">Orders Module Extension: View Logs and Preview Order &amp; Return Emails</a></li><li><a href="#variables">Use API Variables to Customize Email Templates</a></li>				
+                    <h2 id="customer">Customer Module Extension: Sync Contacts, Send Wishlist Reminders, View Logs, and Preview Emails</h2>
 						<p>The Mozu Bronto Application adds an extension to the Customers module that allows you to sync contact information between Mozu and Bronto, manage wishlist reminders, view related logs, and preview emails sent to shoppers. <b>Note:</b> The pages that display in this extension depend on the features you enable during configuration.</p>
 						<p>To view this extension:</p>
 						<ol>
@@ -310,10 +308,8 @@
 						<li>Click <b>Test Email</b> to send the test email to the email address associated with your Mozu account.</li>
 						</ol>
 						
-				</section>
 				
-				<section id="orders">				
-                    <h2>Order Module Extension: View Logs and Preview Order &amp; Return Emails</h2>
+                    <h2 id="orders">Orders Module Extension: View Logs and Preview Order &amp; Return Emails</h2>
 						<p>The Mozu Bronto Application adds an extension to the Orders module that allows you to view order export logs and preview emails sent to shoppers. <b>Note:</b> The pages that display in this extension depend on the features you enable during configuration.</p>
 						<p>To view this extension:</p>
 						<ol>
@@ -342,7 +338,7 @@
 				</section>
 				
 				<section id="variables">
-				<h2>Email Variables</h2>
+				<h2>Use API Variables to Customize Email Templates</h2>
 				<p>Mozu exports an assortment of variables through the Mozu API related to shoppers and orders. You can use these variables to add useful content to your Bronto email templates. The syntax for using API variables in Bronto email templates is <span style="font-family:Courier New">%%#variable%%</span>. For example, if you are creating an email template to notify shoppers of a product that has come back into stock, you could enter the following text in the HTML for the Bronto In-Stock email template:<br><br><span style="font-family:Courier New">Good news! %%#productName%% is back in stock!</span><br><br>Also note that you must place email variables that end in <em>_#</em> within loops. For example:<br><br><span style="font-family:Courier New">{loop}%%#productImageUrl_#%%{/loop}</span><br><br>Refer to the following tables for the complete list of email variables you can use in Bronto, and to the Bronto Help &amp; Learning Center for information on customizing email templates with API variables.</p>
 				<p><a href="#tinstock">In-Stock Notification Email</a> <b>|</b> <a href="#torder">Order Abandoned, Confirmed, or Shipped</a> <b>|</b> <a href="#treturns">Returns</a> <b>|</b> <a href="#twelcome">Welcome Email</a> <b>|</b> <a href="#twish">Wishlist</a> <b>|</b> <a href="#treset">Password Reset</a></p>
 				
