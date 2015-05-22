@@ -196,7 +196,7 @@
 							<li>Choose which features to enable for the Mozu Bronto Application. Many of the features require you to select a template for the emails sent to shoppers. If you want to add or edit these templates, you can do so from within your Bronto account.
 							<br><img src="features1.png" class="img-mozu"><br><img src="features2.png" class="img-mozu">
 							<ol>
-							<li><b>Enable Opt in/Out Sync from Mozu to Bronto</b>&mdash;Sends shopper information from Mozu to Bronto about shoppers who opted into email marketing during the checkout process.</li>
+							<li><b>Enable Opt in/Out Sync from Mozu to Bronto</b>&mdash;Sends shopper information from Mozu to Bronto about shoppers who opted into email marketing during the checkout process.<br><br>If you do not enable this feature, Bronto classifies shoppers who receive non-transactional emails (wishlist reminder, welcome email, store credit) as "Onboarding Contacts", and classifies shoppers who receive transactional emails (in-stock notification, order confirmation, order shipment, RMA emails, password reset, and order abandonment) as "Transactional Contacts".<br><br></li>
 							<li><b>Enable Opt in/Out Sync from Bronto to Mozu</b>&mdash;Sends your Bronto contacts' marketing preferences from Bronto to Mozu.</li>
 							<li><b>Enable Contact Export</b>&mdash;Sends contact information from Mozu to Bronto about shoppers, including names, email addresses, and custom shopper attributes.</li>
 							<li><b>Enable Welcome Emails</b>&mdash;Sends a welcome email to new shoppers.</li>
@@ -241,7 +241,7 @@
 							<p>After enabling the Mozu Bronto Application, perform an initial export of shopper and order information from Mozu to Bronto.</p>
 							
 							<h3>Export Shopper Information to Bronto</h3>
-							<p>Export Mozu shopper information using the Customers module extension. The export adds existing Mozu shoppers and their attributes to your Bronto contacts. After the first export, the Mozu Bronto Application automatically sends information about new Mozu shoppers to Bronto if you enable the contact export feature in the configuration settings..</p>
+							<p>Export Mozu shopper information using the Customers module extension. The export adds existing Mozu shoppers and their attributes to your Bronto contacts. After the first export, the Mozu Bronto Application automatically sends information about new Mozu shoppers to Bronto if you enable the contact export feature in the configuration settings.</p>
 						<ol>
 						<li>In Mozu Admin, click the <b>Customers</b> module.</li>
 						<li>Click <b>Extensions</b> > <b>Bronto</b> > <b>Attributes</b>.</li>
@@ -294,6 +294,7 @@
 						
 						
 						
+						
 						<h3>Run Wishlist Reminder</h3>
 						<p>Use the <b>Wishlist</b> page in the Bronto extension to remind shoppers about products on their wishlist that are available for purchase. Click <b>Run Wishlist Reminder</b> to send an on-demand email reminder. If you enabled wishlist reminders during configuration, a new reminder will run once per day at 12:00 AM CST to shoppers who have had items in their wishlist for the specified idle period.</p>
 						
@@ -342,7 +343,7 @@
 				
 				<section id="variables">
 				<h2>Email Variables</h2>
-				<p>Mozu exports an assortment of information related to shoppers and orders using email variables. You can use these variables to add useful content to your Bronto email templates. Refer to the following tables for the complete list of email variables you can use in Bronto.</p>
+				<p>Mozu exports an assortment of variables through the Mozu API related to shoppers and orders. You can use these variables to add useful content to your Bronto email templates. The syntax for using API variables in Bronto email templates is <span style="font-family:Courier New">%%#variable%%</span>. For example, if you are creating an email template to notify shoppers of a product that has come back into stock, you could enter the following text in the HTML for the Bronto In-Stock email template:<br><br><span style="font-family:Courier New">Good news! %%#productName%% is back in stock!</span><br><br>Also note that you must place email variables that end in <em>_#</em> within loops. For example:<br><br><span style="font-family:Courier New">{loop}%%#productImageUrl_#%%{/loop}</span><br><br>Refer to the following tables for the complete list of email variables you can use in Bronto, and to the Bronto Help &amp; Learning Center for information on customizing email templates with API variables.</p>
 				<p><a href="#tinstock">In-Stock Notification Email</a> <b>|</b> <a href="#torder">Order Abandoned, Confirmed, or Shipped</a> <b>|</b> <a href="#treturns">Returns</a> <b>|</b> <a href="#twelcome">Welcome Email</a> <b>|</b> <a href="#twish">Wishlist</a> <b>|</b> <a href="#treset">Password Reset</a></p>
 				
 				<h3 id="tinstock">In-Stock Notification Email</h3>
