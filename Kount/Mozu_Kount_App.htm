@@ -120,19 +120,13 @@
 					<ul class="nav nav-stacked" >
 						<div class="side-heading">Table of Contents</div>
 							<li><a href="#intro">Welcome to Kount and Mozu</a></li>
-							<li><a href="#install">Install Kount</a>
-								<ul class="nav nav-stacked" >
-								 <li><a href="#configreq">Requirements</a></li>
-								</ul>
+							<li><a href="#install">Install the App</a>
 							</li>
 							<li><a href="#configapp">Configure the App</a>
-								<ul class="nav nav-stacked">
-									<li><a href="#configacct">Configure Kount Account Settings</a></li>
-									<li><a href="#configwidget">Configure the Kount Widget</a></li>
-								</ul>
+								
 							</li>
 							<li><a href="#enable">Enable the App</a></li>
-							<li><a href="#ens">Enable Event Notification System</a></li>
+							<li><a href="#use">Use the App</a></li>
 					</ul>
 				</nav>
 			</div>
@@ -141,14 +135,10 @@
                 <!-- Documentation content -->
 				<section id="intro">
 					<h2>Welcome to Kount and Mozu</h2>
-					<p><a href="http://www.kount.com">Kount</a> provides online services to determine the legitimacy and potential risk of shopper orders submitted through your storefront, specifically at the order level. The service reviews every submitted order for pertinent data including the shopper’s identity, the initial order submitted, the IP and origin location, and the device and browser to calculate a fraud score. Kount compares and assesses the risk of the order’s data and score per the rules you configure to identify legitimate and potentially fraudulent orders. </p>
-					<p><a href="http://www.mozu.com">Mozu</a> offers an app to leverage Kount’s rules and fraud detection to review your shoppers’ orders submitted through your storefront. All orders are determined as accepted, rejected, and failed according to the rules you configure and Kount’s services. </p>
-				</section>
-				<section id="install">
-					<h2 >Install Kount Application by Mozu on Your Tenant</h2>
-                        <p>After purchasing the Kount Application by Mozu, call your sales or professional services representative and request installation on your tenant. Mozu staff will install the app to your tenant, making it available for further configuration and usage in your storefront.</p>
-                        <p>This custom app integrates Kount with Mozu to support the following:</p>
-                        <ul>
+					<p><a href="http://www.kount.com" target="_blank">Kount</a> provides online services to determine the legitimacy and potential risk of shopper orders submitted through your storefront, specifically at the order level. The service reviews every submitted order for pertinent data including the shopper’s identity, the initial order submitted, the IP and origin location, and the device and browser to calculate a fraud score. Kount compares and assesses the risk of the order’s data and score per the rules you configure to identify legitimate and potentially fraudulent orders. </p>
+					<p><a href="http://www.mozu.com" target="_blank">Mozu</a> offers an app to leverage Kount’s rules and fraud detection to review your shoppers’ orders submitted through your storefront. All orders are determined as accepted, rejected, and failed according to the rules you configure and Kount’s services. </p>
+					<p>Application Features:</p>
+					<ul>
                             <li>Sync your Kount account with Mozu to review orders submitted through your storefront.</li>
 							<li>Validate shopper purchases against your Kount rules to determine fraud scores and legitimacy of the purchaser. </li>
                             <li>Update the order status as pass/fail/rejected per the calculated fraud score and your Kount rules in Mozu.</li>
@@ -161,30 +151,34 @@
 							<li>Kount calculates a fraud score for the order and returns the order's status as accepted, failed, or rejected. If rejected, the order data did not clearly calculate as accepted or failed. You can review and actively accept or reject these orders through Mozu.</li>
 							<li>Mozu notifies you when purchases have returned as failed or rejected. These orders do require your review and final actions to accept the payment or cancel the order due to potential fraudulent activity through the Orders section.</li>
 						</ul>
-                    <div id="configreq">  					   
-					<h3 >Configuration Requirements</h3></div>
-						 <p>To configure Kount to work seamlessly with Mozu, you need specific items installed and settings provided. These sections detail each step from requirements to final configuration for reviewing order for legitimacy and fraud potential.</p>
+				</section>
+				<section id="install">
+					<h2 >Install Kount Application by Mozu on Your Tenant</h2>
+                        <p>After purchasing the Kount Application by Mozu, call your sales or professional services representative and request installation on your tenant. Mozu staff will install the app to your tenant, making it available for further configuration and usage in your storefront.</p>
                         
-                        <p>You must meet the following criteria to configure the Kount app:</p>
-                        <ul>
-                            <li>You must have the Kount Application by Mozu installed into your tenant.</li>
-                            <li>You must have an active <a href="http://www.kount.com/">Kount</a> account and obtain your account ID. This ID may be designated as Volusion (the ID number) when accessing your account.</li>
-                            <li>You must create and configure your fraud score and purchasing rules in Kount.</li>
-							<li>You must have access to modify and update your storefront theme.</li>
-                        </ul>
+                        
+                    
                         
 				</section>
 				
 				<section id="configapp">				
                     <h2 >Configure the Application</h2>
-						<p>To integrate your Kount services with Mozu, you will modify the app settings using your Kount information and add a widget to your storefront theme. You may need to save information to add to these pages from Kount and within Mozu. Keep a notepad open as needed to help! </p>
+						<p>To integrate your Kount services with Mozu, review the configuration requirements to ensure you have everything you need to be successful before you begin, and then complete the steps in this section.</p>
+						<div id="configreq">  					   
+					<h3 >Configuration Requirements</h3></div>
+                        <ul>
+                            <li>You must have the Kount Application by Mozu installed into your tenant.</li>
+                            <li>You must have an active <a href="http://www.kount.com/" target="_blank">Kount</a> account and obtain your account ID. This ID may be designated as Volusion (the ID number) when accessing your account.</li>
+                            <li>You must create and configure your fraud score and purchasing rules in Kount.</li>
+							<li>You must have access to modify and update your storefront theme.</li>
+                        </ul>
 						<div id="configacct">
 						<h3 >Configure Kount Account Settings</h3></div>
                         <ol>
-                            <li>On the Mozu Admin top bar, select <b>Settings</b>&gt;<b>Applications</b>.</li>
-                            <li>Double-click <b>Kount</b>.</li>
+                            <li>On the Mozu Admin top bar, select <b>Settings</b> &gt; <b>Applications</b>.</li>
+                            <li>Click <b>Kount</b>.</li>
                             <li>Click the <b>Configuration</b> link to open configuration settings.</li>
-                            <li>On the Account Settings tab, enter your Kount account ID.</br>
+                            <li>On the <b>Account Settings</b> tab, enter your Kount account ID.</br>
 								<b>Note:</b> Need your ID? Click the Kount link on the Info tag and login to the opened page. The ID displays as a number, such as Volusion (12345).</li>
 							<img src="kount-info.png" class="img-mozu"/>
 							<li>Click <b>Save</b>. This step connects Mozu to your Kount account.</li>
@@ -209,14 +203,19 @@
 				
 				<section id="enable">
                     <h2 >Enable the Kount Application by Mozu</h2>
+					<p>After configuration, enable the Kount Application in Mozu to apply its functionality to your tenant:</p>
                         <ol>
-                            <li>On the Mozu Admin top bar, select <b>Settings</b>&gt;<b>Applications</b>.</li>
-                            <li>Double-click <b>Kount</b>.</li>
+                            <li>On the Mozu Admin top bar, select <b>Settings</b> &gt; <b>Applications</b>.</li>
+                            <li>Click <b>Kount</b>.</li>
                             <li>Click <b>Enable App</b> on the Kount page.</li>
                         </ol>
 				</section>
-				<section id="ens">
-                    <h2 >Enable Event Notification System </h2>
+				<section id="use">
+				<h2>Use the App</h2>
+				<ul>
+				<li><a href="#notify">Enable Event Notification System</a></li>
+				</ul>
+                    <h2 id="notify">Enable Event Notification System </h2>
 					<p>With the systems connected, you need to enable the Event Notification System (ENS) in your Kount account to synchronize data and enable actions with Mozu. On shopper purchases, Mozu processes the order and sends data to Kount, which calculates the fraud score and provides data back to Mozu.</p>
 					<p>While we highly recommend performing all order review and reporting directly through Mozu, you can use Kount services and sync any actions back into Mozu. Kount provides fraud score reviewing, management, and in-depth reports for purchases made through Mozu storefronts. You can review and approve the order within Kount, add history content, and update addresses. ENS syncs this data back into Mozu within a minute of entered changes.</p>
 					<p>Specific data changed within Kount syncs to Mozu including edits to the content, history, shipping and billing addresses, and state changes such as from review (R) to approve (A). If you change the state of an order in Kount, additional processes enact in Mozu when synced as if you had made that change directly in Mozu. </p>
@@ -242,7 +241,7 @@
 			<div class="pull-left footer__logo">
                 <a href="http://www.mozu.com" target="_blank"><img src="http://www.mozu.com/sites/all/themes/mozu_aurora/logo.png" style="padding-top:7px;"/></a>
             </div>
-			<div class="pull-right footer__icons" style="padding-right:40px;"><a href="KountApplicationbyMozu_ConfigurationGuide.pdf"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-file-pdf-o"></i></button></a><a href="http://www.mozu.com/ecommerce-app-center" target="_blank"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-code-fork"></i></button></a><a href="http://www.mozu.com/contact"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-comments-o"></i></button></a><a href="http://www.mozu.com/legal"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-copyright"></i></button></a>
+			<div class="pull-right footer__icons" style="padding-right:40px;"><a href="http://www.mozu.com/ecommerce-app-center" target="_blank"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-code-fork"></i></button></a><a href="http://www.mozu.com/contact"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-comments-o"></i></button></a><a href="http://www.mozu.com/legal"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-copyright"></i></button></a>
             </div>
 		</div>
         </footer>

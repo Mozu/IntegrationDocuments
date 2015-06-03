@@ -119,6 +119,7 @@
 				<nav class="bs-docs-sidebar" >
 					<ul class="nav nav-stacked" >
 						<div class="side-heading">Table of Contents</div>
+							<li><a href="#Jun2015">June 2015</a></li>
 							<li><a href="#Jan2015">January 2015</a></li>
 					</ul>
 				</nav>
@@ -126,11 +127,32 @@
                     
             <div class="col-md-9 content" >
                 <!-- Documentation content -->
+				<section id="Jun2015">
+					<h2>June, 2015</font></h2>
+					<p>Thanks for using the Kount Application by Mozu! Here's what's new in this version:</p>
+					<ul>
+					<li>Updated application to take advantage of the latest Kount API</li>
+					<li>Provided a new authentication mechanism</li>
+					<li>Bug fixes</li>
+					</ul>
+				</section>
+				
 				<section id="Jan2015">
 					<h2>January, 2015</h2>
+					<p>Initial release of the Kount Application by Mozu! This application enables you to:</p>
 					<ul>
-					<li>Added support for Event Notifications.</li>
-					</ul>
+                            <li>Sync your Kount account with Mozu to review orders submitted through your storefront.</li>
+							<li>Validate shopper purchases against your Kount rules to determine fraud scores and legitimacy of the purchaser. </li>
+                            <li>Update the order status as pass/fail/rejected per the calculated fraud score and your Kount rules in Mozu.</li>
+							<li>Provide orders to review and manage through Mozu with Kount’s final determination.</li>
+                        </ul>
+						<p>When a shopper purchases their order, the following occurs between Mozu and the Kount app:</p>
+						<ul>
+							<li>Mozu sends collected data to Kount including the browser used, desktop or device used to enter the order, order origin address, the IP of the purchasing system, and additional data as needed. </li>
+							<li>Kount verifies the legitimacy of the order against set rules on your Kount account. Kount determines the IP location, validity of the payment method, customer data, browser data, and further items.</li>
+							<li>Kount calculates a fraud score for the order and returns the order's status as accepted, failed, or rejected. If rejected, the order data did not clearly calculate as accepted or failed. You can review and actively accept or reject these orders through Mozu.</li>
+							<li>Mozu notifies you when purchases have returned as failed or rejected. These orders do require your review and final actions to accept the payment or cancel the order due to potential fraudulent activity through the Orders section.</li>
+						</ul>
 				</section>
 				
 						</div>
