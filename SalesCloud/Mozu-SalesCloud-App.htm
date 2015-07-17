@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="15" MadCap:lastHeight="488" MadCap:lastWidth="1168">
-    <head><title>Sales Cloud by Mozu</title>
+    <head><title>Mozu Salesforce Sales Cloud Application Configuration Guide</title>
         <meta name="author" content="Mozu" />
-        <meta name="description" content="User content for Sales Cloud by Mozu" />
+        <meta name="description" content="User content for Mozu Salesforce Sales Cloud Application" />
         <meta name="keywords" content="SalesCloud,Mozu" />
 		<link rel="shortcut icon" href="http://www.mozu.com/favicon.ico" />
 		
@@ -113,19 +113,19 @@
 		<!--Side Navigation TOC -->
 		<div class="row">
 		<div class="landing-title">
-			<h1>Sales Cloud Application by Mozu Configuration Guide</h1>	
+			<h1>Mozu Salesforce Sales Cloud Application Configuration Guide</h1>	
 		</div>
 			<div class="col-md-3" >
 				<nav class="bs-docs-sidebar" >
 					<ul class="nav nav-stacked" >
 						<div class="side-heading">Table of Contents</div>
 							<li><a href="#intro">Welcome to Sales Cloud and Mozu</a></li>
-							<li><a href="#install">Install Sales Cloud</a></li>
+							<li><a href="#install">Install the App</a></li>
 							<li><a href="#configapp">Configure the App</a>
-								<ul class="nav nav-stacked">
-									<li><a href="#config">Configure Sales Cloud</a></li>
-									<li><a href="#enable">Enable Sales Cloud</a></li>
-								</ul>
+								
+							</li>
+							<li><a href="#enable">Enable the App</a>
+								
 							</li>
 							<li><a href="#maporder">Map Order Status</a>
 								<ul class="nav nav-stacked" >
@@ -159,8 +159,8 @@
 					<p><a href="http://www.mozu.com">Mozu</a> offers an app to leverage your Sales Cloud account, services, workflows, and data. Through the app, you can sync all customer accounts and contacts, products, price lists, orders, and returns between Mozu and your current Sales Cloud account and features. Once integrated, all new customers and orders automatically transfer into Sales Cloud.</p>
 				</section>
 				<section id="install">
-					<h2 >Install Sales Cloud Integration by Mozu on Your Tenant</h2>
-                        <p>After purchasing the Sales Cloud Connector by Mozu, call your sales or professional services representative and request installation on your tenant. Mozu staff will install the app to your tenant, making it available for further configuration and usage in your storefront.</p>
+					<h2 >Install the Mozu Salesforce Sales Cloud Application on Your Tenant</h2>
+                        <p>After purchasing the Mozu Salesforce Sales Cloud Application, call your sales or professional services representative and request installation on your tenant. Mozu staff will install the app to your tenant, making it available for further configuration and usage in your storefront.</p>
                         <p>This custom app integrates Sales Cloud with Mozu to support the following:</p>
                         <ul>
                             <li>Authenticate your Sales Cloud account with Mozu to sync customer accounts and contacts, products, price lists, orders, and returns.</li>
@@ -178,9 +178,9 @@
 					<h3 id="configreq">Configuration Requirements</h3>
 					<p>To configure Sales Cloud to work seamlessly with Mozu, you need specific items installed and settings provided. This guide details each step from requirements to final configuration for managing shipments.</p>
                         
-                        <p>You must meet the following criteria to configure the Sales Cloud app:</p>
+                        <p>You must meet the following criteria to configure the Mozu Salesforce Sales Cloud Application:</p>
                         <ul>
-                            <li>You must have the Sales Cloud Application by Mozu installed into your tenant.</li>
+                            <li>You must have the Mozu Salesforce Sales Cloud Application installed into your tenant.</li>
                             <li>You must have access to modify and update your store settings in Sales Cloud.</li>
                             <li>You must have an active Sales Cloud account. You will authenticate this account to link both systems together. </li>
                         </ul>
@@ -191,11 +191,11 @@
 					<p>To integrate your Sales Cloud services with Mozu, you will authenticate your Salesforce account with the app and configure any settings as needed. Additional work may be needed in your Salesforce account outside of the app to complete mapping and export of data.</p>
 					<p>When your account is authenticated, the Info tab will display the maximum limit of daily API calls allowed by Salesforce and your currently available amount. </p>
 					<p>Once your accounts are authenticated, any current data in Mozu should be exported directly to Sales Cloud. Any new entries automatically populate into Sales Cloud, including products, customer accounts/contacts, and orders. See additional sections for this data export, mapping, and syncing.</p>
-					<h3 id="initialize">Configure Sales Cloud Connector in Mozu</h3>
+					<h3 id="initialize">Configure the Mozu Salesforce Sales Cloud Application</h3>
 					<p>To initialize the app, you add the API Key and link one site to one list. Mozu only supports one site per tenant at this time.</p>
                         <ol>
                             <li>On the Mozu Admin top bar, select <b>Settings > Applications</b>.</li>
-							<li>Double-click <b>Sales Cloud</b>.</li>
+							<li>Double-click <b>Salesforce Application</b>.</li>
 							<li>Click the <b>Configuration</b> link to open the app. </li>
 							<li>On the Info tab, you need to connect and authenticate your Salesforce Sales Cloud.</li>
 							<li>Click <b>Authenticate</b>. The Salesforce Account Login page opens. Enter your credentials to login and authenticate. If you do not have an account, you can create a new account through the same page.</li>
@@ -205,21 +205,14 @@
 							<img src="salescloud-info.png" class="img-mozu" /></li>
                         </ol>
 						
-					<h3 id="enable">Enable Sales Cloud Application by Mozu</h3>
+					<h2 id="enable">Enable the Mozu Salesforce Sales Cloud Application</h2>
 					
                         <ol>
                             <li>On the Mozu Admin top bar, select <b>Settings > Applications</b>.</li>
-							<li>Double-click <b>Sales Cloud</b>.</li>
-							<li>Click <b>Enable App</b> on the Info tab to enable the app.</li>
+							<li>Double-click <b>Salesforce Application</b>.</li>
+							<li>Click <b>Enable App</b>.</li>
                         </ol>
-					<p>The API Key grants access to sync contacts and send email campaigns. </p>
-					<h3 id="enableapp">Enable the Sales Cloud Connector App</h3>
-					<p>With the app initialized, you can enable the app:</p>
-                        <ol>
-                            <li>On the Mozu Admin top bar, select <b>Settings > Applications</b>.</li>
-							<li>Double-click <b>Salesforce Sales Cloud Connector</b>.</li>
-							<li>Click <b>Enable App</b> on the Sales Cloud Connector page. </li>
-                        </ol>
+					
 				</section>
 				
 				<section id="maporder">				
@@ -247,7 +240,7 @@
 						<p>You can map more than one Mozu status to the same Sales Cloud status.</p>
 						<ol>
                             <li>On the Mozu Admin top bar, select <b>Settings > Applications</b>.</li>
-                            <li>Double-click <b>Sales Cloud</b>.</li>
+                            <li>Double-click <b>Salesforce Application</b>.</li>
                             <li>Click the <b>Configuration</b> link to open the app. </li>
                             <li>Click the Order Status tab.</li>
                             <li>For each Mozu Order Status, select an available Salesforce Order Status. You can map multiple Mozu statuses to the same Sales Cloud status.<br/>
@@ -274,7 +267,7 @@
 						<p>You can map more than one Mozu status to the same Sales Cloud status.</p>
 						<ol>
                             <li>On the Mozu Admin top bar, select <b>Settings > Applications</b>.</li>
-                            <li>Double-click <b>Sales Cloud</b>.</li>
+                            <li>Double-click <b>Salesforce Application</b>.</li>
                             <li>Click the <b>Configuration</b> link to open the app. </li>
                             <li>Click the <b>Price Lists</b> tab.<br/>
 							<img src="salescloud-pricelist.png" class="img-mozu" /></li>
@@ -399,7 +392,7 @@
                 <div class="pull-left footer__logo">
                     <a href="http://www.mozu.com" target="_blank"><img src="http://www.mozu.com/sites/all/themes/mozu_aurora/logo.png" style="padding-top:7px;"/></a>
                 </div>
-                <div class="pull-right footer__icons" style="padding-right:40px;"><a href="SalesCloudAppforMozuConfigurationGuide.pdf"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-file-pdf-o "></i></button></a><a href="http://www.mozu.com/ecommerce-app-center" target="_blank"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-code-fork"></i></button></a><a href="http://www.mozu.com/contact"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-comments-o"></i></button></a><a href="http://www.mozu.com/legal"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-copyright"></i></button></a>
+                <div class="pull-right footer__icons" style="padding-right:40px;"><a href="http://www.mozu.com/ecommerce-app-center" target="_blank"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-code-fork"></i></button></a><a href="http://www.mozu.com/contact"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-comments-o"></i></button></a><a href="http://www.mozu.com/legal"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-copyright"></i></button></a>
                 </div>
             </div>
         </footer>
