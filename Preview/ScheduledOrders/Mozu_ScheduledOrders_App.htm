@@ -1,0 +1,310 @@
+﻿<!DOCTYPE html>
+<html>
+    <head><title>Scheduled Orders by Mozu</title>
+        <meta name="author" content="Mozu" />
+        <meta name="description" content="User content for Scheduled Orders by Mozu" />
+        <meta name="keywords" content="Scheduled Orders,Mozu" />
+		<link rel="shortcut icon" href="http://www.mozu.com/favicon.ico" />
+		
+		<!-- Required for Scrollspy -->
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/scrollspy.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/affix.js"></script>
+		<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+		
+		<!-- Mozu CSS developed by Mozu Docs -->
+		<link href="mozu-bootswatch.css" rel="stylesheet" type="text/css" />	
+		
+		<!-- Scrollspy active link script -->
+		<script>
+		$( document ).ready(function() {
+		$('body').scrollspy({
+			target: '.bs-docs-sidebar',
+			offset: 20
+		});
+		});        
+		</script>
+		
+		<!-- Anchor Ease Script -->
+		<script>
+		 $(function() {
+			  $('a[href*=#]:not([href=#])').click(function() {
+				if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') 
+			&& location.hostname == this.hostname) {
+
+				  var target = $(this.hash);
+				  target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+				  if (target.length) {
+					$('html,body').animate({
+					  scrollTop: target.offset().top - 75 //offsets for fixed header
+					}, 1000);
+					return false;
+				  }
+				}
+			  });
+			  //Executed on page load with URL containing an anchor tag.
+			  if($(location.href.split("#")[1])) {
+				  var target = $('#'+location.href.split("#")[1]);
+				  if (target.length) {
+					$('html,body').animate({
+					  scrollTop: target.offset().top - 75 //offset height of header here too.
+					}, 1000);
+					return false;
+				  }
+				}
+		});
+		</script>
+		
+		<!-- Affix Javascript -->
+		
+		<script>$(function(){
+ 
+			var stickyElement = '.bs-docs-sidebar', 
+			bottomElement = '.footer'; 
+			
+			if($( stickyElement ).length){
+			$( stickyElement ).each(function(){
+		   
+			var fromTop = $( this ).offset().top,
+		   
+			fromBottom = $( document ).height()-($( this ).offset().top + $( this ).outerHeight()),
+			
+			stopOn = $( document ).height()-( $( bottomElement ).offset().top)+($( this ).outerHeight() - $( this ).height());
+			
+			if( (fromBottom-stopOn) > 200 ){
+			
+			$( this ).css('width', $( this ).width()).css('top', 0).css('position', '');
+			
+			$( this ).affix({
+			offset: {
+			
+			top: fromTop,
+			
+			bottom: stopOn
+			}
+			
+			}).on('affix.bs.affix', function(){ $( this ).css('top', 0).css('position', ''); });
+			}
+			
+			$( window ).trigger('scroll');
+			});
+			}
+		});
+		</script>
+	</head>
+    <body>
+	<div id="main">
+	<div class="container">
+		<!-- Top Nav - Mozu -->
+			<nav class="navbar navbar-default navbar-fixed-top">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                        </button> <a href="#"><img src="logo-m-red-medium.png" style="margin-top:3px;"/></a></div>
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav navbar-right">
+							<li><a href="//developer.mozu.com/learn/mozu-concepts"><span>Mozu Concepts</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+			
+		<!--Side Navigation TOC -->
+		<div class="row">
+		<div class="landing-title">
+			<h1>Scheduled Orders Application by Mozu Configuration Guide</h1>	
+		</div>
+			<div class="col-md-3" >
+				<nav class="bs-docs-sidebar" >
+					<ul class="nav nav-stacked" >
+						<div class="side-heading">Table of Contents</div>
+							<li><a href="#intro">Welcome to Scheduled Orders and Mozu</a></li>
+							<li><a href="#install">Install and Configure</a></li>
+							<li><a href="#create">Create a Subscription Product</a></li>
+							<li><a href="#view">View Scheduled Orders</a></li>
+							<li><a href="#modify">Modify Scheduled Orders</a>
+								<ul class="nav nav-stacked">
+									<li><a href="#oneprice">One-Month Price Change</a></li>
+									<li><a href="#allprice">Subscription Price Change</a></li>
+									<li><a href="#duration">Change the Duration</a></li>
+									<li><a href="#cancel">Cancel a Subscription</a></li>
+								</ul>
+							</li>	
+					</ul>
+				</nav>
+			</div>
+                    
+            <div class="col-md-9 content" >
+                <!-- Documentation content -->
+				<section id="intro">
+					<h2>Welcome to Scheduled Orders and Mozu</h2>
+					<p>Scheduled Orders is a feature needed by merchants to create, process, and manage subscription orders. The Scheduled Orders App by Mozu provides a new subscription product and management capabilities for the completed scheduled orders. Subscription products charge shoppers with a recurring amount according to the set charge schedule for a selected duration. These products can include a membership service or released product on monthly increments, such as a digital or print magazine shipped every three months or t-shirt with a new design every month. Your company sets the duration and charge frequency then manages those orders directly through the Scheduled Orders app to update order information, change a customer charge for a special price (per month/frequency), cancel a subscription, and manage durations and renewals. All orders immediately update into the app once submitted from the storefront. </p>
+					<p>You create products using a new subscription option within the Mozu admin. Mozu Professional Services provides the subscription option which adds a selectable subscription checkbox, 1-12 month duration setting the billing frequency, and an autorenew option for renewing the subscription. When you create a new product, you select <b>Options</b> for subscription, Duration, and the autorenew option. As shoppers order the subscriptions, you manage the orders through the Scheduled Orders app in the Orders section of the Admin. </p>
+				</section>
+				<section id="install">
+					<h2 >Install and Configure the App on Your Tenant</h2>
+                        <p>After purchasing the Scheduled Orders Application by Mozu, call your sales or professional services representative and request installation on your tenant. Mozu staff will install and configure the app to your tenant, making it available for usage in your storefront.</p>
+                        <p>This custom app integrates Scheduled Orders with Mozu to support the following:</p>
+                        <ul>
+                            <li>Create subscription products using the new product options configured by Mozu Professional Services.</li>
+							<li>Sync your Scheduled Orders account with Mozu to manage all orders and subscription terms.</li>
+							<li>Edit the terms of the subscription by renewing, canceling, adding duration, and changing prices.</li>
+							<li>Update prices with a one-month different charge for special offers or the price for all recurring billing through the duration of the subscription.</li>
+							<li>Change the amount of subscriptions purchased and shopper account information on click.</li>
+							<li>Automatically send emails for the initial order of the subscription as a welcome to their subscription, a cancellation notice if cancelled, and when the subscription nears its end.</li>
+                        </ul>
+						<p>When an order is ready for a charge, the following occurs:</p>
+						<ul>
+						<li>Mozu redirects all orders with a product option of subscription to the Scheduled Orders app.</li>
+						<li>The app lists all orders with editable options for prices, charges, duration, frequency, cancelations and renewals.</li>
+						<li>The app offers a link to directly open and edit the customer record.</li>
+						<li>Mozu sends emails and fulfillment order information based on charges and shipments. The status of shipments depends on the type of subscription product you offer, be it digital, membership, or physical shippable item.</li>
+						</ul>
+						<p><b>Note:</b> Mozu Professional Services completes all configuration requirements, initialization, and enablement needed during installation. These steps include creating and configuring the product type and attribute for Subscription.</p>
+						
+				</section>
+				<section id="create">				
+                        <h2 >Create a Subscription Product</h2>
+						<p>Each subscription product includes the following attributes:</p>
+						
+                        <ul>
+                            <li><i>Subscription</i>:</li>
+								<ul>
+								<li>Product Type that opens additional attributes for a scheduled product.</li>
+								<li>Checkbox that indicates if the product is a subscription.</li>
+								</ul>
+							<li><i>Duration Type</i> is in months. It determines the full amount of months for the subscription, such as 3 months, 6 months, or a year. Additional options may be available at a later time. Duration can be 1 to 12 months.</li>
+							<li><i>Billing Frequency</i> sets the timing of recurring payments as monthly or duration. Duration pays for the entire subscription at once, up-front.</li>
+							<li><i>Autorenew</i> sets automatically renewal of the subscription at duration’s end. If selected, when the duration ends, the charges continue to process with the Orders Left updating with the new duration. The price for the subscription continues unless edited directly, regardless of a different price for the product in the catalog. If not enabled, a reminder email is sent to the shopper when the subscription nears its end.</li>
+                        </ul>
+						
+                        <p>You create a subscription product like others, with specific changes based on those additional attributes:</p>
+						<ol>
+						<li>Click <b>Catalog</b> and <b>Create New Product</b>.</li>
+						<li>Enter information for the product including <b>Name</b>, <b>Code</b>, and <b>Status</b>.</li>
+						<li>For <b>Product Type</b>, select <b>Subscription</b>.</li>
+						<li>For <b>Product Usage</b>, select <b>Configurable Product With Options</b>.</li>
+						<li>For <b>Price</b>, enter the recurring billing amount. This amount will be charge per the <b>Billing Frequency</b>.</li>
+						<li>Scroll down to Properties and select the <b>Subscription</b> checkbox. </li>
+						<li>Select a <b>Duration Type</b>, for the length of the full subscription. The default is Months.</li>
+						<li>Select the <b>Billing Frequency</b>: <b>Monthly</b> (amount per month) or <b>Duration</b> (entire amount up front).</li>
+						<li>Optional, select <b>AutoRenew</b> to automatically renew the membership. This renews the subscription automatically when the duration ends. When this occurs, the shopper continues to pay the same price (unless directly edited) and the Orders Left updates with the new duration.</li>
+						</ol>
+						
+                        
+				</section>
+				<section id="view">
+                        <h2 >View Scheduled Orders</h2>
+						<p>To view the incoming subscription orders, you open the app through the Mozu Orders page of the Admin. You can also open the app through <b>Settings</b> > <b>Applications</b>. Opening the app accesses the page with the following information:</p>
+						<img src="scheduledorders-subscriptions.png" class="img-mozu" />
+						<p>The page includes the following information:</p>
+                        <ul>
+                            <li><i>Order Number</i> that will link directly to the order.</li>
+							<li><i>Customer</i> name, number, and email address for accessing the account or sending emails.</li>
+							<li><i>Product Code</i> for the subscription product.</li>
+							<li><i>Subscription Price</i> captured and saved from the product code when ordered. This price does not change if the original product code price changes. To edit the price for the entire duration, you can edit this price by double-clicking.</li>
+							<li><i>Next Order Price</i> allows you to edit the price for the next payment. The original subscription price continues after this one-time price. Click to edit.</li>
+							<li><i>Quantity</i> indicates the amount of subscriptions purchased. Double-click to edit.</li>
+							<li><i>Next Order On</i> indicates the next scheduled charge for the subscription.</li>
+							<li><i>Duration</i> indicates the full amount of months for the subscription. Double-click to edit. The options include 1-12 months, allowing you to add just 1 month or many, not tied to the original subscription duration.</li>
+							<li><i>Orders Left</i> indicates the renaming months in this subscription. When renewed, this amount updates.</li>
+							<li><i>Notes</i> provides notes to edit and add for the subscription.</li>
+							<li><i>Cancel</i> provides a cancel button to end the subscription. If cancelled, the column displays Cancelled. If orders remain, a red Cancel button is available. If the subscription has ended, a greyed out Cancel displays.</li>
+                        </ul>
+				</section>
+				<section id="modify">
+                        <h2 >Modify Scheduled Orders</h2>
+                        <p>You can modify the subscription price, next order price, quantity, duration, and notes. At any time, you can add and edit notes to the subscription, only viewable to Admin users. </p>
+						
+						<h3 id="oneprice">One-Month Price Change</h3>
+						<p>If you want to provide a special price for one month in the subscription, you can use the Next Order Price. This option changes the next monthly charge for the subscription, but not all continuing charges after.</p>
+						<ol>
+						<li>Click the <b>Next Order Price</b>.</li>
+						<li>Enter a new price in the field and enter.</li>
+						<li>The shopper is charged the new amount only once, on the next order date. The continuing charges after that one charge returns to the amount under Subscription Price.</li>
+						</ol>
+						
+						<h3 id="allprice">Subscription Price Change</h3>
+						<p>You can change the price of the subscription for the entire remaining Orders Left through the Subscription Price. For example, you may change these prices for renewed subscriptions.</p>
+						<ol>
+						<li>Double-click the <b>Subscription Price</b>.</li>
+						<li>Enter a new price in the field and enter.</li>
+						<li>The shopper is charged this new amount for the remaining Orders Left.</li>
+						</ol>
+						
+						<h3 id="duration">Change the Duration</h3>
+						<p>You can add months to the full duration of a subscription. Even if you have durations on products set to 3, 6, and 12 month, the duration list provides 1 month increments to 12. A shopper on a 6 month subscription may only want to add 2 months, and so on. In this case, you would select 8 from the drop-down list.</p>
+						<ol>
+						<li>Double-click the <b>Duration</b>.</li>
+						<li>Select the new duration from the drop-down list. This amount must be more than the current duration listed.</li>
+						<li>The Orders Left updates with the added months. The shopper’s subscription will continue to that new end amount.</li>
+						</ol>
+						
+						<h3 id="cancel">Cancel a Subscription</h3>
+						<p>Orders with amounts in Orders Left can be cancelled. To cancel, you click the red Cancel button. Once cancelled, the Cancel column updates and no further charges are made. An email is sent to the shopper regarding the change.</p>
+						
+				</section>
+						</div>
+                    </div>
+                </div>
+           </div>
+		</div>
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="pull-left footer__logo">
+                    <a href="http://www.mozu.com" target="_blank"><img src="http://www.mozu.com/sites/all/themes/mozu_aurora/logo.png" style="padding-top:7px;"/></a>
+                </div>
+                <div class="pull-right footer__icons" style="padding-right:40px;"><a href="Scheduled_Orders_Application_by_Mozu_ConfigurationGuide.pdf"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-file-pdf-o"></i></button></a><a href="http://www.mozu.com/ecommerce-app-center" target="_blank"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-code-fork"></i></button></a><a href="http://www.mozu.com/contact"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-comments-o"></i></button></a><a href="http://www.mozu.com/contact"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-copyright"></i></button></a>
+                </div>
+            </div>
+        </footer>
+		
+	<!-- Back to top -->
+	<div class="scroll-top-wrapper ">
+    <span class="scroll-top-inner">
+        <i class="fa fa-2x fa-arrow-circle-up"></i>
+    </span>
+	</div>
+	<!-- Back to top - show hide -->
+	<script>
+ 
+	$(function(){
+	 
+		$(document).on( 'scroll', function(){
+	 
+			if ($(window).scrollTop() > 100) {
+				$('.scroll-top-wrapper').addClass('show');
+			} else {
+				$('.scroll-top-wrapper').removeClass('show');
+			}
+		});
+	});
+	</script>
+	<!-- Back to top - to top -->
+	<script>
+ 
+	$(function(){
+	 
+		$(document).on( 'scroll', function(){
+	 
+			if ($(window).scrollTop() > 100) {
+				$('.scroll-top-wrapper').addClass('show');
+			} else {
+				$('.scroll-top-wrapper').removeClass('show');
+			}
+		});
+	 
+		$('.scroll-top-wrapper').on('click', scrollToTop);
+	});
+	 
+	function scrollToTop() {
+		verticalOffset = typeof(verticalOffset) != 'undefined' ? verticalOffset : 0;
+		element = $('body');
+		offset = element.offset();
+		offsetTop = offset.top;
+		$('html, body').animate({scrollTop: offsetTop}, 500, 'linear');
+	}
+	</script>
+    </body>
+</html>

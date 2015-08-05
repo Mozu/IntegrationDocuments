@@ -1,0 +1,339 @@
+﻿<html>
+    <head><title>ShipWorks Connector by Mozu</title>
+        <meta name="author" content="Mozu" />
+        <meta name="description" content="User content for ShipWorks Connector by Mozu" />
+        <meta name="keywords" content="ShipWorks,Mozu" />
+		<link rel="shortcut icon" href="http://www.mozu.com/favicon.ico" />
+		
+		<!-- Required for Scrollspy -->
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/scrollspy.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/affix.js"></script>
+		<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+		
+		<!-- Mozu CSS developed by Mozu Docs -->
+		<link href="mozu-bootswatch.css" rel="stylesheet" type="text/css" />	
+		
+		<!-- Scrollspy active link script -->
+		<script>
+		$( document ).ready(function() {
+		$('body').scrollspy({
+			target: '.bs-docs-sidebar',
+			offset: 20
+		});
+		});        
+		</script>
+		
+		<!-- Anchor Ease Script -->
+		<script>
+		 $(function() {
+			  $('a[href*=#]:not([href=#])').click(function() {
+				if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') 
+			&& location.hostname == this.hostname) {
+
+				  var target = $(this.hash);
+				  target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+				  if (target.length) {
+					$('html,body').animate({
+					  scrollTop: target.offset().top - 75 //offsets for fixed header
+					}, 1000);
+					return false;
+				  }
+				}
+			  });
+			  //Executed on page load with URL containing an anchor tag.
+			  if($(location.href.split("#")[1])) {
+				  var target = $('#'+location.href.split("#")[1]);
+				  if (target.length) {
+					$('html,body').animate({
+					  scrollTop: target.offset().top - 75 //offset height of header here too.
+					}, 1000);
+					return false;
+				  }
+				}
+		});
+		</script>
+		
+		<!-- Affix Javascript -->
+		
+		<script>$(function(){
+ 
+			var stickyElement = '.bs-docs-sidebar', 
+			bottomElement = '.footer'; 
+			
+			if($( stickyElement ).length){
+			$( stickyElement ).each(function(){
+		   
+			var fromTop = $( this ).offset().top,
+		   
+			fromBottom = $( document ).height()-($( this ).offset().top + $( this ).outerHeight()),
+			
+			stopOn = $( document ).height()-( $( bottomElement ).offset().top)+($( this ).outerHeight() - $( this ).height());
+			
+			if( (fromBottom-stopOn) > 200 ){
+			
+			$( this ).css('width', $( this ).width()).css('top', 0).css('position', '');
+			
+			$( this ).affix({
+			offset: {
+			
+			top: fromTop,
+			
+			bottom: stopOn
+			}
+			
+			}).on('affix.bs.affix', function(){ $( this ).css('top', 0).css('position', ''); });
+			}
+			
+			$( window ).trigger('scroll');
+			});
+			}
+		});
+		</script>
+	</head>
+    <body>
+	<div id="main">
+	<div class="container">
+		<!-- Top Nav - Mozu -->
+			<nav class="navbar navbar-default navbar-fixed-top">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                        </button> <a href="#"><img src="logo-m-red-medium.png" style="margin-top:3px;"/></a></div>
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav navbar-right">
+							<li><a href="versionhistory.html"><span>Version History</span></a></li>
+                            <li><a href="//developer.mozu.com/learn/mozu-concepts"><span>Mozu Concepts</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+			
+		<!--Side Navigation TOC -->
+		<div class="row">
+		<div class="landing-title">
+			<h1>ShipWorks Connector by Mozu Configuration Guide</h1>	
+		</div>
+			<div class="col-md-3" >
+				<nav class="bs-docs-sidebar" >
+					<ul class="nav nav-stacked" >
+						<div class="side-heading">Table of Contents</div>
+							<li><a href="#intro">Welcome to ShipWorks and Mozu</a></li>
+							<li><a href="#install">Install ShipWorks</a>
+								<ul class="nav nav-stacked" >
+								 <li><a href="#configreq">Requirements</a></li>
+								</ul>
+							</li>
+							<li><a href="#configapp">Configure the App</a>
+								<ul class="nav nav-stacked">
+									<li><a href="#configacct">Configure ShipWorks Account Settings</a></li>
+									<li><a href="#configwidget">Configure the ShipWorks Widget</a></li>
+									<li><a href="#enable">Enable the App</a></li>
+								</ul>
+							</li>
+							<li><a href="#manage">Manage Orders</a></li>
+							<li><a href="#multiple">Send Multiple Tracking Numbers on a Single Order</a></li>
+					</ul>
+				</nav>
+			</div>
+                    
+            <div class="col-md-9 content" >
+                <!-- Documentation content -->
+				<section id="intro">
+					<h2>Welcome to ShipWorks and Mozu</h2>
+					<p><a href="http://www.shipworks.com">ShipWorks</a> provides services to download your approved orders and ship them from city to state to international shoppers. You can download your online submitted orders from Mozu to your local ShipWorks application. ShipWorks provides integrations with all major shipping carriers, custom invoices, pick lists, monthly reports, promotional emails, order shipment tracking, and much more to ensure your customers receive the items they ordered. You can also set up automation rules to streamline your shipping services for large amounts of orders.</p>
+					<p><a href="http://www.mozu.com">Mozu</a> offers an app to leverage your ShipWorks account and services. Through the app, you can download approved orders to ShipWorks automatically based on a set time. All members of your ShipWorks service can review and complete orders, with completed status updating back into Mozu! </p>
+				</section>
+				<section id="install">
+					<h2 >Install ShipWorks Connector by Mozu on Your Tenant</h2>
+                        <p>After purchasing the ShipWorks Application by Mozu, call your sales or professional services representative and request installation on your tenant. Mozu staff will install the app to your tenant, making it available for further configuration and usage in your storefront.</p>
+                        <p>This custom app integrates ShipWorks with Mozu to support the following:</p>
+                        <ul>
+                            <li>Sync your ShipWorks account with Mozu to review orders submitted through your storefront.</li>
+							<li>Continue your shipment fulfillment using your current ShipWorks account and services across your company. Create and print custom invoices, handle mailing lists and promotions, and send the orders directly to major shipping carriers using the rules and features without disrupting your business.</li>
+                            <li>If you are new to ShipWorks, create shipping automation rules, streamline shipping fulfillment, create custom invoices and email updates, and fulfill all shipments directly with major shipping carriers.</li>
+							<li>Update Mozu with completed and shipped status for approved orders.</li>
+                        </ul>
+						<p>When a shopper purchases their order, the following occurs between Mozu and the ShipWorks app:</p>
+						<ul>
+							<li>Mozu “downloads” all orders with an approved status to ShipWorks. Any orders with a pending status are not considered ready for shipment.</li>
+							<li>The download of orders occurs every set amount of minutes, configured in ShipWorks. The recommended amount of time is every 15 minutes.</li>
+							<li>When an order completes shipment, ShipWorks sends an order update to Mozu as completed.</li>
+						</ul>
+                        
+					<h3 id="configreq">Configuration Requirements</h3>
+					<p>To configure ShipWorks to work seamlessly with Mozu, you need specific items installed and settings provided. These sections detail each step from requirements to final configuration for managing shipments.</p>
+						 
+                        
+                        <p>You must meet the following criteria to configure the ShipWorks app:</p>
+                        <ul>
+                            <li>You must have the ShipWorks Application by Mozu installed into your tenant.</li>
+							<li>You must have ShipWorks software downloaded and installed on your system.</li>
+							<li>You must have access to modify and update your store settings in ShipWorks.</li>
+                            <li>You must have an active <a href="http://www.ShipWorks.com/">ShipWorks</a> account, ID, and store configured in your application. This ID is located in your <b>Manage Stores > Edit Store > Store Connection</b> tab in the Store Settings.</li>
+                            <li>You must generate a password from the ShipWorks app in Mozu to add in your ShipWorks store settings.</li>
+                        </ul>
+                        
+				</section>
+				
+				<section id="configapp">				
+                    <h2 >Configure the Application</h2>
+						<p>To integrate your ShipWorks services with Mozu, you will modify the app settings using your ShipWorks information and add a widget to your storefront theme. You may need to save information to add to these pages from ShipWorks and within Mozu. Keep a notepad open as needed to help! </p>
+						
+						<h3 id="configacct">Configure ShipWorks Connector in Mozu</h3>
+                        <ol>
+                            <li>On the Mozu Admin top bar, select <b>Settings</b>&gt;<b>Applications</b>.</li>
+                            <li>Double-click <b>ShipWorks</b>.</li>
+                            <li>Click the <b>Configuration</b> link to open info and settings.</li>
+                            <li>On Account Settings, enter your ShipWorks account <b>User Name</b>. This user name should be no more than 6 characters. The user name is strictly used by the Mozu app. It is not your login credentials for ShipWorks.</li>
+							<li>Click <b>Generate Password</b>. A unique password generates and displays on the tab.</li>
+							<li>Click <b>Save</b>.</li>
+							<li>You need to copy the user name, generated password, and ConfigURL provided on this tab for configuring ShipWorks, in the next section. This URL directs the ShipWorks widget to send and receive order and shipping data to the ShipWorks system.</li>
+							<img src="shipworks-settingtab.png" class="img-mozu" />
+                        </ol>
+                        
+						<h3 id="configwidget">Configure the ShipWorks Software</h3>
+                        <p>With the information you entered and copied (user name, password, and URL), you need to update the store settings in the ShipWorks software, separate from the app.</p>
+						
+						<p>Launch the ShipWorks local application and complete the following steps:</p>
+                        <ol>
+                            <li>Open your ShipWorks local software.</li>
+                            <li>Run the <b>Add Store Wizard</b> <br/>
+							<b>Note:</b> For specific information on adding ShipWorks stores, please review the ShipWorks user documentation.</li>
+                            <li>Depending on your ShipWorks software version, select <b>Mozu</b> or <b>Generic Module</b>.</li>
+							<li>On the Store Setup screen, enter the copied information from the Mozu app: user name, generated password, and Config URL.</li>
+							<li>Click <b>Next</b>. ShipWorks establishes a connection to Mozu through the ShipWorks Connector app, retrieving the name and address of your Mozu store.</li>
+                            <li>Complete the remaining steps of the <b>Add Store Wizard</b>.</li>
+						</ol>
+				
+                    <h3 id="enable">Enable the ShipWorks Application by Mozu</h3>
+                        <ol>
+                            <li>On the Mozu Admin top bar, select <b>Settings</b>&gt;<b>Applications</b>.</li>
+                            <li>Double-click <b>ShipWorks</b>.</li>
+                            <li>Click <b>Enable App</b> on the ShipWorks page.</li>
+                        </ol>
+				</section>
+				
+				<section id="manage">
+                    <h2 >Manage Orders</h2>
+						<p>You can download all Mozu orders with a status of “Processing” to your ShipWorks software. The ShipWorks Connector app manages all retrievals and downloads. You can then manage these orders directly through ShipWorks.</p>
+						<p>A status of “Processing” indicates the following display per order:</p>
+                        <ul>
+                            <li>Order Status as processing.</li>
+                            <li>Payment Status as Paid.</li>
+                            <li>FulFillment Status as NotFulfilled or PartiallyFulfilled. </li>
+                        </ul>
+						<p>If the Order Status is Accepted and Payment Status is Pending or Unpaid, you will need to review the payment situation to move the order into the proper status. Changing a Payment Status to “paid” will force the order into Processing. If the order displays as Completed/Paid/Fulfilled, it has already been managed and shipped via your ShipWorks and Mozu. </p>
+						<p><b>Note:</b> If the Payment Status is pending or unpaid, you may want to fully review the order prior to forcing it into a Processing status. These states could indicate the mailed check or other validation has not completed. If failed, you need to consult with the shopper on other payment options. We do not recommend forcing an order into processing if payment validation failed. If this is due to store credit or a return/exchange, handle according to your internal processes. </p>
+						<p>Prior to managing your orders:</p>
+						<ul>
+                            <li>Make sure all orders have a status of “Processing.”</li>
+                            <li>To move in-progress orders into ShipWorks, you must change the status to “Processing.”</li>
+                        </ul>
+						<p>To process orders in ShipWorks:</p>
+						<ol>
+						<li>New orders in Mozu have an Order Status of “Processing”. Only orders with status of “Processing” are available for download into Shipworks.  To modify order status in Mozu, you must review the payment and order status in the Orders page of the Admin.</li>
+						<li>In the ShipWorks software, click <b>Download</b> on the main menu. ShipWorks downloads only Mozu orders that became available since the last download and in the correct status.</li>
+						<li>Process these orders normally through ShipWorks. For more information, please refer to the <a href="http://www.shipworks.com/shipworks/help/ShipWorks-GettingStarted.pdf">ShipWorks user documentation</a>.</li>
+						<li>When complete, mark the order as “Shipped” in ShipWorks. Mozu syncs order data, updating the Order Status to Completed and adding a tracking number for the shipment.</li>
+						</ol>
+
+				</section>
+				
+				<section id="multiple">
+					<h2>Send Multiple Tracking Numbers on a Single Order</h2>
+					<p>Some packages and orders may require multiple packages with associated tracking numbers within one order. You can further configure ShipWorks to send detailed packaging information to Mozu. These details may include multiple tracking numbers, weight, and carrier information.</p>
+					<p>These instructions require you to disable the current Online Update and create a new action. You need the information from the ShipWorks Connector by Mozu app to complete these steps, specifically from the Account tab.</p>
+					<ol>
+					<li>Open your ShipWorks software.</li>
+					<li>Click <b>Manage > Actions</b>. The Action Manager screen opens.<br/> 
+					<img src="shipworks1.png" class="img-mozu" /></li>
+					<li>In the Actions Manager, select <b>Online Update</b> from the action list and click <b>Edit</b>. 
+					<br/> <img src="shipworks2.png" class="img-mozu" />
+					</li>
+					<li>Select the Settings tab. If the Mozu store is checked in the <b>Only run the action for these stores</b> list, uncheck the store checkbox and click <b>OK</b>.<br/> <img src="shipworks3.png" class="img-mozu" /></li>
+					<li>In the Actions Manager, click <b>New Action</b>.</li>
+					<li>For Action Name, enter <b>Mozu Shipment Update</b>.</li>
+					<li>Select <b>Action</b> in the left pane. For <b>When the following occurs</b>, select <b>A Filter's Content Changes</b> from the drop-down menu. New options display.</li>
+					<li>For <b>When an Order Enter</b>, select <b>Create Under</b> quick filter from the drop-down menu. This will open a screen for creating a filter with conditions. <br/> <img src="shipworks4.png" class="img-mozu" /></li>
+					<li>For Filter Name, enter <b>Mozu Shipment Filter</b>.</li>
+					<li>Click the <b>Add Condition</b> icon.  <img src="addcondition.png"  /></li>
+					<li>For the condition, click on the Order total link. Select <b>For Every Shipment</b> under <b>Contents</b>.<br/> <img src="shipworks5.png" class="img-mozu" /></li>
+					<li>Click <img src="addcondition.png"  />  next to <b>If All of the following Conditions met</b> under <b>For Every shipment in Order</b>.</li>
+					<li>Click on Provider Link and select Processed Status under Shipment. From the drop-down menu, select Processed.<br/> <img src="shipworks6.png" class="img-mozu" /></li>
+					<li>Click <b>OK</b> to save the filter.</li>
+					<li>In the Action Editor, click <b>Add Task</b>. A new <b>Run these tasks:</b> section displays. Select <b>Send a web request</b> from the drop-down menu.<br/> <img src="shipworks7.png" class="img-mozu" /></li>
+					<li>For <b>Send the request</b>, select <b>Using the results of processing a template</b> and <b>Post</b> from the drop-down menus.</li>
+					<li>For the <b>Template</b>, select <b>XML Source</b> from the drop-down menu.</li>
+					<li>For the <b>Request URL</b>, enter the Shipment URL from the ShipWorks Connector by Mozu.<br/> <img src="shipworks-settingtab.png" class="img-mozu" /></li>
+					<li>Select the <b>Use basic authentication</b> checkbox.</li>
+					<li>Add the user name and password you entered from the ShipWorks Connector by Mozu app, <b>Account</b> tab.<br/> <img src="shipworks9.png" class="img-mozu" /></li>
+					<li>Click <b>OK</b> to save.</li>
+					</ol>
+				
+				</section>
+				
+						</div>
+                    </div>
+                </div>
+           </div>
+		</div>
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="pull-left footer__logo">
+                    <a href="http://www.mozu.com" target="_blank"><img src="http://www.mozu.com/sites/all/themes/mozu_aurora/logo.png" style="padding-top:7px;"/></a>
+                </div>
+                <div class="pull-right footer__icons" style="padding-right:40px;"><a href="ShipWorksApplicationbyMozu_ConfigurationGuide.pdf"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-file-pdf-o "></i></button></a><a href="http://www.mozu.com/ecommerce-app-center" target="_blank"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-code-fork"></i></button></a><a href="http://www.mozu.com/contact"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-comments-o"></i></button></a><a href="http://www.mozu.com/contact"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-copyright"></i></button></a>
+                </div>
+            </div>
+        </footer>
+		
+	<!-- Back to top -->
+	<div class="scroll-top-wrapper ">
+    <span class="scroll-top-inner">
+        <i class="fa fa-2x fa-arrow-circle-up"></i>
+    </span>
+	</div>
+	<!-- Back to top - show hide -->
+	<script>
+ 
+	$(function(){
+	 
+		$(document).on( 'scroll', function(){
+	 
+			if ($(window).scrollTop() > 100) {
+				$('.scroll-top-wrapper').addClass('show');
+			} else {
+				$('.scroll-top-wrapper').removeClass('show');
+			}
+		});
+	});
+	</script>
+	<!-- Back to top - to top -->
+	<script>
+ 
+	$(function(){
+	 
+		$(document).on( 'scroll', function(){
+	 
+			if ($(window).scrollTop() > 100) {
+				$('.scroll-top-wrapper').addClass('show');
+			} else {
+				$('.scroll-top-wrapper').removeClass('show');
+			}
+		});
+	 
+		$('.scroll-top-wrapper').on('click', scrollToTop);
+	});
+	 
+	function scrollToTop() {
+		verticalOffset = typeof(verticalOffset) != 'undefined' ? verticalOffset : 0;
+		element = $('body');
+		offset = element.offset();
+		offsetTop = offset.top;
+		$('html, body').animate({scrollTop: offsetTop}, 500, 'linear');
+	}
+	</script>
+    </body>
+</html>

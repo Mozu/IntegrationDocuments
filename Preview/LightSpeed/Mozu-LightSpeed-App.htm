@@ -1,0 +1,287 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="15" MadCap:lastHeight="488" MadCap:lastWidth="1168">
+    <head><title>LightSpeed by Mozu</title>
+        <meta name="author" content="Mozu" />
+        <meta name="description" content="User content for LightSpeed by Mozu" />
+        <meta name="keywords" content="LightSpeed,Mozu" />
+		<link rel="shortcut icon" href="http://www.mozu.com/favicon.ico" />
+		
+		<!-- Required for Scrollspy -->
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/scrollspy.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/affix.js"></script>
+		<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+		
+		<!-- Mozu CSS developed by Mozu Docs -->
+		<link href="mozu-bootswatch.css" rel="stylesheet" type="text/css" />	
+		
+		<!-- Scrollspy active link script -->
+		<script>
+		$( document ).ready(function() {
+		$('body').scrollspy({
+			target: '.bs-docs-sidebar',
+			offset: 20
+		});
+		});        
+		</script>
+		
+		<!-- Anchor Ease Script -->
+		<script>
+		 $(function() {
+			  $('a[href*=#]:not([href=#])').click(function() {
+				if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') 
+			&& location.hostname == this.hostname) {
+
+				  var target = $(this.hash);
+				  target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+				  if (target.length) {
+					$('html,body').animate({
+					  scrollTop: target.offset().top - 75 //offsets for fixed header
+					}, 1000);
+					return false;
+				  }
+				}
+			  });
+			  //Executed on page load with URL containing an anchor tag.
+			  if($(location.href.split("#")[1])) {
+				  var target = $('#'+location.href.split("#")[1]);
+				  if (target.length) {
+					$('html,body').animate({
+					  scrollTop: target.offset().top - 75 //offset height of header here too.
+					}, 1000);
+					return false;
+				  }
+				}
+		});
+		</script>
+		
+		<!-- Affix Javascript -->
+		
+		<script>$(function(){
+ 
+			var stickyElement = '.bs-docs-sidebar', 
+			bottomElement = '.footer'; 
+			
+			if($( stickyElement ).length){
+			$( stickyElement ).each(function(){
+		   
+			var fromTop = $( this ).offset().top,
+		   
+			fromBottom = $( document ).height()-($( this ).offset().top + $( this ).outerHeight()),
+			
+			stopOn = $( document ).height()-( $( bottomElement ).offset().top)+($( this ).outerHeight() - $( this ).height());
+			
+			if( (fromBottom-stopOn) > 200 ){
+			
+			$( this ).css('width', $( this ).width()).css('top', 0).css('position', '');
+			
+			$( this ).affix({
+			offset: {
+			
+			top: fromTop,
+			
+			bottom: stopOn
+			}
+			
+			}).on('affix.bs.affix', function(){ $( this ).css('top', 0).css('position', ''); });
+			}
+			
+			$( window ).trigger('scroll');
+			});
+			}
+		});
+		</script>
+	</head>
+    <body>
+	<div id="main">
+	<div class="container">
+		<!-- Top Nav - Mozu -->
+			<nav class="navbar navbar-default navbar-fixed-top">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                        </button> <a href="#"><img src="logo-m-red-medium.png" style="margin-top:3px;"/></a></div>
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav navbar-right">
+						<li><a href="versionhistory.html"><span>Version History</span></a></li>
+							<li><a href="//developer.mozu.com/learn/mozu-concepts"><span>Mozu Concepts</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+			
+		<!--Side Navigation TOC -->
+		<div class="row">
+		<div class="landing-title">
+			<h1>LightSpeed Cloud Connector Configuration Guide</h1>	
+		</div>
+			<div class="col-md-3" >
+				<nav class="bs-docs-sidebar" >
+					<ul class="nav nav-stacked" >
+						<div class="side-heading">Table of Contents</div>
+							<li><a href="#intro">Welcome to LightSpeed and Mozu</a></li>
+							<li><a href="#install">Install LightSpeed</a></li>
+							<li><a href="#configapp">Configure the App</a></li>
+							<li><a href="#enable">Enable the App</a></li>
+							<li><a href="#exportmozu">Export Data from Mozu</a></li>
+							<li><a href="#importlightspeed">Export Data from LightSpeed</a></li>
+					</ul>
+				</nav>
+			</div>
+                    
+            <div class="col-md-9 content" >
+                <!-- Documentation content -->
+				<section id="intro">
+					<h2>Welcome to LightSpeed and Mozu</h2>
+					<p><a href="http://www.lightspeedpos.com/retail/pos-system/">LightSpeed Cloud</a> provides services to manage your inventory, point of sale, and reporting through your eCommerce storefront. The cloud version of the LightSpeed application and service integrates with the cloud, fully moving all management into the cloud space. Your customers can browse and purchase products from any storefront on any device using multiple forms of payment (cash, credit, debit, in-store credit, gift cards, and more). The services integrate with your inventory procedures, records, and sales processors to complete payments and sync inventory quantities.</p>
+					<p><a href="http://www.mozu.com">Mozu</a> offers an app to leverage LightSpeed Cloud services to manage your orders, sync your inventory, and extend your management systems. Through the app, you can map Mozu locations with LightSpeed shops, set import frequencies for Mozu, and manage data imports and exports. Exported data supports Products/Categories, Customers, and Discounts from Mozu into LightSpeed. After modifying your LightSpeed Cloud inventory configurations, you can import data into Mozu to sync orders and inventory amounts.  </p>
+					<p><b>Note:</b> This app only support LightSpeed Cloud of the LightSpeed products.</p>
+				</section>
+				<section id="install">
+					<h2 >Install LightSpeed Cloud Connector on Your Tenant</h2>
+                        <p>After purchasing the LightSpeed Cloud Connector by Mozu, call your sales or professional services representative and request installation on your tenant. Mozu staff will install the app to your tenant, making it available for further configuration and usage in your storefront.</p>
+                        <p>This custom app integrates LightSpeed Cloud with Mozu to support the following:</p>
+                        <ul>
+                            <li>Sync your LightSpeed Cloud account with Mozu to manage orders and inventory as shoppers make purchases through the storefront.</li>
+                            <li>Update contacts, orders, inventory, and products with categories between both systems to leverage features in Mozu and LightSpeed Cloud.</li>
+							<li>Allow you to continue using LightSpeed Cloud reporting and analytics against Mozu products and purchases.</li>
+                        </ul>
+						 
+						<p>When a shopper submits an order and completes payment, the following occurs between Mozu and the LightSpeed app:</p>
+						<ul>
+						<li>LightSpeed Cloud verifies and processes the order inventory amounts and payment information. If the inventory exists per the entered requests (in-store, online to deliver at home, etc) and the payment information processes, LightSpeed Cloud updates the order status and inventory amounts.</li>
+						<li>At the configured time and frequency per day, the completed order data is imported into Mozu from LightSpeed Cloud.</li>
+						<li>Mozu updates all inventory based on the configured locations, amounts, and purchase/delivery requirements. For example, inventory from a warehouse for online delivery versus in-store pickup from an in-store inventory of a brick and mortar storefront.</li>
+						<li>As data updates in Mozu, it is exported to LightSpeed Cloud including changes to products and categories, customer entries, and discounts. </li>
+						<li>LightSpeed Cloud updates all in-stock inventory per location, available discounts, and customer data for handling further orders through the storefront(s).</li>
+						</ul>
+						
+                        <h3 id="configreq">Configuration Requirements</h3>
+						 <p>To configure LightSpeed Cloud to work seamlessly with Mozu, you need specific items installed and settings provided. This guide details each step from requirements to final configuration for reviewing order for legitimacy and fraud potential.</p>
+                       
+                        <p>You must meet the following criteria to configure the LightSpeed Cloud Connector app:</p>
+                        <ul>
+                            <li>You must have the LightSpeed Cloud Connector by Mozu installed into your tenant.</li>
+                            <li>You must have an active <a href="https://cloud.merchantos.com/login.html">LightSpeed Cloud</a> account and obtain your LightSpeed Cloud API Key.</li>
+                        </ul>
+				</section>
+				<section id="configapp">				
+                        <h2 >Configure the Application</h2>
+						<p>To integrate your LightSpeed services with Mozu, you will modify the app settings using your LightSpeed information and add a widget to your storefront theme. You may need to save information to add to these pages from LightSpeed and within Mozu. Keep a notepad open as needed to help!</p>
+                        <ol>
+                            <li>In the Mozu Admin page of your store, select <b>Settings</b>&gt;<b>Applications</b>.</li>
+                            <li>Double-click <b>LightSpeed Connector</b>.</li>
+                            <li>Click the <b>Configuration</b> link to open configuration settings.</li>
+							<li>On the Settings tab, enter your LightSpeed Cloud API Key.<br/>
+							<b>Note:</b> Need your ID? Click the <a href="https://cloud.merchantos.com/login.html">LightSpeed Cloud</a> link on the tab, login, and copy the API Key.<br/>
+							<img src="lightspeed-settings.png" class="img-mozu"/></li>
+							<li>In the Map Site to LightSpeed Account section, select a <b>Mozu Site</b> and map it to a <b>LightSpeed Account</b> from the drop-down menus.</li>
+							<li>In the Map Mozu Locations to LightSpeed Shops, select the <b>Mozu Location</b> and map it to a LightSpeed Shop from the drop-down menus.</li>
+							<li>Selet the <b>Import Frequency for Sales Import</b>. This sets the amount of times per day LightSpeed exports data to Mozu. Options include Disabled, minutes 1 to 30, 1 hour, 8 hours, 12 hours, and Daily.</li>
+							<li>Click <b>Save</b>. This step connects and configures Mozu to your LightSpeed Cloud account.</li>
+						</ol>
+                        						
+				</section>
+				<section id="enable">
+                        <h2 >Enable LightSpeed Cloud Connector</h2>
+                        <ol>
+                            <li>On the Mozu Admin top bar, select <b>Settings > Applications</b>.</li>
+                            <li>Double-click <b>LightSpeed Connector</b>.</li>
+                            <li>Click <b>Enable App</b> on the LightSpeed page.</li>
+                        </ol>
+				</section>
+				<section id="exportmozu">
+                        <h2 >Export Data From Mozu to LightSpeed Cloud</h2>
+						<p>With your Mozu and LightSpeed Cloud accounts connected and configured, you should perform an export of data to LightSpeed. The data sets the available products, inventory amounts, and data for orders including customer records and available discounts.</p>
+						<p>Exports are not on a scheduled timeline. As you make changes to your catalog, customer records, and discounts, you should enact an export.</p>
+						<p>The tab displays the selectable data types to export, a manual export button, and a refresh option for the table. The table displays an entry of exported data per data type with the date/time, number of records exported, status, and a linked error log. If no errors occur, the link is 0 without data to display. The status options include in-progress, failed, and completed.</p>
+                        <ol>
+                            <li>On the Mozu Admin top bar, select <b>Settings > Applications</b>.</li>
+                            <li>Double-click <b>LightSpeed Connector</b>.</li>
+                            <li>Click the <b>Configuration link</b> to open configuration settings. </li>
+							<li>Click the <b>Data Export</b> tab.</li>
+							<li>Select what data you want to export to LightSpeed Cloud from Mozu: Products/Categories, Customers, and/or Discounts. We recommend selecting all options. </li>
+							<li>Click <b>Export Now</b>.</li>
+							<li>An export job begins for each data type, posting an entry in the table with the date/time, number of records exported, status, and a linked error log. <br/>
+							<img src="lightspeed-export.png" class="img-mozu"/></li>
+                        </ol>
+				</section>
+				<section id="importlightspeed">
+                        <h2 >Import Data From LightSpeed Cloud to Mozu</h2>
+						<p>The data imported from LightSpeed Cloud is maintained on an automated schedule. This schedule is determined by the frequency configuration in the Settings tab. The next scheduled import is displayed with a date and time. The imported data is for completed sales which updates order, customer, and inventory data in Mozu. </p>
+						<p>The table includes an entry for every import listed by date and time. The number of sales is listed. If no sales are imported, the amount is listed as 0. The status is displayed as in progress, failed, or completed. A linked report of errors provides details on each import. </p>
+						<p>You can import data at the scheduled time or on-demand by clicking <b>Import Now</b>.</p>
+                        <ol>
+                            <li>On the Mozu Admin top bar, select <b>Settings > Applications</b>.</li>
+                            <li>Double-click <b>LightSpeed Connector</b>.</li>
+                            <li>Click the Configuration link to open configuration settings. </li>
+							<li>Click the <b>Data Import</b> tab.</li>
+							<li>Click <b>Import Now</b>.</li>
+							<li>An import job begins from LightSpeed Cloud, posting an entry in the table with the date/time, number of sales, status, and a linked error log. <br/>
+							<img src="lightspeed-import.png" class="img-mozu"/></li>
+                        </ol>
+				</section>
+						</div>
+                    </div>
+                </div>
+           </div>
+		</div>
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="pull-left footer__logo">
+                            <a href="http://www.mozu.com" target="_blank"><img src="http://www.mozu.com/sites/all/themes/mozu_aurora/logo.png" style="padding-top:7px;"/></a>
+                </div>
+                <div class="pull-right footer__icons" style="padding-right:40px;">
+				<a href="LightSpeedCloudConnector_ConfigurationGuide.pdf"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-file-pdf-o"></i></button></a><a href="http://www.mozu.com/ecommerce-app-center" target="_blank"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-code-fork"></i></button></a><a href="http://www.mozu.com/contact"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-comments-o"></i></button></a><a href="http://www.mozu.com/contact"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-copyright"></i></button></a>
+                </div>
+            </div>
+        </footer>
+		
+	<!-- Back to top -->
+	<div class="scroll-top-wrapper ">
+    <span class="scroll-top-inner">
+        <i class="fa fa-2x fa-arrow-circle-up"></i>
+    </span>
+	</div>
+	<!-- Back to top - show hide -->
+	<script>
+ 
+	$(function(){
+	 
+		$(document).on( 'scroll', function(){
+	 
+			if ($(window).scrollTop() > 100) {
+				$('.scroll-top-wrapper').addClass('show');
+			} else {
+				$('.scroll-top-wrapper').removeClass('show');
+			}
+		});
+	});
+	</script>
+	<!-- Back to top - to top -->
+	<script>
+ 
+	$(function(){
+	 
+		$(document).on( 'scroll', function(){
+	 
+			if ($(window).scrollTop() > 100) {
+				$('.scroll-top-wrapper').addClass('show');
+			} else {
+				$('.scroll-top-wrapper').removeClass('show');
+			}
+		});
+	 
+		$('.scroll-top-wrapper').on('click', scrollToTop);
+	});
+	 
+	function scrollToTop() {
+		verticalOffset = typeof(verticalOffset) != 'undefined' ? verticalOffset : 0;
+		element = $('body');
+		offset = element.offset();
+		offsetTop = offset.top;
+		$('html, body').animate({scrollTop: offsetTop}, 500, 'linear');
+	}
+	</script>
+</html>

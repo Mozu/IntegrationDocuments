@@ -1,0 +1,1654 @@
+﻿<!DOCTYPE html>
+<html>
+    <head><title>Import Export Tool by Mozu</title>
+        <meta name="author" content="Mozu" />
+        <meta name="description" content="Guide to the Import Export Tool" />
+        <meta name="keywords" content="Import,Export,Mozu" />
+		<link rel="shortcut icon" href="http://www.mozu.com/favicon.ico" />
+		
+		<!-- Required for Scrollspy -->
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/scrollspy.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/affix.js"></script>
+		<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+		
+		<!-- Mozu CSS developed by Mozu Docs -->
+		<link href="mozu-bootswatch.css" rel="stylesheet" type="text/css" />	
+		
+		<!-- Scrollspy active link script -->
+		<script>
+		$( document ).ready(function() {
+		$('body').scrollspy({
+			target: '.bs-docs-sidebar',
+			offset: 20
+		});
+		});        
+		</script>
+		
+		<!-- Anchor Ease Script -->
+		<script>
+		 $(function() {
+			  $('a[href*=#]:not([href=#])').click(function() {
+				if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') 
+			&& location.hostname == this.hostname) {
+
+				  var target = $(this.hash);
+				  target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+				  if (target.length) {
+					$('html,body').animate({
+					  scrollTop: target.offset().top - 75 //offsets for fixed header
+					}, 1000);
+					return false;
+				  }
+				}
+			  });
+			  //Executed on page load with URL containing an anchor tag.
+			  if($(location.href.split("#")[1])) {
+				  var target = $('#'+location.href.split("#")[1]);
+				  if (target.length) {
+					$('html,body').animate({
+					  scrollTop: target.offset().top - 75 //offset height of header here too.
+					}, 1000);
+					return false;
+				  }
+				}
+		});
+		</script>
+		
+		<!-- Affix Javascript -->
+		
+		<script>$(function(){
+ 
+			var stickyElement = '.bs-docs-sidebar', 
+			bottomElement = '.footer'; 
+			
+			if($( stickyElement ).length){
+			$( stickyElement ).each(function(){
+		   
+			var fromTop = $( this ).offset().top,
+		   
+			fromBottom = $( document ).height()-($( this ).offset().top + $( this ).outerHeight()),
+			
+			stopOn = $( document ).height()-( $( bottomElement ).offset().top)+($( this ).outerHeight() - $( this ).height());
+			
+			if( (fromBottom-stopOn) > 400 ){
+			
+			$( this ).css('width', $( this ).width()).css('top', 0).css('position', '');
+			
+			$( this ).affix({
+			offset: {
+			
+			top: fromTop,
+			
+			bottom: stopOn
+			}
+			
+			}).on('affix.bs.affix', function(){ $( this ).css('top', 60).css('position', ''); });
+			}
+			
+			$( window ).trigger('scroll');
+			});
+			}
+		});
+		</script>
+	</head>
+    <body>
+	<div id="main">
+	
+		<!-- Top Nav - Mozu -->
+			<nav class="navbar navbar-default navbar-fixed-top">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                        </button> <a href="#"><img src="logo-m-red-medium.png" style="margin-top:3px;"/></a></div>
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav navbar-right">
+						<li><a href="versionhistory.html"><span>Version History</span></a></li>
+							<li><a href="//developer.mozu.com/learn/mozu-concepts"><span>Mozu Concepts</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+			
+		<!--Side Navigation TOC -->
+		<div class="container">
+		<div class="row">
+		<div class="landing-title">
+			<h1>Mozu Import/Export Tool Guide </h1>	
+		</div>
+			<div class="col-md-3" style="margin-top: 60px;">
+				<nav class="bs-docs-sidebar" >
+					<ul class="nav nav-stacked" >
+						<div class="side-heading">Table of Contents</div>
+							<li><a href="#intro">Welcome to the Mozu Import/Export Tool</a></li>
+							<li><a href="#data">Understanding Your Data</a></li>
+							<li><a href="#configapp">Install and Access the Tool</a>
+								<ul class="nav nav-stacked">
+									<li><a href="#access">Access the Tool</a></li>
+								</ul>
+							</li>
+							<li><a href="#preparedata">Preparing Data for Import</a>
+								<ul class="nav nav-stacked">
+									<li><a href="#downlandtemplate">Download a Template</a></li>
+									<li><a href="#mozuprep">Required Mozu Preparation</a></li>
+									<li><a href="#dataprep">Data Preparation</a></li>
+									<li><a href="#sampletemplate">Create and Use a Sample Template</a></li>
+								</ul>
+							</li>
+							<li><a href="#importexcel">Importing Data from Excel Templates</a></li>
+							<li><a href="#exportexcel">Exporting Data to Excel Templates</a></li>
+							<li><a href="#downloadfiles">Downloading Files</a></li>
+							<li><a href="#viewlogs">Viewing Logs</a></li>
+							<li><a href="#producttemplate">Product Template</a>
+							<ul class="nav nav-stacked">
+									<li><a href="#attribs">Attributes Sheet</a></li>
+									<li><a href="#attribvalues">AttributeValues Sheet</a></li>
+									<li><a href="#prodtypes">ProductTypes Sheet</a></li>
+									<li><a href="#prodtypesattribs">ProductTypeAttributes Sheet</a></li>
+									<li><a href="#categories">Categories Sheet</a></li>
+									<li><a href="#prod">Products Sheet</a></li>
+									<li><a href="#prodcatalogs">ProductCatalogs Sheet</a></li>
+									<li><a href="#prodoptions">ProductOptions Sheet</a></li>
+									<li><a href="#prodextras">ProductExtras Sheet</a></li>
+									<li><a href="#prodbundles">ProductBundles Sheet</a></li>
+									<li><a href="#prodimgs">ProductImages Sheet</a></li>
+									<li><a href="#location">LocationInventory Sheet</a></li>
+									<li><a href="#discounts">Discounts Sheet</a></li>
+								</ul>
+							</li>
+							<li><a href="#contactstemplate">Contacts Template</a>
+							<ul class="nav nav-stacked">
+									<li><a href="#custaccts">CustomerAccounts Sheet</a></li>
+									<li><a href="#custcontacts">CustomerContacts Sheet</a></li>
+								</ul>
+							</li>
+					</ul>
+				</nav>
+			</div>
+                    
+            <div class="col-md-9 content" >
+                <!-- Documentation content -->
+				<section id="intro">
+					<h2>Welcome to the Mozu Import/Export Tool</h2>
+					<p>The Mozu Import/Export Tool gives you the ability to import and export data within the Mozu Admin. Merchants and Mozu staff use this tool to test data content, populate a new store with data, and transfer products and contacts from a current system into a newly purchased Mozu system. All import jobs take an Excel spreadsheet, using a provided template dynamically created for the specific tenant, and populate the associated Master Catalogs and Contacts with data, settings, preferences, and more. The templates update with new columns and content every time you click the link to download. You can also export data from Mozu for use with third party applications or to edit and reimport. </p>
+					<p>Every job is tracked and listed in logged lists. All files used, including the import file and exported data, is stored on the server. A log tracks every file creation and usage linked with a duration limit of 3 days. Any data over 3 days is automatically purged from the Logs according to the date/time.</p>
+					<p>Currently the import options include Products (with Categories) and Contacts. Export supports Products, Contacts, and Orders. Future development will expand the offering. When you import data, you overwrite any matching data existing in Mozu if edits exist or add new data if the IDs/ProductCodes do not exist.</p>
+				</section>
+				<section id="data">
+					<h2 >Understanding Your Data</h2>
+                        <p>Prior to learning how to use this tool or populating Excel sheets with content, you should plan and prepare your data transfer into Mozu. </p>
+                        <p>Data is ever changing and interconnects between objects throughout the enterprise application. Adding an app, creating new product attributes, adding a new warehouse or store location, expanding shipping methods, creating multiple master catalogs can all affect the amount of interconnections your data will have. These additions can also add options and data fields to select, add content to, or toggle per products, contact, order, and so on within the Admin.</p>
+                        <p>As your data expands in content and complexity, Mozu provides an extensible system and process for managing all data. The Mozu Import/Export app is a key tool for batch processing large amounts of new and edited data entries through the use of Microsoft Excel spreadsheets. Mozu provides Excel templates modeled on the data you have entered into your account and database. Of course, as you continue to extend your data models, options, and features, the templates dynamically update on-download with current system data.</p>
+						<p>When you import data, you can continue this process exporting data, updating the template, and importing the content from the updated template back into Mozu. Further sections detail the process.</p>
+						 
+				</section>
+				<section id="configapp">				
+                        <h2 >Install and Access Mozu Import/Export </h2>
+                        
+                        <p>The Import/Export Tool by Mozu if provided for free. Call your sales or professional services representative and request installation on your tenant. Mozu staff will install the app to your tenant, making it available for immediate usage in the Admin.</p>
+						<p>Mozu staff and partners also use this tool to aid with integrating products and contacts from your current business databases into your new Mozu system. The tool enables Mozu services and partners to efficiently move a new enterprise business or company onto the platform.</p>
+						<p>The app does not require any further configuration. All features of the tool are for actively importing and exporting data. Each feature includes template files to use for adding your content for imports. You can also use exported files for editing and importing your data.</p>
+						 
+                        <h3 id="access">Access the Tool</h3>
+						<p>To open and use the tool, you use the Configuration link.</p>
+                        <ol>
+                            <li>On the Mozu Admin top bar, select Settings>Applications.</li>
+                            <li>Double-click Import/Export.</li>
+                            <li>Click the Configuration link to open configuration settings.<br />
+							Note: You do not need to configure any settings. The Configuration link opens the app to perform all imports and exports.
+							</li>
+                        </ol>
+						<img src="import1.png" class="img-mozu"/>
+						 
+                       
+				</section>
+				<section id="preparedata">
+                        <h2 >Creating Data for Import</h2>
+                        <p>Prior to importing data, you do need to prepare Mozu with required data. These additions affect the dynamically created Excel Template you use to import data. For details on the required data items, see Required Mozu Preparation. The overall process for a data import is as follows:</p>
+						
+						<img src="process.png" class="img-mozu"/>
+						
+						<p>When planning your import of data records from your current systems or to batch process all of your products into Mozu, you should use the Excel template files provided through the tool. Each file includes multiple sheets with columns for each piece of data. You download the files from the Import tab in the tool. </p>
+						<div class="panel panel-info">
+							<div class="panel-heading">Need an example to work with? You can add a product or contact directly through the Mozu Admin and run an export job. See the <a href="http://mozu.github.io/MozuDocumentation/GettingStarted/GettingStartedwithMozuCatalog.pdf">Mozu Getting Start Guide for Catalogs</a> for details. The exported data is in an Excel file using this same template! Use that sample record to build all of your other records into that file and import.</div>
+						</div>
+						<p>The Import tab provides a drop-down menu for selecting Products and Contacts:</p>
+						<ul>
+						<li>Product records include product and category data. This data matches all product data from your current system or batches of newly added products into Mozu. Each product record should include category information.</li>
+						<li>Contacts include customer accounts and contact information. This data is used by Mozu for all shopper accounts and contacts to manage orders and contact information for subscribed messages, promotional emails, newsletters, and more. </li>
+						</ul>
+						<p>The process for adding data can be repeated as you add more data, options, and apps. Every time you export data for products and contacts, the template sheets update with columns for new attributes, product types, catalogs, and more. You can edit these templates to add data to existing products/contacts and add new products/contacts. As you import, current products and contacts overwrite with the new data and new entries are generated. The next export will include these new entries and updates. This process provides a seamless cycle for batch processing multiple entries as needed for an extensive enterprise business.</p>
+						<img src="export-import-roadmap1.png" class="img-mozu"/>
+						<p class="text-info"><i>An example of the cycle of export to edit to import of data using Products.</i></p>
+						
+						<h3 id="downloadtemplate">Download a Template</h3>
+						<ol>
+                            <li>With the tool open, click the <b>Import</b> tab.</li>
+                            <li>Select <b>Products</b> or <b>Contacts</b> from the drop-down menu.</li>
+                            <li>Click the link for the template: Product template or Contacts template.<br />
+							<img src="import-product.png" class="img-mozu"/>
+							</li>
+							<li>The file opens with Microsoft Office Excel if you have the application (version 2010 or higher recommended).</li>
+                        </ol>
+						<h4>Sample Contacts Template</h4>
+						<p>Sample Contacts template. This template changes with every download to match all added and modified fields for customer accounts and contacts. To edit the files, you must <b>Enable Editing</b>.</p>
+						<img src="excel-template-contacts.png" class="img-mozu"/>
+						<h4>Sample Products Template</h4>
+						<p>Sample Products template. This template changes with every download to match all added and modified fields for attributes, product types, added apps, and more. To edit the files, you must <b>Enable Editing</b>.</p>
+						<img src="excel-template-products.png" class="img-mozu"/>
+						
+						<h3 id="mozuprep">Required Mozu Preparation</h3>
+						<p>Prior to using a template or exporting data, you will need to set up your Mozu tenant with the following prior to using the tool and templates:</p>
+						<ul>
+						<li>Master Catalog(s): When adding or editing products, you will be associating them to master catalogs. You need 1 or more Master Catalogs.</li>
+						<li>Catalog(s): You need 1 or more Catalogs.</li>
+						<li>Locations: Products must be associated with a location. Product inventory amounts per product code will reference a location code. </li>
+						<li>Shipping: All shipping methods and options should be added to the system, such as flat rate, live rate, and free.</li>
+						</ul>
+						<p>Each of these additions and edits will affect columns and options within all templates downloaded or exported from Mozu.</p>
+						
+						<h3 id="dataprep">Data Preparation</h3>
+						<p>Each spreadsheet includes a set of sheets accessible along the bottom of the Excel spreadsheet. Select the sheet and enter data per column. Each row represents a product or contact. Each column is the database data in Mozu. </p>
+						<p>You can use these templates to batch process new or edit existing products and contacts. You can also use these templates to transfer data from a current database from your current systems into the new Mozu system. </p>
+						<p>During an import, the system validates only for unique values for specific entries within the sheets. If an ID or ProductCode is reused, and edits exist, content in Mozu will be overwritten from the Excel content. When entering data into the spreadsheets, the following values must be unique:</p>
+						<ul>
+						<li>ID for contacts must be unique, located on the CustomerAccounts and CustomerContacts sheets in the Contacts template. This will also be used as externalId for accounts.</li>
+						<li>ProductCode for products must be unique across all sheets, Products template.</li>
+						<li>CategoryCode for categories must be unique on the Categories sheet in the Products template.</li>
+						<li>CategoryName for categories must be unique on the Categories sheet in the Products template.</li>
+						<li>AttributeName and AttributeCode for attributes must be unique on the Attributes and AttributeValues sheets in the Products template.</li>
+						<li>If an attribute is a list, each list value must be unique on the Attributes and AttributeValues sheets in the Products template.</li>
+						</ul>
+						<p>When entering descriptions and lengthy textual content, be aware of any HTML tags and formatting. The tool and process does not strip any characters, tags, punctuation, or code from your content. If you strip all code and tags prior to adding the content to the Excel sheet, you may sidestep any issues that may occur with displayed formatting later. All content for your products and contacts is styled by theme templates, pages, and CSS through the SiteBuilder in Mozu. </p>
+						
+						<h3 id="sampletemplate">Create and Use a Sample Template</h3>
+						<p>The best way to see data in action may be to directly add a product or contact into Mozu then export the data. All exports use the templates provided for imports. This also helps you map any product, category, and contact data fields from a current database and system to the Mozu system. </p>
+						<p>To create a sample template with populated data:</p>
+						<ol>
+						<li>Open your Mozu account and enter the data for a product or contact into the system. </li>
+						<li>Open the Mozu Import/Export tool through Settings > Applications.</li>
+						<li>Click the Export tab.</li>
+						<li>Select Products or Contacts from the drop-down menu. </li>
+						<li>Optional, enter a single email address for notifications. </li>
+						<li>Click Export. A job starts exporting data into an Excel file.<br />
+						<img src="excel-template-contacts.png" class="img-mozu"/>
+						</li>
+						<li>To download and use the file, click the <b>Downloads</b> tab.</li>
+						<li>Click the link to the exported content file based on the type of data chosen and the date/time.</li>
+						<li>The file opens in Excel for editing.<br />
+						<img src="excel-export-products.png" class="img-mozu"/></li>
+						</ol>
+						<p>The entered data for the product or contact displays in the sheets to browse and map to the data you want to enter. You can view how attributes and values are formatted by Mozu for developing your data back into the sheet. This gives you a blueprint for data and a better plan for the templates.</p>
+				</section>
+				<section id="importexcel">
+					<h2>Importing Data from Excel Templates</h2>
+					<p>After creating and editing your data in the Excel templates, you can import the data into Mozu. The jobs are scheduled, allowing up to 5 jobs at a time. All scheduled jobs display in order of entry on the Jobs tab.</p>
+					<p>The file names for the import Excel spreadsheets can be anything, though recommend not using spaces. You may want to name the file as Products or Contacts, with meaningful information to better know what version and content is imported. The name is important for viewing all files in the Downloads tab. Every imported file is saved for downloading and reimporting as needed.</p>
+				
+						<div class="panel panel-info">
+							<div class="panel-heading">When importing data, you can overwrite current products and contacts in Mozu. The overwriting of data can help for large batch processing of edits and changes.</div>
+						</div>
+					<ol>
+					<li>Open the Mozu Import/Export tool through <b>Settings > Applications</b>.</li>
+					<li>Click <b>Import</b>.</li>
+					<li>Select <b>Products</b> or <b>Contacts</b> from the drop-down menu.</li>
+					<li>Click <b>Browse</b> and navigate to your Excel file to upload. </li>
+					<li>Optional, enter 1 email address for receiving notifications regarding the import jobs.</li>
+					<li>Click <b>Import</b>.</li>
+					<li>The job schedules to begin, immediately if it is the first. Click <b>Jobs</b> to view the list of scheduled imports and exports.</li>
+					</ol>
+					<p>If an error occurs, view the log in the Job Logs tab. See <a href="#viewlogs">Viewing Logs</a>. </p>
+				
+				</section>
+				
+				<section id="exportexcel">
+					<h2>Exporting Data to Excel Templates</h2>
+					<p>You can export Product, Contact, and Order data to Excel templates from Mozu. This feature provides samples content for files to edit when first adding this data. You can also export to edit existing data to batch process large amounts of changes. Third party applications can also use this data for reporting and administrative functions.</p>
+						<div class="panel panel-info">
+							<div class="panel-heading">You can export data for products and contacts to later import as a form of data backup. These exports can be imported as needed. Be advised, importing data matching existing data will be overwritten by the Excel sheet content.</div>
+						</div>
+					<ol>
+					<li>Open the Mozu Import/Export tool through <b>Settings > Applications</b>.</li>
+					<li>Click <b>Export</b>.</li>
+					<li>Select <b>Products</b> or <b>Contacts</b> from the drop-down menu.</li>
+					<li>Click <b>Browse</b> and navigate to your Excel file to upload. </li>
+					<li>Optional, enter 1 email address for receiving notifications regarding the import jobs.</li>
+					<li>Click <b>Export</b>.</li>
+					<li>The job schedules to begin, immediately if it is the first. Click <b>Jobs</b> to view the list of scheduled imports and exports.</li>
+					</ol>
+					<p>If an error occurs, view the log in the Job Logs tab. See <a href="#viewlogs">Viewing Logs</a>. </p>
+				</section>
+				
+				<section id="downloadfiles">
+					<h2>Downloading Files</h2>
+					<p>The Download tab provides a list of downloadable Excel files saved from imports and generated for exports. The File Name is the name of the file you imported or exported. The Type indicates if the file contains Contacts or Products. The Date/Time indicates when the file was uploaded or generated. The Action provides a link to download the file. To download the file, click <b>Download</b>.</p>
+					<p><b>Note:</b> After 3 days, files in the Downloads tab are deleted for storage purposes. If you want to keep these files, download them to your computer.</p>
+					<img src="downloads.png" class="img-mozu"/>
+					<p class="text-info"><i>The Downloads tab provides a list of both imported and exported files.</i></p>
+				</section>
+				<section id="viewlogs">
+					<h2>Viewing Logs</h2>
+					<p>Every job for importing and exporting data saves, logs are saved to the Job Logs tab. When a job completes, an entry is provided. If the job included an email address, an email sends indicating the job completed. The logs detail how many data objects of every time were imported or exported, the status, and a date/time per line item. Errors include a CorrelationID to search for through the Dev Center console help.</p>
+					<p>The table of content includes the log type, date/time the job finished, the status (completed/interrupted/failed), and links to view the log or download the file.</p>
+					<ol>
+					<li>Open the Mozu Import/Export tool through <b>Settings > Applications</b>.</li>
+					<li>Click <b>Job Logs</b>.</li>
+					<li>Locate the job you want to view.</li>
+					<li>Click <b>View Log</b>.</li>
+					<li>For any errors, copy the CorrelationID for the error.</li>
+					<li>Visit the Mozu Dev Center and login if you are not automatically logged in.</li>
+					<li>Click <b>Console</b>.</li>
+					<li>From the <b>Help</b> drop-down on the far right, select <b>Error Log Information</b>.</li>
+					<li>On the Error Log Information page, enter the copied CorrelationID in the field and press your enter key. Any captured data for that ID will display in the table.<br />
+					<img src="correlationerror.png" class="img-mozu"/></li>
+					</ol>
+				</section>
+				<section id="producttemplate">
+					<h2>Product Template</h2>
+					<p>The following information gives a description of each column in the sheets of the Product import/export template. You can use this information to map data for your own products to match Mozu. Each section is displayed in order of the sheets in the template. </p>
+						<div class="panel panel-info">
+							<div class="panel-heading">Associations between data are defined by entered IDs, catalogs, codes, and names through the sheets. For example, you may have multiple entries associated to the same AttributeCode for defining all available values. </div>
+						</div>
+					<p>All Booleans should have Yes or No value entered. If you have questions or concerns with the exact required values and options specific to your data, consult your Mozu integration and implementation associates assigned to your account.</p>
+					<p>When using the Product template, you must complete the following sheets according to the data you add:</p>
+					<ul>
+					<li>Attributes: Populate the sheets for Attributes and AttributeValues. Make note of IDs, names, and values for use elsewhere.</li>
+					<li>Product Types: Populate the sheets for ProductTypes and ProductTypeAttributes. Make note of IDs, names, and values for use elsewhere.</li>
+					<li>Categories: Populate the sheet for Categories. Make note of CategoryCodes for use elsewhere.</li>
+					<li>Products: The sheets for attributes, product types, and categories must be populated. Populate the Products, ProductCatalogs, ProductOptions, ProductExtras, ProductBundles, and Images with data. </li>
+					<li>Inventory Amounts: The LocationInventory sheet provides tracking and inventory amounts per product code with locations. </li>					
+					</ul>
+					
+					<h3 id="attribs">Attributes Sheet</h3>
+					<p>Depending on the settings of your Tenant, you may be required to add specific attributes. Verify the attributes per the Tenant settings. All attributes are added to this sheet with the available values on the next sheet AttributeValues. After editing both sheets, you may want to import and export to update other sheets with new columns.</p>
+					<p><b>Note:</b> The Import / Export tool only exports attributes that have a value of "Tenant" for the namespace. All attributes you create through Mozu Admin have a "Tenant" namespace, so the tool processes these attributes. However, most attributes created via the API layer have a custom namespace, which varies depending on the application that creates the attribute. To avoid overwriting values set by a custom application, the Import / Export tool does not process these attributes.</p>
+					
+					<table class="table table-hover">
+					<thead>
+					  <tr>
+						<th>Column Name</th>
+						<th>Required</th>
+						<th>Description</th>
+					  </tr>
+					</thead>
+					<tbody>
+					  <tr>
+						<td>MasterCatalogName</td>
+						<td>*</td>
+						<td>The name of the master catalog this attribute is mapped to.</td>
+					  </tr>
+					  <tr>
+						<td>AttributeCode </td>
+						<td>*</td>
+						<td>Must be unique and required. The code for the attribute, can be plain text. For example, availability. </td>
+					  </tr>
+					  <tr>
+						<td>AttributeName </td>
+						<td>*</td>
+						<td>Must be unique and required. The name for the attribute. For example, Availability. </td>
+					  </tr>
+					  <tr>
+						<td>ContentDescription</td>
+						<td> </td>
+						<td>A text description.</td>
+					  </tr>
+					  <tr>
+						<td>DataType </td>
+						<td>*</td>
+						<td>Required. Data format such as String, Number.</td>
+					  </tr>
+					  <tr>
+						<td>InputType</td>
+						<td> </td>
+						<td>The format for entering data including List, TextBox.</td>
+					  </tr>
+					  <tr>
+						<td>IsExtra </td>
+						<td>*</td>
+						<td>Boolean, indicating if the attribute type is an Extra.</td>
+					  </tr>
+					  <tr>
+						<td>IsOption </td>
+						<td>*</td>
+						<td>Boolean, indicating if the attribute type is an Option.</td>
+					  </tr>
+					  <tr>
+						<td>IsProperty </td>
+						<td>*</td>
+						<td>Boolean, indicating if the attribute type is a Property.</td>
+					  </tr>
+					  <tr>
+						<td>Namespace</td>
+						<td> </td>
+						<td>The Namespace. For example, Tenant.</td>
+					  </tr>
+					  <tr>
+						<td>Order</td>
+						<td> </td>
+						<td>Indicates the view order for the attribute.</td>
+					  </tr>
+					  <tr>
+						<td>SearchableInStorefront</td>
+						<td> </td>
+						<td>Boolean, indicates if this attribute can be searched for within the storefront.</td>
+					  </tr>
+					  <tr>
+						<td>SearchDisplayValue</td>
+						<td> </td>
+						<td>Boolean, indicates what kind of values search queries and returns. If true, the system indexes the display value of string attributes instead of the canonical value for searching. Always use the canonical value for filtering.</td>
+					  </tr>
+					  
+					</tbody>
+					</table>
+					
+					<h3 id="attribvalues">AttributeValues Sheet</h3>
+					<p>The sheet of attribute values for each attribute, associated by the AttributeCode.</p>
+					<table class="table table-hover">
+					<thead>
+					  <tr>
+						<th>Column Name</th>
+						<th>Required</th>
+						<th>Description</th>
+					  </tr>
+					</thead>
+					<tbody>
+					<tr>
+						<td>MasterCatalogName</td>
+						<td>*</td>
+						<td>The name of the master catalog this attribute is mapped to.</td>
+					  </tr>
+					  <tr>
+						<td>AttributeCode</td>
+						<td>*</td>
+						<td>Must be unique and required. The code for the attribute, can be plain text. For example, availability. </td>
+					  </tr>
+					  <tr>
+						<td>Value</td>
+						<td>*</td>
+						<td>The value for the Attribute. If you have a List, the AttributeCode may have multiple values.</td>
+					  </tr>
+					  <tr>
+						<td>En-US</td>
+						<td> </td>
+						<td>The description for the value in that specified language. In this column, content is mapped to English United States.  </td>
+					  </tr>
+					</tbody>
+					</table>
+					
+					<h3 id="prodtypes">ProductTypes Sheet</h3>
+					<p>Every product has an associated product type. The data per type is entered on the ProductTypeAttributes sheet. After editing both sheets, you may want to import and export to update other sheets with new columns.</p>
+					<table class="table table-hover">
+					<thead>
+					  <tr>
+						<th>Column Name</th>
+						<th>Required</th>
+						<th>Description</th>
+					  </tr>
+					</thead>
+					<tbody>
+					<tr>
+						<td>MasterCatalogName</td>
+						<td>*</td>
+						<td>The name of the master catalog this product type is mapped to.</td>
+					  </tr>
+					  <tr>
+						<td>ProductType</td>
+						<td>*</td>
+						<td>The name of the product type. For example, Book or Desklamp.</td>
+					  </tr>
+					  <tr>
+						<td>Standard</td>
+						<td> </td>
+						<td>Boolean, indicates if the product type is standard.</td>
+					  </tr>
+					  <tr>
+						<td>Configurable</td>
+						<td> </td>
+						<td>Boolean, indicates if the product type has configurable options and variations.</td>
+					  </tr>
+					  <tr>
+						<td>Bundle</td>
+						<td> </td>
+						<td>Boolean, indicates if the product type is a bundle of products.</td>
+					  </tr>
+					  <tr>
+						<td>GoodsType</td>
+						<td> </td>
+						<td>The type of goods such as a physical item or download. For example, Physical.</td>
+					  </tr>
+					</tbody>
+					</table>
+					
+					<h3 id="prodtypesattribs">ProductTypeAttributes Sheet</h3>
+					<p>Every product type has one or more attributes. The attributes are associated by ProductType and AttributeCode.</p>
+					<p><b>Note:</b> The Import / Export tool only exports attributes that have a value of "Tenant" for the namespace. All attributes you create through Mozu Admin have a "Tenant" namespace, so the tool processes these attributes. However, most attributes created via the API layer have a custom namespace, which varies depending on the application that creates the attribute. To avoid overwriting values set by a custom application, the Import / Export tool does not process these attributes.</p>
+					<table class="table table-hover">
+					<thead>
+					  <tr>
+						<th>Column Name</th>
+						<th>Required</th>
+						<th>Description</th>
+					  </tr>
+					</thead>
+					<tbody>
+					<tr>
+						<td>MasterCatalogName</td>
+						<td>*</td>
+						<td>The name of the master catalog this attribute is mapped to.</td>
+					  </tr>
+					  <tr>
+						<td>ProductType</td>
+						<td>*</td>
+						<td>The name of the product type. For example, Book or Desklamp.</td>
+					  </tr>
+					  <tr>
+						<td>AttributeCode</td>
+						<td> </td>
+						<td>Must be unique and required. The code for the attribute, can be plain text. For example, availability.</td>
+					  </tr>
+					  <tr>
+						<td>VocabularyValues</td>
+						<td> </td>
+						<td>Alternate terms used to describe the attribute. If none are entered, they are inherited from Base. You may see an entry on export of “Inherited from Bane. Do not add values here.” For example, DVD and Blueray could be terms for an AttributeCode of dvdtype.</td>
+					  </tr>
+					  <tr>
+						<td>Type</td>
+						<td> </td>
+						<td>Type of attribute. For example, Option, Extra, or Property.</td>
+					  </tr>
+					  <tr>
+						<td>IsRequiredByAdmin</td>
+						<td> </td>
+						<td>Boolean, indicates if the attribute is required by the Admin. </td>
+					  </tr>
+					  <tr>
+						<td>IsHiddenProperty</td>
+						<td> </td>
+						<td>Boolean, indicates if the property is hidden.</td>
+					  </tr>
+					  <tr>
+						<td>IsMultiValueProperty</td>
+						<td> </td>
+						<td>Boolean, indicates if the attribute has multiple property values.</td>
+					  </tr>
+					  <tr>
+						<td>VocabularyValueLocaleCode</td>
+						<td> </td>
+						<td>The locale code for the vocabulary values.</td>
+					  </tr>
+					  <tr>
+						<td>Order</td>
+						<td> </td>
+						<td>The view order for the page, like 1, 2, or 3.</td>
+					  </tr>
+					</tbody>
+					</table>
+					
+					<h3 id="categories">Categories Sheet</h3>
+					<p>Every product will be associated to a category.</p>
+					<table class="table table-hover">
+					<thead>
+					  <tr>
+						<th>Column Name</th>
+						<th>Required</th>
+						<th>Description</th>
+					  </tr>
+					</thead>
+					<tbody>
+					<tr>
+						<td>CatalogName</td>
+						<td>*</td>
+						<td>The name of the catalog this category is mapped to.</td>
+					  </tr>
+					  <tr>
+						<td>CategoryCode</td>
+						<td>*</td>
+						<td>The category code. For example, 2.</td>
+					  </tr>
+					  <tr>
+						<td>ParentCategoryCode</td>
+						<td> </td>
+						<td>The id of another category that is parent to this category. Adding a parent category code makes this category a sub-category of the parent. In the Admin, this may be the field called Assign to Other Category.</td>
+					  </tr>
+					  <tr>
+						<td>CategoryName</td>
+						<td>*</td>
+						<td>The name of the category. For example, CDs.</td>
+					  </tr>
+					  <tr>
+						<td>IsDisplayed</td>
+						<td> </td>
+						<td>Indicates if the category is hidden.</td>
+					  </tr>
+					  <tr>
+						<td>LocaleCode</td>
+						<td> </td>
+						<td>The locale code for the language and location. For example, en-US for English United States.</td>
+					  </tr>
+					  <tr>
+						<td>MetaTagTitle</td>
+						<td> </td>
+						<td>The metadata title for the category.</td>
+					  </tr>
+					  <tr>
+						<td>MetaTagDescription</td>
+						<td> </td>
+						<td>The metadata description for the category.</td>
+					  </tr>
+					  <tr>
+						<td>PageTitle</td>
+						<td> </td>
+						<td>The page title for the category.</td>
+					  </tr>
+					  <tr>
+						<td>CategoryDescription</td>
+						<td> </td>
+						<td>The text description for the category.</td>
+					  </tr>
+					  <tr>
+						<td>MetaTagKeyWords</td>
+						<td> </td>
+						<td>The metadata keywords for the category.</td>
+					  </tr>
+					  <tr>
+						<td>SEOUrl</td>
+						<td> </td>
+						<td>The SEO friendly URL for the category. For example, pro-cd.</td>
+					  </tr>
+					</tbody>
+					</table>
+					
+					<h3 id="prod">Products Sheet</h3>
+					<p>You will find additional columns based on the additional attributes and product types created in your tenant and the installed/enabled apps.</p>
+					<table class="table table-hover">
+					<thead>
+					  <tr>
+						<th>Column Name</th>
+						<th>Required</th>
+						<th>Description</th>
+					  </tr>
+					</thead>
+					<tbody>
+					<tr>
+						<td>MasterCatalogName</td>
+						<td>*</td>
+						<td>The name of the catalog this product is mapped to.</td>
+					  </tr>
+					  <tr>
+						<td>ProductCode</td>
+						<td>*</td>
+						<td>The unique product code for the product.</td>
+					  </tr>
+					  <tr>
+						<td>ProductTypeName</td>
+						<td>*</td>
+						<td>The product type name to associate with this product.</td>
+					  </tr>
+					  <tr>
+						<td>ProductUsage</td>
+						<td> </td>
+						<td>The product type usage as Standard, Configurable, or Bundle.</td>
+					  </tr>
+					  <tr>
+						<td>ProductName</td>
+						<td>*</td>
+						<td>The name of the product.</td>
+					  </tr>
+					  <tr>
+						<td>ContentLocaleCode</td>
+						<td> </td>
+						<td>The locale code for the product content. </td>
+					  </tr>
+					  <tr>
+						<td>ISOCurrencyCode</td>
+						<td> </td>
+						<td>The ISO three character currency code. For example, USD for US Dollar.</td>
+					  </tr>
+					  <tr>
+						<td>Price</td>
+						<td> </td>
+						<td>The price of the product.</td>
+					  </tr>
+					  <tr>
+						<td>SalePrice</td>
+						<td> </td>
+						<td>The sale price of the product.</td>
+					  </tr>
+					  <tr>
+						<td>Cost</td>
+						<td> </td>
+						<td>The cost for the product.</td>
+					  </tr>
+					  <tr>
+						<td>MSRP</td>
+						<td> </td>
+						<td>The manufacturers suggested retail price for the product. </td>
+					  </tr>
+					  <tr>
+						<td>MAP</td>
+						<td> </td>
+						<td>The minimum advertised price for the product.</td>
+					  </tr>
+					  <tr>
+						<td>MAPEffectiveStartDate</td>
+						<td> </td>
+						<td>The state date for the minimum advertised price.</td>
+					  </tr>
+					  <tr>
+						<td>MAPEffectiveEndDate</td>
+						<td> </td>
+						<td>The end date for the minimum advertised price.</td>
+					  </tr>
+					  <tr>
+						<td>RestrictDiscount</td>
+						<td> </td>
+						<td>Boolean, indicates if discounts should be restricted for the product. </td>
+					  </tr>
+					  <tr>
+						<td>RestrictDiscountStartDate</td>
+						<td> </td>
+						<td>The state date for the restricted discount if RestrictDiscount is yes (true).</td>
+					  </tr>
+					  <tr>
+						<td>RestrictDiscountEndDate</td>
+						<td> </td>
+						<td>The end date for the restricted discount if RestrictDiscount is yes (true).</td>
+					  </tr>
+					  <tr>
+						<td>ManufacturerPartNumber</td>
+						<td> </td>
+						<td>The manufacturer related part number for the product.</td>
+					  </tr>
+					  <tr>
+						<td>UPC</td>
+						<td> </td>
+						<td>The UPC code for the product.</td>
+					  </tr>
+					  <tr>
+						<td>DistributorPartNumber</td>
+						<td> </td>
+						<td>The distributor related part number for the product.</td>
+					  </tr>
+					  <tr>
+						<td>IsTaxable</td>
+						<td> </td>
+						<td>Boolean, indicates if the product is taxable.</td>
+					  </tr>
+					  <tr>
+						<td>ManageStock</td>
+						<td> </td>
+						<td>Boolean, indicates if stock should be managed for the product.</td>
+					  </tr>
+					  <tr>
+						<td>OutOfStockBehavior</td>
+						<td> </td>
+						<td>Indicated behavior to follow when the product is out of stock. For example, AllowBackOrder of DisplayMessage.</td>
+					  </tr>
+					  <tr>
+						<td>PackageWeight</td>
+						<td> </td>
+						<td>The weight of the product. This is important for calculating shipping costs. Default is in US pounds.</td>
+					  </tr>
+					  <tr>
+						<td>PackageLength</td>
+						<td> </td>
+						<td>The length of the product. This is important for calculating shipping costs. Default is in US inches.</td>
+					  </tr>
+					  <tr>
+						<td>PackageWidth</td>
+						<td> </td>
+						<td>The width of the product. This is important for calculating shipping costs. Default is in US inches.</td>
+					  </tr>
+					  <tr>
+						<td>PackageHeight</td>
+						<td> </td>
+						<td>The height of the product. This is important for calculating shipping costs. Default is in US inches.</td>
+					  </tr>
+					  <tr>
+						<td>FulfillmentTypes</td>
+						<td> </td>
+						<td>The selected fulfillment type for shipping the purchased product. For example, Direct Ship & InStorePickup.</td>
+					  </tr>
+					  <tr>
+						<td>ProductShortDescription</td>
+						<td> </td>
+						<td>A short text description for the product. HTML tags are supported.</td>
+					  </tr>
+					  <tr>
+						<td>ContentFullproductDescription</td>
+						<td> </td>
+						<td>A full, lengthy text description for the product. HTML tags are supported.</td>
+					  </tr>
+					  <tr>
+						<td>SEOMetaTagTitle</td>
+						<td> </td>
+						<td>SEO metadata title for the product.</td>
+					  </tr>
+					  <tr>
+						<td>SEOMetaTagDescription</td>
+						<td> </td>
+						<td>SEO metadata for the description.</td>
+					  </tr>
+					  <tr>
+						<td>SEOMetaTagKeywords</td>
+						<td> </td>
+						<td>SEO metadata keywords for the product.</td>
+					  </tr>
+					  <tr>
+						<td>SEOFriendlyURL</td>
+						<td> </td>
+						<td>SEO friendly URL name for the product. For example, running-shoes.</td>
+					  </tr>
+					</tbody>
+					</table>
+					
+					<h3 id="prodcatalogs">ProductCatalogs Sheet</h3>
+					<p>This sheet maps products to catalogs within a master catalog. Of special note, the product code and product name must match the product in the master catalog. All other data may differ from the master catalog. For example, the product in this catalog could belong to different categories, have different prices and costs, use different SEO content, and so on. You can reuse the same data for the original product.</p>
+					<table class="table table-hover">
+					<thead>
+					  <tr>
+						<th>Column Name</th>
+						<th>Required</th>
+						<th>Description</th>
+					  </tr>
+					</thead>
+					<tbody>
+					<tr>
+						<td>CatalogName</td>
+						<td>*</td>
+						<td>The name of the catalog this product is mapped to.</td>
+					  </tr>
+					  <tr>
+						<td>ProductCode</td>
+						<td>*</td>
+						<td>The product code for the product associated to this catalog.</td>
+					  </tr>
+					  <tr>
+						<td>IsActive</td>
+						<td> </td>
+						<td>Boolean, indicates if the catalog is active.</td>
+					  </tr>
+					  <tr>
+						<td>ProductName</td>
+						<td> </td>
+						<td>The name of the product.</td>
+					  </tr>
+					  <tr>
+						<td>ISOCurrencyCode</td>
+						<td> </td>
+						<td>The ISO three character currency code. For example, USD for US Dollar.</td>
+					  </tr>
+					  <tr>
+						<td>Price</td>
+						<td> </td>
+						<td>The price of the product.</td>
+					  </tr>
+					  <tr>
+						<td>SalePrice</td>
+						<td> </td>
+						<td>The sale price of the product.</td>
+					  </tr>
+					  <tr>
+						<td>MSRP</td>
+						<td> </td>
+						<td>The manufacturers suggested retail price for the product.</td>
+					  </tr>
+					  <tr>
+						<td>MAP</td>
+						<td> </td>
+						<td>The minimum advertised price for the product.</td>
+					  </tr>
+					  <tr>
+						<td>MAPEffectiveStartDate</td>
+						<td> </td>
+						<td>The state date for the minimum advertised price.</td>
+					  </tr>
+					  <tr>
+						<td>MAPEffectiveEndDate</td>
+						<td> </td>
+						<td>The end date for the minimum advertised price.</td>
+					  </tr>
+					  <tr>
+						<td>ProductShortDescription</td>
+						<td> </td>
+						<td>The selected fulfillment type for shipping the purchased product. For example, Direct Ship & InStorePickup.</td>
+					  </tr>
+					  <tr>
+						<td>ContentFullProductDescription</td>
+						<td> </td>
+						<td>A short text description for the product. HTML tags are supported.</td>
+					  </tr>
+					  <tr>
+						<td>SEOMetaTagTitle</td>
+						<td> </td>
+						<td>A full, lengthy text description for the product. HTML tags are supported.</td>
+					  </tr>
+					  <tr>
+						<td>SEOMetaTagDescription</td>
+						<td> </td>
+						<td>SEO metadata title for the product.</td>
+					  </tr>
+					  <tr>
+						<td>SEOMetaTagKeywords</td>
+						<td> </td>
+						<td>SEO metadata for the description.</td>
+					  </tr>
+					  <tr>
+						<td>SEOFriendlyURL</td>
+						<td> </td>
+						<td>SEO metadata keywords for the product.</td>
+					  </tr>
+					  <tr>
+						<td>CategoryCodes</td>
+						<td> </td>
+						<td>The category ID for this catalog. For example, 5, 10, 12.</td>
+					  </tr>
+					</tbody>
+					</table>
+					
+					<h3 id="prodoptions">ProductOptions Sheet</h3>
+					<p>This sheet maps options to products by master catalog and product code. Each product code could have multiple option entries. The template sheet may include additional columns for attributes for products, product types, apps, and more. </p>
+					<table class="table table-hover">
+					<thead>
+					  <tr>
+						<th>Column Name</th>
+						<th>Required</th>
+						<th>Description</th>
+					  </tr>
+					</thead>
+					<tbody>
+					<tr>
+						<td>CatalogName</td>
+						<td>*</td>
+						<td>The name of the catalog this product is mapped to.</td>
+					  </tr>
+					  <tr>
+						<td>ProductCode</td>
+						<td>*</td>
+						<td>The product code for the product associated to this catalog.</td>
+					  </tr>
+					  <tr>
+						<td>VariationCode</td>
+						<td>*</td>
+						<td>The code for this option. For example, LadyHighHeel-1.</td>
+					  </tr>
+					  <tr>
+						<td>Enabled</td>
+						<td> </td>
+						<td>Boolean, indicates if the option is active. If active, customers can select and customize the option per their purchase of the product.</td>
+					  </tr>
+					  <tr>
+						<td>ExtraPrice</td>
+						<td> </td>
+						<td>The additional price added to the product price/sale price if added to the product. For example, a larger size shirt could increase the price by $5.00.</td>
+					  </tr>
+					  <tr>
+						<td>ExtraWeight</td>
+						<td> </td>
+						<td>The additional weight added to the product weight. This affects the shipping costs and possibly the shipping dimension options for the product.</td>
+					  </tr>
+					  <tr>
+						<td>ExtraCost</td>
+						<td> </td>
+						<td>The additional cost for the option. The cost is not added to the price of the product.</td>
+					  </tr>
+					  <tr>
+						<td>FulfillmentTypes</td>
+						<td> </td>
+						<td>The selected fulfillment type for shipping the purchased product. For example, Direct Ship & InStorePickup.</td>
+					  </tr>
+					  <tr>
+						<td>MfgPartNo</td>
+						<td> </td>
+						<td>The manufacturers part number for the product option.</td>
+					  </tr>
+					  <tr>
+						<td>UPC</td>
+						<td> </td>
+						<td>The UPC code for this particular product option.</td>
+					  </tr>
+					  <tr>
+						<td>DistPartNo</td>
+						<td> </td>
+						<td>The distribution part number for the product option.</td>
+					  </tr>
+					</tbody>
+					</table>
+					
+					<h3 id="prodextras">ProductExtras Sheet</h3>
+					<p>This sheet maps extras for products with IsExtra as true. </p>
+					<table class="table table-hover">
+					<thead>
+					  <tr>
+						<th>Column Name</th>
+						<th>Required</th>
+						<th>Description</th>
+					  </tr>
+					</thead>
+					<tbody>
+					<tr>
+						<td>MasterCatalogName</td>
+						<td>*</td>
+						<td>The name of the master catalog this product is mapped to.</td>
+					  </tr>
+					  <tr>
+						<td>ProductCode</td>
+						<td>*</td>
+						<td>The product code for the product.</td>
+					  </tr>
+					  <tr>
+						<td>AttributeCode</td>
+						<td> </td>
+						<td>The attribute code for the product.</td>
+					  </tr>
+					  <tr>
+						<td>Value</td>
+						<td> </td>
+						<td>The value for the extra. </td>
+					  </tr>
+					  <tr>
+						<td>ExtraCost</td>
+						<td> </td>
+						<td>The additional cost for the extra. This is added to the product price/sale price when added to a cart.</td>
+					  </tr>
+					  <tr>
+						<td>RequiredByShopper</td>
+						<td> </td>
+						<td>Boolean, indicates if this extra is required to be added to the product for purchase. The extra cost is automatically added to the product.</td>
+					  </tr>
+					  <tr>
+						<td>Defaulted</td>
+						<td> </td>
+						<td>The default value for the extra.</td>
+					  </tr>
+					  <tr>
+						<td>MultiSelect</td>
+						<td> </td>
+						<td>Boolean, indicates a shopper can select more than one value for the predefined list for this extra. If false, the customer can only select one value.</td>
+					  </tr>
+					  <tr>
+						<td>Quantity</td>
+						<td> </td>
+						<td>The quantity of extras.</td>
+					  </tr>
+					</tbody>
+					</table>
+					
+					<h3 id="prodbundles">ProductBundles Sheet</h3>
+					<p>This sheet maps extras for products with IsBundle as true. </p>
+					<table class="table table-hover">
+					<thead>
+					  <tr>
+						<th>Column Name</th>
+						<th>Required</th>
+						<th>Description</th>
+					  </tr>
+					</thead>
+					<tbody>
+					<tr>
+						<td>ProductCode</td>
+						<td>*</td>
+						<td>The product code for the product.</td>
+					  </tr>
+					  <tr>
+						<td>Code</td>
+						<td>*</td>
+						<td>The code for the bundle.</td>
+					  </tr>
+					  <tr>
+						<td>Name</td>
+						<td>*</td>
+						<td>Name for the bundle.</td>
+					  </tr>
+					  <tr>
+						<td>Quantity</td>
+						<td> </td>
+						<td>The quantity of the bundles for the product code.</td>
+					  </tr>
+					</tbody>
+					</table>
+					
+					<h3 id="prodimgs">ProductImages Sheet</h3>
+					<p>This sheet maps images and/or videos with a product code. The URL used for each image or video file must be on a server accessible by Mozu. Each product code can have multiple images and videos associated to it.</p>
+					<table class="table table-hover">
+					<thead>
+					  <tr>
+						<th>Column Name</th>
+						<th>Required</th>
+						<th>Description</th>
+					  </tr>
+					</thead>
+					<tbody>
+					<tr>
+						<td>MasterCatalogName</td>
+						<td>*</td>
+						<td>The name of the master catalog this product is mapped to.</td>
+					  </tr>
+					  <tr>
+						<td>ProductCode</td>
+						<td>*</td>
+						<td>The product code for the product.</td>
+					  </tr>
+					  <tr>
+						<td>Name</td>
+						<td>*</td>
+						<td>Name for the bundle.</td>
+					  </tr>
+					  <tr>
+						<td>LocaleCode</td>
+						<td> </td>
+						<td>The locale code for the content. The code is the language and country code. For example, en-US is English United States.</td>
+					  </tr>
+					  <tr>
+						<td>Sequence</td>
+						<td> </td>
+						<td>Indicated the sequence order for multiple images and/or videos associated with a product code.</td>
+					  </tr>
+					  <tr>
+						<td>AltText</td>
+						<td> </td>
+						<td>The plain text used in place of a file if it does not load.</td>
+					  </tr>
+					  <tr>
+						<td>ImageUrl</td>
+						<td> </td>
+						<td>Full URL path to an image file accessible by Mozu.</td>
+					  </tr>
+					  <tr>
+						<td>ImageLabel</td>
+						<td> </td>
+						<td>The text label for the image.</td>
+					  </tr>
+					  <tr>
+						<td>ImagePath</td>
+						<td> </td>
+						<td>The path to the image file.</td>
+					  </tr>
+					  <tr>
+						<td>VideoUrl</td>
+						<td> </td>
+						<td>The URL path to a video file accessible by Mozu.</td>
+					  </tr>
+					</tbody>
+					</table>
+					
+					<h3 id="location">LocationInventory Sheet</h3>
+					<p>You should have locations added to Mozu prior to a first time editing this file. The locations are warehouses and brick and mortar businesses with stock on-hand. This sheet associates the product codes and quantities to the locations.</p>
+					<table class="table table-hover">
+					<thead>
+					  <tr>
+						<th>Column Name</th>
+						<th>Required</th>
+						<th>Description</th>
+					  </tr>
+					</thead>
+					<tbody>
+					<tr>
+						<td>MasterCatalogName</td>
+						<td>*</td>
+						<td>The name of the master catalog this product is mapped to.</td>
+					  </tr>
+					  <tr>
+						<td>ProductCode</td>
+						<td>*</td>
+						<td>The product code for the product.</td>
+					  </tr>
+					  <tr>
+						<td>LocationCode</td>
+						<td>*</td>
+						<td>The location code for a location created in Mozu. </td>
+					  </tr>
+					  <tr>
+						<td>StockOnHand</td>
+						<td> </td>
+						<td>The quantity of stock for this produce code on-hand and available.</td>
+					  </tr>
+					  <tr>
+						<td>StockUpdateOption</td>
+						<td> </td>
+						<td>Boolean, indicates if the stock should update as purchases complete or stock is added. (Part of the method for UpdateLocationInventory.)</td>
+					  </tr>
+					  <tr>
+						<td>StockOnBackOrder</td>
+						<td> </td>
+						<td>Quantity of stock on back order. Read Only value.</td>
+					  </tr>
+					  <tr>
+						<td>StockAvailable</td>
+						<td> </td>
+						<td>The active total amount of stock available for purchase. This may differ to StockOnHand if orders are pending. Read Only value.</td>
+					  </tr>
+					</tbody>
+					</table>
+					
+					<h3 id="discounts">Discounts Sheet</h3>
+					<p>This sheet associates discounts to product codes.</p>
+					<table class="table table-hover">
+					<thead>
+					  <tr>
+						<th>Column Name</th>
+						<th>Required</th>
+						<th>Description</th>
+					  </tr>
+					</thead>
+					<tbody>
+					<tr>
+						<td>Id</td>
+						<td>*</td>
+						<td>The ID for the discount.</td>
+					  </tr>
+					  <tr>
+						<td>SiteName</td>
+						<td>*</td>
+						<td>The name of the site in Mozu. Discounts are site level.</td>
+					  </tr>
+					  <tr>
+						<td>DiscountName</td>
+						<td>*</td>
+						<td>The name of the discount.</td>
+					  </tr>
+					  <tr>
+						<td>LocaleCode</td>
+						<td> </td>
+						<td>The locale code for the content. The code is the language and country code. For example, en-US is English United States.</td>
+					  </tr>
+					  <tr>
+						<td>Scope</td>
+						<td> </td>
+						<td>The scope of the discount, as it applies to a product line item or the entire order. For example, LineItem or Order.</td>
+					  </tr>
+					  <tr>
+						<td>AppliesTo</td>
+						<td> </td>
+						<td>What this discount applies to. For example, Product.</td>
+					  </tr>
+					  <tr>
+						<td>Type</td>
+						<td> </td>
+						<td>The value of the type of discount. For example, Amount, Percentage, or Free.</td>
+					  </tr>
+					  <tr>
+						<td>TypeValue</td>
+						<td> </td>
+						<td>The discount value. For example, 10.</td>
+					  </tr>
+					  <tr>
+						<td>StartDate</td>
+						<td> </td>
+						<td>The date/time for the effective start date for the discount. For example, 8/5/2014 4:04:00 PM.</td>
+					  </tr>
+					  <tr>
+						<td>EndDate</td>
+						<td> </td>
+						<td>The date/time for the effective end date for the discount. For example, 10/31/2014 5:00:00 AM.</td>
+					  </tr>
+					  <tr>
+						<td>MinimumOrderAmount</td>
+						<td> </td>
+						<td>The minimum amount of this product code required to be purchased to receive the discount.</td>
+					  </tr>
+					  <tr>
+						<td>CouponCode</td>
+						<td> </td>
+						<td>The coupon code customers can enter when using a discount at checkout.</td>
+					  </tr>
+					  <tr>
+						<td>MaxRedemptionCount</td>
+						<td> </td>
+						<td>The maximum amount of this product code that can be purchased and receive this discount.</td>
+					  </tr>
+					  <tr>
+						<td>Status</td>
+						<td> </td>
+						<td>The status of the discount. If within the start and end dates, it is Active. If after the end date, it is Ended.</td>
+					  </tr>
+					  <tr>
+						<td>AppliesWithProducts</td>
+						<td> </td>
+						<td>Boolean, indicates the discount is applicable with the included products.</td>
+					  </tr>
+					  <tr>
+						<td>AppliesWithCategories</td>
+						<td> </td>
+						<td>Boolean, indicates the discount is applicable with the included categories. Use categoryCodes (ex: 6,10,12)</td>
+					  </tr>
+					  <tr>
+						<td>AppliesToAllProducts</td>
+						<td> </td>
+						<td>Boolean, indicates the discount is applicable to all products.</td>
+					  </tr>
+					  <tr>
+						<td>IncludedProducts</td>
+						<td> </td>
+						<td>The product codes for products that are included for the discount.</td>
+					  </tr>
+					  <tr>
+						<td>ExcludedProducts</td>
+						<td> </td>
+						<td>The product codes for products that are excluded for the discount.</td>
+					  </tr>
+					  <tr>
+						<td>IncludedCategories</td>
+						<td> </td>
+						<td>The product codes for categories that are included for the discount. Use categoryCodes (ex: 6,10,12)</td>
+					  </tr>
+					  <tr>
+						<td>ExcludedCategories</td>
+						<td> </td>
+						<td>The product codes for categories that are excluded for the discount. Use categoryCodes (ex: 6,10,12)</td>
+					  </tr>
+					</tbody>
+					</table>
+					
+				</section>
+				<section id="contactstemplate">
+					<h2>Contacts Template</h2>
+					<p>The following information gives a description of each column in the sheets of the Contacts import/export template. You can use this information to map data for your customer accounts and contacts. Customer accounts include customer shoppers and Mozu Admin users.</p>
+						<div class="panel panel-info">
+							<div class="panel-heading">Associations between data are defined by entered IDs, codes, and names through the sheets. For example, you may have multiple entries associated to the same AccountId for defining all available values. </div>
+						</div>
+					<p>All Booleans should have Yes or No value entered. If you have questions or concerns with the exact required values and options specific to your data, consult your Mozu integration and implementation associates assigned to your account.</p>
+					
+					<h3 id="custaccts">CustomerAccounts Sheet</h3>
+					<p>This sheet enters the data for a customer account within Mozu. Depending on your installed apps, added options and entries, the columns in the template may differ.</p>
+					<table class="table table-hover">
+					<thead>
+					  <tr>
+						<th>Column Name</th>
+						<th>Required</th>
+						<th>Description</th>
+					  </tr>
+					</thead>
+					<tbody>
+					<tr>
+						<td>Id</td>
+						<td>*</td>
+						<td>ID generated by the system. Can be the same or different than the AccountID.</td>
+					  </tr>
+					  <tr>
+						<td>AccountID</td>
+						<td>*</td>
+						<td>The ID for the customer account. This should be unique. Can be the same or different than the ID.</td>
+					  </tr>
+					  <tr>
+						<td>UserName</td>
+						<td> </td>
+						<td>The username for the account. If this is null, the email address is used for the username.</td>
+					  </tr>
+					  <tr>
+						<td>Email</td>
+						<td> </td>
+						<td>The unique email address for the account. All email addresses must be unique across the sheets.</td>
+					  </tr>
+					  <tr>
+						<td>Password</td>
+						<td> </td>
+						<td>The password for the account. This data can be null. Setting a password will create a registered shopper.</td>
+					  </tr>
+					  <tr>
+						<td>FirstName</td>
+						<td> </td>
+						<td>The first name for the account.</td>
+					  </tr>
+					  <tr>
+						<td>LastNameOrSurname</td>
+						<td> </td>
+						<td>The last name or surname for the account.</td>
+					  </tr>
+					  <tr>
+						<td>CompanyorOrganization</td>
+						<td> </td>
+						<td>Optional, the company or organization the customer works for.</td>
+					  </tr>
+					  <tr>
+						<td>TaxExempt</td>
+						<td> </td>
+						<td>Boolean, indicates if the account is tax exempt.</td>
+					  </tr>
+					  <tr>
+						<td>TaxId</td>
+						<td> </td>
+						<td>The tax ID for the customer account.</td>
+					  </tr>
+					  <tr>
+						<td>AcceptsMarketing</td>
+						<td> </td>
+						<td>Boolean, indicates if the account has opted in or out for receiving marketing materials.</td>
+					  </tr>
+					  <tr>
+						<td>LocaleCode</td>
+						<td> </td>
+						<td>The locale code for the content. The code is the language and country code. For example, en-US is English United States.</td>
+					  </tr>
+					  <tr>
+						<td>UserRole</td>
+						<td> </td>
+						<td>The user role assigned to the account. </td>
+					  </tr>
+					  <tr>
+						<td>IsActive</td>
+						<td> </td>
+						<td>Boolean, indicates if the account is active.</td>
+					  </tr>
+					  <tr>
+						<td>IsAnonymous</td>
+						<td> </td>
+						<td>Boolean, indicates if the account is anonymous.</td>
+					  </tr>
+					  <tr>
+						<td>TotalOrderAmount</td>
+						<td> </td>
+						<td>The total dollar amount spent through completed orders.</td>
+					  </tr>
+					  <tr>
+						<td>TotalOrders</td>
+						<td> </td>
+						<td>The total amount of orders the account completed.</td>
+					  </tr>
+					  <tr>
+						<td>LastOrderDate</td>
+						<td> </td>
+						<td>The last date and time the account made an order.</td>
+					  </tr>
+					  <tr>
+						<td>TotalContacts</td>
+						<td> </td>
+						<td>The total number of contacts, can be more than 1.</td>
+					  </tr>
+					<tr>
+						<td>LastModifiedDate</td>
+						<td> </td>
+						<td>Date and time the last time the customer or system edited the content for the record.</td>
+					  </tr>
+					</tbody>
+					</table>
+					
+					<h3 id="custcontacts">CustomerContacts Sheet</h3>
+					<p>This sheet enters the data for customer contact information within Mozu. A customer account may have multiple contact entries, associated by email. For this sheet, you can use an email account multiple times.</p>
+					<table class="table table-hover">
+					<thead>
+					  <tr>
+						<th>Column Name</th>
+						<th>Required</th>
+						<th>Description</th>
+					  </tr>
+					</thead>
+					<tbody>
+					<tr>
+						<td>Id</td>
+						<td>*</td>
+						<td>ID generated by the system. Can be the same or different than the AccountID.</td>
+					  </tr>
+					  <tr>
+						<td>Type</td>
+						<td> </td>
+						<td>The type of contact. For example, Shipping or Billing.</td>
+					  </tr>
+					  <tr>
+						<td>IsPrimary</td>
+						<td> </td>
+						<td>Boolean, indicates if this entry is the primary for an account with multiple contacts.</td>
+					  </tr>
+					  <tr>
+						<td>CompanyorOrganization</td>
+						<td> </td>
+						<td>Optional, the company or organization the customer works for.</td>
+					  </tr>
+					  <tr>
+						<td>FirstName</td>
+						<td> </td>
+						<td>The first name for a contact.</td>
+					  </tr>
+					  <tr>
+						<td>MiddleNameorInitial</td>
+						<td> </td>
+						<td>The middle name or initial for a contact.</td>
+					  </tr>
+					  <tr>
+						<td>LastNameOrSurname</td>
+						<td> </td>
+						<td>The last name or surname for a contact.</td>
+					  </tr>
+					  <tr>
+						<td>Email</td>
+						<td> </td>
+						<td>The email address for the contact, used to map to a customer account.</td>
+					  </tr>
+					  <tr>
+						<td>FaxNumber</td>
+						<td> </td>
+						<td>The fax phone number for the contact, entered without dashes or spaces.</td>
+					  </tr>
+					  <tr>
+						<td>HomePhone</td>
+						<td> </td>
+						<td>The home phone number for the contact, entered without dashes or spaces.</td>
+					  </tr>
+					  <tr>
+						<td>MobilePhone</td>
+						<td> </td>
+						<td>The mobile phone number for the contact, entered without dashes or spaces.</td>
+					  </tr>
+					  <tr>
+						<td>WorkPhone</td>
+						<td> </td>
+						<td>The work phone number for the contact, entered without dashes or spaces.</td>
+					  </tr>
+					  <tr>
+						<td>AddressType</td>
+						<td> </td>
+						<td>The type of address as Residential or Commercial.</td>
+					  </tr>
+					  <tr>
+						<td>Address1</td>
+						<td> </td>
+						<td>The first line of the address.</td>
+					  </tr>
+					  <tr>
+						<td>Address2</td>
+						<td> </td>
+						<td>The second line of the address.</td>
+					  </tr>
+					  <tr>
+						<td>Address3</td>
+						<td> </td>
+						<td>The third line of the address.</td>
+					  </tr>
+					  <tr>
+						<td>Address4</td>
+						<td> </td>
+						<td>The fourth line of the address.</td>
+					  </tr>
+					  <tr>
+						<td>CityOrTown</td>
+						<td> </td>
+						<td>The city or town name for the address.</td>
+					  </tr>
+					  <tr>
+						<td>StateOrProvince</td>
+						<td> </td>
+						<td>The state or province for the address, as two letter codes. For example, TX.</td>
+					  </tr>
+					  <tr>
+						<td>PostalOrZipCode</td>
+						<td> </td>
+						<td>The postal code or zip code for the address. The zip code supports a full 9 digit code with a dash. For example, 43216-1001.</td>
+					  </tr>
+					  <tr>
+						<td>CountryCode</td>
+						<td> </td>
+						<td>The 2 character country code.</td>
+					  </tr>
+					  <tr>
+						<td>LastModifiedDate</td>
+						<td> </td>
+						<td>Date and time the last time the customer or system edited the content for the record.</td>
+					  </tr>
+					</tbody>
+					</table>
+				</section>
+				
+						</div>
+                    </div>
+                </div>
+           </div>
+		
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+				<div class="pull-left footer__logo">
+                            <a href="http://www.mozu.com" target="_blank"><img src="http://www.mozu.com/sites/all/themes/mozu_aurora/logo.png" style="padding-top:7px;"/></a>
+                </div>
+				<div class="pull-right footer__icons" style="padding-right:40px;"><a href="ImportExportMozuTool_ConfigurationGuide.pdf"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-file-pdf-o"></i></button></a><a href="http://www.mozu.com/ecommerce-app-center" target="_blank"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-code-fork"></i></button></a><a href="http://www.mozu.com/contact"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-comments-o"></i></button></a><a href="http://www.mozu.com/contact"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-copyright"></i></button></a>
+                </div>
+        </footer>
+		
+		
+	<!-- Back to top -->
+	<div class="scroll-top-wrapper ">
+    <span class="scroll-top-inner">
+        <i class="fa fa-2x fa-arrow-circle-up"></i>
+    </span>
+	</div>
+	<!-- Back to top - show hide -->
+	<script>
+ 
+	$(function(){
+	 
+		$(document).on( 'scroll', function(){
+	 
+			if ($(window).scrollTop() > 100) {
+				$('.scroll-top-wrapper').addClass('show');
+			} else {
+				$('.scroll-top-wrapper').removeClass('show');
+			}
+		});
+	});
+	</script>
+	<!-- Back to top - to top -->
+	<script>
+ 
+	$(function(){
+	 
+		$(document).on( 'scroll', function(){
+	 
+			if ($(window).scrollTop() > 100) {
+				$('.scroll-top-wrapper').addClass('show');
+			} else {
+				$('.scroll-top-wrapper').removeClass('show');
+			}
+		});
+	 
+		$('.scroll-top-wrapper').on('click', scrollToTop);
+	});
+	 
+	function scrollToTop() {
+		verticalOffset = typeof(verticalOffset) != 'undefined' ? verticalOffset : 0;
+		element = $('body');
+		offset = element.offset();
+		offsetTop = offset.top;
+		$('html, body').animate({scrollTop: offsetTop}, 500, 'linear');
+	}
+	</script>
+    </body>
+</html>

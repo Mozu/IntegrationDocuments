@@ -1,0 +1,593 @@
+<html>
+    <head><title>Mozu Bronto Application</title>
+        <meta name="author" content="Mozu" />
+        <meta name="description" content="User content for Bronto by Mozu" />
+        <meta name="keywords" content="Bronto,Mozu" />
+		<link rel="shortcut icon" href="http://www.mozu.com/favicon.ico" />
+		
+		<!-- Required for Scrollspy -->
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/scrollspy.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/affix.js"></script>
+		<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+		
+		<!-- Mozu CSS developed by Mozu Docs -->
+		<link href="mozu-bootswatch.css" rel="stylesheet" type="text/css" />	
+		
+		<!-- Scrollspy active link script -->
+		<script>
+		$( document ).ready(function() {
+		$('body').scrollspy({
+			target: '.bs-docs-sidebar',
+			offset: 20
+		});
+		});        
+		</script>
+		
+		<!-- Anchor Ease Script -->
+		<script>
+		 $(function() {
+			  $('a[href*=#]:not([href=#])').click(function() {
+				if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') 
+			&& location.hostname == this.hostname) {
+
+				  var target = $(this.hash);
+				  target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+				  if (target.length) {
+					$('html,body').animate({
+					  scrollTop: target.offset().top - 75 //offsets for fixed header
+					}, 1000);
+					return false;
+				  }
+				}
+			  });
+			  //Executed on page load with URL containing an anchor tag.
+			  if($(location.href.split("#")[1])) {
+				  var target = $('#'+location.href.split("#")[1]);
+				  if (target.length) {
+					$('html,body').animate({
+					  scrollTop: target.offset().top - 75 //offset height of header here too.
+					}, 1000);
+					return false;
+				  }
+				}
+		});
+		</script>
+		
+		<!-- Affix Javascript -->
+		
+		<script>$(function(){
+ 
+			var stickyElement = '.bs-docs-sidebar', 
+			bottomElement = '.footer'; 
+			
+			if($( stickyElement ).length){
+			$( stickyElement ).each(function(){
+		   
+			var fromTop = $( this ).offset().top,
+		   
+			fromBottom = $( document ).height()-($( this ).offset().top + $( this ).outerHeight()),
+			
+			stopOn = $( document ).height()-( $( bottomElement ).offset().top)+($( this ).outerHeight() - $( this ).height());
+			
+			if( (fromBottom-stopOn) > 200 ){
+			
+			$( this ).css('width', $( this ).width()).css('top', 0).css('position', '');
+			
+			$( this ).affix({
+			offset: {
+			
+			top: fromTop,
+			
+			bottom: stopOn
+			}
+			
+			}).on('affix.bs.affix', function(){ $( this ).css('top', 0).css('position', ''); });
+			}
+			
+			$( window ).trigger('scroll');
+			});
+			}
+		});
+		</script>
+	</head>
+    <body>
+	<div id="main">
+	<div class="container">
+		<!-- Top Nav - Mozu -->
+			<nav class="navbar navbar-default navbar-fixed-top">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                        </button> <a href="#"><img src="logo-m-red-medium.png" style="margin-top:3px;"/></a></div>
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav navbar-right">
+							<li><a href="versionhistory.html"><span>Version History</span></a></li>
+                            <li><a href="//developer.mozu.com/learn/mozu-concepts"><span>Mozu Concepts</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+			
+		<!--Side Navigation TOC -->
+		<div class="row">
+		<div class="landing-title">
+			<h1>Mozu Bronto Application Configuration Guide</h1>	
+		</div>
+			<div class="col-md-3" >
+				<nav class="bs-docs-sidebar" >
+					<ul class="nav nav-stacked" >
+						<div class="side-heading">Table of Contents</div>
+							<li><a href="#intro">Welcome to Bronto and Mozu</a></li>
+							<li><a href="#install">Install the App</a>
+							</li>
+							<li><a href="#configapp">Configure the App</a>
+							</li>
+							<li><a href="#enable">Enable the App</a>
+							</li>
+							<li><a href="#use">Use the App</a></li>
+					</ul>
+				</nav>
+			</div>
+                    
+            <div class="col-md-9 content" >
+                <!-- Documentation content -->
+				<section id="intro">
+					<h2>Welcome to Bronto and Mozu</h2>
+					<p><a href="http://www.bronto.com" target="_blank">Bronto</a> is the top-ranked email marketing platform to the Internet Retailer Top 1000. It features an advanced marketing and email automation engine designed for email, mobile, and social campaigns. With Bronto, you can handle shopping cart abandonment, post-purchase follow-ups, shopper segmentation, and more.</p>
+					<p>The <a href="http://www.mozu.com" target="_blank">Mozu</a> Bronto Application integrates the benefits of Bronto with your Mozu account. After configuring and enabling the Mozu Bronto Application, you can access the functionality of the application using extensions that install in the Customers and Orders modules.</p>
+					<p>Application Features:</p>
+                            <ul>
+							<li>High level of granularity for choosing which marketing and transactional emails to send to shoppers, as well as what information to send between Bronto and Mozu regarding shoppers and orders</li>
+                            <li>Sync the marketing preferences for your shoppers between your Bronto and Mozu accounts.</li>
+							<li>Export shopper and order information from Mozu to Bronto to take advantage of follow-up email campaigns.</li>
+							<li>Enable Bronto email campaigns in Mozu, such as order confirmations, wishlist reminders, order abandonment follow-ups, and in-stock notifications.</li>
+							<li>Map Mozu shopper attributes and order history to Bronto lists to organize your marketing campaigns.</li>
+							<li>Preview how emails sent to shoppers will look.</li>
+							<li>View logs related to shopper accounts and orders.</li>
+							<li>Use Mozu variables to customize email templates in Bronto.</li>
+						</ul>
+				</section>
+				<section id="install">
+					<h2 >Install the Mozu Bronto Application on Your Tenant</h2>
+                            <p>After purchasing the Mozu Bronto Application, call your sales or professional services representative and request installation on your tenant. Mozu staff will install the app to your tenant, making it available for further configuration and usage in your storefront.</p>
+                     </section>  
+
+<section id="configapp">
+                            <h2>Configure the Application</h2>
+							<p>To integrate your Bronto services with Mozu, review the configuration requirements to ensure you have everything you need to be successful before you begin, and then complete the steps in this section.</p>
+							
+							<h3 id="configreq">Configuration Requirements</h3>
+                            <ul>
+                            <li>The Mozu Bronto Application must be installed on your tenant.</li>
+                            <li>You must have an active <a href="http://www.bronto.com/" target="_blank">Bronto</a> account.</li>
+                            <li>You must have configured campaigns, customer lists, and email templates in your Bronto account.</li>
+                        </ul>
+							
+                            
+                            <h3 id="configacct">Obtain Your Bronto API Key</h3>
+                            <p>The Bronto SOAP API Key grants Mozu access to your Bronto contacts and email templates without requiring you to enter your Bronto credentials in Mozu. Note this API key and enter it in Mozu during configuration:</p>
+                        <ol>
+                            <li>Log in to your Bronto account.</li>
+							<li>Find the list of SOAP API Access Tokens for your account. At the time of this writing, you could find this list on the <b>Data Exchange</b> page.
+							<br><img src="key.png" class="img-mozu"></li>
+							<li>Note the key you want to use from the list. If you have not yet created a key, click <b>Add Access Token</b> to configure a new key with read, write, and send permissions for use with the Mozu Bronto Application. </li>
+                        </ol>
+					
+							
+							<h3 id="configmozu">Configure the Mozu Bronto Application</h3>
+							<p>After obtaining your Bronto API key, enter the key in Mozu and configure the settings for the Mozu Bronto Application:</p>
+                            <ol>
+								<li>Log in to Mozu Admin.</li>
+                                <li>On the Mozu Admin top bar, select <b>Settings</b> > <b>Applications</b>.</li>
+                                <li>Click <b>Mozu Bronto Application</b>.</li>
+                                <li>Click the <b>Configuration</b> link to open configuration settings.</li>
+                                <li>Open the <b>Account</b> tab.</li>
+								<li>Enter your <b>Bronto API Key</b>.</li>
+								<li>Click <b>Save</b>.</li>
+                            </ol>
+							<p>A Features tab displays.</p>
+							<ol>
+							<li>Open the <b>Features</b> tab.</li>
+							<li>Choose which features to enable or disable for the Mozu Bronto Application. Many of the features require you to select a template for the emails sent to shoppers. If you want to add or edit these templates, you can do so from within your Bronto account.
+							<br><img src="features1.png" class="img-mozu"><br><img src="features2.png" class="img-mozu">
+							<ol>
+							<li><b>Enable Opt in/Out Sync from Mozu to Bronto</b>&mdash;Sends shopper information from Mozu to Bronto about shoppers who opted into email marketing during the checkout process.<br><br>If you do not enable this feature, Bronto classifies shoppers who receive non-transactional emails (wishlist reminder, welcome email, store credit) as "Onboarding Contacts", and classifies shoppers who receive transactional emails (in-stock notification, order confirmation, order shipment, RMA emails, password reset, and order abandonment) as "Transactional Contacts".<br><br></li>
+							<li><b>Enable Opt in/Out Sync from Bronto to Mozu</b>&mdash;Sends your Bronto contacts' marketing preferences from Bronto to Mozu.</li>
+							<li><b>Enable Contact Export</b>&mdash;Sends contact information from Mozu to Bronto about shoppers, including names, email addresses, and custom shopper attributes.</li>
+							<li><b>Enable Welcome Emails</b>&mdash;Sends a welcome email to new shoppers.</li>
+							<li><b>Enable Password Reset Emails</b>&mdash;Sends password reset emails to shoppers using a Bronto template instead of the default Mozu email.</li>
+							<li><b>Turn on wishlist reminder emails</b>&mdash;Sends a reminder email after a specified number of idle <b>Day(s)</b> to shoppers who have items in their wishlists.</li>
+							<li><b>Enable Order Export from Mozu to Bronto</b>&mdash;Sends order information from Mozu to Bronto. If you enable this feature, use the <b>Contact Sync Settings</b> tab to specify whether you want to place the shopper into a Bronto list:
+							<ol>
+							<li>Open the <b>Contact Sync Settings</b> tab.</li>
+							<li>Choose to enable or disable adding Mozu shoppers to lists in Bronto by clicking <b>Add Contacts to List</b>.</li>
+							<li>Type an existing list name to add shoppers to, or type a new name to create a new list in Bronto to add shoppers to.</li>
+							<li>Return to the <b>Features</b> tab.</li>
+							</ol>
+							</li>
+							<li><b>Enable Order Confirmation Email</b>&mdash;Sends an order confirmation email to shoppers after the checkout process is complete.</li>
+							<li><b>Enable Order Abandonment Emails</b>&mdash;Sends an email to shoppers who began the checkout process 48 hours ago but who have not yet submitted the order.</li>
+							<li><b>Enable Order Shipment Emails</b>&mdash;Sends an email to shoppers when their order ships.</li>
+							<li><b>Enable Return Created Emails</b>&mdash;Sends an email to shoppers after they create a return.</li>
+							<li><b>Enable Return Authorized Emails</b>&mdash;Sends an email to shoppers after you receive and accept a return in Mozu using the Orders module.</li>
+							<li><b>Enable Return Rejected Emails</b>&mdash;Sends an email to shoppers after you reject a return in Mozu using the Orders module.</li>
+							<li><b>Enable Return Closed Emails</b>&mdash;Sends an email to shoppers after you close a return in Mozu using the Orders module.</li>
+							<li><b>Enable InStock notification Emails</b>&mdash;Sends an email to shoppers when an item on their wishlist is back in stock.</li>
+							</ol>
+							</li>
+							<li>Click <b>Save</b>.</li>
+							</ol>
+							
+							 
+							
+                        </section>					 
+						
+                        
+					<section id="enable">
+                            <h2>Enable the App</h2>
+                            <p>After configuration, enable the Mozu Bronto Application in Mozu to apply its functionality to your tenant.</p>
+                            <ol>
+                                <li>On the Mozu Admin top bar, select <b>Settings</b> > <b>Applications</b>.</li>
+                                <li>Click <b>Mozu Bronto Application</b>.</li>
+                                <li>Click <b>Enable App</b>.</li>
+						
+                            </ol>
+							
+							<p>After enabling the Mozu Bronto Application, perform an initial export of shopper and order information from Mozu to Bronto.</p>
+							
+							<h3>Export Shopper Information to Bronto</h3>
+							<p>Export Mozu shopper information using the Customers module extension. The export adds existing Mozu shoppers and their attributes to your Bronto contacts. After the first export, the Mozu Bronto Application automatically sends information about new Mozu shoppers to Bronto if you enable the contact export feature in the configuration settings.</p>
+						<ol>
+						<li>In Mozu Admin, click the <b>Customers</b> module.</li>
+						<li>Click <b>Extensions</b> > <b>Bronto</b> > <b>Attributes</b>.</li>
+						<li>Use the Attribute Mapping page to map shopper attributes gathered or created in Mozu to fields in your Bronto account. For example, you can map typical Mozu shopper attributes, like a shopper's first name, to a corresponding Bronto field. You can also map any custom shopper attributes you have created in Mozu to a Bronto field. If you don't select a field for an attribute, it will not map to Bronto.
+						<br><img src="attributes.png" class="img-mozu"></li>
+						<li>Click <b>Save</b>.</li>
+						<li>Click <b>Sync</b> to open the Sync page.</li>
+						<li>Click <b>Export All Contacts To Bronto</b>.</li>
+						<li>Click <b>Export to Bronto</b> to send existing Mozu shopper information and marketing preferences to Bronto.</li>
+						</ol>
+							
+							<h3>Export Order Information to Bronto</h3>
+						<p>Export Mozu order information using the Orders module extension. The export sends order information from Mozu to Bronto about orders your site received prior to enabling the Mozu Bronto Application. After you enable the application, new order information is automatically sent to Bronto if you enable the order export feature in the configuration settings.</p>
+						<ol>
+						<li>In Mozu Admin, click the <b>Orders</b> module.</li>
+						<li>Click <b>Extensions</b> > <b>Bronto</b> > <b>Export</b>.</li>
+						<li>Click <b>Export</b>.</li>
+						</ol>
+                            
+							<p>Congratulations! You can now preview Bronto functionality on your site.</p>
+                        </section>
+					
+						 
+                        
+                        
+                        
+                        
+				
+				
+				
+				<section id="use">
+<h2>Use the App</h2>
+<ul><li><a href="#customer">Customer Module Extension: Sync Contacts, Send Wishlist Reminders, View Logs, and Preview Emails</a></li><li><a href="#orders">Orders Module Extension: View Logs and Preview Order &amp; Return Emails</a></li><li><a href="#variables">Use API Variables to Customize Email Templates</a></li>				
+                    <h2 id="customer">Customer Module Extension: Sync Contacts, Send Wishlist Reminders, View Logs, and Preview Emails</h2>
+						<p>The Mozu Bronto Application adds an extension to the Customers module that allows you to sync contact information between Mozu and Bronto, manage wishlist reminders, view related logs, and preview emails sent to shoppers. <b>Note:</b> The pages that display in this extension depend on the features you enable during configuration.</p>
+						<p>To view this extension:</p>
+						<ol>
+						<li>In Mozu Admin, click the <b>Customers</b> module.</li>
+						<li>Click <b>Extensions</b> > <b>Bronto</b>, and select a page.</li>
+						</ol>
+						
+						
+						
+						<h3 id="sync">Sync Contacts between Mozu and Bronto</h3>
+						<p>Use the <b>Sync</b> page in the Bronto extension to update Mozu shoppers with their marketing preferences stored in Bronto. Any change in subscription settings in Bronto automatically update in Mozu.</p>
+						<br><img src="sync.png" class="img-mozu">
+                        <ol>
+                            <li>Click <b>Sync Marketing Preferences From Bronto</b>.</li>
+							<li>Click <b>Sync from Bronto</b> to import shopper information and marketing preferences from Bronto.</li>
+                        </ol>
+						<p>After you sync contacts between Mozu and Bronto, Mozu receives updates from Bronto once every hour.</p>
+						
+						
+						
+						
+						<h3>Run Wishlist Reminder</h3>
+						<p>Use the <b>Wishlist</b> page in the Bronto extension to remind shoppers about products on their wishlist that are available for purchase. Click <b>Run Wishlist Reminder</b> to send an on-demand email reminder. If you enabled wishlist reminders during configuration, a new reminder will run once per day at 12:00 AM CST to shoppers who have had items in their wishlist for the specified idle period.</p>
+						
+						<h3>View Shopper Marketing Logs</h3>
+						<p>Use the <b>Logs</b> page in the Bronto extension to view events related to shopper marketing preferences. The log displays information about when shopper accounts were created, when marketing preferences were changed for an account, and when updates were made to shopper accounts. You can use the <b>Search</b> to filter the logs by shopper email.</p>
+						
+						<h3>Send a Test Email</h3>
+						<p>Use the <b>Email Test</b> page in the Bronto extension to preview how an email will look to a shopper:</p>
+						<br><img src="testEmail.png" class="img-mozu">
+						<ol>
+						<li>Select an <b>Email Type</b> to preview from the drop-down menu.</li>
+						<li>Enter an <b>Email</b> address associated with one of your shopper accounts. The information from the shopper account is used to populate the email with relevant data (for example, a shopper's name and wishlist).</li>
+						<li>Click <b>Test Email</b> to send the test email to the email address associated with your Mozu account.</li>
+						</ol>
+						
+				
+                    <h2 id="orders">Orders Module Extension: View Logs and Preview Order &amp; Return Emails</h2>
+						<p>The Mozu Bronto Application adds an extension to the Orders module that allows you to view order export logs and preview emails sent to shoppers. <b>Note:</b> The pages that display in this extension depend on the features you enable during configuration.</p>
+						<p>To view this extension:</p>
+						<ol>
+						<li>In Mozu Admin, click the <b>Orders</b> module.</li>
+						<li>Click <b>Extensions</b> > <b>Bronto</b>, and select a page.</li>
+						</ol>
+						
+						
+						
+						<h3>View Order Logs</h3>
+						<p>Use the <b>Logs</b> page in the Bronto extension to view events related to order exports. You can use the <b>Search</b> to filter the logs by shopper email.</p>
+						
+						
+						
+						<h3>Send a Test Email</h3>
+						<p>Use the <b>Email Test</b> page in the Bronto extension to preview how an email related to a specific order or return will look.</p>
+						<br><img src="orderEmail.png" class="img-mozu">
+						<ol>
+						<li>Select an <b>Email Type</b> to preview from the drop-down menu.</li>
+						<li>Enter an <b>Order/Return Number</b>. The information from the order or return is used to populate the email with relevant data (for example, the product ordered).</li>
+						<li>Click <b>Test Email</b> to send the test email to the email address associated with your Mozu account.</li>
+						</ol>
+						
+						
+						
+				</section>
+				
+				<section id="variables">
+				<h2>Use API Variables to Customize Email Templates</h2>
+				<p>Mozu exports an assortment of variables through the Mozu API related to shoppers and orders. You can use these variables to add useful content to your Bronto email templates. The syntax for using API variables in Bronto email templates is <span style="font-family:Courier New">%%#variable%%</span>. For example, if you are creating an email template to notify shoppers of a product that has come back into stock, you could enter the following text in the HTML for the Bronto In-Stock email template:<br><br><span style="font-family:Courier New">Good news! %%#productName%% is back in stock!</span><br><br>Also note that you must place email variables that end in <em>_#</em> within loops. For example:<br><br><span style="font-family:Courier New">{loop}%%#productImageUrl_#%%{/loop}</span><br><br>Refer to the following tables for the complete list of email variables you can use in Bronto, and to the Bronto Help &amp; Learning Center for information on customizing email templates with API variables.</p>
+				<p><a href="#tinstock">In-Stock Notification Email</a> <b>|</b> <a href="#torder">Order Abandoned, Confirmed, or Shipped</a> <b>|</b> <a href="#treturns">Returns</a> <b>|</b> <a href="#twelcome">Welcome Email</a> <b>|</b> <a href="#twish">Wishlist</a> <b>|</b> <a href="#treset">Password Reset</a></p>
+				
+				<h3 id="tinstock">In-Stock Notification Email</h3>
+				<table>
+				<tr><td>productCode</td></tr>
+				<tr><td>productName</td></tr>
+				<tr><td>description</td></tr>
+				<tr><td>fullDescription</td></tr>
+				<tr><td>productUrl</td></tr>
+				<tr><td>productQty</td></tr>
+				<tr><td>productImageUrl_#</td></tr>
+				<tr><td>storeUrl</td></tr>
+				<tr><td>storeName</td></tr>
+				<tr><td>fromEmail</td></tr>
+				<tr><td>fromName</td></tr>
+				<tr><td>toEmail</td></tr>
+				</table>
+				
+				<h3 id="torder">Order Abandoned, Confirmed, or Shipped</h3>
+				<table>
+				<tr><td>storeUrl</td></tr>
+<tr><td>storeName</td></tr>
+<tr><td>fromName</td></tr>
+<tr><td>fromEmail</td></tr>
+<tr><td>toEmail</td></tr>
+<tr><td>checkoutUrl (only for Adandoned order)</td></tr>
+<tr><td>orderNumber</td></tr>
+<tr><td>orderStatus</td></tr>
+<tr><td>paymentStatus</td></tr>
+<tr><td>subTotal</td></tr>
+<tr><td>discountedSubTotal</td></tr>
+<tr><td>discountedTotal</td></tr>
+<tr><td>shippingTotal</td></tr>
+<tr><td>shippingSubTotal</td></tr>
+<tr><td>shippingTaxTotal</td></tr>
+<tr><td>handlingTotal</td></tr>
+<tr><td>handlingTaxTotal</td></tr>
+<tr><td>itemTaxTotal</td></tr>
+<tr><td>taxTotal</td></tr>
+<tr><td>feeTotal</td></tr>
+<tr><td>total</td></tr>
+<tr><td>currencyCode</td></tr>
+<tr><td>fulfillmentStatus</td></tr>
+<tr><td>shippingAddressLine</td></tr>
+<tr><td>shippingAddress1</td></tr>
+<tr><td>shippingAddress2</td></tr>
+<tr><td>shippingAddress3</td></tr>
+<tr><td>shippingAddress4</td></tr>
+<tr><td>shippingCityOrTown</td></tr>
+<tr><td>shippingStateorProvince</td></tr>
+<tr><td>shippingPostalOrZipCode</td></tr>
+<tr><td>shippingCountryCode</td></tr>
+<tr><td>shippingEmail</td></tr>
+<tr><td>shippingFirstName</td></tr>
+<tr><td>shippingLastName</td></tr>
+<tr><td>shippingMiddleName</td></tr>
+<tr><td>shippingHome</td></tr>
+<tr><td>shippingMobile</td></tr>
+<tr><td>shippingWork</td></tr>
+<tr><td>billingAddressLine</td></tr>
+<tr><td>billingAddress1</td></tr>
+<tr><td>billingAddress2</td></tr>
+<tr><td>billingAddress3</td></tr>
+<tr><td>billingAddress4</td></tr>
+<tr><td>billingCityOrTown</td></tr>
+<tr><td>billingStateorProvince</td></tr>
+<tr><td>billingPostalOrZipCode</td></tr>
+<tr><td>billingCountryCode</td></tr>
+<tr><td>billingEmail</td></tr>
+<tr><td>billingFirstName</td></tr>
+<tr><td>billingLastName</td></tr>
+<tr><td>billingMiddleName</td></tr>
+<tr><td>billingHome</td></tr>
+<tr><td>billingMobile</td></tr>
+<tr><td>billingWork</td></tr>
+<tr><td>itemCode_#</td></tr>
+<tr><td>itemName_#</td></tr>
+<tr><td>itemImage_#</td></tr>
+<tr><td>itemQty_#</td></tr>
+<tr><td>itemFulfillmentMethod_#</td></tr>
+<tr><td>itemSubTotal_#</td></tr>
+<tr><td>itemExtendedTotal_#</td></tr>
+<tr><td>itemTaxableTotal_#</td></tr>
+<tr><td>itemDiscountTotal_#</td></tr>
+<tr><td>itemTaxTotal_#</td></tr>
+<tr><td>itemShippingTaxTotal_#</td></tr>
+<tr><td>itemShippingTotal_#</td></tr>
+<tr><td>itemHandlingAmount_#</td></tr>
+<tr><td>itemFeeTotal_#</td></tr>
+<tr><td>itemTotal_#</td></tr>
+<tr><td>shippingDicounetName_#</td></tr>
+<tr><td>shippingDiscountValue_#</td></tr>
+<tr><td>shippingDiscountCoupon_#</td></tr>
+<tr><td>orderDiscountName_#</td></tr>
+<tr><td>orderDiscountValue_#</td></tr>
+<tr><td>orderDiscountCoupon_#</td></tr>
+<tr><td>orderAdjustment_#</td></tr>
+<tr><td>shippingAdjustment_# (only for Shipped order)</td></tr>
+<tr><td>shipmentTracking_# (only for Shipped order)</td></tr>
+<tr><td>shipmentItems_# (only for Shipped order)</td></tr>
+<tr><td>shipmentMethod_# (only for Shipped order)</td></tr>
+<tr><td>shipmentWeight_# (only for Shipped order)</td></tr>
+<tr><td>shipmentHeight_# (only for Shipped order)</td></tr>
+<tr><td>shipmentWidth_# (only for Shipped order)</td></tr>
+<tr><td>shipmentLength_# (only for Shipped order)</td></tr>
+<tr><td>pickupItems_# (only for Shipped order)</td></tr>
+				</table>
+
+				<h3 id="treturns">Returns</h3>
+<table>
+<tr><td>returnNumber</td></tr>
+<tr><td>returnType</td></tr>
+<tr><td>returnStatus</td></tr>
+<tr><td>returnProductAmount</td></tr>
+<tr><td>returnProductTaxAmount</td></tr>
+<tr><td>returnShippingAmount</td></tr>
+<tr><td>returnShippingTaxAmount</td></tr>
+<tr><td>returnAmount</td></tr>
+<tr><td>returnDeadline</td></tr>
+<tr><td>itemCode_#</td></tr>
+<tr><td>itemName_#</td></tr>
+<tr><td>itemDescription_#</td></tr>
+<tr><td>itemImageUrl_#</td></tr>
+<tr><td>itemReason_#</td></tr>
+<tr><td>itemQty_#</td></tr>
+<tr><td>storeUrl</td></tr>
+<tr><td>storeName</td></tr>
+<tr><td>fromEmail</td></tr>
+<tr><td>fromName</td></tr>
+<tr><td>customerName</td></tr>
+<tr><td>toEmail</td></tr>
+</table>		
+
+<h3 id="twelcome">Welcome Email</h3>
+<table>
+<tr><td>storeUrl</td></tr>
+<tr><td>storeName</td></tr>
+<tr><td>fromEmail</td></tr>
+<tr><td>fromName</td></tr>
+<tr><td>customerName</td></tr>
+<tr><td>toEmail</td></tr>
+</table>	
+
+<h3 id="twish">Wishlist</h3>
+<table>
+<tr><td>customerName</td></tr>
+<tr><td>fromEmail</td></tr>	
+<tr><td>fromName</td></tr>
+<tr><td>storeUrl</td></tr>
+<tr><td>storeName</td></tr>
+<tr><td>productName_#</td></tr>
+<tr><td>productImage_#</td></tr>
+<tr><td>productPrice_#</td></tr>
+<tr><td>productUrl_#</td></tr>
+<tr><td>productSalePrice_#</td></tr>
+<tr><td>productDiscountPrice_#</td></tr>
+
+
+</table>
+
+<h3 id="treset">Password Reset</h3>
+<table>
+<tr><td>passwordResetLink</td></tr>	
+<tr><td>firstName</td></tr>
+<tr><td>lastName</td></tr>
+<tr><td>storeName</td></tr>
+<tr><td>storeUrl</td></tr>
+<tr><td>fromEmail</td></tr>
+<tr><td>fromName</td></tr>
+<tr><td>customerName</td></tr>
+<tr><td>toEmail</td></tr>
+</table>
+				
+				</section>
+				
+				
+				
+				
+						</div>
+                    </div>
+                </div>
+           </div>
+		</div>
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="footer__logo">
+                            <a href="http://www.mozu.com" target="_blank"><img src="http://www.mozu.com/sites/all/themes/mozu_aurora/logo.png" style="padding-top:7px;"/></a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 text-center">
+                        
+                    </div>
+                    <div class="col-md-3">
+                        <p class="pull-right footer__icons" style="padding-right:40px;"><a href="http://www.mozu.com/ecommerce-app-center" target="_blank"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-code-fork"></i></button></a><a href="http://www.mozu.com/contact"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-comments-o"></i></button></a><a href="http://www.mozu.com/legal"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-copyright"></i></button></a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+		
+	<!-- Back to top -->
+	<div class="scroll-top-wrapper ">
+    <span class="scroll-top-inner">
+        <i class="fa fa-2x fa-arrow-circle-up"></i>
+    </span>
+	</div>
+	<!-- Back to top - show hide -->
+	<script>
+ 
+	$(function(){
+	 
+		$(document).on( 'scroll', function(){
+	 
+			if ($(window).scrollTop() > 100) {
+				$('.scroll-top-wrapper').addClass('show');
+			} else {
+				$('.scroll-top-wrapper').removeClass('show');
+			}
+		});
+	});
+	</script>
+	<!-- Back to top - to top -->
+	<script>
+ 
+	$(function(){
+	 
+		$(document).on( 'scroll', function(){
+	 
+			if ($(window).scrollTop() > 100) {
+				$('.scroll-top-wrapper').addClass('show');
+			} else {
+				$('.scroll-top-wrapper').removeClass('show');
+			}
+		});
+	 
+		$('.scroll-top-wrapper').on('click', scrollToTop);
+	});
+	 
+	function scrollToTop() {
+		verticalOffset = typeof(verticalOffset) != 'undefined' ? verticalOffset : 0;
+		element = $('body');
+		offset = element.offset();
+		offsetTop = offset.top;
+		$('html, body').animate({scrollTop: offsetTop}, 500, 'linear');
+	}
+	</script>
+    </body>
+</html>

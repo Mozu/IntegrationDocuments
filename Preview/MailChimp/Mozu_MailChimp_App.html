@@ -1,0 +1,327 @@
+<html>
+    <head><title>MailChimp by Mozu</title>
+        <meta name="author" content="Mozu" />
+        <meta name="description" content="User content for MailChimp by Mozu" />
+        <meta name="keywords" content="MailChimp,Mozu" />
+		<link rel="shortcut icon" href="http://www.mozu.com/favicon.ico" />
+		
+		<!-- Required for Scrollspy -->
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/scrollspy.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/affix.js"></script>
+		<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+		
+		<!-- Mozu CSS developed by Mozu Docs -->
+		<link href="mozu-bootswatch.css" rel="stylesheet" type="text/css" />	
+		
+		<!-- Scrollspy active link script -->
+		<script>
+		$( document ).ready(function() {
+		$('body').scrollspy({
+			target: '.bs-docs-sidebar',
+			offset: 20
+		});
+		});        
+		</script>
+		
+		<!-- Anchor Ease Script -->
+		<script>
+		 $(function() {
+			  $('a[href*=#]:not([href=#])').click(function() {
+				if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') 
+			&& location.hostname == this.hostname) {
+
+				  var target = $(this.hash);
+				  target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+				  if (target.length) {
+					$('html,body').animate({
+					  scrollTop: target.offset().top - 75 //offsets for fixed header
+					}, 1000);
+					return false;
+				  }
+				}
+			  });
+			  //Executed on page load with URL containing an anchor tag.
+			  if($(location.href.split("#")[1])) {
+				  var target = $('#'+location.href.split("#")[1]);
+				  if (target.length) {
+					$('html,body').animate({
+					  scrollTop: target.offset().top - 75 //offset height of header here too.
+					}, 1000);
+					return false;
+				  }
+				}
+		});
+		</script>
+		
+		<!-- Affix Javascript -->
+		
+		<script>$(function(){
+ 
+			var stickyElement = '.bs-docs-sidebar', 
+			bottomElement = '.footer'; 
+			
+			if($( stickyElement ).length){
+			$( stickyElement ).each(function(){
+		   
+			var fromTop = $( this ).offset().top,
+		   
+			fromBottom = $( document ).height()-($( this ).offset().top + $( this ).outerHeight()),
+			
+			stopOn = $( document ).height()-( $( bottomElement ).offset().top)+($( this ).outerHeight() - $( this ).height());
+			
+			if( (fromBottom-stopOn) > 200 ){
+			
+			$( this ).css('width', $( this ).width()).css('top', 0).css('position', '');
+			
+			$( this ).affix({
+			offset: {
+			
+			top: fromTop,
+			
+			bottom: stopOn
+			}
+			
+			}).on('affix.bs.affix', function(){ $( this ).css('top', 0).css('position', ''); });
+			}
+			
+			$( window ).trigger('scroll');
+			});
+			}
+		});
+		</script>
+	</head>
+    <body>
+	<div id="main">
+	<div class="container">
+		<!-- Top Nav - Mozu -->
+			<nav class="navbar navbar-default navbar-fixed-top">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                        </button> <a href="#"><img src="logo-m-red-medium.png" style="margin-top:3px;"/></a></div>
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav navbar-right">
+							<li><a href="versionhistory.html"><span>Version History</span></a></li>
+                            <li><a href="//developer.mozu.com/learn/mozu-concepts"><span>Mozu Concepts</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+			
+		<!--Side Navigation TOC -->
+		<div class="row">
+		<div class="landing-title">
+			<h1>MailChimp Integration Application by Mozu Configuration Guide</h1>	
+		</div>
+			<div class="col-md-3" >
+				<nav class="bs-docs-sidebar" >
+					<ul class="nav nav-stacked" >
+						<div class="side-heading">Table of Contents</div>
+							<li><a href="#intro">Welcome to MailChimp Integration and Mozu</a></li>
+							<li><a href="#install">Install MailChimp</a>
+								<ul class="nav nav-stacked" >
+								 <li><a href="#configreq">Requirements</a></li>
+								</ul>
+							</li>
+							<li><a href="#enable">Initialize and Enable the MailChimp App</a>
+								<ul class="nav nav-stacked" >
+								 <li><a href="#initialize">Initialize the MailChimp App</a></li>
+								 <li><a href="#apikey">Find the MailChimp API Key</a></li>
+								 <li><a href="#enableapp">Enable the MailChimp App</a></li>
+								</ul>
+							</li>
+							<li><a href="#configapp">Configure the App</a>
+								<ul class="nav nav-stacked">
+									<li><a href="#importmail">Import MailChimp Contacts</a></li>
+									<li><a href="#exportmozu">Export Mozu Customers</a></li>
+								</ul>
+							</li>
+					</ul>
+				</nav>
+			</div>
+                    
+            <div class="col-md-9 content" >
+                <!-- Documentation content -->
+				<section id="intro">
+					<h2>Welcome to MailChimp and Mozu</h2>
+					<p><a href="http://www.mailchimp.com">MailChimp</a> provides online services for crafting and generating refined email campaigns to promote your business to current and potential customers and shoppers. With a few images, written content, and selections, your emails go from simple data with a few links to stylish, informative marketing pieces sent to key audiences based on subscriptions and configured settings. MailChimp helps you generate better business by marketing to your Mozu customers through campaigns, reducing costs and lost time and money spent on design. </p>
+					<p><a href="http://www.mozu.com">Mozu</a> offers an app to leverage MailChimp's services to integrate with your Mozu customer accounts, subscribed shoppers, and completed orders. Through your Mozu app, you can sync your MailChimp mailing lists with Mozu subscribers, build email campaigns in MailChimp, and generate emails using your subscribed mailing list customers in your Mozu store.</p>
+				</section>
+				<section id="install">
+					<h2 >Install MailChimp Integration by Mozu on Your Tenant</h2>
+                        <p>After purchasing the MailChimp Application by Mozu, call your sales or professional services representative and request installation on your tenant. Mozu staff will install the app to your tenant, making it available for further configuration and usage in your storefront.</p>
+                        <p>This custom app integrates MailChimp with Mozu to support the following:</p>
+                        <ul>
+                            <li>Complete an initial sync between your MailChimp account with Mozu to share data between the services, including contacts and completed orders.</li>
+							<li>Data syncs automatically occur between the systems per specific events including subscription opt in/opt out, creating customer account, creating new customer segments in Mozu, adding/removing customers in segments, and completing an order. Additional syncs may be needed in case of MailChimp maintenance or server outages to verify all subscribers.</li>
+                            <li>Create and send email campaigns in MailChimp to your Mozu customers.</li>
+							<li>Review a history of manual data syncs between Mozu and MailChimp.</li>
+                        </ul>
+						<p>The following occurs between Mozu and the MailChimp app:</p>
+						<ul>
+							<li>As shoppers select to join the mailing list by subscribing, Mozu updates MailChimp with the opt-in setting for that customer. </li>
+							<li>If a shopper clicks to unsubscribe from an email, MailChimp updates Mozu with the opt-out setting.</li>
+							<li>A customer completes an order. Mozu sends an update automatically to MailChimp.</li>
+							<li>A customer is added or removed from a customer segment in Mozu. This data is updated for the account. </li>
+						</ul>
+                        
+					<h3 id="configreq">Configuration Requirements</h3>
+					<p>To configure MailChimp to work seamlessly with Mozu, you need specific items installed and settings provided. This guide details each step from requirements to final configuration for syncing contacts and generating email campaigns.</p>
+						 
+                        
+                        <p>You must meet the following criteria to configure the MailChimp app:</p>
+                        <ul>
+                            <li>You must have the MailChimp Application by Mozu installed into your tenant.</li>
+                            <li>You must have an active <a href="http://www.mailchimp.com/">MailChimp</a> account with an API Key. When added, the available list and tenant names on your account display in the app.</li>
+                            <li>You must maintain all campaign designs, rules, and settings in your MailChimp account.</li>
+							<li>You must create only one mailing list in MailChimp for use in Mozu. Mozu supports one mailing list at this time.</li>
+							<li>You can create customer segments at any time in Mozu. This data updates into MailChimp as created, edited, and removed.</li>
+                        </ul>
+                        
+				</section>
+				<section id="enable">
+                    <h2 >Initialize and Enable the MailChimp App</h2>
+					<p>Prior to creating campaigns and sending emails, you must initialize then enable the MailChimp app.</p>
+					<h3 id="initialize">Configure MailChimp Account Settings</h3>
+					<p>To initialize the app, you add the API Key and link one site to one list. Mozu only supports one site per tenant at this time.</p>
+                        <ol>
+                            <li>On the Mozu Admin top bar, select <b>Settings > Applications</b>.</li>
+							<li>Double-click <b>MailChimp</b>.</li>
+							<li>Click the <b>Configuration</b> link to open configuration settings. </li>
+							<li>On the <b>Settings</b> tab, enter your <b>MailChimp API Key</b>. If you need help finding your API Key, see the next section <a href="apikey"><i>Find the MailChimp API Key</i></a>. When you click outside of the field, Mozu contacts MailChimp to establish the connection. On success, a green checkmark displays. When selected, click out of the list to save the change.</li>
+							<li>Data of available lists fills the List Name drop-down menu.</li>
+							<li>Select a <b>List Name</b> to associate between Mozu and MailChimp. Mozu only supports one list per tenant at this time. </li>
+							<li>When selected, the association automatically verifies and displays.</li>
+							The app page updates displaying <b>Initialized: true</b>.</li>
+                        </ol>
+						<img src="mailchimp-settings.png" class="img-mozu" />
+					<h3 id="apikey">Find the MailChimp API Key</h3>
+					<p>If you are unsure <a href="http://kb.mailchimp.com/accounts/management/about-api-keys">where to find this key</a>, do the following:</p>
+                        <ol>
+                            <li>Log in to your MailChimp account online.</li>
+							<li>Open the <b>Account</b> page and click <b>Extras > API keys</b>.</li>
+							<li>A list of keys will display on the page. If not, click <b>Create a Key</b> and continue those steps. </li>
+							<li>Copy and paste the long API Key into the Mozu App.</li>
+                        </ol>
+					<p>The API Key grants access to sync contacts and send email campaigns. </p>
+					<h3 id="enableapp">Enable the MailChimp App</h3>
+					<p>With the app initialized, you can enable the app:</p>
+                        <ol>
+                            <li>On the Mozu Admin top bar, select <b>Settings > Applications</b>.</li>
+							<li>Double-click <b>MailChimp</b>.</li>
+							<li>Click <b>Enable App</b> on the MailChimp page. </li>
+                        </ol>
+				</section>
+				
+				<section id="configapp">				
+                    <h2 >Configure the Application</h2>
+						<p>To integrate your MailChimp services with Mozu, you need to sync the data. The applications require at least one import and export to connect and update. You can perform a manual sync of data through imports and exports. Any manual jobs add a completed log file to the History tab. </p>
+						<p>Once connected, MailChimp and Mozu share data for customer accounts and contacts. All new accounts are created in Mozu. MailChimp manages and provides updated opt in/out settings from received email requests. All data is maintained in Mozu and shared with MailChimp.</p>
+						
+						<h3 id="importmail">Import MailChimp Contacts</h3>
+						<p>With your Mozu and MailChimp accounts newly connected, you should import your MailChimp contacts. The shared data updates the opt in/out settings for your Mozu customer accounts/contacts. Once synced, if a MailChimp contact changes their status, it automatically syncs and updates to Mozu.</p>
+                        <ol>
+                            <li>On the Mozu Admin top bar, select <b>Settings > Applications</b>.</li>
+                            <li>Double-click <b>MailChimp</b>.</li>
+                            <li>Click the <b>Configuration</b> link to open configuration settings. </li>
+                            <li>On the Data Sync tab, select the <b>Synchronization Type</b> as <i>Import MailChimp Customers</i>.</li>
+                            <li>Click <b>Schedule Sync</b>. A job begins to update subscribed and unsubscribed customers with your contact list.</li>
+							<img src="mailchimp-datasync.png" class="img-mozu" />
+							<li>A new record adds to the <b>History</b> tab.</li>
+							<img src="mailchimp-history.png" class="img-mozu" />
+                        </ol>
+						<h3 id="exportmozu">Export Mozu Customers</h3>
+						<p>With your Mozu and MailChimp accounts newly connected, you should export your Mozu customers. These customer accounts add as new MailChimp contacts or update the subscription settings for current contacts. This data also includes any Mozu customer segments.</p>
+						<p>Once synced, Mozu adds any current subscribers to MailChimp contacts. Any new or removed subscribers automatically update between Mozu and MailChimp. Once synced, if a Mozu customer changes their opt-in status, customer data changes in Mozu, or the customer segment(s) change in Mozu, it automatically syncs and updates to MailChimp.</p>
+                        <ol>
+                            <li>On the Mozu Admin top bar, select <b>Settings > Applications</b>.</li>
+                            <li>Double-click <b>MailChimp</b>.</li>
+                            <li>Click the <b>Configuration</b> link to open configuration settings. </li>
+                            <li>On the Data Sync tab, select the <b>Synchronization Type</b> as <i>Export Mozu Customers</i>.</li>
+                            <li>Click <b>Schedule Sync</b>. A job begins to update subscribed and unsubscribed customers with your contact list.</li>
+							<img src="mailchimp-datasync.png" class="img-mozu" />
+							<li>A new record adds to the <b>History</b> tab.</li>
+							<img src="mailchimp-history.png" class="img-mozu" />
+                        </ol>
+						
+					<h3 id="exportorders">Export Mozu Orders</h3>
+					<p>With your Mozu and MailChimp accounts newly connected, you should export your Mozu orders. Only the completed orders are exported into Mozu. </p>
+					<ol>
+					<li>On the Mozu Admin top bar, select <b>Settings > Applications</b>.</li>
+                            <li>Double-click <b>MailChimp</b>.</li>
+                            <li>Click the <b>Configuration</b> link to open configuration settings. </li>
+                            <li>On the Data Sync tab, select the <b>Synchronization Type</b> as <i>Export Mozu Orders</i>.</li>
+                            <li>Click <b>Schedule Sync</b>. A job begins to export all completed order data associated with customers to MailChimp.</li>
+							<img src="mailchimp-datasync.png" class="img-mozu" />
+							<li>A new record adds to the <b>History</b> tab.</li>
+							<img src="mailchimp-history.png" class="img-mozu" />
+					</ol>
+					
+				</section>
+				
+				
+						</div>
+                    </div>
+                </div>
+           </div>
+		</div>
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+				<div class="pull-left footer__logo">
+                    <a href="http://www.mozu.com" target="_blank"><img src="http://www.mozu.com/sites/all/themes/mozu_aurora/logo.png" style="padding-top:7px;"/></a>
+                </div>
+                <div class="pull-right footer__icons" style="padding-right:40px;"><a href="MailChimpApplicationbyMozu_ConfigurationGuide.pdf"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-file-pdf-o "></i></button></a><a href="http://www.mozu.com/ecommerce-app-center" target="_blank"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-code-fork"></i></button></a><a href="http://www.mozu.com/contact"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-comments-o"></i></button></a><a href="http://www.mozu.com/legal"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-copyright"></i></button></a>
+                </div>
+            </div>
+        </footer>
+		
+	<!-- Back to top -->
+	<div class="scroll-top-wrapper ">
+    <span class="scroll-top-inner">
+        <i class="fa fa-2x fa-arrow-circle-up"></i>
+    </span>
+	</div>
+	<!-- Back to top - show hide -->
+	<script>
+ 
+	$(function(){
+	 
+		$(document).on( 'scroll', function(){
+	 
+			if ($(window).scrollTop() > 100) {
+				$('.scroll-top-wrapper').addClass('show');
+			} else {
+				$('.scroll-top-wrapper').removeClass('show');
+			}
+		});
+	});
+	</script>
+	<!-- Back to top - to top -->
+	<script>
+ 
+	$(function(){
+	 
+		$(document).on( 'scroll', function(){
+	 
+			if ($(window).scrollTop() > 100) {
+				$('.scroll-top-wrapper').addClass('show');
+			} else {
+				$('.scroll-top-wrapper').removeClass('show');
+			}
+		});
+	 
+		$('.scroll-top-wrapper').on('click', scrollToTop);
+	});
+	 
+	function scrollToTop() {
+		verticalOffset = typeof(verticalOffset) != 'undefined' ? verticalOffset : 0;
+		element = $('body');
+		offset = element.offset();
+		offsetTop = offset.top;
+		$('html, body').animate({scrollTop: offsetTop}, 500, 'linear');
+	}
+	</script>
+    </body>
+</html>
