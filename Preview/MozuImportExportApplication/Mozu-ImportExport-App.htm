@@ -116,33 +116,55 @@
 			<h1>Mozu Import-Export Application Configuration Guide</h1>	
 		</div>
 			<div class="col-md-3">
-                        <nav class="bs-docs-sidebar">
-                            <ul class="nav nav-stacked">
-                                <div class="side-heading">Table of Contents</div>
-                                <li><a href="#intro">Welcome to the Mozu Import-Export Application</a>
-                                </li>
-                                <li><a href="#install">Install the App</a>
-                                </li>
-                                <li><a href="#configapp">Configure the App</a>
-                                </li>
-                                <li><a href="#enable">Enable the App</a>
-                                </li>
-                                <li><a href="#use">Use the App</a>
-                                </li>
+                <nav class="bs-docs-sidebar">
+                    <ul class="nav nav-stacked">
+                        <div class="side-heading">Table of Contents</div>
+                        <li><a href="#intro">Welcome to the Mozu Import-Export Application</a></li>
+                        <li><a href="#install">Install the App</a></li>
+                        <li><a href="#configapp">Configure the App</a>
+                           	<ul class="nav nav-stacked">
+                           		<li><a href="#configreq">Configuration Requirements</a></li>
+                          		<li><a href="#s3">Configure Amazon S3</a></li>
+                           		<li><a href="#ftp">Configure FTP</a></li>
+                           	</ul>
+                        </li>
+                        <li><a href="#enable">Enable the App</a></li>
+                        <li><a href="#use">Use the App</a>
+                             <ul class="nav nav-stacked">
+                             	<li><a href="#export">IT Analytics Data</a></li>
+                                <li><a href="#importcoupon">Coupons and Coupon Sets</a></li>
+                                <li><a href="#templatefiles">Understanding the Template Files</a></li>
+                                <li><a href="#importnew">Importing Coupons</a></li>
+                                <li><a href="#exportcoups">Exporting Coupons</a></li>
+                                <li><a href="#queueing">Queueing Multiple Operations</a></li>
                             </ul>
-                        </nav>
-                    </div>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
                     
             <div class="col-md-9 content" >
                 <!-- Documentation content -->
 				<section id="intro">
                             <h2>Welcome to the Mozu Import-Export Application</h2>
-                            <p>The <a href="http://www.mozu.com" target="_blank">Mozu</a> platform collects a wide array of real-time information about your site useful for IT analytics, including error incidents, performance metrics, and unavailable links. You can use the Mozu Import-Export Application to export this information to an Amazon Simple Storage Service (S3) buckets or to an FTP or FTPS server.</p>
+                            <p>The Mozu Import-Export Application enables you to easily import and export data - from large coupon sets to detailed IT analytics information - to and from Mozu.</p>
+                            <h3>IT Analytics Data</h3>
+                            <p>The <a href="http://www.mozu.com" target="_blank">Mozu</a> platform collects a wide variety of real-time information about your site that can be useful for IT analytics. The Mozu Import-Export Application exports this information - including error incidents, performance metrics, and unavailable links - to a bucket in an Amazon Simple Storage Service (S3) account or to an FTP or FTPS server.</p>
 							<p>Application Features:</p>
                             <ul>
 								<li>Collect real-time information about your site(s) that helps you monitor errors, warnings, performance metrics, unavailable links, and uptime issues.</li>
 								<li>Export logged data to your Amazon S3 account for storage and analysis.</li>
 								<li>Export logged data to an FTP server of your choice.</li>
+								<li>Automate data exports to send updated logs at specified time intervals.</li>
+                            </ul>
+                            <h3>Coupons and Coupon Sets</h3>
+                            <p>In Mozu, a coupon is a code that a user enters to enable a discount. Coupons are organized into coupon sets that define the behaviors of their member coupons. Mozu Admin gives you the ability to manually enter specific coupon codes one-by-one or to generate a large number of randomized coupon codes. However, in some cases, you might want to create a large number of fully custom coupon codes. For example, you might want to create HAPPYBIRTHDAYJOHN! codes for every customer in your database. The Mozu Import-Export Application simplifies and expedites that process.</p>
+                            <p>Application Features:</p>
+                            <ul>
+                            	<li>Import large sets of custom coupons via a simple CSV template.</li>
+                            	<li>Export information about coupons and coupon sets to evaluate the effectiveness of various promotions.</li>
+                            	<li>Specify an email address to receive notifications when import/export operations complete.</li>
+                            	<li>Queue multiple operations to break up large jobs.</li>
                             </ul>
                         </section>
                         <section id="install">
@@ -155,29 +177,59 @@
                         </section>
                         <section id="configapp">
                             <h2>Configure the Application</h2>
-                            <p>To integrate the functionality of the Mozu Import-Export Application with your site, review the configuration requirements to ensure you have everything you need to be successful before you begin, and then complete the steps in this section.</p>
-                            
+                            <p><strong>Note:</strong> If you only want to use the Coupons and Coupon Sets functionality of the Mozu Import-Export Application, you can skip to <a href="#enable">Enable the App</a>. If you want to export IT Analytics data for your Mozu sites, you must complete the steps in this section.</p>
+                          
 							<h3 id="configreq">Configuration Requirements</h3>
+							 <p>Review the following requirements to ensure you have everything you need to be successful, then complete the steps in this section:</p>
                             <ul>
                                 <li>The Mozu Import-Export Application must be installed on your tenant.</li>
-								<li>You must have an <a href="http://aws.amazon.com/s3/" target="_blank">Amazon S3 account</a> or access to an FTP server if you want to export logged data from your site.<br>
-								<br>If you use an Amazon S3 account, ensure your account has a bucket in which to store files. The Mozu Import-Export Application sends the logs from your site to a bucket on your S3 account. You can create a bucket using the S3 Console in <a href="http://www.aws.amazon.com" target="_blank">Amazon Web Services</a>.<br><br>If you use an FTP server, ensure you have access to a directory in which to store the logs sent from the Mozu Import-Export Application. Your IT department or FTP administrator can help identify a suitable directory.</li>
+								<li>You must have an <a href="http://aws.amazon.com/s3/" target="_blank">Amazon S3 account</a> or access to an FTP server to receive the logged data from your site.
+								</li>
                             </ul>
+                            <p><strong>Where do you want to log your data?</strong></p>
+                            <ul>
+                            	<li><a href="#s3">Amazon S3 Account</a></li>
+                            	<li><a href="#ftp">FTP Server</a></li>
+                            </ul>
+                            <p><strong>Note:</strong> You can configure both export locations if desired, but you can only export data to one destination type at a time.</p>
 							
-							<h3 id="s3">(Optional) Obtain Amazon S3 Security Credentials</h3>
-							<p>If you want to export logs to an Amazon S3 account, note the security credentials for the account:</p>
+							<h2 id="s3">Configuring Export to an Amazon S3 Account</h2>
+
+							<h3 id="create bucket">Create a Bucket in Your S3 Account</h3>
+							<p>The Mozu Import-Export Application requires a bucket in your S3 account for the log files. The application recognizes any existing buckets, but you might want to create a unique one just for your Mozu data.</p> 
 							<ol>
-							<li>Log in to <a href="http://www.aws.amazon.com" target="_blank">Amazon Web Services</a>.</li>
-							<li>Navigate to the <b>Security Credentials</b> page under your account drop-down.<br><img src="s3security.png" class="img-mozu"></li>
-							<li>Note your <b>Access Key ID</b>.<br><img src="keys.png" class="img-mozu">
-							<p><b>Note:</b> You also need to know your secret access key. However, you cannot view the secret access key on your Amazon account after the initial creation process. If you have lost or forgotten your secret access key, you need to create a new set of access keys. You can create new access keys for the account by going to the <b>Security Credentials</b> page. In the <b>Access Keys</b> section, click <b>Create New Access Key</b>.</p></li>
-							<li>Navigate to the <b>Account Settings</b> page.</li>
-							<li>Under <b>Security Token Service Regions</b>, note your active regions.<br><img src="regions.png" class="img-mozu"></li>
+								<li>Log in to <a href="http://www.aws.amazon.com" target="_blank">Amazon Web Services</a>.</li>
+								<li>Create a bucket for your log files.</li> 
+															</ol>
+								<p>You can refer to the <a href="http://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html" target="_blank">Amazon Web Services help</a> for a walkthrough of creating a bucket.</p>
+
+							<h3 id="obtains3creds">Obtain Amazon S3 Security Credentials</h3>
+							<p>The Mozu Import-Export Application requires your Amazon S3 <strong>Access Key ID</strong>, <strong>Secret Access Key</strong>, and active <strong>Security Token Service Region</strong>.</p> 
+							<p><strong>Note:</strong> You cannot view the <strong>Secret Access Key</strong> on your Amazon account after the initial creation process, so if you have lost or forgotten it, you will have to create new access keys for your account.</p>
+
+							<ol>
+							
+							<li>Navigate to the <strong>Security Credentials</strong> page under your account dropdown.<br><img src="s3security.png" class="img-mozu"></li>
+							<li>(Optional) If you don't know your <strong>Secret Access Key</strong>, go to the <strong>Access Keys</strong> section and click <strong>Create New Access Key</strong>.</li>
+							<li>Copy your <strong>Access Key ID</strong> and <strong>Secret Access Key</strong>.<br><img src="keys.png" class="img-mozu">
+							</li>
+							<li>Navigate to the <strong>Account Settings</strong> page.</li>
+							<li>Under <strong>Security Token Service Regions</strong>, note your active regions.<br><img src="regions.png" class="img-mozu"></li>
 							</ol>
 							
-							
-							<h3 id="ftp}">(Optional) Obtain FTP Server Credentials</h3>
-							<p>If you want to export logs to an FTP server, note the following details about your FTP setup. If you need help obtaining these details, contact your IT department or FTP administrator.</p>
+							<h3 id="applys3mozu">Enable Your S3 Account in Mozu</h3>
+						 <ol>
+                                <li>On the Mozu Admin top bar, select <strong>Settings</strong> > <strong>Applications</strong>.</li>
+                                <li>Click <strong>Mozu Import/Export</strong> (version 1.1.0).</li>
+                                <li>Click the <strong>Configuration</strong> link to open configuration settings.</li>
+                                <li>On the <strong>Storage Options</strong> tab, select <strong>Enable S3 Account</strong> and enter the account info you copied in the previous section.<br />
+							<img src="mozu-s3config-options.png"  class="img-mozu" /></li>
+							<li>Click <strong>Save</strong>.</li>
+						</ol>
+
+							<h2 id="ftp">Configuring Export to an FTP Server</h2>
+							<h3 id="obtainftpcreds">Obtain FTP Server Credentials</h3>
+							<p>If you want to export logs to an FTP server, note the following details about your FTP setup:</p>
 							<ul>
 							<li>Server name</li>
 							<li>Username</li>
@@ -186,66 +238,210 @@
 							<li>Port number</li>
 							<li>A directory on the server in which to store the logs of exported data</li>
 							</ul>
-							
+							<p>If you need help obtaining these details, contact your IT department or FTP administrator.</p>
 							
 							<h3 id="configacct">Configure the Mozu Import-Export Settings</h3>
                             <ol>
-                                <li>On the Mozu Admin top bar, select <b>Settings</b> > <b>Applications</b>.</li>
-                                <li>Click <b>Mozu Import-Export Application</b>.</li>
-                                <li>Click the <b>Configuration</b> link to open configuration settings.</li>
-                                <li>Open the <b>Options</b> tab.</li>
-								<li>Configure the options for the Mozu Import-Export Application. You can enter configuration information for both an Amazon S3 account and an FTP server.<br><img src="options.png" class="img-mozu">
-								<ol>
-								<li>If you want to export data to an Amazon S3 account, enable <b>Enable S3 Account</b>.</li>
-								<li>Enter your access key ID, secret key, and the service region for your Amazon S3 account.</li>
-								<li>If you want to export data to an FTP server, enable <b>Enable FTP</b>.</li>
-								<li>Enter the server name, username, and password for the FTP server.</li>
-								<li>Enable <b>Use Secure FTP</b> if the FTP server uses SFTP.</li>
-								<li>Enter the port number for the FTP server.</li>
-								</ol>
+                                <li>On the Mozu Admin top bar, select <strong>Settings</strong> > <strong>Applications</strong>.</li>
+                                <li>Click <strong>Mozu Import/Export</strong> (version 1.1.0).</li>
+                                <li>Click the <strong>Configuration</strong> link to open configuration settings.</li>
+                                <li>On the <strong>Storage Options</strong> tab, select <strong>Enable FTP</strong> and enter the information for your FTP server.<br /><img src="mozu-ftpconfig-options.png" class="img-mozu">
 								</li>
-								<li>Click <b>Save</b>.</li>
+								<li>Click <strong>Save</strong>.</li>
                             </ol>
                         </section>
+
                         <section id="enable">
                             <h2>Enable the App</h2>
-                            <p>You do not need to complete additional steps to enable the Mozu Import-Export Application. You can disregard the Enable App button.</p>
+                            <p>If you only want to export IT analytics information, you do not need to complete additional steps to enable the Mozu Import-Export Application. If you want to use the app to import or export coupons and coupon sets, complete the following steps:</p>
+                            <ol>
+                            	<li>On the Mozu Admin top bar, select <strong>Settings</strong> > <strong>Applications</strong>.</li>
+								<li>Click <strong>Mozu Import/Export</strong> (version 1.1.0).</li>
+								<li>Click <strong>Enable App</strong>.</li>
+							</ol>
+							<p>Enabling the Mozu Import-Export Application adds an <strong>Extensions</strong> menu to the Marketing module in Mozu Admin. You will use the Import/Export extension to manage the import and export of coupon sets.</p>
                         </section>
+                        
                         <section id="use">
 						
 						<h2>Use the App</h2>
-						<ul><li><a href="#export">Export Logs</a>
-                                </li></ul>
-                            <h2 id="export">Export Logs to an Amazon S3 Account or to an FTP Server</h2>
-                            <p>Use the configuration page of the Mozu Import-Export Application to schedule exports of IT data about your site. You can also view the log history of scheduled exports using the configuration page.</p>
+						<ul>
+							<li><a href="#export">Export IT Analytics Data</a></li>
+							<li><a href="#importcoupon">Coupons and Coupon Sets</a></li>
+                                <li><a href="#templatefiles">Understanding the Template Files</a></li>
+                                <li><a href="#importnew">Importing Coupons</a></li>
+                                <li><a href="#exportcoups">Exporting Coupons</a></li>
+                                <li><a href="#queueing">Queueing Multiple Operations</a></li>
+						</ul>
+                            <h2 id="export">Exporting IT Analytics Data Logs to S3 or FTP</h2>
+                            <p>Use the configuration page of the Mozu Import-Export Application to schedule exports of IT data about your site. You can also view your export history.</p>
 							<h3>Schedule an Export</h3>
 							<ol>
-                                <li>On the Mozu Admin top bar, select <b>Settings</b> > <b>Applications</b>.</li>
-                                <li>Click <b>Mozu Import-Export Application</b>.</li>
-                                <li>Click the <b>Configuration</b> link to open the configuration settings.</li>
-								<li>Click <b>Web Logs</b>.</li>
-								<li>Click <b>Show Export Config</b> to configure export settings.<br><img src="export.png" class="img-mozu"></li>
-								<li>Using the <b>Select External Storage</b> drop-down, choose to export data to Amazon S3 or to an FTP server. Note that you cannot export data to both destinations simultaneously. If you want to switch between destinations, you will have to stop an export and configure a new one.</li>
-								<li>Using the <b>Export Interval (minutes)</b> drop-down, choose how frequently to export data.</li>
-								<li>(Amazon S3) Using the <b>S3 Bucket</b> drop-down, choose an Amazon S3 bucket to receive the logs in.</li>
-								<li>(FTP) In <b>FTP Directory</b>, enter the directory on the FTP server to receive the logs.</li>
-								<li>Click <b>Save</b>.</li>
+                                <li>On the Mozu Admin top bar, select <strong>Settings</strong> > <strong>Applications</strong>.</li>
+                                <li>Click <strong>Mozu Import/Export</strong> (version 1.1.0).</li>
+                                <li>Click the <strong>Configuration</strong> link to open the configuration settings.</li>
+								<li>On the <strong>Web Logs</strong> tab, select <strong>Settings</strong>.</li>
+								<li>Use the <strong>External Storage</strong> dropdown to select the type of export destination. <br /><strong>Note:</strong> You cannot export data to both an S3 and an FTP destination simultaneously. If you want to switch between destinations, you must stop an export and configure a new one.</li>
+								<li>Using the <strong>Export Interval (minutes)</strong> dropdown, choose how frequently to export data.</li>
+								<li>(Amazon S3) Using the <strong>S3 Bucket</strong> dropdown, choose an Amazon S3 bucket to receive the logs in.</li>
+								<li>(FTP) In <strong>FTP Directory</strong>, enter the directory on the FTP server, preceded by a &quot;/&quot;, to receive the logs.<br /><img src="export.png" class="img-mozu"></li>
+								<li>Click <strong>Save</strong>.</li>
 							</ol>
-							<p><b>Note:</b> If you want to change these settings after configuring an export, stop the export first and then make the changes.</p>
+							<p><strong>Note:</strong> If you want to change these settings after configuring an export, stop the export first and then make the changes.</p>
 							
 							<h3>View Logs and Export History</h3>
 							<p>To view full log information, access your Amazon S3 account or FTP server and open the logs.</p>
 							
-							<p>To check what exports the Mozu Import-Export Application has generated, use the <b>Web Logs</b> page to view a history of exported logs. You can review the date and time of a log and verify whether the export completed successfully or not. If you want to view additional information about an export, click <b>View</b> in the appropriate row.<br><img src="logs.png" class="img-mozu"></p>
+							<p>To check what exports the Mozu Import-Export Application has generated, use the <strong>Web Logs</strong> page to view a history of exported logs. You can review the date and time of a log and verify whether the export completed successfully or not. If you want to view additional information about an export, click <strong>View</strong> in the appropriate row.<br><img src="logs.png" class="img-mozu"></p>
 							
 							
 							<h3>Stop an Export</h3>
 							<p>You can stop an export at any time:</p>
 							<ol>
-							<li>Open the <b>Web Logs</b> page.</li>
-							<li>Click <b>Stop Export</b>.</li>
+							<li>Open the <strong>Web Logs</strong> page.</li>
+							<li>Click <strong>Stop Export</strong>.</li>
 							</ol>
 							
+							<h2 id="importcoupon">Coupons and Coupon Sets</h2>
+							<p>When you <a href="#enable">enable the Mozu Import-Export Application</a>, Mozu adds an <strong>Extensions</strong> menu to the Marketing console in Mozu Admin. </p>
+							<p><img src="mkt-impexp-ext.png" class="img-mozu"></p>
+							
+							<p><strong>Note:</strong> If you just enabled the app and you do not see the <strong>Extensions</strong> menu on your Marketing console, refresh the browser window.</p>
+							
+							<p>Selecting the <strong>Import/Export</strong> extension launches a tool that you can use to import and export coupon and coupon set information.</p>
+
+
+
+							<h2 id="templatefiles">Understanding the Coupons and CouponSets CSV Files</h2>
+							
+							<p>The Mozu Import-Export Application requires specifically named and formatted CSV files that are compressed into a ZIP file. To ensure you start with properly formatted CSV files, navigate to the <strong>Import</strong> tab of the Import/Export extension and click the link below <strong>Choose File</strong> to download template files with the required input fields.</p>
+							<p><img src="imp-temp-link.png" class="img-mozu"></p>
+
+							<p><strong>Note:</strong> The Coupons and CouponSets CSV files that the Mozu Import-Export Application uses contain columns that map to properties in the Coupons and CouponSets resources in the Mozu API.</p>
+
+							<h3 id="couponscsv">Coupons.csv</h3>
+							<p>Corresponding API Resource: <a href="http://developer.mozu.com/content/api/APIResources/commerce/commerce.catalog/commerce.catalog.admin.couponsets.coupons.htm" target="_blank">commerce/catalog/admin/couponsets/coupons</a></p>
+
+							<table class="table table-hover">
+								<thead>
+									<tr>
+										<th>Column Name</th>
+										<th>Description</th>
+										<th>Required?</th>
+									</tr>
+								</thead>
+								<tbody>
+								<tr>
+									<td>Catalog Name</td>
+									<td>The name of the catalog you are adding coupons to. This must be an existing catalog, and cannot be a master catalog. If you want to apply coupons to multiple catalogs under a single master catalog, you must perform separate imports for each catalog.</td>
+									<td>Yes</td>
+								</tr>	
+								<tr>
+									<td>Coupon Set Code</td>
+									<td>A unique code that identifies the coupon set a coupon belongs to. All coupons must belong to a coupon set. If you are creating a new coupon set (by importing a CouponSets file along with this file), this code can be any string, as long as both files use the same Coupon Set Code. If you are adding coupons to an existing set, this code must match the existing code for that set. Coupon set codes are not exposed in Mozu Admin, but you can get them by exporting the existing Coupon Set to a CSV file.</td>
+									<td>Yes</td>
+								</tr>
+								<tr>
+									<td>Coupon Code</td>
+									<td>The code that the user enters to redeem the coupon. This can be any string, and can contain special characters. Each coupon code within a set must be unique, but you can use the CouponSets.csv file or Mozu Admin to change the maximum number of redemptions allowed for all codes in a coupon set.</td>
+									<td>Yes</td>
+								</tr>
+								<tr>
+									<td>Redemption Count</td>
+									<td>(Read Only) The total number of times an individual coupon has been redeemed. This value is read-only, and can be left blank when importing  coupons.</td>
+									<td>No</td>
+								</tr>
+								</tbody>
+							</table>
+						<h3 id="couponsetscsv">CouponSets.csv</h3>
+<p>Corresponding API Resource: <a href="http://developer.mozu.com/content/api/APIResources/commerce/commerce.catalog/commerce.catalog.admin.couponsets.htm" target="_blank">commerce/catalog/admin/couponsets</a></p>
+
+						<table class="table table-hover">
+								<thead>
+									<tr>
+										<th>Column Name</th>
+										<th>Description</th>
+										<th>Required?</th>
+									</tr>
+								</thead>
+								<tbody>
+								<tr>
+									<td>Catalog Name</td>
+									<td>The name of the catalog you are adding coupons to. This must be an existing catalog, and cannot be a master catalog. If you want to apply coupons to multiple catalogs under a single master catalog, you must perform separate imports for each catalog.</td>
+									<td>Yes</td>
+								</tr>	
+								<tr>
+									<td>Coupon Set Code</td>
+									<td>A unique code that identifies the coupon set a coupon belongs to. All coupons must belong to a coupon set. If you are creating a new coupon set, this code can be any string. If you are adding coupons to an existing set, this code must match the existing code for that set. Coupon set codes are not exposed in Mozu Admin, but you can get them by exporting the existing Coupon Set to a CSV file.</td>
+									<td>Yes</td>
+								</tr>
+								<tr>
+									<td>Name</td>
+									<td>The name of the coupon set as it appears in Mozu Admin.</td>
+									<td>Yes</td>
+								</tr>
+								<tr>
+									<td>Coupon Code Type</td>
+									<td>The type of coupon codes (Manual or Generated) that the set contains. If you are importing new coupons or coupon sets, this value must be set to Manual. Only Mozu can create Generated coupon codes. You cannot import Generated codes, because specifying the code names in a file is an inherently manual operation. If you are using the Import/Export Application to update existing Generated codes, you must export the codes, delete them via Mozu Admin, and then re-import them as Manual codes. </td>
+									<td>Yes</td>
+								</tr>
+								<tr>
+									<td>StartDate</td>
+									<td>The time and date at which a coupon code becomes valid, in UTC format.</td>
+									<td>Yes</td>
+								</tr>
+								<tr>
+									<td>EndDate</td>
+									<td>The time and date at which a coupon code ceases to be valid, in UTC format.</td>
+									<td>No</td>
+								</tr>
+								<tr>
+									<td>Max Redemptions Per CouponCode</td>
+									<td>The maximum number of times a single coupon code within the coupon set can be redeemed by any customer. This value applies to all coupons in the coupon set.</td>
+									<td>Yes</td>
+								</tr>
+								<tr>
+									<td>Max Redemptions Per User</td>
+									<td>The maximum number of times a single coupon code within the coupon set can be redeemed by a single customer. This value applies to all coupons in the coupon set.</td>
+									<td>Yes</td>
+								</tr>
+								<tr>
+									<td>Redemption Count</td>
+									<td>(Read Only) The total number of times an individual coupon has been redeemed. This value is read-only, and can be left blank when importing  coupons.</td>
+									<td>No</td>
+								</tr>
+								</tbody>
+							</table>
+							<h2 id="importnew">Importing New Coupons or Coupon Sets</h2>
+							<ol>
+								<li>On the Marketing console in Mozu Admin, select <strong>Extensions</strong> > <strong>Import/Export</strong> to display the Marketing Import/Export console.</li>
+								<li>Select the <strong>Import</strong> tab.</li>
+								<li>In the <strong>File Format</strong> dropdown, select <strong>CSV</strong>. Currently, CSV is the only supported file type.</li>
+								<li>Click <strong>Choose File</strong> to select the file(s) you want to import. You can import just coupons, just coupon sets, or both. Mozu expects a ZIP file that contains one or two CSV files named &quot;Coupons&quot; and &quot;CouponSets&quot;, respectively. Your files must follow this naming convention to import to successfully.</li>
+								<li>(Optional) Specify an email address to receive notification when the import is complete. This is useful for very large data sets that might take some time to import.</li>
+								<li>Click <strong>Import</strong>.</li>
+								<li>(Optional) Go to the <strong>Jobs</strong> tab to view the progress of your import. When the job completes (or if the job encounters an issue), you can click the <strong>View</strong> link under <strong>Logs</strong> to get more information about the import operation.</li>
+							</ol>
+
+							<h2 id="exportcoups">Exporting Coupons or Coupon Sets</h2>
+								<ol>
+								<li>On the Marketing console in Mozu Admin, select <strong>Extensions</strong> > <strong>Import/Export</strong> to display the Marketing Import/Export console.</li>
+								<li>Select the <strong>Export</strong> tab.</li>
+								<li>In the <strong>File Format</strong> dropdown, select <strong>CSV</strong>. Currently, CSV is the only supported file type.</li>
+								<li>Specify whether you want to export <strong>Coupon Sets</strong>, <strong>Coupons</strong>, or both.</li>
+								<li>(Optional) Specify an email address to receive notification when the export is complete. This is useful for very large data sets that might take some time to export.</li>
+								<li>(Optional) To save time and create more readable files, you can filter the export data by specific coupon set codes. Type a code in the <strong>Coupon Set Code(s)</strong> field and hit &lt;Enter&gt;. The code appears as a checkbox on the Import/Export console. Enter and select as many codes as you want to include in the export file.</li>
+								<li>Click <strong>Export</strong>.</li>
+								<li>(Optional) Go to the <strong>Jobs</strong> tab to view the progress of your export. When the job completes (or if the job encounters an issue), you can click the <strong>View</strong> link under <strong>Logs</strong> to get more information about the export operation.</li>
+							</ol>
+							<h2 id="queueing">Queueing Multiple Import/Export Operations</h2>
+							<p>You can queue multiple import/export operations to execute in sequence. This is especially useful if you are importing or exporting very large data sets, because you can split a large job into smaller batches and more quickly see whether each small job succeeds.</p>
+							<ol>
+								<li>Decide the order in which you want to process your jobs.</li>
+								<li>Use the Import/Export console to enter each job, starting with the first you want completed and continuing sequentially.</li>
+								<li>(Optional) For multiple imports, ensure that you have multiple unique ZIP files with properly formatted, unique Coupons and CouponSets CSV files. Mozu doesn't require a specific name for the ZIP file, so you can give each ZIP a unique name to help identify which part of the job its files correspond to.</li>
+								<li>After you configure all your imports and exports, go to the <strong>Jobs</strong> tab in the Import/Export console to see the progress of each individual job.</li>
+							</ol>
                         </section>
                     </div>
                 </div>
