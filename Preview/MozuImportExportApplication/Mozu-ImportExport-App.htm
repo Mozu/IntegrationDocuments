@@ -133,10 +133,10 @@
                              <ul class="nav nav-stacked">
                              	<li><a href="#export">IT Analytics Data</a></li>
                                 <li><a href="#importcoupon">Coupons and Coupon Sets</a></li>
-                                <li><a href="#templatefiles">Understanding the Template Files</a></li>
-                                <li><a href="#importnew">Importing Coupons</a></li>
-                                <li><a href="#exportcoups">Exporting Coupons</a></li>
-                                <li><a href="#queueing">Queueing Multiple Operations</a></li>
+                                <li><a href="#templatefiles">Understand the Template Files</a></li>
+                                <li><a href="#importnew">Import Coupons</a></li>
+                                <li><a href="#exportcoups">Export Coupons</a></li>
+                                <li><a href="#queueing">Queue Multiple Operations</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -193,7 +193,7 @@
                             </ul>
                             <p><strong>Note:</strong> You can configure both export locations if desired, but you can only export data to one destination type at a time.</p>
 							
-							<h2 id="s3">Configuring Export to an Amazon S3 Account</h2>
+							<h2 id="s3">Configure Export to an Amazon S3 Account</h2>
 
 							<h3 id="create bucket">Create a Bucket in Your S3 Account</h3>
 							<p>The Mozu Import-Export Application requires a bucket in your S3 account for the log files. The application recognizes any existing buckets, but you might want to create a unique one just for your Mozu data.</p> 
@@ -227,7 +227,7 @@
 							<li>Click <strong>Save</strong>.</li>
 						</ol>
 
-							<h2 id="ftp">Configuring Export to an FTP Server</h2>
+							<h2 id="ftp">Configure Export to an FTP Server</h2>
 							<h3 id="obtainftpcreds">Obtain FTP Server Credentials</h3>
 							<p>If you want to export logs to an FTP server, note the following details about your FTP setup:</p>
 							<ul>
@@ -268,12 +268,12 @@
 						<ul>
 							<li><a href="#export">Export IT Analytics Data</a></li>
 							<li><a href="#importcoupon">Coupons and Coupon Sets</a></li>
-                                <li><a href="#templatefiles">Understanding the Template Files</a></li>
-                                <li><a href="#importnew">Importing Coupons</a></li>
-                                <li><a href="#exportcoups">Exporting Coupons</a></li>
-                                <li><a href="#queueing">Queueing Multiple Operations</a></li>
+                                <li><a href="#templatefiles">Understand the Template Files</a></li>
+                                <li><a href="#importnew">Import Coupons</a></li>
+                                <li><a href="#exportcoups">Export Coupons</a></li>
+                                <li><a href="#queueing">Queue Multiple Operations</a></li>
 						</ul>
-                            <h2 id="export">Exporting IT Analytics Data Logs to S3 or FTP</h2>
+                            <h2 id="export">Export IT Analytics Data Logs to S3 or FTP</h2>
                             <p>Use the configuration page of the Mozu Import-Export Application to schedule exports of IT data about your site. You can also view your export history.</p>
 							<h3>Schedule an Export</h3>
 							<ol>
@@ -312,7 +312,7 @@
 
 
 
-							<h2 id="templatefiles">Understanding the Coupons and CouponSets CSV Files</h2>
+							<h2 id="templatefiles">Understand the Coupons and CouponSets CSV Files</h2>
 							
 							<p>The Mozu Import-Export Application requires specifically named and formatted CSV files that are compressed into a ZIP file. To ensure you start with properly formatted CSV files, navigate to the <strong>Import</strong> tab of the Import/Export extension and click the link below <strong>Choose File</strong> to download template files with the required input fields.</p>
 							<p><img src="imp-temp-link.png" class="img-mozu"></p>
@@ -338,7 +338,8 @@
 								</tr>	
 								<tr>
 									<td>Coupon Set Code</td>
-									<td>A unique code that identifies the coupon set a coupon belongs to. All coupons must belong to a coupon set. If you are creating a new coupon set (by importing a CouponSets file along with this file), this code can be any string, as long as both files use the same Coupon Set Code. If you are adding coupons to an existing set, this code must match the existing code for that set. Coupon set codes are not exposed in Mozu Admin, but you can get them by exporting the existing Coupon Set to a CSV file.</td>
+									<td>A unique code that identifies the coupon set a coupon belongs to. All coupons must belong to a coupon set. If you are creating a new coupon set (by importing a CouponSets file along with this file), this code can be any string, as long as both files use the same Coupon Set Code. If you are adding coupons to an existing set, this code must match the existing code for that set. Coupon set codes are not exposed in Mozu Admin, but you can get them by exporting the existing Coupon Set to a CSV file.<br><br>
+										<strong>Note:</strong> If you are adding coupons to an existing coupon set, the set must have a Coupon Code Type of &quot;Manual&quot;. You cannot add coupons to Generated coupon sets.</td>
 									<td>Yes</td>
 								</tr>
 								<tr>
@@ -372,7 +373,8 @@
 								</tr>	
 								<tr>
 									<td>Coupon Set Code</td>
-									<td>A unique code that identifies the coupon set a coupon belongs to. All coupons must belong to a coupon set. If you are creating a new coupon set, this code can be any string. If you are adding coupons to an existing set, this code must match the existing code for that set. Coupon set codes are not exposed in Mozu Admin, but you can get them by exporting the existing Coupon Set to a CSV file.</td>
+									<td>A unique code that identifies the coupon set a coupon belongs to. All coupons must belong to a coupon set. If you are creating a new coupon set, this code can be any string. If you are adding coupons to an existing set, this code must match the existing code for that set. Coupon set codes are not exposed in Mozu Admin, but you can get them by exporting the existing Coupon Set to a CSV file.<br><br>
+										<strong>Note:</strong> If you are adding coupons to an existing coupon set, the set must have a Coupon Code Type of &quot;Manual&quot;. You cannot add coupons to Generated coupon sets.</td>
 									<td>Yes</td>
 								</tr>
 								<tr>
@@ -382,28 +384,28 @@
 								</tr>
 								<tr>
 									<td>Coupon Code Type</td>
-									<td>The type of coupon codes (Manual or Generated) that the set contains. If you are importing new coupons or coupon sets, this value must be set to Manual. Only Mozu can create Generated coupon codes. You cannot import Generated codes, because specifying the code names in a file is an inherently manual operation. If you are using the Import/Export Application to update existing Generated codes, you must export the codes, delete them via Mozu Admin, and then re-import them as Manual codes. </td>
-									<td>Yes</td>
+									<td>The type of coupon codes that the set contains. Valid values are: &quot;Manual&quot; or &quot;Generated&quot;.<br><br>For import operations, this field can be empty or &quot;Manual&quot;. An empty Coupon Code Type defaults to &quot;Manual&quot;.<br><br>Only Mozu can create Generated coupon codes. You cannot import Generated codes, because specifying the code names in a file is an inherently manual operation. If you are using the Import/Export Application to update existing Generated codes, you must export the codes, delete them via Mozu Admin, and then re-import them to a new coupon set as Manual codes. </td>
+									<td>No</td>
 								</tr>
 								<tr>
 									<td>StartDate</td>
-									<td>The time and date at which a coupon code becomes valid, in UTC format.</td>
-									<td>Yes</td>
+									<td>The time and date at which a coupon code becomes valid, in UTC format. If you specify a date but not a time, the time defaults to 12:00:01 AM. If you do not specify a StartDate, the coupon is valid as soon as it is added to Mozu.</td>
+									<td>No</td>
 								</tr>
 								<tr>
 									<td>EndDate</td>
-									<td>The time and date at which a coupon code ceases to be valid, in UTC format.</td>
+									<td>The time and date at which a coupon code ceases to be valid, in UTC format. If you specify a data but not a time, the time defaults to 11:59:59 PM. If you do not specify an EndDate, the coupon is valid indefinitely, or until a specified Max Redemptions Per CouponCode is reached.</td>
 									<td>No</td>
 								</tr>
 								<tr>
 									<td>Max Redemptions Per CouponCode</td>
 									<td>The maximum number of times a single coupon code within the coupon set can be redeemed by any customer. This value applies to all coupons in the coupon set.</td>
-									<td>Yes</td>
+									<td>No</td>
 								</tr>
 								<tr>
 									<td>Max Redemptions Per User</td>
 									<td>The maximum number of times a single coupon code within the coupon set can be redeemed by a single customer. This value applies to all coupons in the coupon set.</td>
-									<td>Yes</td>
+									<td>No</td>
 								</tr>
 								<tr>
 									<td>Redemption Count</td>
@@ -412,18 +414,18 @@
 								</tr>
 								</tbody>
 							</table>
-							<h2 id="importnew">Importing New Coupons or Coupon Sets</h2>
+							<h2 id="importnew">Import New Coupons or Coupon Sets</h2>
 							<ol>
 								<li>On the Marketing console in Mozu Admin, select <strong>Extensions</strong> > <strong>Import/Export</strong> to display the Marketing Import/Export console.</li>
 								<li>Select the <strong>Import</strong> tab.</li>
 								<li>In the <strong>File Format</strong> dropdown, select <strong>CSV</strong>. Currently, CSV is the only supported file type.</li>
-								<li>Click <strong>Choose File</strong> to select the file(s) you want to import. You can import just coupons, just coupon sets, or both. Mozu expects a ZIP file that contains one or two CSV files named &quot;Coupons&quot; and &quot;CouponSets&quot;, respectively. Your files must follow this naming convention to import to successfully.</li>
+								<li>Click <strong>Choose File</strong> to select the file(s) you want to import. You can import just coupons, just coupon sets, or both. Mozu expects a ZIP file that contains one or two CSV files named &quot;Coupons&quot; and &quot;CouponSets&quot;, respectively. Your files must follow this naming convention to import successfully.</li>
 								<li>(Optional) Specify an email address to receive notification when the import is complete. This is useful for very large data sets that might take some time to import.</li>
 								<li>Click <strong>Import</strong>.</li>
 								<li>(Optional) Go to the <strong>Jobs</strong> tab to view the progress of your import. When the job completes (or if the job encounters an issue), you can click the <strong>View</strong> link under <strong>Logs</strong> to get more information about the import operation.</li>
 							</ol>
 
-							<h2 id="exportcoups">Exporting Coupons or Coupon Sets</h2>
+							<h2 id="exportcoups">Export Coupons or Coupon Sets</h2>
 								<ol>
 								<li>On the Marketing console in Mozu Admin, select <strong>Extensions</strong> > <strong>Import/Export</strong> to display the Marketing Import/Export console.</li>
 								<li>Select the <strong>Export</strong> tab.</li>
@@ -434,7 +436,7 @@
 								<li>Click <strong>Export</strong>.</li>
 								<li>(Optional) Go to the <strong>Jobs</strong> tab to view the progress of your export. When the job completes (or if the job encounters an issue), you can click the <strong>View</strong> link under <strong>Logs</strong> to get more information about the export operation.</li>
 							</ol>
-							<h2 id="queueing">Queueing Multiple Import/Export Operations</h2>
+							<h2 id="queueing">Queue Multiple Import/Export Operations</h2>
 							<p>You can queue multiple import/export operations to execute in sequence. This is especially useful if you are importing or exporting very large data sets, because you can split a large job into smaller batches and more quickly see whether each small job succeeds.</p>
 							<ol>
 								<li>Decide the order in which you want to process your jobs.</li>
