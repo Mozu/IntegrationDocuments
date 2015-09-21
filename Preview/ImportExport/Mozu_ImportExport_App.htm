@@ -378,14 +378,6 @@
 						<p>Each spreadsheet includes a set of sheets accessible along the bottom of the Excel spreadsheet. Select the sheet and enter data per column. Each row represents a product or contact. Each column is the database data in Mozu. </p>
 						<p>You can use these templates to batch process new or edit existing products and contacts. You can also use these templates to transfer data from a current database from your current systems into the new Mozu system. </p>
 						<p>During an import, the system validates only for unique values for specific entries within the sheets. If an ID or ProductCode is reused, and edits exist, content in Mozu will be overwritten from the Excel content. When entering data into the spreadsheets, the following values must be unique:</p>
-						<ul>
-						<li>ID for contacts must be unique, located on the CustomerAccounts and CustomerContacts sheets in the Contacts template. This will also be used as externalId for accounts.</li>
-						<li>ProductCode for products must be unique across all sheets, Products template.</li>
-						<li>CategoryCode for categories must be unique on the Categories sheet in the Products template.</li>
-						<li>CategoryName for categories must be unique on the Categories sheet in the Products template.</li>
-						<li>AttributeName and AttributeCode for attributes must be unique on the Attributes and AttributeValues sheets in the Products template.</li>
-						<li>If an attribute is a list, each list value must be unique on the Attributes and AttributeValues sheets in the Products template.</li>
-						</ul>
 						<p>When entering descriptions and lengthy textual content, be aware of any HTML tags and formatting. The tool and process does not strip any characters, tags, punctuation, or code from your content. If you strip all code and tags prior to adding the content to the Excel sheet, you may sidestep any issues that may occur with displayed formatting later. All content for your products and contacts is styled by theme templates, pages, and CSS through the SiteBuilder in Mozu. </p>
 						
 						
@@ -402,14 +394,16 @@
 					<div class="panel panel-info">
 							<div class="panel-heading"><strong>Tip:</strong> You do not have to include every sheet in the template every time you import data. However, some sheets do have dependencies on others within the template. Required pairings are noted below.</div>
 						</div>
-					<p>Each of the following sections describes a sheet in the Products template. For each sheet, we define each column, describe valid values for the column, and indicate whether it is required or optional.</p>
+					<p>Each of the following sections describes a sheet in the Products template. For each sheet, we define each column, describe valid values for the column, and indicate whether it is required or optional. The sheets in the file appear in the order in which you create product data in Mozu. First you create your attributes, then you create your product types, and so on. For additional context about the process of building out a catalog, log in to Mozu Admin and refer to the <a href="https://www.mozu.com/docs/admin/help/Catalog/Catalogs_Overview.htm">Catalog Overview</a> in the Admin Help.</p>
 					
+					<div class="panel panel-info" id="required">
+							<div class="panel-heading"><strong>Note:</strong> In the following tables, a <strong>Required</strong> value of <strong>No</strong> indicates the column is not required for a successful import operation. Some values are not required for an import, but <em>are</em> required Mozu data. For example, you do not have to specify an attribute's InputType every time you modify the attribute, but all attributes must have an InputType to be valid in Mozu.</div>
+							</div>
+
 					<p>If you have questions or concerns specific to your data, please contact your Mozu integration and implementation associates.</p>
 
 					<p>When using the Product template, you must complete the following sheets according to the data you add:</p>
-					<ul>
-					<li>Product Types: Populate the sheets for ProductTypes and ProductTypeAttributes. Make note of IDs, names, and values for use elsewhere.</li>
-					<li>Categories: Populate the sheet for Categories. Make note of CategoryCodes for use elsewhere.</li>
+				<ul>
 					<li>Products: The sheets for attributes, product types, and categories must be populated. Populate the Products, ProductCatalogs, ProductOptions, ProductExtras, ProductBundles, and Images with data. </li>
 					<li>Inventory Amounts: The LocationInventory sheet provides tracking and inventory amounts per product code with locations. </li>					
 					</ul>
@@ -425,19 +419,19 @@
 						<th>Column Name</th>
 						<th>Description</th>
 						<th>Valid Values</th>
-						<th>Required</th>
+						<th>Required<a href="#required">*</a></th>
 					  </tr>
 					</thead>
 					<tbody>
 					  <tr>
 						<td>MasterCatalogName</td>
 						<td>The name of the master catalog that includes the attribute. All attributes in Mozu are defined on the master catalog level, and populate down to sub-catalogs within the master catalog.</td>
-						<td>An alphanumeric string. The string must match the name of the master catalog as it appears at <strong>Settings</strong> > <strong>System Administration</strong> > <strong>Catalog and Site Structure</strong> in Mozu Admin.</td>
+						<td>A string matching the name of the master catalog as it appears at <strong>Settings</strong> > <strong>System Administration</strong> > <strong>Catalog and Site Structure</strong> in Mozu Admin.</td>
 						<td>Yes</td>
 					  </tr>
 					  <tr>
 						<td>AttributeCode </td>
-						<td>A unique code that identifies the attribute. Once an attribute is created, you cannot change its AttributeCode.</td>
+						<td>The unique code that identifies the attribute. Once an attribute is created, you cannot change its AttributeCode.</td>
 						<td>Any string. The string must be unique to a single attribute in the master catalog.</td>
 						<td>Yes</td>
 					  </tr>
@@ -473,458 +467,650 @@
 					  </tr>
 					  <tr>
 						<td>InputType</td>
-						<td>The format for entering data including List, TextBox.</td>
-						<td> </td>
+						<td>The format in which the attribute is displayed to customers. The best InputType to use often depends on whether the attribute is a Property, an Option, or an Extra. For example, a selectable Option, such as size or color, must be a <code>List</code>. An Extra, such as a monogram or custom print, is typically displayed as a <code>TextBox</code> or <code>TextArea</code>.</td>
+						<td>A string matching one of the following:
+							<ul>
+<li><code>YesNo</code></li>
+<li><code>Date</code></li>
+<li><code>DateTime</code></li>
+<li><code>List</code></li>
+<li><code>TextBox</code></li>
+<li><code>TextArea</code></li>
+							</ul>
+</td>
 						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>IsExtra </td>
-						<td>*</td>
-						<td>Boolean, indicating if the attribute type is an Extra.</td>
+						<td>Specifies whether the attribute type is Extra. An Extra is an add-on configuration that the customer can configure, such as a monogram.</td>
+						<td>A Boolean value, specified as <code>Yes</code> or <code>No</code>. If IsExtra is <code>Yes</code>, IsOption and IsProperty must be <code>No</code>.</td>
+						<td>Yes</td>
 					  </tr>
 					  <tr>
 						<td>IsOption </td>
-						<td>*</td>
-						<td>Boolean, indicating if the attribute type is an Option.</td>
+						<td>Specifies whether the attribute type is Option. An Option is a product detail that a customer can select, such as size or color. In Mozu, Options generate product variations, which have unique SKUs.</td>
+						<td>A Boolean value, specified as <code>Yes</code> or <code>No</code>. If IsOption is <code>Yes</code>, IsExtra and IsProperty must be <code>No</code>.<br><br>If IsOption is <code>Yes</code>, InputType must be <code>List</code>.</td>
+						<td>Yes</td>
 					  </tr>
 					  <tr>
 						<td>IsProperty </td>
-						<td>*</td>
-						<td>Boolean, indicating if the attribute type is a Property.</td>
+						<td>Specifies whether the attribute type is Property. A Property is a product detail that a user cannot configure, such as brand or material.</td>
+						<td>A Boolean value, specified as <code>Yes</code> or <code>No</code>. If IsProperty is <code>Yes</code>, IsExtra and IsOption must be <code>No</code>.<br><br>If IsOption is <code>Yes</code>, InputType must be <code>List</code>.</td>
+						<td>Yes</td>
 					  </tr>
 					  <tr>
 						<td>Namespace</td>
-						<td> </td>
-						<td>The Namespace. For example, Tenant. The Import / Export tool only exports attributes that have a value of "Tenant" for the namespace. All attributes you create through Mozu Admin have a "Tenant" namespace, so the tool processes these attributes. However, most attributes created via the API layer have a custom namespace, which varies depending on the application that creates the attribute. To avoid overwriting values set by a custom application, the Import / Export tool does not process these attributes.</td>
+						<td>The namespace to which the attribute belongs. All attributes you create through Mozu Admin have a namespace of <code>Tenant</code>. Attributes that custom applications create through the Mozu API might have a custom namespace.</td>
+						<td>Any string that is a valid, registered namespace. If empty, the default is <code>Tenant</code>.<br><br>
+							<strong>Note:</strong> To avoid overwriting attributes created by custom applications, the Mozu Import/Export Tool only processes attributes with a namespace of <code>Tenant</code>. If you want to edit attributes in another namespace, you must use the Mozu API.</td>
+						<td>No</td>
 					  </tr>
-					  <tr>
+<tr>
 						<td>Order</td>
-						<td> </td>
-						<td>Indicates the view order for the attribute.</td>
+						<td>Specifies the order in which the attribute appears in a list of all attributes.</td>
+						<td>A number, such as <code>1</code> or <code>3</code>.</td>
+						<td>No</td>
+					  </tr>
+					   <tr>
+						<td>SearchableInStorefront</td>
+						<td>Specifies whether the attribute (specified on the <a href="#attributevalues">AttributeValues</a> sheet) is included in product search results on the public storefront. If an attribute has mutliple values, this setting applies to all the values. The default is <code>No</code>.</td>
+						<td>A Boolean value, specified as <code>Yes</code> or <code>No</code>.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
-						<td>SearchableInStorefront</td>
-						<td> </td>
-						<td>Boolean, indicates if this attribute can be searched for within the storefront.</td>
+						<td>SearchableInAdmin</td>
+						<td>Specifies whether the attribute Value (specified on the <a href="#attributevalues">AttributeValues</a> sheet) is included in product search results in Mozu Admin. If an attribute has mutliple values, this setting applies to all the values. The default is <code>No</code>.</td>
+						<td>A Boolean value, specified as <code>Yes</code> or <code>No</code>.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>SearchDisplayValue</td>
-						<td> </td>
-						<td>Boolean, indicates what kind of values search queries and returns. If true, the system indexes the display value of string attributes instead of the canonical value for searching. Always use the canonical value for filtering.</td>
+						<td>Specifies whether the display value or the canonical value of an attribute with a DataType of <code>String</code> is indexed for searching. If <code>Yes</code>, the system indexes the display value. If <code>No</code>, it indexes the canonical value. The default is <code>No</code>.</td>
+						<td>A Boolean value, specified as <code>Yes</code> or <code>No</code>. <br><br>This value is ignored if the DataType of the attribute is anything other than <code>String</code>.</td>
+						<td>No</td>
 					  </tr>
 					  
 					</tbody>
 					</table>
 					
-					<h3 id="attribvalues">AttributeValues Sheet</h3>
-					<p>The sheet of attribute values for each attribute, associated by the AttributeCode.</p>
+					<h3 id="attributevalues">AttributeValues Sheet</h3>
+					<p>Corresponding REST API Resource: <a href="http://developer.mozu.com/content/api/APIResources/commerce/commerce.catalog/commerce.catalog.admin.attributedefinition.attributes.htm" target="_blank">commerce/catalog/admin/attributedefinition/attributes</a></p>
+					<p>Required With: <a href="#attributes">Attributes</a></p>
+					<p>Attribute values define what customers see for a given attribute. A single attribute can have multiple values. For example, if an attribute has an InputType of <code>List</code> in the <a href="#attributes">Attributes</a> sheet, every item in the list is a value of the attribute. Attribute values are mapped to attrtibues by the AttributeCode.</p>
 					<table class="table table-hover">
 					<thead>
 					  <tr>
 						<th>Column Name</th>
-						<th>Required</th>
 						<th>Description</th>
+						<th>Valid Values</th>
+						<th>Required<a href="#required">*</a></th>
 					  </tr>
 					</thead>
 					<tbody>
 					<tr>
 						<td>MasterCatalogName</td>
-						<td>*</td>
-						<td>The name of the master catalog this attribute is mapped to.</td>
+						<td>The name of the master catalog that includes the attribute. All attributes in Mozu are defined on the master catalog level, and populate down to sub-catalogs within the master catalog.</td>
+						<td>A string matching the name of the master catalog as it appears at <strong>Settings</strong> > <strong>System Administration</strong> > <strong>Catalog and Site Structure</strong> in Mozu Admin.</td>
+						<td>Yes</td>
 					  </tr>
-					  <tr>
-						<td>AttributeCode</td>
-						<td>*</td>
-						<td>Must be unique and required. The code for the attribute, can be plain text. For example, availability. </td>
+  <tr>
+						<td>AttributeCode </td>
+						<td>A unique code that identifies the attribute. Once an attribute is created, you cannot change its AttributeCode.</td>
+						<td>Any string. The string must be unique to a single attribute in the master catalog.</td>
+						<td>Yes</td>
 					  </tr>
 					  <tr>
 						<td>Value</td>
-						<td>*</td>
-						<td>The value for the Attribute. If you have a List, the AttributeCode may have multiple values.</td>
+						<td>The actual value for the attribute. This is not the string that a customer sees, but rather the value as it appears in the <strong>Value</strong> column of the <strong>Values</strong> table for the attribute in Mozu Admin. This value must be unique within the vocabulary for a single attribute and match the DataType of the attribute. If an attribute has multiple values, each Value is specified on a separate row in this sheet.</td>
+						<td>A string or number. The value cannot contain spaces or special characters. You can use a hyphen (-) to escape spaces or characters.</td>
+						<td>Yes</td>
 					  </tr>
 					  <tr>
-						<td>En-US</td>
-						<td> </td>
-						<td>The description for the value in that specified language. In this column, content is mapped to English United States.  </td>
+						<td>en-US</td>
+						<td>The description for the value in US English. This string defines how the Value appears to customers on the storefront and to users in Mozu Admin.</td>
+						<td>Any string.</td>
+						<td>No</td>
+					  </tr>
+					   <tr>
+						<td>en-GB</td>
+						<td>The description for the value in British English. This string defines how the Value appears to customers on the storefront and users in Mozu Admin.</td>
+						<td>Any string.</td>
+						<td>No</td>
 					  </tr>
 					</tbody>
 					</table>
+
 					
 					<h3 id="prodtypes">ProductTypes Sheet</h3>
-					<p>Every product has an associated product type. The data per type is entered on the ProductTypeAttributes sheet. After editing both sheets, you may want to import and export to update other sheets with new columns.</p>
+					<p>Corresponding REST API Resource: <a href="http://developer.mozu.com/content/api/APIResources/commerce/commerce.catalog/commerce.catalog.admin.attributedefinition.producttypes.htm" target="_blank">commerce/catalog/admin/attributedefinition/producttypes</a></p>
+					<p>Required With: <a href="#productypeattributes">ProductTypeAttributes</a>, <a href="#producttypeattributevalues">ProductTypeAttributeValues</a></p>
+					<p>In Mozu, a product type is a template of settings and attributes you create for a specific set of products. Every product in your catalog has a single product type associated with it. The ProductTypes sheet simply specifies the usage type(s) and master catalog for the product type. You specify details for product types on the <a href="#productypeattributes">ProductTypeAttributes</a> and <a href="#producttypeattributevalues">ProductTypeAttributeValues</a> sheets.</p>
+
+					<div class="panel panel-info" id="required">
+							<div class="panel-heading"><strong>Note:</strong> A single product type can support multiple usage types. For example, a shirt can be Configurable and a Component of a larger Bundle.</div>
+							</div>
 					<table class="table table-hover">
 					<thead>
 					  <tr>
 						<th>Column Name</th>
-						<th>Required</th>
 						<th>Description</th>
+						<th>Valid Values</th>
+						<th>Required<a href="#required">*</a></th>
 					  </tr>
 					</thead>
 					<tbody>
 					<tr>
 						<td>MasterCatalogName</td>
-						<td>*</td>
-						<td>The name of the master catalog this product type is mapped to.</td>
+						<td>The name of the master catalog that includes the product type. All product types in Mozu are defined on the master catalog level, and populate down to sub-catalogs within the master catalog.</td>
+						<td>A string matching the name of the master catalog as it appears at <strong>Settings</strong> > <strong>System Administration</strong> > <strong>Catalog and Site Structure</strong> in Mozu Admin.</td>
+						<td>Yes</td>
 					  </tr>
 					  <tr>
 						<td>ProductType</td>
-						<td>*</td>
-						<td>The name of the product type. For example, Book or Desklamp.</td>
+						<td>The name of the product type. This name will appear whenever a user is working with product types in Mozu Admin, so it should be meaningful and human-readable.</td>
+						<td>Any string.</td>
+						<td>Yes</td>
 					  </tr>
 					  <tr>
 						<td>Standard</td>
-						<td> </td>
-						<td>Boolean, indicates if the product type is standard.</td>
+						<td>Specifies whether the product type supports the Standard usage type. Standard products are not configurable and do not have variations.</td>
+						<td>A Boolean value, specified as <code>Yes</code> or <code>No</code>.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>Configurable</td>
-						<td> </td>
-						<td>Boolean, indicates if the product type has configurable options and variations.</td>
+						<td>Specifies whether the product type supports the Configurable usage type. Configurable products allow the user to specify a product variation based on product options. For example, a shirt in size Small.</td>
+					  	<td>A Boolean value, specified as <code>Yes</code> or <code>No</code>.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>Bundle</td>
-						<td> </td>
-						<td>Boolean, indicates if the product type is a bundle of products.</td>
+						<td>Specifies whether the product type supports the Bundle usage type. Bundles are collections of products sold as a single entity. For example, a suit Bundle can contain a shirt, pants, and a jacket.</td>
+						<td>A Boolean value, specified as <code>Yes</code> or <code>No</code>.</td>
+						<td>No</td>
+					  </tr>
+					  <tr>
+						<td>Component</td>
+						<td>Specifies whether the product type supports the Component usage type. Components can belong to Bundles. For example, a shirt can be a Component of a suit Bundle.</td>
+						<td>A Boolean value, specified as <code>Yes</code> or <code>No</code>.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>GoodsType</td>
-						<td> </td>
-						<td>The type of goods such as a physical item or download. For example, Physical.</td>
+						<td>The type of goods the product type contains. This value distinguishes between physical items, digital items, and digital store credits (such as gift cards). The default is <code>Physical</code>.</td>
+						<td>A string matching one of the following:
+							<ul>
+								<li><code>Physical</code></li>
+								<li><code>Digital</code></li>
+								<li><code>DigitalCredit</code></li>
+							</ul>
+						</td>
+						<td>No</td>
 					  </tr>
 					</tbody>
 					</table>
 					
-					<h3 id="prodtypesattribs">ProductTypeAttributes Sheet</h3>
-					<p>Every product type has one or more attributes. The attributes are associated by ProductType and AttributeCode.</p>
-					<p><strong>Note:</strong> The Import / Export tool only exports attributes that have a value of "Tenant" for the namespace. All attributes you create through Mozu Admin have a "Tenant" namespace, so the tool processes these attributes. However, most attributes created via the API layer have a custom namespace, which varies depending on the application that creates the attribute. To avoid overwriting values set by a custom application, the Import / Export tool does not process these attributes.</p>
+					<h3 id="producttypeattributes">ProductTypeAttributes Sheet</h3>
+					<p>Corresponding REST API Resource: <a href="http://developer.mozu.com/content/api/APIResources/commerce/commerce.catalog/commerce.catalog.admin.attributedefinition.producttypes.htm" target="_blank">commerce/catalog/admin/attributedefinition/producttypes</a></p>
+					<p>Required With: <a href="#productypes">ProductTypes</a>, <a href="#producttypeattributevalues">ProductTypeAttributeValues</a></p>
+					<p>In Mozu, attributes are linked to products at the product type level. The ProductTypeAttributes sheet ties the attributes you define on the <a href="#attributes">Attributes</a> and <a href="#attributevalues">AttributeValues</a> sheets to the product types you define in the ProductTypes sheet. You must define your attributes, either on the Attributes sheet or from Mozu itself, before you can connect them to product types. Multiple product types can share the same attributes.</p>
 					<table class="table table-hover">
 					<thead>
 					  <tr>
 						<th>Column Name</th>
-						<th>Required</th>
 						<th>Description</th>
+						<th>Valid Values</th>
+						<th>Required<a href="#required">*</a></th>
 					  </tr>
 					</thead>
 					<tbody>
 					<tr>
 						<td>MasterCatalogName</td>
-						<td>*</td>
-						<td>The name of the master catalog this attribute is mapped to.</td>
-					  </tr>
+						<td>The name of the master catalog that includes the product type. All product types in Mozu are defined on the master catalog level, and populate down to sub-catalogs within the master catalog.</td>
+						<td>A string matching the name of the master catalog as it appears at <strong>Settings</strong> > <strong>System Administration</strong> > <strong>Catalog and Site Structure</strong> in Mozu Admin.</td>
+						<td>Yes</td>
 					  <tr>
 						<td>ProductType</td>
-						<td>*</td>
-						<td>The name of the product type. For example, Book or Desklamp.</td>
+						<td>The name of the product type. This value must match the ProductType value on the <a href="#productypes">ProductTypes</a> sheet.</td>
+						<td>Any string.</td>
+						<td>Yes</td>
 					  </tr>
 					  <tr>
 						<td>AttributeCode</td>
-						<td> </td>
-						<td>Must be unique and required. The code for the attribute, can be plain text. For example, availability.</td>
+						<td>The unique code that identifies the attribute. This value must match the AttributeCode value on the <a href="#attributes">Attributes</a> sheet.</td>
+						<td>Any string. The string must be unique to a single attribute in the master catalog.</td>
+						<td>Yes</td>
 					  </tr>
-					  <tr>
-						<td>VocabularyValues</td>
-						<td> </td>
-						<td>Alternate terms used to describe the attribute. If none are entered, they are inherited from Base. You may see an entry on export of “Inherited from Bane. Do not add values here.” For example, DVD and Blueray could be terms for an AttributeCode of dvdtype.</td>
-					  </tr>
+
 					  <tr>
 						<td>Type</td>
-						<td> </td>
-						<td>Type of attribute. For example, Option, Extra, or Property.</td>
+						<td>The type of the attribute.</td>
+						<td>A string matching one of the following:
+							<ul>
+								<li><code>Property</code></li>
+								<li><code>Option</code></li>
+								<li><code>Extra</code></li>
+							</ul>
+							The attribute type you specify must be enabled for the attribute. For example, if you set this Type to <code>Property</code>, the IsProperty column on the <a href="#attributes">Attributes</a> sheet must have a value of <code>Yes</code>.
+						</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>IsRequiredByAdmin</td>
-						<td> </td>
-						<td>Boolean, indicates if the attribute is required by the Admin. </td>
+						<td>Specifies whether the attribute is required on products of this product type in Mozu Admin. The default is <code>No</code>.</td>
+						<td>A Boolean value, specified as <code>Yes</code> or <code>No</code>.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>IsHiddenProperty</td>
-						<td> </td>
-						<td>Boolean, indicates if the property is hidden.</td>
+						<td>Specifies whether the attribute is hidden from customers on the storefront. This value only applies if Type is <code>Property</code>. The default is <code>No</code>.</td>
+						<td>A Boolean value, specified as <code>Yes</code> or <code>No</code>.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>IsMultiValueProperty</td>
-						<td> </td>
-						<td>Boolean, indicates if the attribute has multiple property values.</td>
+						<td>Specifies whether the attribute can have more than one possible value for a single product. The default is <code>No</code>.</td>
+						<td>A Boolean value, specified as <code>Yes</code> or <code>No</code>.</td>
+						<td>No</td>
 					  </tr>
-					  <tr>
-						<td>VocabularyValueLocaleCode</td>
-						<td> </td>
-						<td>The locale code for the vocabulary values.</td>
-					  </tr>
+
 					  <tr>
 						<td>Order</td>
-						<td> </td>
-						<td>The view order for the page, like 1, 2, or 3.</td>
+						<td>Specifies the order in which the attribute appears in a list of all attributes on the product type.</td>
+						<td>A number, such as <code>1</code> or <code>3</code>.</td>
+						<td>No</td>
 					  </tr>
 					</tbody>
 					</table>
 					
-					<h3 id="categories">Categories Sheet</h3>
-					<p>Every product will be associated to a category.</p>
+					<h3 id="producttypeattributevalues">ProductTypeAttributeValues Sheet</h3>
+					<p>Corresponding REST API Resource: <a href="http://developer.mozu.com/content/api/APIResources/commerce/commerce.catalog/commerce.catalog.admin.attributedefinition.producttypes.htm" target="_blank">commerce/catalog/admin/attributedefinition/producttypes</a></p>
+					<p>Required With: <a href="#productypes">ProductTypes</a>, <a href="#producttypeattributes">ProductTypeAttributes</a></p>
+					<p>The attribute values you specify for a given product type define what users and customers see for that product type. These values might differ from the values defined on the <a href="#attributevalues">AttributeValues</a> sheet. For example, your store might include a line of shirts that are only available in sizes Small, Medium, and Large. However, your <code>Size</code> attribute from the AttributeValues sheet has possible values of <code>XS</code>, <code>S</code>, <code>M</code>, <code>L</code>, and <code>XL</code>. You can still use your <code>Size</code> attribute for the shirts by giving them their own ProductType and only enabling the three relevant values for <code>Size</code> on this sheet.</p>
 					<table class="table table-hover">
 					<thead>
 					  <tr>
 						<th>Column Name</th>
-						<th>Required</th>
 						<th>Description</th>
+						<th>Valid Values</th>
+						<th>Required<a href="#required">*</a></th>
+					  </tr>
+					</thead>
+					<tbody>
+					<tr>
+						<td>ProductType</td>
+						<td>The name of the product type. This value must match the ProductType value on the <a href="#productypes">ProductTypes</a> and <a href="#producttypeattributes">ProductTypeAttributes</a> sheets.</td>
+						<td>Any string.</td>
+						<td>Yes</td>
+					  </tr>
+					  <tr>
+						<td>AttributeCode</td>
+						<td>The unique code that identifies the attribute. This value must match the AttributeCode value on the <a href="#attributes">Attributes</a> and <a href="#producttypeattributes">ProductTypeAttributes</a> sheets.</td>
+						<td>Any string. The string must be unique to a single attribute in the master catalog.</td>
+						<td>Yes</td>
+					  </tr>
+					  <tr>
+						<td>VocabularyValue</td>
+						<td>The value the customer sees for the attribute, in the language specified by VocabularyValueLocaleCode. This value does not have to match a description from the AttributeValues sheet, but any new values you define here will only apply to the specific ProductType. </td>
+						<td>Any string. If empty, this value is inherited from values specified on the AttributeCode in the master catalog. You might see an entry on export of &quot;Inherited from Base. Do not add values here.&quot;</td>
+						<td>No</td>
+					  </tr>
+					 <tr>
+						<td>VocabularyValueLocaleCode</td>
+						<td>The locale code used to decide the VocabularyValue to display, in standard ISO language-country format.</td>
+						<td>An ISO locale code. For example, <code>en-US</code>.<br><br>
+							Currently, <code>en-US</code> is the only supported value.</td>
+						<td>No</td>
+					  </tr>
+					</tbody>
+					</table>
+
+					<h3 id="categories">Categories Sheet</h3>
+					<p>Corresponding REST API Resource: <a href="http://developer.mozu.com/content/api/APIResources/commerce/commerce.catalog/commerce.catalog.admin.categories.htm" target="_blank">commerce/catalog/admin/categories</a></p>
+					<p>Required With: NA</p>
+					<p>In Mozu, you uses product categories to group similar items so that you can display them together in sections on your site. Categories help you create faceted navigation for your customers. For example, Women's Apparel can be its own category as well as a parent cateogry of Shirts, Pants, and Dresses. Categories map to catalogs, and you can define them on the master catalog or only on a specific sub-catalog. A single product can belong to multiple categories.</p>
+					<table class="table table-hover">
+					<thead>
+					  <tr>
+						<th>Column Name</th>
+						<th>Description</th>
+						<th>Valid Values</th>
+						<th>Required<a href="#required">*</a></th>
 					  </tr>
 					</thead>
 					<tbody>
 					<tr>
 						<td>CatalogName</td>
-						<td>*</td>
-						<td>The name of the catalog this category is mapped to.</td>
+						<td>The name of the catalog this category is mapped to. You can define catalogs on the <a href="#productcatalogs">ProductCatalogs</a> sheet.</td>
+						<td>A string matching any valid catalog name.</td>
+						<td>Yes</td>
 					  </tr>
 					  <tr>
 						<td>CategoryCode</td>
-						<td>*</td>
-						<td>The category code. For example, 2.</td>
+						<td>The unique identifier for the category. You use the CategoryCode to map categories to catalogs, discounts, and other categories.</td>
+						<td>Any number. This value must be unique among all categories on your site.<br><br><strong>Note:</strong> This code does not have to map to the ID Mozu generates for categories created in Mozu Admin. This codem must simply be unique to the category and must match across all sheets that refer to the category.</td>
+						<td>Yes</td>
 					  </tr>
 					  <tr>
 						<td>ParentCategoryCode</td>
-						<td> </td>
-						<td>The id of another category that is parent to this category. Adding a parent category code makes this category a sub-category of the parent. In the Admin, this may be the field called Assign to Other Category.</td>
+						<td>The category code that identifies the parent category of this category. </td>
+						<td>A number that matches a valid category code. If the category has multiply parents, create a new row to define each parent/child relationship, and ensure that all other values match between the rows.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>CategoryName</td>
-						<td>*</td>
-						<td>The name of the category. For example, CDs.</td>
+						<td>The name of the category. If IsDisplayed is <code>Yes</code>, this is the name that appears to customers on the storefront.</td>
+						<td>Any string.</td>
+						<td>Yes</td>
 					  </tr>
 					  <tr>
 						<td>IsDisplayed</td>
-						<td> </td>
-						<td>Indicates if the category is hidden.</td>
+						<td>Specifies whether the category is visible to customers on the storefront.</td>
+						<td>A Boolean value, specified as <code>Yes</code> or <code>No</code>.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>LocaleCode</td>
-						<td> </td>
-						<td>The locale code for the language and location. For example, en-US for English United States.</td>
+						<td>The locale code used to decide the language in which to display category content, in standard ISO language-country format.</td>
+						<td>An ISO locale code. For example, <code>en-US</code>.<br><br>
+							Currently, <code>en-US</code> is the only supported value.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>MetaTagTitle</td>
-						<td> </td>
-						<td>The metadata title for the category.</td>
+						<td>The metadata title for the category page, in the language specified by LocaleCode. This title is not visible to customers, but search engines may index this value, so using a good title can improve your SEO.</td>
+						<td>Any string.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>MetaTagDescription</td>
-						<td> </td>
-						<td>The metadata description for the category.</td>
+						<td>The metadata description for the category page, in the language specified by LocaleCode. Search engines may display this description in search results.</td>
+						<td>Any string.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>PageTitle</td>
-						<td> </td>
-						<td>The page title for the category.</td>
+						<td>The title that customers see when they land on the page, in the language specified by LocaleCode. This can be different than the MetaTagTitle, but should still be a logical term that customers might search.</td>
+						<td>Any string.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>CategoryDescription</td>
-						<td> </td>
-						<td>The text description for the category.</td>
+						<td>The description of the category as it appears in Mozu Admin. Depending on your theme, you can also make this description visible to customers on your storefront.</td>
+						<td>Any string.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>MetaTagKeyWords</td>
-						<td> </td>
-						<td>The metadata keywords for the category.</td>
+						<td>The metadata keywords for the category page, in the language specified by LocaleCode. Search engines may use these keywords when returning search results, so using logical, descriptive keywords can improve your SEO.</td>
+						<td>Any string.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>SEOUrl</td>
-						<td> </td>
-						<td>The SEO friendly URL for the category. For example, pro-cd.</td>
+						<td>The SEO friendly URL for the category page. This is the slug that customers see when they navigate to the page. For example, if you want the page URL to appear as &quot;mystore.com/shirts&quot;, you can enter <code>shirts</code> for this value.</td>
+						<td>Any string.</td>
+						<td>No</td>
 					  </tr>
 					</tbody>
 					</table>
 					
-					<h3 id="prod">Products Sheet</h3>
-					<p>You will find additional columns based on the additional attributes and product types created in your tenant and the installed/enabled apps.</p>
+					<h3 id="products">Products Sheet</h3>
+					<p>Corresponding REST API Resource: <a href="http://developer.mozu.com/content/api/APIResources/commerce/commerce.catalog/commerce.catalog.admin.products.htm" target="_blank">commerce/catalog/admin/products</a></p>
+					<p>Required With: <a href="#productcatalogs">ProductCatalogs</a>, <a href="#productoptions">ProductOptions</a>, <a href="productextras">ProductExtras</a>, <a href="productbundles">ProductBundles</a>, <a href="productimages">ProductImages</a> </p>
+					<p>Once you have creates attributes, product types, and categories, you can add products to your store. Do not try to add products to your store before building out the catalog infrastructure that the previous tabs describe. Your products will be missing required data and the import will not work. However, once your catalog infrastructure is set, you can fill out just the product-related sheets when you are adding or updating product data.</p>
+					<div class="panel panel-info">
+							<div class="panel-heading"><strong>Note:</strong> In addition to the columns described in the following table, the Products sheet includes columns for all the attributes you create. To apply an attribute to a product, enter a valid value for the attribute in that attribute's column. Leave the attribute empty if you do not want to apply it to the product. If you are creating new attributes in the same import that you are adding them to products, you can add the attribute code to the end of this sheet as a column header.</div>
+						</div>
+					<p></p>
 					<table class="table table-hover">
 					<thead>
 					  <tr>
 						<th>Column Name</th>
-						<th>Required</th>
 						<th>Description</th>
+						<th>Valid Values</th>
+						<th>Required<a href="#required">*</a></th>
 					  </tr>
 					</thead>
 					<tbody>
 					<tr>
 						<td>MasterCatalogName</td>
-						<td>*</td>
-						<td>The name of the catalog this product is mapped to.</td>
-					  </tr>
+						<td>The name of the master catalog that includes the product. Products are defined on the master catalog level, and populate down to sub-catalogs through the categories you assign them to.</td>
+						<td>A string matching the name of the master catalog as it appears at <strong>Settings</strong> > <strong>System Administration</strong> > <strong>Catalog and Site Structure</strong> in Mozu Admin.</td>
+						<td>Yes</td>
+					  <tr>
 					  <tr>
 						<td>ProductCode</td>
-						<td>*</td>
-						<td>The unique product code for the product.</td>
+						<td>The unique identifier for the product. You will use this code throughout Mozu to refer to the product.</td>
+						<td>Any number that is unique among all product codes in the master catalog.</td>
+						<td>Yes</td>
 					  </tr>
 					  <tr>
 						<td>ProductTypeName</td>
-						<td>*</td>
-						<td>The product type name to associate with this product.</td>
+						<td>The name of the product type associated with the product.</td>
+						<td>Any string that is a valid product type name. This value should match a ProductType on the <a href="#producttypes">ProductTypes</a> sheet.</td>
+						<td>Yes</td>
 					  </tr>
 					  <tr>
 						<td>ProductUsage</td>
-						<td> </td>
-						<td>The product type usage as Standard, Configurable, or Bundle.</td>
+						<td>The product usage type this product supports.</td>
+						<td>A string matching one of the following:
+							<ul>
+								<li><code>Standard</code></li>
+								<li><code>Configurable</code></li>
+								<li><code>Bundle</code></li>
+								<li><code>Component</code></li>
+							</ul>	
+							The usage type you specify must be enabled for the product type on the <a href="#producttypes">ProductTypes</a> sheet.
+						</td>
 					  </tr>
 					  <tr>
 						<td>ProductName</td>
-						<td>*</td>
-						<td>The name of the product.</td>
+						<td>The name the customer sees for the product, in the language specified by the ContentLocaleCode.</td>
+						<td>Any string.</td>
+						<td>Yes</td>
 					  </tr>
 					  <tr>
 						<td>ContentLocaleCode</td>
-						<td> </td>
-						<td>The locale code for the product content. </td>
+						<td>The locale code used to decide the language in which to display product content, in standard ISO language-country format.</td>
+						<td>An ISO locale code. For example, <code>en-US</code>.<br><br>
+							Currently, <code>en-US</code> is the only supported value.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>ISOCurrencyCode</td>
-						<td> </td>
-						<td>The ISO three character currency code. For example, USD for US Dollar.</td>
+						<td>The ISO three character currency code used to decide the currency in which to show the price of the product.</td>
+						<td>A three-character ISO currency code. For example, <code>USD</code>.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>Price</td>
-						<td> </td>
-						<td>The price of the product.</td>
+						<td>The unit price for the product if no sale or discount is applied.</td>
+						<td>Any decimal value.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>SalePrice</td>
-						<td> </td>
-						<td>The sale price of the product.</td>
+						<td>The sale price for the product. If set, this value overrides the Price.</td>
+						<td>Any decimal value.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>Cost</td>
-						<td> </td>
-						<td>The cost for the product.</td>
+						<td>The cost of the product to the merchant.</td>
+						<td>Any decimal value.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>MSRP</td>
-						<td> </td>
 						<td>The manufacturers suggested retail price for the product. </td>
+						<td>Any decimal value.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>MAP</td>
-						<td> </td>
-						<td>The minimum advertised price for the product.</td>
+						<td>The MAP, or minimum advertised price for the product, as specified by the product supplier. If MAP pricing is in effect, this value overrides all other prices you specify for the product. However, you can still apply a discount to a product with MAP pricing.</td>
+						<td>Any decimal value.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>MAPEffectiveStartDate</td>
-						<td> </td>
-						<td>The state date for the minimum advertised price.</td>
+						<td>The effective start date for MAP pricing. Mozu ignores the MAP value if this date is in the future.</td>
+						<td>A date and time in UTC format. If this value is empty but the MAPEffectiveEndDate is set and has not yet passed, the MAP price applies.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>MAPEffectiveEndDate</td>
-						<td> </td>
-						<td>The end date for the minimum advertised price.</td>
+						<td>The effective end date for MAP pricing. Mozu ignores the MAP value if this date has passed.</td>
+						<td>A date and time in UTC format. If MAPEffectiveStartDate is specified and this value is empty, the MAP price applies indefinitely.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>RestrictDiscount</td>
-						<td> </td>
-						<td>Boolean, indicates if discounts should be restricted for the product. </td>
+						<td>Specifies whether discounts are restricted on the product. If true, the system cannot apply any discounts to the product.</td>
+						<td>A Boolean value, specified as <code>Yes</code> or <code>No</code>.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>RestrictDiscountStartDate</td>
-						<td> </td>
-						<td>The state date for the restricted discount if RestrictDiscount is yes (true).</td>
+						<td>If RestrictDiscount is <code>Yes</code>, specifies the start date for the restriction.</td>
+						<td>A date and time in UTC format. If this value is empty but the RestrictedDiscountEndDate is set and has not yet passed, the restriction applies.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>RestrictDiscountEndDate</td>
-						<td> </td>
-						<td>The end date for the restricted discount if RestrictDiscount is yes (true).</td>
+						<td>If RestrictDiscount is <code>Yes</code>, specifies the end date for the restriction.</td>
+						<td>A date and time in UTC format. If RestrictDiscountStartDate is specified and this value is empty, the restriction applies indefinitely.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>ManufacturerPartNumber</td>
-						<td> </td>
-						<td>The manufacturer related part number for the product.</td>
+						<td>The manufacturer's part number for the product.</td>
+						<td>Any string.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>UPC</td>
-						<td> </td>
-						<td>The UPC code for the product.</td>
+						<td>The universal product code (UPC) for the product.</td>
+						<td>Any string. A valid UPC must be unique across all sales channels.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>DistributorPartNumber</td>
-						<td> </td>
-						<td>The distributor related part number for the product.</td>
+						<td>The distributor's part number for the product.</td>
+						<td>Any string.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>IsTaxable</td>
-						<td> </td>
-						<td>Boolean, indicates if the product is taxable.</td>
+						<td>Specifies whether the product is subject to taxation. The default is <code>No</code>.</td>
+						<td>A Boolean value, specified as <code>Yes</code> or <code>No</code>.</td>
+						<td>Yes</td>
 					  </tr>
 					  <tr>
 						<td>ManageStock</td>
-						<td> </td>
-						<td>Boolean, indicates if stock should be managed for the product.</td>
+						<td>Specifies whether Mozu tracks inventory levels for the product. If you want to manage stock (recommended), you can use the <a href="#locationinventory">LocationInventory</a> sheet to set inventory levels for the product.</td>
+						<td>A Boolean value, specified as <code>Yes</code> or <code>No</code>.</td>
+						<td>Yes</td>
 					  </tr>
 					  <tr>
 						<td>OutOfStockBehavior</td>
-						<td> </td>
-						<td>Indicated behavior to follow when the product is out of stock. For example, AllowBackOrder of DisplayMessage.</td>
+						<td>If ManageStock is <code>Yes</code>, specifies the action Mozu takes if the product is out of stock. You can display an out-of-stock message to the customer, allow the customer to back-order the product, or hide the product from the storefront.</td>
+						<td>A string matching one of the following:
+							<ul>
+								<li><code>DisplayMessage</code> (Default)</li>
+								<li><code>HideProduct</code></li>
+								<li><code>AllowBackorder</code></li>
+							</ul>
+						</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>PackageWeight</td>
-						<td> </td>
-						<td>The weight of the product. This is important for calculating shipping costs. Default is in US pounds.</td>
+						<td>The weight of the product when packaged, in imperial units (pounds and ounces). This value is used to calculate shipping costs.</td>
+						<td>Any decimal value.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>PackageLength</td>
-						<td> </td>
-						<td>The length of the product. This is important for calculating shipping costs. Default is in US inches.</td>
+						<td>The length of the product when packaged, in imperial units (feet and inches). This value is used to calculate shipping costs.</td>
+						<td>Any decimal value.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>PackageWidth</td>
-						<td> </td>
-						<td>The width of the product. This is important for calculating shipping costs. Default is in US inches.</td>
+						<td>The width of the product when packaged, in imperial units (feet and inches). This value is used to calculate shipping costs.</td>
+						<td>Any decimal value.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>PackageHeight</td>
-						<td> </td>
-						<td>The height of the product. This is important for calculating shipping costs. Default is in US inches.</td>
+						<td>The height of the product when packaged, in imperial units (feet and inches). This value is used to calculate shipping costs.</td>
+						<td>Any decimal value.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>FulfillmentTypes</td>
-						<td> </td>
-						<td>The selected fulfillment type for shipping the purchased product. For example, Direct Ship & InStorePickup.</td>
+						<td>The fulfillment types supported for shipping the product to customers. </td>
+						<td>A string matching one of the following:
+							<ul>
+								<li><code>DirectShip</code></li>
+								<li><code>InStorePickup</code></li>
+								<li><code>Digital</code></li>
+							</ul>
+							If multiple fulfillment types are supported, use an ampersand (&amp;) to include additional types. For example: <code>DirectShip &amp; InStorePickup</code></td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>ProductShortDescription</td>
-						<td> </td>
-						<td>A short text description for the product. HTML tags are supported.</td>
+						<td>A short description for the product. This value is typically used when the product is displayed in a list of search results. The character limit is 260.</td>
+						<td>Any string. HTML tags are supported, and are not counted in the description character limit.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>ContentFullproductDescription</td>
-						<td> </td>
-						<td>A full, lengthy text description for the product. HTML tags are supported.</td>
+						<td>The full description to display on the details page for the product. </td>
+						<td>Any string. HTML tags are supported.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>SEOMetaTagTitle</td>
-						<td> </td>
-						<td>SEO metadata title for the product.</td>
+						<td>The metadata title for the product page. This title is not visible to customers, but search engines may index this value, so using a good title can improve your SEO.</td>
+						<td>Any string.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>SEOMetaTagDescription</td>
-						<td> </td>
-						<td>SEO metadata for the description.</td>
+						<td>The metadata description for the product page. Search engines may display this description in search results.</td>
+						<td>Any string.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>SEOMetaTagKeywords</td>
-						<td> </td>
-						<td>SEO metadata keywords for the product.</td>
+						<td>The metadata keywords for the product page. Search engines may use these keywords when returning search results, so using logical, descriptive keywords can improve your SEO.</td>
+						<td>Any string.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>SEOFriendlyURL</td>
-						<td> </td>
-						<td>SEO friendly URL name for the product. For example, running-shoes.</td>
+						<td>The SEO friendly URL for the proudct page. This is the slug that customers see when they navigate to the page. For example, if you want the page URL to appear as &quot;mystore.com/shirts/brandname&quot;, you can enter <code>shirts/brandname</code> for this value.</td>
+						<td>Any string.</td>
+						<td>No</td>
 					  </tr>
 					</tbody>
 					</table>
 					
-					<h3 id="prodcatalogs">ProductCatalogs Sheet</h3>
+					<h3 id="productcatalogs">ProductCatalogs Sheet</h3>
+					<p>Corresponding REST API Resource: <a href="http://developer.mozu.com/content/api/APIResources/commerce/commerce.catalog/commerce.catalog.admin.products.htm" target="_blank">commerce/catalog/admin/products</a></p>
+					<p>Required With: <a href="#productcatalogs">Products</a>, <a href="#productoptions">ProductOptions</a>, <a href="productextras">ProductExtras</a>, <a href="productbundles">ProductBundles</a>, <a href="productimages">ProductImages</a> </p>
 					<p>This sheet maps products to catalogs within a master catalog. Of special note, the product code and product name must match the product in the master catalog. All other data may differ from the master catalog. For example, the product in this catalog could belong to different categories, have different prices and costs, use different SEO content, and so on. You can reuse the same data for the original product.</p>
 					<table class="table table-hover">
 					<thead>
 					  <tr>
 						<th>Column Name</th>
-						<th>Required</th>
 						<th>Description</th>
+						<th>Valid Values</th>
+						<th>Required<a href="#required">*</a></th>
 					  </tr>
 					</thead>
 					<tbody>
@@ -1027,8 +1213,9 @@
 					<thead>
 					  <tr>
 						<th>Column Name</th>
-						<th>Required</th>
 						<th>Description</th>
+						<th>Valid Values</th>
+						<th>Required<a href="#required">*</a></th>
 					  </tr>
 					</thead>
 					<tbody>
@@ -1096,8 +1283,9 @@
 					<thead>
 					  <tr>
 						<th>Column Name</th>
-						<th>Required</th>
 						<th>Description</th>
+						<th>Valid Values</th>
+						<th>Required<a href="#required">*</a></th>
 					  </tr>
 					</thead>
 					<tbody>
@@ -1155,8 +1343,9 @@
 					<thead>
 					  <tr>
 						<th>Column Name</th>
-						<th>Required</th>
 						<th>Description</th>
+						<th>Valid Values</th>
+						<th>Required<a href="#required">*</a></th>
 					  </tr>
 					</thead>
 					<tbody>
@@ -1189,8 +1378,9 @@
 					<thead>
 					  <tr>
 						<th>Column Name</th>
-						<th>Required</th>
 						<th>Description</th>
+						<th>Valid Values</th>
+						<th>Required<a href="#required">*</a></th>
 					  </tr>
 					</thead>
 					<tbody>
@@ -1253,8 +1443,9 @@
 					<thead>
 					  <tr>
 						<th>Column Name</th>
-						<th>Required</th>
 						<th>Description</th>
+						<th>Valid Values</th>
+						<th>Required<a href="#required">*</a></th>
 					  </tr>
 					</thead>
 					<tbody>
@@ -1302,8 +1493,9 @@
 					<thead>
 					  <tr>
 						<th>Column Name</th>
-						<th>Required</th>
 						<th>Description</th>
+						<th>Valid Values</th>
+						<th>Required<a href="#required">*</a></th>
 					  </tr>
 					</thead>
 					<tbody>
@@ -1431,8 +1623,9 @@
 					<thead>
 					  <tr>
 						<th>Column Name</th>
-						<th>Required</th>
 						<th>Description</th>
+						<th>Valid Values</th>
+						<th>Required<a href="#required">*</a></th>
 					  </tr>
 					</thead>
 					<tbody>
@@ -1545,8 +1738,9 @@
 					<thead>
 					  <tr>
 						<th>Column Name</th>
-						<th>Required</th>
 						<th>Description</th>
+						<th>Valid Values</th>
+						<th>Required<a href="#required">*</a></th>
 					  </tr>
 					</thead>
 					<tbody>
