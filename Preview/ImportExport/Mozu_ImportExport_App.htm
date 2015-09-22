@@ -144,7 +144,7 @@
 							
 							<li><a href="#producttemplate">Products Template</a>
 							<ul class="nav nav-stacked">
-									<li><a href="#attributess">Attributes</a></li>
+									<li><a href="#attributes">Attributes</a></li>
 									<li><a href="#attributevalues">AttributeValues</a></li>
 									<li><a href="#producttypes">ProductTypes</a></li>
 									<li><a href="#producttypeattributes">ProductTypeAttributes</a></li>
@@ -162,14 +162,14 @@
 							</li>
 							<li><a href="#contactstemplate">Contacts Template</a>
 							<ul class="nav nav-stacked">
-									<li><a href="#custaccts">CustomerAccounts Sheet</a></li>
-									<li><a href="#custcontacts">CustomerContacts Sheet</a></li>
+									<li><a href="#customeraccounts">CustomerAccounts</a></li>
+									<li><a href="#customercontacts">CustomerContacts</a></li>
 								</ul>
 							</li>
 							<li><a href="#orderstemplate">Orders Template</a>
 							<ul class="nav nav-stacked">
-									<li><a href="#custaccts">CustomerAccounts Sheet</a></li>
-									<li><a href="#custcontacts">CustomerContacts Sheet</a></li>
+									<li><a href="#orders">Orders</a></li>
+									<li><a href="#orderlineitems">Order Line Items</a></li>
 								</ul>
 							</li>
 					</ul>
@@ -392,7 +392,7 @@
 					<p>The Products template is the largest of the import/export template files, and is likely the one you will use the most. Together, the sheets of the Products template represent your entire catalog structure for all the sites on your tenant. You can use this template to add or update master catalogs, sub-catalogs, product types, product attributes and options, images, inventory, and discounts.</p>
 					<p>As you work with this file, you will enter information about a single product across multiple sheets. Mozu uses a combination of IDs, codes, names, and catalog information to make the proper data connections. For example, most sheets require a ProductCode to bind the data the sheet contains to the correct product.</p>
 					<div class="panel panel-info">
-							<div class="panel-heading"><strong>Tip:</strong> You do not have to include every sheet in the template every time you import data. However, some sheets do have dependencies on others within the template. Required pairings are noted below.</div>
+							<div class="panel-heading"><strong>Tip:</strong> You do not have to enter all data for every sheet in the template every time you import data. However, some sheets do have dependencies on others within the template. Required pairings are noted below.</div>
 						</div>
 					<p>Each of the following sections describes a sheet in the Products template. For each sheet, we define each column, describe valid values for the column, and indicate whether it is required or optional. The sheets in the file appear in the order in which you create product data in Mozu. First you create your attributes, then you create your product types, and so on. For additional context about the process of building out a catalog, log in to Mozu Admin and refer to the <a href="https://www.mozu.com/docs/admin/help/Catalog/Catalogs_Overview.htm">Catalog Overview</a> in the Admin Help.</p>
 					
@@ -401,14 +401,8 @@
 							</div>
 
 					<p>If you have questions or concerns specific to your data, please contact your Mozu integration and implementation associates.</p>
-
-					<p>When using the Product template, you must complete the following sheets according to the data you add:</p>
-				<ul>
-					<li>Products: The sheets for attributes, product types, and categories must be populated. Populate the Products, ProductCatalogs, ProductOptions, ProductExtras, ProductBundles, and Images with data. </li>
-					<li>Inventory Amounts: The LocationInventory sheet provides tracking and inventory amounts per product code with locations. </li>					
-					</ul>
 					
-					<h3 id="attributes">Attributes</h3>
+					<h3 id="attributes">Attributes Sheet</h3>
 					<p>Corresponding REST API Resource: <a href="http://developer.mozu.com/content/api/APIResources/commerce/commerce.catalog/commerce.catalog.admin.attributedefinition.attributes.htm" target="_blank">commerce/catalog/admin/attributedefinition/attributes</a></p>
 					<p>Required With: <a href="#attributevalues">AttributeValues</a></p>
 					<p>Product attributes are the variable properties that define a product. Attributes can be options (such as size or color), properties (such as the brand of the product), or extras (such as custom printing). Because many products share common attributes, you define general attributes before you apply them to specific products.</p>
@@ -581,7 +575,7 @@
 					</table>
 
 					
-					<h3 id="prodtypes">ProductTypes Sheet</h3>
+					<h3 id="producttypes">ProductTypes Sheet</h3>
 					<p>Corresponding REST API Resource: <a href="http://developer.mozu.com/content/api/APIResources/commerce/commerce.catalog/commerce.catalog.admin.attributedefinition.producttypes.htm" target="_blank">commerce/catalog/admin/attributedefinition/producttypes</a></p>
 					<p>Required With: <a href="#productypeattributes">ProductTypeAttributes</a>, <a href="#producttypeattributevalues">ProductTypeAttributeValues</a></p>
 					<p>In Mozu, a product type is a template of settings and attributes you create for a specific set of products. Every product in your catalog has a single product type associated with it. The ProductTypes sheet simply specifies the usage type(s) and master catalog for the product type. You specify details for product types on the <a href="#productypeattributes">ProductTypeAttributes</a> and <a href="#producttypeattributevalues">ProductTypeAttributeValues</a> sheets.</p>
@@ -862,7 +856,6 @@
 					<div class="panel panel-info">
 							<div class="panel-heading"><strong>Note:</strong> In addition to the columns described in the following table, the Products sheet includes columns for all the attributes you create. To apply an attribute to a product, enter a valid value for the attribute in that attribute's column. Leave the attribute empty if you do not want to apply it to the product. If you are creating new attributes in the same import that you are adding them to products, you can add the attribute code to the end of this sheet as a column header.</div>
 						</div>
-					<p></p>
 					<table class="table table-hover">
 					<thead>
 					  <tr>
@@ -875,13 +868,13 @@
 					<tbody>
 					<tr>
 						<td>MasterCatalogName</td>
-						<td>The name of the master catalog that includes the product. Products are defined on the master catalog level, and populate down to sub-catalogs through the categories you assign them to.</td>
+						<td>The name of the master catalog that includes the product. Products are defined on the master catalog level. After you define a product in the master catalog, you can use the <a href="#productcatalogs">ProductCatalogs</a> sheet to add it to sub-catalogs.</td>
 						<td>A string matching the name of the master catalog as it appears at <strong>Settings</strong> > <strong>System Administration</strong> > <strong>Catalog and Site Structure</strong> in Mozu Admin.</td>
 						<td>Yes</td>
 					  <tr>
 					  <tr>
 						<td>ProductCode</td>
-						<td>The unique identifier for the product. You will use this code throughout Mozu to refer to the product.</td>
+						<td>The unique identifier for the product. You use this code throughout Mozu to refer to the product.</td>
 						<td>Any number that is unique among all product codes in the master catalog.</td>
 						<td>Yes</td>
 					  </tr>
@@ -1102,8 +1095,8 @@
 					
 					<h3 id="productcatalogs">ProductCatalogs Sheet</h3>
 					<p>Corresponding REST API Resource: <a href="http://developer.mozu.com/content/api/APIResources/commerce/commerce.catalog/commerce.catalog.admin.products.htm" target="_blank">commerce/catalog/admin/products</a></p>
-					<p>Required With: <a href="#productcatalogs">Products</a>, <a href="#productoptions">ProductOptions</a>, <a href="productextras">ProductExtras</a>, <a href="productbundles">ProductBundles</a>, <a href="productimages">ProductImages</a> </p>
-					<p>This sheet maps products to catalogs within a master catalog. Of special note, the product code and product name must match the product in the master catalog. All other data may differ from the master catalog. For example, the product in this catalog could belong to different categories, have different prices and costs, use different SEO content, and so on. You can reuse the same data for the original product.</p>
+					<p>Required With: <a href="#products">Products</a>, <a href="#productoptions">ProductOptions</a>, <a href="productextras">ProductExtras</a>, <a href="productbundles">ProductBundles</a>, <a href="productimages">ProductImages</a> </p>
+					<p>This sheet maps products to catalogs within a master catalog. The ProductCode and ProductName must match the product definition in the master catalog, or as specified on the <a href="#products">Products</a> sheet. All other data can differ from the master catalog. For example, in a specific sub-catalog, a product could belong to different categories, have different prices and costs, use different SEO content, and so on.</p>
 					<table class="table table-hover">
 					<thead>
 					  <tr>
@@ -1116,99 +1109,127 @@
 					<tbody>
 					<tr>
 						<td>CatalogName</td>
-						<td>*</td>
-						<td>The name of the catalog this product is mapped to.</td>
+						<td>The name of the catalog that includes the product. To add a product to multiple catalogs, create a new row for each catalog.</td>
+						<td>A string matching any valid catalog name. This should be a sub-catalog. Products are mapped to a master catalog when they are created, or on the <a href="#Products">Products</a> sheet.</td>
+						<td>Yes</td>
 					  </tr>
 					  <tr>
 						<td>ProductCode</td>
-						<td>*</td>
-						<td>The product code for the product associated to this catalog.</td>
+						<td>The unique identifier for the product. You use this code throughout Mozu to refer to the product.</td>
+						<td>Any number that is unique among all product codes in the master catalog. This value must match the ProductCode in the master catalog, or on <a href="#Products">Products</a> sheet.</td>
+						<td>Yes</td>
 					  </tr>
 					  <tr>
 						<td>IsActive</td>
-						<td> </td>
-						<td>Boolean, indicates if the catalog is active.</td>
+						<td>Specifies whether the product is active in the catalog. If <code>No</code>, the product is hidden from customers on the storefront.</td>
+						<td>A Boolean value, specified as <code>Yes</code> or <code>No</code>.</td>
+						<td>Yes</td>
 					  </tr>
 					  <tr>
 						<td>ProductName</td>
-						<td> </td>
 						<td>The name of the product.</td>
+						<td>Any string. This value must match the ProductName in the master catalog, or on <a href="#Products">Products</a> sheet.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>ISOCurrencyCode</td>
-						<td> </td>
-						<td>The ISO three character currency code. For example, USD for US Dollar.</td>
+						<td>The ISO three character currency code used to decide the currency in which to show the price of the product.</td>
+						<td>A three-character ISO currency code. For example, <code>USD</code>.<br><br>This value overrides the ISOCurrencyCode on the <a href="#Products">Products</a> sheet.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>Price</td>
-						<td> </td>
-						<td>The price of the product.</td>
+						<td>The unit price for the product if no sale or discount is applied.</td>
+						<td>Any decimal value.<br><br>This value overrides the Price on the <a href="#Products">Products</a> sheet.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>SalePrice</td>
-						<td> </td>
-						<td>The sale price of the product.</td>
+						<td>The sale price for the product. If set, this value overrides the Price.</td>
+						<td>Any decimal value.<br><br>This value overrides the SalePrice on the <a href="#Products">Products</a> sheet.</td>
+						<td>No</td>
+					  </tr>
+					  <tr>
+						<td>Cost</td>
+						<td>The cost of the product to the merchant.</td>
+						<td>Any decimal value.<br><br>This value overrides the Cost on the <a href="#Products">Products</a> sheet.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>MSRP</td>
-						<td> </td>
-						<td>The manufacturers suggested retail price for the product.</td>
+						<td>The manufacturers suggested retail price for the product. </td>
+						<td>Any decimal value.<br><br>This value overrides the MSRP on the <a href="#Products">Products</a> sheet.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>MAP</td>
-						<td> </td>
-						<td>The minimum advertised price for the product.</td>
+						<td>The MAP, or minimum advertised price for the product, as specified by the product supplier. If MAP pricing is in effect, this value overrides all other prices you specify for the product. However, you can still apply a discount to a product with MAP pricing.</td>
+						<td>Any decimal value.<br><br>This value overrides the MAP on the <a href="#Products">Products</a> sheet.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>MAPEffectiveStartDate</td>
-						<td> </td>
-						<td>The state date for the minimum advertised price.</td>
+						<td>The effective start date for MAP pricing. Mozu ignores the MAP value if this date is in the future.</td>
+						<td>A date and time in UTC format. If this value is empty but the MAPEffectiveEndDate is set and has not yet passed, the MAP price applies.<br><br>This value overrides the MAPEffectiveStartDate on the <a href="#Products">Products</a> sheet.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>MAPEffectiveEndDate</td>
-						<td> </td>
-						<td>The end date for the minimum advertised price.</td>
-					  </tr>
+						<td>The effective end date for MAP pricing. Mozu ignores the MAP value if this date has passed.</td>
+						<td>A date and time in UTC format. If MAPEffectiveStartDate is specified and this value is empty, the MAP price applies indefinitely.<br><br>This value overrides the MAPEffectiveEndDate on the <a href="#Products">Products</a> sheet.</td>
+						<td>No</td>
 					  <tr>
 						<td>ProductShortDescription</td>
-						<td> </td>
-						<td>The selected fulfillment type for shipping the purchased product. For example, Direct Ship & InStorePickup.</td>
+						<td>A short description for the product. This value is typically used when the product is displayed in a list of search results. The character limit is 260.</td>
+						<td>Any string. HTML tags are supported, and are not counted in the description character limit.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
-						<td>ContentFullProductDescription</td>
-						<td> </td>
-						<td>A short text description for the product. HTML tags are supported.</td>
+						<td>ContentFullproductDescription</td>
+						<td>The full description to display on the details page for the product. </td>
+						<td>Any string. HTML tags are supported.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>SEOMetaTagTitle</td>
-						<td> </td>
-						<td>A full, lengthy text description for the product. HTML tags are supported.</td>
+						<td>The metadata title for the product page. This title is not visible to customers, but search engines may  index this value, so using a good title can improve your SEO.</td>
+						<td>Any string.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>SEOMetaTagDescription</td>
-						<td> </td>
-						<td>SEO metadata title for the product.</td>
+						<td>The metadata description for the product page. Search engines may display this description in search results.</td>
+						<td>Any string.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>SEOMetaTagKeywords</td>
-						<td> </td>
-						<td>SEO metadata for the description.</td>
+						<td>The metadata keywords for the product page. Search engines may use these keywords when returning search results, so using logical, descriptive keywords can improve your SEO.</td>
+						<td>Any string.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>SEOFriendlyURL</td>
-						<td> </td>
-						<td>SEO metadata keywords for the product.</td>
+						<td>The SEO friendly URL for the proudct page. This is the slug that customers see when they navigate to the page. For example, if you want the page URL to appear as &quot;mystore.com/shirts/brandname&quot;, you can enter <code>shirts/brandname</code> for this value.</td>
+						<td>Any string.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>CategoryCodes</td>
-						<td> </td>
-						<td>The category ID for this catalog. For example, 5, 10, 12.</td>
+						<td>The codes for the categories in which the product appears in this catalog.</td>
+						<td>A string matching a valid category code. You can use commas to specify multiple categories within the catalog. For example: <code>1, 12, 18</code></td>
+						<td>No</td>
 					  </tr>
 					</tbody>
 					</table>
 					
-					<h3 id="prodoptions">ProductOptions Sheet</h3>
-					<p>This sheet maps options to products by master catalog and product code. Each product code could have multiple option entries. The template sheet may include additional columns for attributes for products, product types, apps, and more. </p>
+					<h3 id="productoptions">ProductOptions Sheet</h3>
+					<p>Corresponding REST API Resource: <a href="http://developer.mozu.com/content/api/APIResources/commerce/commerce.catalog/commerce.catalog.admin.products.htm" target="_blank">commerce/catalog/admin/products</a></p>
+					<p>Required With: <a href="#products">Products</a>, <a href="#productcatalogs">ProductCatalogs</a>, <a href="productextras">ProductExtras</a>, <a href="productbundles">ProductBundles</a>, <a href="productimages">ProductImages</a> </p>
+					<p>This sheet defines the options for products that have customer-configurable options. Each product code can have multiple option entries, and each option creates a different variant of the product. The template sheet may include additional columns for attributes for products, product types, apps, and more. </p>
+					<div class="panel panel-info">
+							<div class="panel-heading"><strong>Note:</strong> In addition to the columns described in the following table, the ProductOptions sheet includes columns for all the attributes you create that can be options on a product (IsOption is <code>Yes</code> on the <a href="#attributes">Attributes</a> sheet).</div>
+						</div>
 					<table class="table table-hover">
 					<thead>
 					  <tr>
@@ -1220,65 +1241,86 @@
 					</thead>
 					<tbody>
 					<tr>
-						<td>CatalogName</td>
-						<td>*</td>
-						<td>The name of the catalog this product is mapped to.</td>
+						<td>MasterCatalogName</td>
+						<td>The name of the master catalog that includes the product.</td>
+						<td>A string matching the name of the master catalog as it appears at <strong>Settings</strong> > <strong>System Administration</strong> > <strong>Catalog and Site Structure</strong> in Mozu Admin.</td>
+						<td>Yes</td>
 					  </tr>
 					  <tr>
+					  <tr>
 						<td>ProductCode</td>
-						<td>*</td>
-						<td>The product code for the product associated to this catalog.</td>
+						<td>The unique identifier for the product. You use this code throughout Mozu to refer to the product.</td>
+						<td>Any number that is unique among all product codes in the master catalog. This value must match the ProductCode in the master catalog, or on the <a href="#Products">Products</a> sheet.</td>
+						<td>Yes</td>
 					  </tr>
 					  <tr>
 						<td>VariationCode</td>
-						<td>*</td>
-						<td>The code for this option. For example, LadyHighHeel-1.</td>
+						<td>The unique identifier for the variation of the product that includes this option.</td>
+						<td>Any string. For simplicity, this string is typically created by appending a hyphen and number to the ProductCode. For example, ProductCode <code>133188</code> can have a VariationCode of <code>133188-1</code>.<br><br><strong>Note:</strong> If you add a new option list to a product, you must create a new VariationCode for the product. For example, if you have a VariationCode that maps to a shirt in size Small, and you add an additional option from a <em>different</em> option list to indicate the shirt is also Blue, you must create a new VariationCode to represent the Small and Blue variation.</td>
+						<td>Yes</td>
 					  </tr>
 					  <tr>
 						<td>Enabled</td>
-						<td> </td>
-						<td>Boolean, indicates if the option is active. If active, customers can select and customize the option per their purchase of the product.</td>
-					  </tr>
+						<td>Specifies whether the option is enabled for the product. If <code>No</code>, the option does not appear for customers to select. The default is <code>No</code></td>
+						<td>A Boolean value, specified as <code>Yes</code> or <code>No</code>.<br><br>
+							As a best practice, set this option to <code>No</code> only if a product option is permanently unavailable. Enable ManageStock on the <a href="#Products">Products</a> sheet to handle a temporary inventory shortage.</td>
+						<td>Yes</td>
 					  <tr>
 						<td>ExtraPrice</td>
-						<td> </td>
-						<td>The additional price added to the product price/sale price if added to the product. For example, a larger size shirt could increase the price by $5.00.</td>
+						<td>The amount added to the base product price or sale price for this option. For example, you might charge an extra $5.00 for an unusual size.</td>
+						<td>Any decimal value. If this option does not increase the price of the product, set this value to <code>0</code>.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>ExtraWeight</td>
-						<td> </td>
-						<td>The additional weight added to the product weight. This affects the shipping costs and possibly the shipping dimension options for the product.</td>
+						<td>The amount this option adds to the base package weight, in imperial units (pounds and ounces). This value is used to calculate shipping costs.</td>
+						<td>Any decimal value. If this option does not add package weight, set this value to <code>0</code>.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>ExtraCost</td>
-						<td> </td>
-						<td>The additional cost for the option. The cost is not added to the price of the product.</td>
+						<td>The additional cost the supplier charges for this option.</td>
+						<td>Any decimal value. This value has no impact on the price of the product.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>FulfillmentTypes</td>
-						<td> </td>
-						<td>The selected fulfillment type for shipping the purchased product. For example, Direct Ship & InStorePickup.</td>
+						<td>The fulfillment types supported for this option. This value overrides the fulfillment types on the base product.</td>
+						<td>A string matching one of the following:
+							<ul>
+								<li><code>DirectShip</code></li>
+								<li><code>InStorePickup</code></li>
+								<li><code>Digital</code></li>
+							</ul>
+							If multiple fulfillment types are supported, use an ampersand (&amp;) to include additional types. For example: <code>DirectShip &amp; InStorePickup</code></td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>MfgPartNo</td>
-						<td> </td>
-						<td>The manufacturers part number for the product option.</td>
+						<td>The manufacturer's part number for this specific product option.</td>
+						<td>Any string.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>UPC</td>
-						<td> </td>
-						<td>The UPC code for this particular product option.</td>
+						<td>The universal product code (UPC) for this specific product option.</td>
+						<td>Any string. A valid UPC must be unique across all sales channels.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>DistPartNo</td>
-						<td> </td>
-						<td>The distribution part number for the product option.</td>
+						<td>The distributor's part number for this specific product option.</td>
+						<td>Any string.</td>
+						<td>No</td>
 					  </tr>
 					</tbody>
 					</table>
 					
-					<h3 id="prodextras">ProductExtras Sheet</h3>
-					<p>This sheet maps extras for products with IsExtra as true. </p>
+					<h3 id="productextras">ProductExtras Sheet</h3>
+					<p>Corresponding REST API Resource: <a href="http://developer.mozu.com/content/api/APIResources/commerce/commerce.catalog/commerce.catalog.admin.products.htm" target="_blank">commerce/catalog/admin/products</a></p>
+					<p>Required With: <a href="#products">Products</a>, <a href="#productcatalogs">ProductCatalogs</a>, <a href="productoptions">ProductOptions</a>, <a href="productbundles">ProductBundles</a>, <a href="productimages">ProductImages</a> </p>
+					<p>This sheet defines the extras, such as monograms, warranties, and so on, that a customer can add to a specific product. Each product code can have multiple extras.</p>
+
 					<table class="table table-hover">
 					<thead>
 					  <tr>
@@ -1291,54 +1333,66 @@
 					<tbody>
 					<tr>
 						<td>MasterCatalogName</td>
-						<td>*</td>
-						<td>The name of the master catalog this product is mapped to.</td>
+						<td>The name of the master catalog that includes the product.</td>
+						<td>A string matching the name of the master catalog as it appears at <strong>Settings</strong> > <strong>System Administration</strong> > <strong>Catalog and Site Structure</strong> in Mozu Admin.</td>
+						<td>Yes</td>
 					  </tr>
 					  <tr>
 						<td>ProductCode</td>
-						<td>*</td>
-						<td>The product code for the product.</td>
+						<td>The unique identifier for the product. You use this code throughout Mozu to refer to the product.</td>
+						<td>Any number that is unique among all product codes in the master catalog. This value must match the ProductCode in the master catalog, or on the <a href="#Products">Products</a> sheet.</td>
+						<td>Yes</td>
 					  </tr>
 					  <tr>
 						<td>AttributeCode</td>
-						<td> </td>
-						<td>The attribute code for the product.</td>
+						<td>The unique code for the attribute that defines the extra.</td>
+						<td>Any string. To be a valid extra, the attribute this code identifies must be enabled as an extra, or have IsExtra set to <code>Yes</code> on the <a href="#attributes">Attributes</a> sheet.</td>
+						<td>Yes</td>
 					  </tr>
 					  <tr>
 						<td>Value</td>
-						<td> </td>
-						<td>The value for the extra. </td>
+						<td>The value for the extra. This value must be a valid Value for the AttributeCode, as defined on the <a href="#attributevalues">AttributeValues</a> sheet.</td>
+						<td>A string or number. The value cannot contain spaces or special characters. You can use a hyphen (-) to escape spaces or characters.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>ExtraCost</td>
-						<td> </td>
-						<td>The additional cost for the extra. This is added to the product price/sale price when added to a cart.</td>
+						<td>The additional cost for this extra.</td>
+						<td>Any decimal value. This value is automatically added to the price of the product if the customer selects this extra.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>RequiredByShopper</td>
-						<td> </td>
-						<td>Boolean, indicates if this extra is required to be added to the product for purchase. The extra cost is automatically added to the product.</td>
+						<td>Specifies whether the customer must select or specify the extra to purchase the product. For example, if you are selling a monogrammed towel, you can require the customer to enter the monogram. The default is <code>No</code>.</td>
+						<td>A Boolean value, specified as <code>Yes</code> or <code>No</code>.</td>
+						<td>Yes</td>
 					  </tr>
 					  <tr>
 						<td>Defaulted</td>
-						<td> </td>
-						<td>The default value for the extra.</td>
+						<td>Specifies whether the value for the extra is selected by default. If <code>Yes</code>, the customer cannot specify the value for the extra.</td>
+						<td>A Boolean value, specified as <code>Yes</code> or <code>No</code>.</td>
+						<td>Yes</td>
 					  </tr>
 					  <tr>
 						<td>MultiSelect</td>
-						<td> </td>
-						<td>Boolean, indicates a shopper can select more than one value for the predefined list for this extra. If false, the customer can only select one value.</td>
+						<td>Specifies whether the customer can select more than one value from a predefined list for this extra.</td>
+						<td>A Boolean value, specified as <code>Yes</code> or <code>No</code>. For <code>Yes</code> to be valid, the attribute that defines the extra must have an InputType of <code>List</code>. </td>
+						<td>Yes</td>
 					  </tr>
 					  <tr>
 						<td>Quantity</td>
-						<td> </td>
-						<td>The quantity of extras.</td>
+						<td>Specifies a quantity of extras that the customer can select. For example, if a lamp is available with extra light shades, you can specify how many shades the customer can add to their order.</td>
+						<td>Any integer.</td>
+						<td>No</td>
 					  </tr>
 					</tbody>
 					</table>
 					
-					<h3 id="prodbundles">ProductBundles Sheet</h3>
-					<p>This sheet maps extras for products with IsBundle as true. </p>
+					<h3 id="productbundles">ProductBundles Sheet</h3>
+					<p>Corresponding REST API Resource: <a href="http://developer.mozu.com/content/api/APIResources/commerce/commerce.catalog/commerce.catalog.admin.products.htm" target="_blank">commerce/catalog/admin/products</a></p>
+					<p>Required With: <a href="#products">Products</a>, <a href="#productcatalogs">ProductCatalogs</a>, <a href="productoptions">ProductOptions</a>, <a href="productextras">ProductExtras</a>, <a href="productimages">ProductImages</a> </p>
+					<p>This sheet defines products that are bundles, or collections of other products.</p>
+
 					<table class="table table-hover">
 					<thead>
 					  <tr>
@@ -1349,96 +1403,114 @@
 					  </tr>
 					</thead>
 					<tbody>
-					<tr>
+					 <tr>
 						<td>ProductCode</td>
-						<td>*</td>
-						<td>The product code for the product.</td>
+						<td>The unique identifier for the product bundle.<br><br>This is the code for the bundle itself, not for individual products in the bundle.</td>
+						<td>Any number that is unique among all product codes in the master catalog. This value must match the ProductCode in the master catalog, or on the <a href="#Products">Products</a> sheet.</td>
+						<td>Yes</td>
 					  </tr>
 					  <tr>
 						<td>Code</td>
-						<td>*</td>
-						<td>The code for the bundle.</td>
+						<td>The unique identifier for a product within the bundle. If the bundle contains multiple products, each component product Code is specified on a separate row in this sheet.</td>
+						<td>Any number that is unique among all product codes in the master catalog. This value must match a ProductCode in the master catalog, or on the <a href="#Products">Products</a> sheet.</td>
+						<td>Yes</td>
 					  </tr>
 					  <tr>
 						<td>Name</td>
-						<td>*</td>
-						<td>Name for the bundle.</td>
+						<td>The name of the bundle as it appears to customers on the storefront.</td>
+						<td>Any string.</td>
+						<td>Yes</td>
 					  </tr>
 					  <tr>
 						<td>Quantity</td>
-						<td> </td>
-						<td>The quantity of the bundles for the product code.</td>
+						<td>The quantity of the component product (specified by Code) that the bundle includes. For example, a phone bundle might include two chargers.</td>
+						<td>Any integer. The default is <code>1</code>.</td>
+						<td>Yes</td>
 					  </tr>
 					</tbody>
 					</table>
 					
-					<h3 id="prodimgs">ProductImages Sheet</h3>
-					<p>This sheet maps images and/or videos with a product code. The URL used for each image or video file must be on a server accessible by Mozu. Each product code can have multiple images and videos associated to it.</p>
+					<h3 id="productimages">ProductImages Sheet</h3>
+					<p>Corresponding REST API Resource: <a href="http://developer.mozu.com/content/api/APIResources/commerce/commerce.catalog/commerce.catalog.storefront.products.htm" target="_blank">commerce/catalog/storefront/products</a></p>
+					<p>Required With: <a href="#products">Products</a>, <a href="#productcatalogs">ProductCatalogs</a>, <a href="productoptions">ProductOptions</a>, <a href="productextras">ProductExtras</a></p>
+					<p>This sheet maps images and videos to product codes so that you can use them on the product pages of your storefront. A single product code can have multiple images and videos associated with it.</p> 
+					<p>The URL for each image or video file must be on a server accessible by Mozu. You can use the ImagePath column to upload files to your Mozu tenant. </p>
+					<div class="panel panel-info">
+							<div class="panel-heading"><strong>Tip:</strong> Because images and videos can be large files, uploading them can add significant time to an import operation. If you are updating products and know that you do not need to add or change images, remove all data from the non-required columns prior to importing the file.</div>
+						</div>
 					<table class="table table-hover">
 					<thead>
-					  <tr>
-						<th>Column Name</th>
-						<th>Description</th>
-						<th>Valid Values</th>
-						<th>Required<a href="#required">*</a></th>
-					  </tr>
-					</thead>
-					<tbody>
 					<tr>
 						<td>MasterCatalogName</td>
-						<td>*</td>
-						<td>The name of the master catalog this product is mapped to.</td>
+						<td>The name of the master catalog that includes the product.</td>
+						<td>A string matching the name of the master catalog as it appears at <strong>Settings</strong> > <strong>System Administration</strong> > <strong>Catalog and Site Structure</strong> in Mozu Admin.</td>
+						<td>Yes</td>
 					  </tr>
 					  <tr>
 						<td>ProductCode</td>
-						<td>*</td>
-						<td>The product code for the product.</td>
+						<td>The unique identifier for the product. You use this code throughout Mozu to refer to the product.</td>
+						<td>Any number that is unique among all product codes in the master catalog. This value must match the ProductCode in the master catalog, or on the <a href="#Products">Products</a> sheet.</td>
+						<td>Yes</td>
 					  </tr>
 					  <tr>
 						<td>Name</td>
-						<td>*</td>
-						<td>Name for the bundle.</td>
+						<td>The filename, including type extension, of the image or video.</td>
+						<td>Any string that matches a valid image or video filename.</td>
+						<td>Yes</td>
 					  </tr>
 					  <tr>
 						<td>LocaleCode</td>
-						<td> </td>
-						<td>The locale code for the content. The code is the language and country code. For example, en-US is English United States.</td>
+						<td>The locale code for the image or video content, in standard ISO language-country format. Mozu uses this code to determine whether to display the content to a user.</td>
+						<td>An ISO locale code. For example, <code>en-US</code>.<br><br>
+							Currently, <code>en-US</code> is the only supported value.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>Sequence</td>
-						<td> </td>
-						<td>Indicated the sequence order for multiple images and/or videos associated with a product code.</td>
+						<td>For products with multiple images or videos, specifies where in the order or all image/video files the one in this row appears on the product page. </td>
+						<td>Any integer.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>AltText</td>
-						<td> </td>
-						<td>The plain text used in place of a file if it does not load.</td>
+						<td>The plain text that appears when the customer hovers over the file, or that appears in place of the file if the file does not load.</td>
+						<td>Any alphanumeric string. This string should not include any special characters or HTML.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>ImageUrl</td>
-						<td> </td>
-						<td>Full URL path to an image file accessible by Mozu.</td>
+						<td>The full URL path to the image file at a location accessible by Mozu. In most cases, this URL refers to a location on your tenant.</td>
+						<td>Any string that is a valid URL accessible by Mozu.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>ImageLabel</td>
-						<td> </td>
-						<td>The text label for the image.</td>
+						<td>The label for the image that appears on the storefont, in the language specified by the LocaleCode.</td>
+						<td>Any string.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>ImagePath</td>
-						<td> </td>
-						<td>The path to the image file.</td>
+						<td>The path to a video or image file to upload to Mozu.</td>
+						<td>Any string that is a valid file path.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>VideoUrl</td>
-						<td> </td>
-						<td>The URL path to a video file accessible by Mozu.</td>
+						<td>The full URL path to the video file at a location accessible by Mozu. In most cases, this URL refers to a location on your tenant.</td>
+						<td>Any string that is a valid URL accessible by Mozu.</td>
+						<td>No</td>
 					  </tr>
 					</tbody>
 					</table>
 					
-					<h3 id="location">LocationInventory Sheet</h3>
-					<p>You should have locations added to Mozu prior to a first time editing this file. The locations are warehouses and brick and mortar businesses with stock on-hand. This sheet associates the product codes and quantities to the locations.</p>
+					<h3 id="locationinventory">LocationInventory Sheet</h3>
+					<p>Corresponding REST API Resource: <a href="http://developer.mozu.com/content/api/APIResources/commerce/commerce.catalog/commerce.catalog.admin.locationinventory.htm" target="_blank">commerce/catalog/admin/locationinventory</a></p>
+					<p>Required With: NA</p>
+					<p>This sheet describes inventory levels on a per-location basis. Locations in Mozu can be either warehouses or brick and mortar businesses with stock on-hand. This sheet associates the product codes and quantities with the locations.</p>
+						<div class="panel panel-info">
+							<div class="panel-heading"><strong>Note:</strong> You cannot use this sheet to create locations. Create your locations in Mozu before you try to import new or updated inventory.</div>
+						</div>
 					<table class="table table-hover">
 					<thead>
 					  <tr>
@@ -1451,44 +1523,56 @@
 					<tbody>
 					<tr>
 						<td>MasterCatalogName</td>
-						<td>*</td>
-						<td>The name of the master catalog this product is mapped to.</td>
+						<td>The name of the master catalog that includes the product.</td>
+						<td>A string matching the name of the master catalog as it appears at <strong>Settings</strong> > <strong>System Administration</strong> > <strong>Catalog and Site Structure</strong> in Mozu Admin.</td>
+						<td>Yes</td>
 					  </tr>
 					  <tr>
 						<td>ProductCode</td>
-						<td>*</td>
-						<td>The product code for the product.</td>
+						<td>The unique identifier for the product. You use this code throughout Mozu to refer to the product.</td>
+						<td>Any number that is unique among all product codes in the master catalog. This value must match the ProductCode in the master catalog, or on the <a href="#Products">Products</a> sheet. The product also must have ManageStock set to <code>Yes</code> on the Products sheet.</td>
+						<td>Yes</td>
 					  </tr>
 					  <tr>
 						<td>LocationCode</td>
-						<td>*</td>
-						<td>The location code for a location created in Mozu. </td>
+						<td>The unique identifier for the location that has the inventory. You specify this code when you create the location in Mozu.</td>
+						<td>Any string that is a valid location code for your tenant.</td>
+						<td>Yes</td>
 					  </tr>
 					  <tr>
 						<td>StockOnHand</td>
-						<td> </td>
-						<td>The quantity of stock for this produce code on-hand and available.</td>
+						<td>The quantity of stock of the ProductCode that is on-hand and available at this location.</td>
+						<td>Any integer.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>StockUpdateOption</td>
-						<td> </td>
-						<td>Boolean, indicates if the stock should update as purchases complete or stock is added. (Part of the method for UpdateLocationInventory.)</td>
+						<td>Specifies whether the stock numbers are updated when purchases complete or new inventory is received.</td>
+						<td>A Boolean value, specified as <code>Yes</code> or <code>No</code>.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>StockOnBackOrder</td>
-						<td> </td>
-						<td>Quantity of stock on back order. Read Only value.</td>
+						<td>The quantity of stock of the ProductCode that is on back order at this location. This value is read-only, and is determined based on the number of pending product reservations.</td>
+						<td>Any integer. (Read-Only)</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>StockAvailable</td>
-						<td> </td>
-						<td>The active total amount of stock available for purchase. This may differ to StockOnHand if orders are pending. Read Only value.</td>
+						<td>The quantity of stock of the ProductCode that is available at this location. This value may differ from the StockOnHand if orders are pending. This value is read-only, and is determined based on the number of pending product reservations. </td>
+						<td>Any integer. (Read-Only)</td>
+						<td>No</td>
 					  </tr>
 					</tbody>
 					</table>
 					
 					<h3 id="discounts">Discounts Sheet</h3>
-					<p>This sheet associates discounts to product codes.</p>
+					<p>Corresponding REST API Resource: <a href="http://developer.mozu.com/content/api/APIResources/commerce/commerce.catalog/commerce.catalog.admin.discounts.htm" target="_blank">commerce/catalog/admin/discounts</a></p>
+					<p>Required With: NA</p>
+					<p>This sheet defines discounts that can apply to products, product categories, or orders. A discount can be a specified amount off the price, a percentage off the price, or free shipping. You also can create coupon codes that customers can use to redeem the discount.</p>
+					<div class="panel panel-info">
+							<div class="panel-heading"><strong>Tip:</strong> If you want to batch create or update coupon codes, contact your sales or professional services representative for information about the <a href="http://mozu.github.io/IntegrationDocuments/ImportExportApplication/Mozu_ImportExport_App.htm">Mozu Import-Export Application</a>.</div>
+						</div>
 					<table class="table table-hover">
 					<thead>
 					  <tr>
@@ -1501,108 +1585,154 @@
 					<tbody>
 					<tr>
 						<td>Id</td>
-						<td>*</td>
-						<td>The ID for the discount.</td>
+						<td>The unique identifier for the discount.</td>
+						<td>Any integer that is unique among all discounts on the site.</td>
+						<td>Yes</td>
 					  </tr>
 					  <tr>
 						<td>SiteName</td>
-						<td>*</td>
-						<td>The name of the site in Mozu. Discounts are site level.</td>
+						<td>The name of the site on which the discount applies. Discounts are site level. To apply the same discount to multiple sites, create a new row for each site.</td>
+						<td>Any string that is a valid site name on your Mozu tenant.</td>
+						<td>Yes</td>
 					  </tr>
 					  <tr>
 						<td>DiscountName</td>
-						<td>*</td>
-						<td>The name of the discount.</td>
+						<td>The name of the discount as it appears in the Discounts grid in Mozu Admin.</td>
+						<td>Any string.</td>
+						<td>Yes</td>
 					  </tr>
 					  <tr>
 						<td>LocaleCode</td>
-						<td> </td>
-						<td>The locale code for the content. The code is the language and country code. For example, en-US is English United States.</td>
+						<td>The locale code for the discount content, in standard ISO language-country format. Mozu uses this code to determine whether to display the content to a user.</td>
+						<td>An ISO locale code. For example, <code>en-US</code>.<br><br>
+							Currently, <code>en-US</code> is the only supported value.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>Scope</td>
-						<td> </td>
-						<td>The scope of the discount, as it applies to a product line item or the entire order. For example, LineItem or Order.</td>
+						<td>The scope of the discount. Discounts can apply to either a single line item or an entire order.</td>
+						<td>A string matching one of the following:
+							<ul>
+								<li><code>LineItem</code></li>
+								<li><code>Order</code></li>
+							</ul>
+						</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>AppliesTo</td>
-						<td> </td>
-						<td>What this discount applies to. For example, Product.</td>
+						<td>Specifies whether the discount applies to a product or to the shipping.</td>
+						<td>A string matching one of the following:
+							<ul>
+								<li><code>Product</code></li>
+								<li><code>Shipping</code></li>
+							</ul>
+						</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>Type</td>
-						<td> </td>
-						<td>The value of the type of discount. For example, Amount, Percentage, or Free.</td>
+						<td>The type of the discount. Discounts can be a percentage off a given price, an amount of a given price, a fixed price, or free.</td>
+						<td>A string matching one of the following:
+							<ul>
+								<li><code>Percentage</code></li>
+								<li><code>Amount</code></li>
+								<li><code>Free</code></li>
+								<li><code>FixedPrice</code></li>
+							</ul>
+							<code>Free</code> and <code>FixedPrice</code> are only valid if Scope is <code>LineItem</code>.
+							<td>No</td>
+						</td>
 					  </tr>
 					  <tr>
 						<td>TypeValue</td>
-						<td> </td>
-						<td>The discount value. For example, 10.</td>
+						<td>The value of the discount Type. For example, a TypeValue of 10 would be 10% off for a Type of <code>Percentage</code>, or $10 today for a Type of <code>FixedPrice</code>. This value does not apply if Type is <code>Free</code>.</td>
+						<td>Any positive decimal value.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>StartDate</td>
-						<td> </td>
-						<td>The date/time for the effective start date for the discount. For example, 8/5/2014 4:04:00 PM.</td>
+						<td>The effective start date for the discount. Mozu ignores the discount if this date is in the future. </td>
+						<td>A date and time in UTC format. If this value is empty but the EndDate is set and has not yet passed, the discount is valid.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>EndDate</td>
-						<td> </td>
-						<td>The date/time for the effective end date for the discount. For example, 10/31/2014 5:00:00 AM.</td>
+						<td>The effective end date for the discount. Mozu ignores the discount if this date has passed. </td>
+						<td>A date and time in UTC format. If this value is empty and no other limiting condition has been met, the discount applies indefinitely.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>MinimumOrderAmount</td>
-						<td> </td>
-						<td>The minimum amount of this product code required to be purchased to receive the discount.</td>
+						<td>The minimimum dollar value that the order subtotal must equal after discounts are applied for this discount to be valid. This value only applies if the discount Scope is <code>Order</code>.</td>
+						<td>Any decimal value.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>CouponCode</td>
-						<td> </td>
-						<td>The coupon code customers can enter when using a discount at checkout.</td>
+						<td>The coupon code a customer can enter at checkout to claim the discount.</td>
+						<td>Any string.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>MaxRedemptionCount</td>
-						<td> </td>
-						<td>The maximum amount of this product code that can be purchased and receive this discount.</td>
+						<td>The maximum number of times the discount can be redeemed by any customer. If this value is NULL, there is no limit to the number of times the discount can be redeemed.</td>
+						<td>Any integer.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>Status</td>
-						<td> </td>
-						<td>The status of the discount. If within the start and end dates, it is Active. If after the end date, it is Ended.</td>
+						<td>The current status of the discount. This value is read-only, and is calculated based on the StartDate and EndDate. </td>
+						<td>A string matching one of the following:
+							<ul>
+								<li><code>Active</code></li>
+								<li><code>Scheduled</code> (The StartDate has not yet occurred.)</li>
+								<li><code>Expired</code></li> (The EndDate has passed.)
+							</ul>	
+						</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>AppliesWithProducts</td>
-						<td> </td>
-						<td>Boolean, indicates the discount is applicable with the included products.</td>
+						<td>The product codes for the product(s) this discount applies </em>with</em>. For example, if you run a &quot;Free X Tie with Y Shirt&quot; promotion, the discount applies to the tie and <em>with</em> the shirt.</td>
+						<td>Any string that is a valid product code. Use line breaks to separate multiple product codes.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>AppliesWithCategories</td>
-						<td> </td>
-						<td>Boolean, indicates the discount is applicable with the included categories. Use categoryCodes (ex: 6,10,12)</td>
+						<td>The category codes for the category or categories this discount applies </em>with</em>. For example, if you run a &quot;Free X Tie with Any Shirt&quot; promotion, the discount applies to the tie and <em>with</em> any shirt in the shirt category. </td>
+						<td>Any integer that is a valid category code. Use commas to separate mutliple category codes.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>AppliesToAllProducts</td>
-						<td> </td>
-						<td>Boolean, indicates the discount is applicable to all products.</td>
+						<td>Specifies whether the discount applies to all products on the storefront. This value is only valid if AppliesTo is <code>Product</code>. The default is <code>FALSE</code>.</td>
+						<td>A Boolean value, specified as <code>TRUE</code> or <code>FALSE</code>.</td>
+						<td>Yes</td>
 					  </tr>
 					  <tr>
 						<td>IncludedProducts</td>
-						<td> </td>
-						<td>The product codes for products that are included for the discount.</td>
+						<td>The product codes for products to which the discount applies. </td>
+						<td>Any string that is a valid product code. Use line breaks to separate multiple product codes.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>ExcludedProducts</td>
-						<td> </td>
-						<td>The product codes for products that are excluded for the discount.</td>
+						<td>The product codes for products that are excluded from the discount.</td>
+						<td>Any string that is a valid product code. Use line breaks to separate multiple product codes.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>IncludedCategories</td>
-						<td> </td>
-						<td>The product codes for categories that are included for the discount. Use categoryCodes (ex: 6,10,12)</td>
+						<td>The category codes for categories to which the discount applies.</td>
+						<td>Any integer that is a valid category code. Use commas to separate mutliple category codes.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>ExcludedCategories</td>
-						<td> </td>
-						<td>The product codes for categories that are excluded for the discount. Use categoryCodes (ex: 6,10,12)</td>
+						<td>The category codes for categories that are excluded from the discount.</td>
+						<td>Any integer that is a valid category code. Use commas to separate mutliple category codes.</td>
+						<td>No</td>
 					  </tr>
 					</tbody>
 					</table>
@@ -1610,14 +1740,16 @@
 				</section>
 				<section id="contactstemplate">
 					<h2>Contacts Template</h2>
-					<p>The following information gives a description of each column in the sheets of the Contacts import/export template. You can use this information to map data for your customer accounts and contacts. Customer accounts include customer shoppers and Mozu Admin users.</p>
-					<p>Contacts include customer accounts and contact information. This data is used by Mozu for all shopper accounts and contacts to manage orders and contact information for subscribed messages, promotional emails, newsletters, and more. </p>
+					<p>The Contacts template describtes your customer accounts and contact information. This data is used to manage orders, subscribed messages, promotional emails, newsletters, and so on. If you are preparing your initial data import for a new Mozu tenant, import contacts <em>first</em>.</p>
+					<p>Each of the following sections describes a sheet in the Contacts template. For each sheet, we define each column, describe valid values for the column, and indicate whether it is required or optional. The sheets in the file appear in the order in which you create product data in Mozu. </p>
 						<div class="panel panel-info">
-							<div class="panel-heading">Associations between data are defined by entered IDs, codes, and names through the sheets. For example, you may have multiple entries associated to the same AccountId for defining all available values. </div>
+							<div class="panel-heading" id="contacts-required"><strong>Note:</strong> In the following tables, a <strong>Required</strong> value of <strong>No</strong> indicates the column is not required for a successful import operation. Some values are not required for an import, but are required Mozu data. For example, you do not have to specify a customer's FirstName every time you modify the customer account, but all customer accounts require a FirstName when they are created.</div>
 						</div>
-					<p>All Booleans should have Yes or No value entered. If you have questions or concerns with the exact required values and options specific to your data, consult your Mozu integration and implementation associates assigned to your account.</p>
+					<p>If you have questions or concerns specific to your data, please contact your Mozu integration and implementation associates.</p>
 					
-					<h3 id="custaccts">CustomerAccounts Sheet</h3>
+					<h3 id="customeraccounts">CustomerAccounts Sheet</h3>
+					<p>Corresponding REST API Resource: <a href="http://developer.mozu.com/content/api/APIResources/commerce/commerce.customer/commerce.customer.accounts.htm" target="_blank">commerce/customer/accounts</a></p>
+					<p>Required With: <a href="#customercontacts">CustomerContacts</a></p>
 					<p>This sheet enters the data for a customer account within Mozu. Depending on your installed apps, added options and entries, the columns in the template may differ.</p>
 					<table class="table table-hover">
 					<thead>
@@ -1625,239 +1757,437 @@
 						<th>Column Name</th>
 						<th>Description</th>
 						<th>Valid Values</th>
-						<th>Required<a href="#required">*</a></th>
+						<th>Required<a href="#contacts-required">*</a></th>
 					  </tr>
 					</thead>
 					<tbody>
 					<tr>
 						<td>Id</td>
-						<td>*</td>
-						<td>ID generated by the system. Can be the same or different than the AccountID.</td>
+						<td>A unique identifier you can use to refer to the customer account in import/export operations or in the Mozu API. This value is not exposed in Mozu Admin.</td>
+						<td>Any string that is unique among all customer accounts. Typically, this is the same as the AccountID, but you can specify a different value.</td>
+						<td>Yes</td>
 					  </tr>
 					  <tr>
 						<td>AccountID</td>
-						<td>*</td>
-						<td>The ID for the customer account. This should be unique. Can be the same or different than the ID.</td>
+						<td>The unique identifier for the customer account. Mozu automatically generates this value when a customer creates their own account or when you create a new customer account from Mozu Admin.</td>
+						<td>Any integer that is unique among all customer accounts. Can be the same or different than the Id.</td>
+						<td>Yes</td>
 					  </tr>
 					  <tr>
 						<td>UserName</td>
-						<td> </td>
-						<td>The username for the account. If this is null, the email address is used for the username.</td>
+						<td>The username the customer uses to log in to their customer account.</td>
+						<td>Any string. If empty, the username defaults to the Email.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>Email</td>
-						<td> </td>
-						<td>The unique email address for the account. All email addresses must be unique across the sheets.</td>
+						<td>The email address associated with the customer account.</td>
+						<td>Any string. The email address must be unique across all registered customer accounts. A customer cannot create two separate registered accounts linked to the same email address. However, customers who check out as guests can use the same email address any number of times.<br><br>
+							<strong>Note:</strong> Mozu does not validate customer email addresses.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>Password</td>
-						<td> </td>
-						<td>The password for the account. This data can be null. Setting a password will create a registered shopper.</td>
+						<td>The password for the account. Setting a password creates a registered customer account. </td>
+						<td>Any string.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>FirstName</td>
-						<td> </td>
-						<td>The first name for the account.</td>
+						<td>The first name on the account.</td>
+						<td>Any string.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>LastNameOrSurname</td>
-						<td> </td>
-						<td>The last name or surname for the account.</td>
+						<td>The last name on surname for the account. </td>
+						<td>Any string.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>CompanyorOrganization</td>
-						<td> </td>
-						<td>Optional, the company or organization the customer works for.</td>
+						<td>The company or organization the customer works for.</td>
+						<td>Any string.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>TaxExempt</td>
-						<td> </td>
-						<td>Boolean, indicates if the account is tax exempt.</td>
+						<td>Specifies whether the customer account has tax exempt status.</td>
+						<td>A Boolean value, specified as <code>Yes</code> or <code>No</code>.</td>
+						<td>Yes</td>
 					  </tr>
 					  <tr>
 						<td>TaxId</td>
-						<td> </td>
-						<td>The tax ID for the customer account.</td>
+						<td>The tax ID associated with the customer account. </td>
+						<td>Any string.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>AcceptsMarketing</td>
-						<td> </td>
-						<td>Boolean, indicates if the account has opted in or out for receiving marketing materials.</td>
+						<td>Specifies whether the customer has agreed to receive marketing communications.</td>
+						<td>A Boolean value, specified as <code>Yes</code> or <code>No</code>.</td>
+						<td>Yes</td>
 					  </tr>
 					  <tr>
 						<td>LocaleCode</td>
-						<td> </td>
-						<td>The locale code for the content. The code is the language and country code. For example, en-US is English United States.</td>
+						<td>The locale code used to decide the language in which to display content, in standard ISO language-country format. This value might apply for certain attributes you create on the customer account.</td>
+						<td>An ISO locale code. For example, <code>en-US</code>.<br><br>
+							Currently, <code>en-US</code> is the only supported value.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>UserRole</td>
-						<td> </td>
-						<td>The user role assigned to the account. </td>
+						<td>The user role assigned to the account.  </td>
+						<td>Any string.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>IsActive</td>
-						<td> </td>
-						<td>Boolean, indicates if the account is active.</td>
+						<td>Specifies whether the customer account is active.</td>
+						<td>A Boolean value, specified as <code>Yes</code> or <code>No</code>.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>IsAnonymous</td>
-						<td> </td>
-						<td>Boolean, indicates if the account is anonymous.</td>
+						<td>Specifies whether the customer account is anonymous. If <code>Yes</code> the customer is shopping as a guest and not using a registered account. </td>
+						<td>A Boolean value, specified as <code>Yes</code> or <code>No</code>.</td>
+						<td>Yes</td>
 					  </tr>
 					  <tr>
 						<td>TotalOrderAmount</td>
-						<td> </td>
-						<td>The total dollar amount spent through completed orders.</td>
+						<td>The total amount, in the currency specified by LocaleCode, of all orders that have been processed on this account. THis value includes cancellations and refunds.</td>
+						<td>Any decimal value.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>TotalOrders</td>
-						<td> </td>
-						<td>The total amount of orders the account completed.</td>
+						<td>The total number of orders that have been processed on this account.</td>
+						<td>Any integer value.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>LastOrderDate</td>
-						<td> </td>
-						<td>The last date and time the account made an order.</td>
+						<td>The date and time at which the last order was placed on this account.</td>
+						<td>A date and time in UTC format. </td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>TotalContacts</td>
-						<td> </td>
-						<td>The total number of contacts, can be more than 1.</td>
+						<td>The total number of contacts associated with this account. A single customer account can have multiple contacts as billing and shipping addresses. You can define contacts on the <a href="#customercontacts">CustomerContacts</a> sheet.</td>
+						<td>Any non-negative integer value.</td>
+						<td>No</td>
 					  </tr>
 					<tr>
 						<td>LastModifiedDate</td>
-						<td> </td>
-						<td>Date and time the last time the customer or system edited the content for the record.</td>
-					  </tr>
+						<td>The date and time that the customer account was last edited, either by the customer or by the system.</td>
+						<td>A date and time in UTC format. </td>
+						<td>No</td>
+					</tr>
 					</tbody>
 					</table>
 					
-					<h3 id="custcontacts">CustomerContacts Sheet</h3>
-					<p>This sheet enters the data for customer contact information within Mozu. A customer account may have multiple contact entries, associated by email. For this sheet, you can use an email account multiple times.</p>
+					<h3 id="customercontacts">CustomerContacts Sheet</h3>
+					<p>This sheet defines the contacts for customer accounts. Contacts include such information as telephone numbers, shipping and billing addresses, and so on. A single customer account can have multiple contacts associated with it.</p>
 					<table class="table table-hover">
 					<thead>
 					  <tr>
 						<th>Column Name</th>
 						<th>Description</th>
 						<th>Valid Values</th>
-						<th>Required<a href="#required">*</a></th>
+						<th>Required<a href="#contacts-required">*</a></th>
 					  </tr>
 					</thead>
 					<tbody>
 					<tr>
 						<td>Id</td>
-						<td>*</td>
-						<td>ID generated by the system. Can be the same or different than the AccountID.</td>
+						<td>The unique identifier for the customer account to which the contact is mapped.</td>
+						<td>Any string that is a valid customer account Id. This value must match the Id on the <a href="#customeraccounts">CustomerAccounts</a> sheet.</td>
+						<td>Yes</td>
 					  </tr>
 					  <tr>
 						<td>Type</td>
-						<td> </td>
-						<td>The type of contact. For example, Shipping or Billing.</td>
+						<td>The type of the contact. </td>
+						<td>A string matching one of the following:
+							<ul>
+								<li><code>Shipping</code></li>
+								<li><code>Billing</code></li>
+							</ul>
+						</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>IsPrimary</td>
-						<td> </td>
-						<td>Boolean, indicates if this entry is the primary for an account with multiple contacts.</td>
+						<td>Specifies whether the contact is the primary contact of the specified Type for the customer account.</td>
+						<td>A Boolean value, specified as <code>Yes</code> or <code>No</code>.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
-						<td>CompanyorOrganization</td>
-						<td> </td>
-						<td>Optional, the company or organization the customer works for.</td>
+						<td>CompanyOrOrganization</td>
+						<td>The company or organization associated with the contact. This can differ from the CompanyOrOrganization on the customer account. For example, a customer with an account from Company X might order a product and ship it to Company Y.</td>
+						<td>Any string.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>FirstName</td>
-						<td> </td>
-						<td>The first name for a contact.</td>
+						<td>The first name for the contact. This can differ from the name on the customer account. </td>
+						<td>Any string.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>MiddleNameorInitial</td>
-						<td> </td>
-						<td>The middle name or initial for a contact.</td>
+						<td>The middle name or initial for the contact.</td>
+						<td>Any string.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>LastNameOrSurname</td>
-						<td> </td>
-						<td>The last name or surname for a contact.</td>
+						<td>The last name or surname for the contact.</td>
+						<td>Any string.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>Email</td>
-						<td> </td>
-						<td>The email address for the contact, used to map to a customer account.</td>
+						<td>The email address associated with the contact.</td>
+						<td>Any string. Mozu does not validate email addresses.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>FaxNumber</td>
-						<td> </td>
-						<td>The fax phone number for the contact, entered without dashes or spaces.</td>
+						<td>The fax number associated with the contact.</td>
+						<td>Any string. You can include spaces and characters.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>HomePhone</td>
-						<td> </td>
-						<td>The home phone number for the contact, entered without dashes or spaces.</td>
+						<td>The home phone number associated with the contact.</td>
+						<td>Any string. You can include spaces and characters.<br><br>For a contact to be valid in Mozu, it must include at least one of the following: HomePhone, MobilePhone, or WorkPhone.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>MobilePhone</td>
-						<td> </td>
-						<td>The mobile phone number for the contact, entered without dashes or spaces.</td>
+						<td>The mobile phone number associated with the contact.</td>
+						<td>Any string. You can include spaces and characters.<br><br>For a contact to be valid in Mozu, it must include at least one of the following: HomePhone, MobilePhone, or WorkPhone.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>WorkPhone</td>
-						<td> </td>
-						<td>The work phone number for the contact, entered without dashes or spaces.</td>
+						<td>The work phone number associated with the contact.</td>
+						<td>Any string. You can include spaces and characters.<br><br>For a contact to be valid in Mozu, it must include at least one of the following: HomePhone, MobilePhone, or WorkPhone.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>AddressType</td>
-						<td> </td>
+						<td>The type of the address, such as Residential or Commercial.</td>
 						<td>The type of address as Residential or Commercial.</td>
+						<td>A string matching one of the following:
+							<ul>
+								<li><code>Residential</code></li>
+								<li><code>Commercial</code></li>
+								<li><code>None</code></li>
+							</ul></td>
 					  </tr>
 					  <tr>
 						<td>Address1</td>
-						<td> </td>
 						<td>The first line of the address.</td>
+						<td>Any string. Maximum character length: 200.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>Address2</td>
-						<td> </td>
 						<td>The second line of the address.</td>
+						<td>Any string. Maximum character length: 200.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>Address3</td>
-						<td> </td>
 						<td>The third line of the address.</td>
+						<td>Any string. Maximum character length: 200.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>Address4</td>
-						<td> </td>
 						<td>The fourth line of the address.</td>
+						<td>Any string. Maximum character length: 200.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>CityOrTown</td>
-						<td> </td>
 						<td>The city or town name for the address.</td>
+						<td>Any string.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>StateOrProvince</td>
-						<td> </td>
-						<td>The state or province for the address, as two letter codes. For example, TX.</td>
+						<td>The state, province, or territory for the address, typically expressed as a two-letter code. For example, TX.</td>
+						<td>Any string. You can enter a location outside the US or Canada.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>PostalOrZipCode</td>
-						<td> </td>
-						<td>The postal code or zip code for the address. The zip code supports a full 9 digit code with a dash. For example, 43216-1001.</td>
+						<td>The postal code or zip code for the address. </td>
+						<td>Any string. This can be a full 9-digit code with a dash or an international postal code.</td>
+						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>CountryCode</td>
-						<td> </td>
-						<td>The 2 character country code.</td>
+						<td>The 2-letter ISO country code for the address.</td>
+						<td>Any string, but Mozu expects a 2-letter code.</td>
+						<td>No</td>
 					  </tr>
-					  <tr>
+					<tr>
 						<td>LastModifiedDate</td>
-						<td> </td>
-						<td>Date and time the last time the customer or system edited the content for the record.</td>
-					  </tr>
+						<td>The date and time that the contact was last edited, either by the customer or by the system.</td>
+						<td>A date and time in UTC format. </td>
+						<td>No</td>
+					</tr>
 					</tbody>
 					</table>
 				</section>
 				
+				<section id="orderstemplate">
+					<h2>Orders Template</h2>
+					<p>The Orders template describes orders in your system, including their current status, the account that placed them, their total value, where they are shipped, the products they contain, and so on.</p>
+						<div class="panel panel-info">
+							<div class="panel-heading" id="contacts-required"><strong>Note:</strong> You cannot import orders through the Mozu Import/Export Tool. Importing orders is a complex process and must be done via the Mozu API. Mozu strongly recommends contacting your professional services representative if you want to import orders from a previous eCommerce solution to Mozu.</div>
+						</div>
+					<p>Each of the following sections describes a sheet in the Orders template. For each sheet, we define each column and describe possible values for the column. Because you cannot import an Orders template, we do not specify whether a column is required.</p>
+					<p>If you have questions or concerns specific to your data, please contact your Mozu integration and implementation associates.</p>
+					
+					<h3 id="orders">Orders Sheet</h3>
+					<p>Corresponding REST API Resource: <a href="http://developer.mozu.com/content/api/APIResources/commerce/commerce.orders/commerce.orders.htm" target="_blank">commerce/orders</a></p>
+					<p>This sheet describes high-level details about orders, including who placed them, the current status, the sub-total, shipping status and location, and so on. The actual products included in an order are described on the <a href="#orderlineitems">Order Line Items</a> sheet.</p>
+					<table class="table table-hover">
+					<thead>
+					  <tr>
+						<th>Column Name</th>
+						<th>Description</th>
+						<th>Possible Values</th>
+					  </tr>
+					</thead>
+					<tbody>
+					<tr>
+						<td>Order Number</td>
+						<td>The order number that the customer sees on the storefront when they place the order..</td>
+						<td>Any string that is unique among all customer accounts. Typically, this is the same as the AccountID, but you can specify a different value.</td>
+					  </tr>
+					  <tr>
+						<td>Customer Account ID</td>
+						<td>The unique identifier for the customer account that placed the order.</td>
+						<td>Any integer that is a unique customer account ID.</td>
+					  </tr>
+					  <tr>
+						<td>IP Address</td>
+						<td>The IP address of the device used to place the order.</td>
+						<td>Any integer.</td>
+					  </tr>
+					  <tr>
+					  	<td>Comments</td>
+						<td>Any notes that were entered and saved with the order. Comments can be entered by customers or through Mozu Admin.</td>
+						<td>Any string.</td>
+					  </tr>
+					  <tr>
+					  	<td>Status</td>
+					  	<td>The current status of the order.</td>
+					  	<td>
+					  		A string matching one of the following:
+					  		<ul>
+            <li><code>Pending</code></li>
+            <li><code>Submitted</code></li>
+            <li><code>Processing</code></li>
+            <li><code>Completed</code></li>
+            <li><code>Cancelled</code></li>
+            <li><code>Abandoned</code></li>
+            <li><code>Validated</code></li>
+            <li><code>Accepted</code></li>
+            <li><code>PendingReview</code></li>
+            <li><code>Errored</code></li>
+					  		</ul>
+					  	</td>
+					  </tr>
+					  <tr>
+					  	<td>Shipping Total</td>
+					  	<td>The calculated total shipping amount for the order, including tax. Mozu uses a combination of shipping location, shipping method, and product information such as the package size and weight to calculate this total.</td>
+					  	<td>Any decimal value.</td>
+					  </tr>
+					  <tr>
+					  	<td>Tax</td>
+					  	<td>The total calculated tax for the order. This value is the combined total of the Shipping Tax, the Handling Tax, and the Item Tax.</td>
+					  	<td>Any decimal value.</td>
+					  </tr>
+					  <tr>
+					  	<td>Total</td>
+					  	<td>The total calculated amount for the entire order, including all shipping and taxes.</td>
+					  	<td>Any decimal value.</td>
+					  </tr>
+					  <tr>
+					  	<td>Tax Exempt</td>
+					  	<td>Indicates whether the order is tax exempt.</td>
+					  	<td>A Boolean value, specified as <code>TRUE</code> or <code>FALSE</code>.</td>
+					  </tr>
+					  <tr>
+					  	<td>Sub Total</td>
+					  	<td>The estimated subtotal for all items in the cart, excluding shipping or tax.</td>
+					  	<td>Any decimal value.</td>
+					  </tr>
+					  <tr>
+					  	<td>Shipping Tax</td>
+					  	<td>The total calculated tax on the shipping charges for the order.</td>
+					  	<td>Any decimal value.</td>
+					  </tr>
+					  <tr>
+					  	<td>Handling Amount</td>
+					  	<td>The handling cost for the order. This value includes all handling costs per the product line items and options, excluding taxes and discounts.</td>
+					  	<td>Any decimal value. This value is not calculated for digital delivery or in-store pickup.</td>
+					  </tr>
+					  <tr>
+					  	<td>Handling Tax</td>
+					  	<td>The total calculated tax on the handling charges for the order.</td>
+					  	<td>Any decimal value.</td>
+					  </tr>
+					  <tr>
+					  	<td>Item Tax</td>
+					  	<td>The total calculated tax on all the items in the order.</td>
+					  	<td>Any decimal value.</td>
+					  </tr>
+					  <tr>
+					  	<td>Discounted Sub Total</td>
+					  	<td>The subtotal for all items in the order, including costs associated with shopper-defined options or extras and any applied discounts.</td>
+					  	<td>Any decimal value.</td>
+					  </tr>
+					  <tr>
+					  	<td>Discount Total</td>
+					  	<td>The estimated total of all discounts applied to the order.</td>
+					  	<td>Any decimal value.</td>
+					  </tr>
+					 </tr>
+					  <tr>
+					  	<td>Fee Total</td>
+					  	<td>The calculated total of all fees incurred on the order.</td>
+					  	<td>Any decimal value.</td>
+					  </tr>		  
+					  <tr>
+					  	<td>Shipment Status</td>
+					  	<td>The current shipping, or fulfillment, status of the order.=.</td>
+					  	<td>A string matching one of the following:
+					  		<ul>
+            <li><code>Fulfilled</code></li>
+            <li><code>NotFulfilled</code></li>
+            <li><code>PartiallyFulfilled</code></li>
+					  		</ul></td>
+					  </tr>		
+					  <tr>
+					  	<td>Payment Status</td>
+					  	<td>The current payment status of the order.</td>
+					  	<td>A string matching one of the following:
+					  		<ul>
+            <li><code>Unpaid</code></li>
+            <li><code>Pending</code></li>
+            <li><code>Paid</code></li>
+					  		</ul></td>
+					  </tr>		
+					</tbody>
+				</table>
+			</section>
 						</div>
                     </div>
                 </div>
