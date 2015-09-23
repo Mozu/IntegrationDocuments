@@ -321,95 +321,123 @@
 
 							<h3 id="couponscsv">Coupons.csv</h3>
 							<p>Corresponding API Resource: <a href="http://developer.mozu.com/content/api/APIResources/commerce/commerce.catalog/commerce.catalog.admin.couponsets.coupons.htm" target="_blank">commerce/catalog/admin/couponsets/coupons</a></p>
+							<p>The Coupons file defines individual coupons and maps them to catalogs and coupon sets. Coupons and coupon sets are catalog-level items in Mozu. You cannot create coupons on a master catalog.</p>
 
 							<table class="table table-hover">
 								<thead>
 									<tr>
 										<th>Column Name</th>
 										<th>Description</th>
+										<th>Valid Values</th>
 										<th>Required?</th>
 									</tr>
 								</thead>
 								<tbody>
 								<tr>
 									<td>Catalog Name</td>
-									<td>The name of the catalog you are adding coupons to. This must be an existing catalog, and cannot be a master catalog. If you want to apply coupons to multiple catalogs under a single master catalog, you must perform separate imports for each catalog.</td>
+									<td>The name of the catalog that contains the coupon. To add a coupon to multiple catalogs, create a new row for each catalog.</td>
+									<td>Any string that is a valid catalog name on your Mozu tenant.  This must be an existing catalog, and cannot be a master catalog.</td>
 									<td>Yes</td>
 								</tr>	
 								<tr>
 									<td>Coupon Set Code</td>
-									<td>A unique code that identifies the coupon set a coupon belongs to. All coupons must belong to a coupon set. If you are creating a new coupon set (by importing a CouponSets file along with this file), this code can be any string, as long as both files use the same Coupon Set Code. If you are adding coupons to an existing set, this code must match the existing code for that set. Coupon set codes are not exposed in Mozu Admin, but you can get them by exporting the existing Coupon Set to a CSV file.<br><br>
-										<strong>Note:</strong> If you are adding coupons to an existing coupon set, the set must have a Coupon Code Type of &quot;Manual&quot;. You cannot add coupons to Generated coupon sets.</td>
+									<td>The unique identifier for the coupon set that contains the coupon. All coupons must belong to a coupon set.<br><br>For import operations, the coupon set must have a Coupon Code Type of <code>Manual</code>. You cannot add coupons to generated coupon sets.
+										</td>
+										<td>Any string that is a valid coupon set code. Character limit: 32. 
+											<br><br>If you are creating a new coupon set by importing a <a href="#couponsetscsv">CouponSets</a> file with this file, this code can be any string, provided both files use the same Coupon Set Code. If you are adding coupons to an existing set, this code must match the existing code for that set. Coupon set codes are not exposed in Mozu Admin, but you can get them by exporting existing coupon sets to a CSV file.</td>
 									<td>Yes</td>
 								</tr>
 								<tr>
 									<td>Coupon Code</td>
-									<td>The code that the user enters to redeem the coupon. This can be any string, and can contain special characters. Each coupon code within a set must be unique, but you can use the CouponSets.csv file or Mozu Admin to change the maximum number of redemptions allowed for all codes in a coupon set.</td>
+									<td>The code that the customer enters to redeem the coupon. This is also the unique identifier of the coupon itself.<br><br>Each coupon code within a set must be unique, but you can use the <a href="#couponsetscsv">CouponSets</a> file or Mozu Admin to change the maximum number of redemptions allowed for all codes in a coupon set.</td>
+									<td>Any string. Mozu supports special characters for coupon codes.</td>
 									<td>Yes</td>
 								</tr>
 								<tr>
 									<td>Redemption Count</td>
-									<td>(Read Only) The total number of times an individual coupon has been redeemed. This value is read-only, and can be left blank when importing  coupons.</td>
+									<td>The total number of times the coupon has been redeemed.</td>
+									<td>Any integer value. This value is read-only, and can be left blank when importing coupons.</td>
 									<td>No</td>
 								</tr>
 								</tbody>
 							</table>
 						<h3 id="couponsetscsv">CouponSets.csv</h3>
 <p>Corresponding API Resource: <a href="http://developer.mozu.com/content/api/APIResources/commerce/commerce.catalog/commerce.catalog.admin.couponsets.htm" target="_blank">commerce/catalog/admin/couponsets</a></p>
-
+						<p>The Coupon Sets file defines coupon sets in Mozu, including the dates they are valid and the maximum number of times their member coupons can be redeemed. Coupons and coupon sets are catalog-level items in Mozu. You cannot create coupon sets on a master catalog.</p>
+						<div class="panel panel-info">
+							<div class="panel-heading"><strong>Note:</strong> Only Mozu can create generated coupon codes. You cannot import generated codes, because specifying the code names in a file is an inherently manual operation. If you are using the Import/Export Application to update existing generated codes, you must export the codes, delete them via Mozu Admin, and then re-import them to a new coupon set as manual codes. </div>
+						</div>
 						<table class="table table-hover">
 								<thead>
 									<tr>
 										<th>Column Name</th>
 										<th>Description</th>
+										<th>Valid Values</th>
 										<th>Required?</th>
 									</tr>
 								</thead>
 								<tbody>
 								<tr>
 									<td>Catalog Name</td>
-									<td>The name of the catalog you are adding coupons to. This must be an existing catalog, and cannot be a master catalog. If you want to apply coupons to multiple catalogs under a single master catalog, you must perform separate imports for each catalog.</td>
+									<td>The name of the catalog that contains the coupon set. To add a coupon set to multiple catalogs, create a new row for each catalog.</td>
+									<td>Any string that is a valid catalog name on your Mozu tenant. This must be an existing catalog, and cannot be a master catalog.</td>
 									<td>Yes</td>
 								</tr>	
 								<tr>
 									<td>Coupon Set Code</td>
-									<td>A unique code that identifies the coupon set a coupon belongs to. All coupons must belong to a coupon set. If you are creating a new coupon set, this code can be any string. If you are adding coupons to an existing set, this code must match the existing code for that set. Coupon set codes are not exposed in Mozu Admin, but you can get them by exporting the existing Coupon Set to a CSV file.<br><br>
-										<strong>Note:</strong> If you are adding coupons to an existing coupon set, the set must have a Coupon Code Type of &quot;Manual&quot;. You cannot add coupons to Generated coupon sets.</td>
+									<td>The unique identifier for the coupon set.
+										</td>
+										<td>Any string that is a valid coupon set code. Character limit: 32. 
+											<br><br>If you are creating new coupons by importing a <a href="#couponscsv">Coupons</a> file with this file, this code can be any string, provided both files use the same Coupon Set Code.</td>
 									<td>Yes</td>
 								</tr>
 								<tr>
 									<td>Name</td>
 									<td>The name of the coupon set as it appears in Mozu Admin.</td>
+									<td>Any string.</td>
 									<td>Yes</td>
 								</tr>
 								<tr>
 									<td>Coupon Code Type</td>
-									<td>The type of coupon codes that the set contains. Valid values are: &quot;Manual&quot; or &quot;Generated&quot;.<br><br>For import operations, this field can be empty or &quot;Manual&quot;. An empty Coupon Code Type defaults to &quot;Manual&quot;.<br><br>Only Mozu can create Generated coupon codes. You cannot import Generated codes, because specifying the code names in a file is an inherently manual operation. If you are using the Import/Export Application to update existing Generated codes, you must export the codes, delete them via Mozu Admin, and then re-import them to a new coupon set as Manual codes. </td>
+									<td>The type of coupon codes that the set contains.</td>
+									<td>
+										A string matching one of the following:
+										<ul>
+											<li><code>Manual</code></li>
+											<li><code>Generated</code></li>
+										</ul>
+										For import operations, this value can be empty or <code>Manual</code>. An empty Coupon Code Type defaults to <code>Manual</code>.<br><br>Only Mozu can create generated coupon codes. You cannot import generated codes, because specifying the code names in a file is an inherently manual operation. If you are using the Import/Export Application to update existing generated codes, you must export the codes, delete them via Mozu Admin, and then re-import them to a new coupon set as manual codes. 
+									</td>
 									<td>No</td>
 								</tr>
 								<tr>
 									<td>StartDate</td>
-									<td>The time and date at which a coupon code becomes valid, in UTC format. If you specify a date but not a time, the time defaults to 12:00:01 AM. If you do not specify a StartDate, the coupon is valid as soon as it is added to Mozu.</td>
+									<td>The time and date at which a coupon code becomes valid, in UTC format. If you do not specify a StartDate, the coupon is valid as soon as it is added to Mozu.</td>
+									<td>A date and time in UTC format. If you specify a date but not a time, the time defaults to 12:00:01 AM. </td>
 									<td>No</td>
 								</tr>
 								<tr>
 									<td>EndDate</td>
-									<td>The time and date at which a coupon code ceases to be valid, in UTC format. If you specify a data but not a time, the time defaults to 11:59:59 PM. If you do not specify an EndDate, the coupon is valid indefinitely, or until a specified Max Redemptions Per CouponCode is reached.</td>
+									<td>The time and date at which a coupon code ceases to be valid, in UTC format. If you do not specify an EndDate, the coupon is valid indefinitely, or until a specified Max Redemptions Per CouponCode is reached.</td>
+									<td>A date and time in UTC format. If you specify a date but not a time, the time defaults to 11:59:59 PM.</td>
 									<td>No</td>
 								</tr>
 								<tr>
 									<td>Max Redemptions Per CouponCode</td>
 									<td>The maximum number of times a single coupon code within the coupon set can be redeemed by any customer. This value applies to all coupons in the coupon set.</td>
+									<td>Any integer value.</td>
 									<td>No</td>
 								</tr>
 								<tr>
 									<td>Max Redemptions Per User</td>
 									<td>The maximum number of times a single coupon code within the coupon set can be redeemed by a single customer. This value applies to all coupons in the coupon set.</td>
+									<td>Any integer value.</td>
 									<td>No</td>
 								</tr>
 								<tr>
 									<td>Redemption Count</td>
-									<td>(Read Only) The total number of times an individual coupon has been redeemed. This value is read-only, and can be left blank when importing  coupons.</td>
+									<td>The total number of times the coupon has been redeemed.</td>
+									<td>Any integer value. This value is read-only, and can be left blank when importing coupons.</td>
 									<td>No</td>
 								</tr>
 								</tbody>
