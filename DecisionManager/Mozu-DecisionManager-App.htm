@@ -127,7 +127,12 @@
                                 </li>
                                 <li><a href="#enable">Enable the App</a>
                                 </li>
-                                <li><a href="#use">Use the App</a></li>
+                                <li><a href="#use">Use the App</a>
+                                	<ul class="nav nav-stacked">
+                                		<li><a href="#orders">Flagged Orders</a></li>
+                                		<li><a href="#rules">Custom Mapping</a></li>
+                                	</ul>
+                                </li>
                             </ul>
                         </nav>
                     </div>
@@ -141,11 +146,11 @@
 							<p>Application Features:</p>
                             <ul>
 								<li>Automatically sends information about submitted orders to Decision Manager, including the shopper's browser type, IP address, device type, billing information, etc.</li>
-								<li>Validates shopper purchases against your Decision Manager rules to determine a fraud score and validation result (accept, review, decline).</li>
-								<li>Based on the validation result, changes the order status in Mozu to Accepted or Pending Review.</li>
-								<li>Supports syncing order status information with Decison Manager at scheduled intervals. If you enable syncing, the status of an order that is pending review automatically updates in Mozu if you accept or cancel the order through the Decision Manager website.</li>
-								<li>Set a monetary threshold below which orders are not screened for fraud to avoid excessive overhead for low-value orders.</li>
-								<li>Map Mozu data to Decision Manager to faciliate the creation of fraud detection rules based on fields such as a shopper's email address or payment type.</li>
+								<li>Validates orders against your Decision Manager rules to determine a fraud score and validation result (accept, review, decline).</li>
+								<li>Updates order status in Mozu to Accepted, Pending Review, or Cancelled based on Decision Manager validation results.</li>
+								<li>Syncs order status information with Decison Manager at scheduled intervals.</li>
+								<li>Avoids excessive overhead for low-value orders by allowing you to set a monetary threshold below which orders are not screened for fraud.</li>
+								<li>Maps Mozu data to Decision Manager to facilitate the creation of fraud detection rules based on fields such as a shopper's email address or payment type.</li>
 							</ul>
                         </section>
                         <section id="install">
@@ -172,7 +177,7 @@
                                 <li>Log in to the <a href="https://ebc.cybersource.com/ebc/login/Login.do" target="blank">CyberSource  Business Center</a>.</li>
 								<li>Note the username and password that you use to log in to the CyberSource Business Center.</li>
 								<li>Note your <em>Account ID</em> and <em>Merchant ID</em>.<br><img src="credentials.png" class="img-mozu"></li>
-								<li>Create and note a <em>Transaction Security Key</em> for the <b>SOAP Toolkit API</b>.<br><img src="key.png" class="img-mozu"><br><b>Note:</b> If you have already created this key but lost or forgotten it, you will have to generate a new key.</li>
+								<li>Create and note a <em>Transaction Security Key</em> for the <strong>SOAP Toolkit API</strong>.<br><img src="key.png" class="img-mozu"><p class="note"><strong>Note:</strong> If you have already created this key but lost or forgotten it, you will have to generate a new key.</p></li>
 								
                             </ol>
 							
@@ -180,24 +185,22 @@
 							<p>After obtaining your Decision Manager account information, enter the information in Mozu and configure the settings for the Mozu CyberSource Decision Manager Application:</p>
                             <ol>
 								<li>Log in to Mozu Admin.</li>
-                                <li>On the Mozu Admin top bar, select <b>Settings</b> > <b>Applications</b>.</li>
-                                <li>Click <b>CyberSource Decision Manager</b>.</li>
-                                <li>Click the <b>Configuration</b> link to open configuration settings.</li>
-                                <li>Open the <b>Settings</b> tab.</li>
-								<li>Add your CyberSource account information to Mozu:<br><img src="config.png" class="img-mozu"><br><img src="config2.png" class="img-mozu">
-								<ol>
-								<li>Enter your <b>Organization ID</b>.</li>
-								<li>Enter your <b>Merchant ID</b>.</li>
-								<li>Enter your <b>Transaction Key</b>.</li>
-								<li>(Optional) Enable <b>Threshold Enabled</b> to set a <b>Threshold Value</b> below or at which orders are not screened by Decision Manager. For example, you may want Decision Manager to only screen orders over $10 for fraud.</li>
-								<li>Select the <b>Payment Types</b> that you want to screen with Decision Manager.<br><br><b>Note:</b> If you select multiple payment types, Mozu sends only the largest payment type to Decision Manager for screening. For example, if you set an order threshold of $100, and an order of $150 is charged as $90 via credit card and $60 via Paypal Express, only the $90 credit card payment is sent to Decision Manager for screening.<br><br></li>
-								<li>Choose which <b>Environment</b> the Mozu CyberSource Decision Manager Application screens orders in. If you select the <b>Test</b> environment, the application sends order information to Decision Manager's test site, where you can evaluate fraud detection rules in a sandbox setting. When you are satisfied with the rules you set in Decision Manager, choose the <b>Production</b> environment to enable live fraud detection on your site.</li>
-								<li>Select an <b>Order Synch Frequency</b> to specify how often Mozu queries Decision Manager for updates on orders that are pending review. If you accept or reject an order that is pending review using the Decision Manager website instead of Mozu, then the order sync frequency determines how long it takes for the new order status to update in  Mozu.<br><br><b>Tip:</b> Balance the frequency at which you receive updates in Mozu with the amount of bandwidth you are comfortable using to send order sync queries from Mozu to Decision Manager.<br><br></li>
-								<li>If you specify an order synch frequency, enter the <b>User Name</b> and <b>Password</b> that you use to log into the CyberSource Business Center.</li>
-								</ol>
+                                <li>On the Mozu Admin top bar, select <strong>Settings</strong> > <strong>Applications</strong>.</li>
+                                <li>Click <strong>CyberSource Decision Manager</strong>.</li>
+                                <li>Click the <strong>Configuration</strong> link to open configuration settings.</li>
+                                <li>Open the <strong>Settings</strong> tab.</li>
+								<li>Add your CyberSource account information to the <strong>Organization ID</strong>, <strong>Merchant ID</strong>, and <strong>Transaction Key</strong>.
+								<li>(Optional) Enable <strong>Threshold Enabled</strong> to set a <strong>Threshold Value</strong> below or at which orders are not screened by Decision Manager. For example, you may want Decision Manager to only screen orders over $10 for fraud.</li>
+								<li>Under <strong>Select Payment Type</strong>, select the payment types you want to screen with Decision Manager.
+									<p class="note" style="line-height:1.42857143;"><strong>Note:</strong> If you select multiple payment types, Mozu sends only the largest payment type to Decision Manager for screening. For example, if you set an order threshold of $100, and an order of $150 is charged as $90 via credit card and $60 via Paypal Express, only the $90 credit card payment is sent to Decision Manager for screening.</p></li>
+								<li>Choose which <strong>Environment</strong> the Mozu CyberSource Decision Manager Application screens orders in. If you select the <strong>Test</strong> environment, the application sends order information to Decision Manager's test site, where you can evaluate fraud detection rules in a sandbox setting. When you are satisfied with the rules you set in Decision Manager, choose the <strong>Production</strong> environment to enable live fraud detection on your site.<br><br><img src="config.png" class="img-mozu"><br></li>
+								<li>(Optional) Set an <strong>Order Synch Frequency</strong> to specify how often Mozu queries Decision Manager for updates on orders. If you accept or reject an order in Decision Manager that is Pending Review in Mozu, the order synch frequency determines how long it takes for the new order status to update in Mozu. If this option is <strong>Disabled</strong>, Mozu does not query Decision Manager, and you must manually process the order in Mozu.
+								<p class="note">
+										<strong>Tip:</strong> Balance the frequency at which you receive updates in Mozu with the amount of bandwidth you are comfortable using to send order sync queries from Mozu to Decision Manager.</p></li>
+								<li>If you specify an order synch frequency, enter the <strong>User Name</strong> and <strong>Password</strong> that you use to log into the CyberSource Business Center.<br><br><img src="config2.png" class="img-mozu"></li>
 								</li>
 								
-								<li>Click <b>Save</b>.</li>
+								<li>Click <strong>Save</strong>.</li>
                             </ol>
 							
 							
@@ -206,9 +209,9 @@
                             <h2>Enable the App</h2>
                             <p>After configuration, enable the Mozu CyberSource Decision Manager Application in Mozu to apply its functionality to your tenant.</p>
                             <ol>
-                                <li>On the Mozu Admin top bar, select <b>Settings</b> > <b>Applications</b>.</li>
-                                <li>Click <b>CyberSource Decision Manager Application</b>.</li>
-                                <li>Click <b>Enable App</b>.</li>
+                                <li>On the Mozu Admin top bar, select <strong>Settings</strong> > <strong>Applications</strong>.</li>
+                                <li>Click <strong>CyberSource Decision Manager Application</strong>.</li>
+                                <li>Click <strong>Enable App</strong>.</li>
                             </ol>
                             
 							<p>Congratulations! You can now preview Decision Manager functionality on your site.</p>
@@ -221,18 +224,43 @@
 								<li><a href="#rules">Map Mozu Fields to Custom Fraud Detection Rules</a>
 								</li></ul>
                             <h2 id="orders">Handling Orders Flagged for Further Review</h2>
-                            <p>When Decision Manager screens orders it receives from Mozu, it attaches one of the following validation results to the order: accept, review, or reject. Orders tagged with "accept" change the order status in Mozu to <span style="font-family: Courier New"><b>Accepted</b></span>. No further action is required for these orders from a fraud screening perspective. Orders tagged with "review" or "reject" change the order status in Mozu to <span style="font-family: Courier New"><b>Pending Review</b></span>. To continue with the order process, accept or cancel the order in Mozu Admin:</p>
+                            <p>When Decision Manager screens orders it receives from Mozu, it attaches one of the following validation results to the order: accept, review, or reject. If you enabled synching by setting an <strong>Order Synch Frequency</strong> on the app configuration page, the validation result has the following impact on the order status in Mozu:
+                            	<table class="table table-hover">
+                            		<thead>
+                            			<tr>
+                            			<th>Decision Manager Validation Result</th>
+                            			<th>Mozu Order Status</th>
+                            			<tr>
+                            		</thead>
+                            		<tbody>
+                            		<tr>
+                            			<td>accept</td>
+                            			<td>Accepted</td>
+                            		</tr>
+                            		<tr>
+                            			<td>review</td>
+                            			<td>Pending Review</td>
+                            		</tr>
+                            		<tr>
+                            			<td>reject</td>
+                            			<td>Cancelled</td>
+                            		</tr>
+                            		</tbody>
+                            	</table>
+                            <p>If you do not enable synching, all orders sent to Decision Manager remain in <span style="font-family: Courier New"><strong>Pending Review</strong></span> until you manually process them in Mozu Admin. Complete the following steps to process an order marked <span style="font-family: Courier New"><strong>Pending Review</strong></span> in Mozu Admin:</p>
 							<ol>
-							<li>In Mozu Admin, open the <b>Orders</b> module.</li>
-							<li>Open the Orders editor for an order that is pending review.</li>
-							<li>Under <b>Attributes</b>, use the <b>Decision Manager Fraud Results</b> to review the reasons the order is pending review.
-							<br><img src="dmresults.png" class="img-mozu">
-							<ol>
-							<li>Note whether Decision Manager accepted, rejected, or marked the order for further review.</li>
-							<li>Consider fraud risk information such as the fraud score result (<b>afsResult</b>), risk factor codes (<b>afsFactorCode</b>), and reason code (<b>ReasonCode</b>). For help interpreting all the values listed in the Decision Manager results, refer to the <em>Decision Manager Developer Guide: Using the Simple Order API</em> available through the CyberSource Business Center.<br><br><b>Example:</b> In the preceding screenshot, you can determine that Decision Manager rejected the order due to a fraud score result that may be above your ignore threshold based on risk factor codes that include phone inconsistencies and high account usage.<br><br></li>
-							</ol></li>
+							<li>In Mozu Admin, open the <strong>Orders</strong> module.</li>
+							<li>Locate the order and click the row to open the Orders editor.</li>
+							<li>Under <strong>Attributes</strong>, use the <strong>Decision Manager Fraud Results</strong> to review the reasons the order is pending review.
 							
-							<li>If you think the order is fraudulent, click <b>Cancel Order</b>. Otherwise, click <b>Accept Order</b>.</li>
+							<br><img src="dmresults.png" class="img-mozu">
+								<ol>
+								<li>Note whether Decision Manager accepted, rejected, or marked the order for further review.</li>
+								<li>Consider fraud risk information such as the fraud score result (<strong>afsResult</strong>), risk factor codes (<strong>afsFactorCode</strong>), and reason code (<strong>ReasonCode</strong>). For help interpreting all the values listed in the Decision Manager results, refer to the <em>Decision Manager Developer Guide: Using the Simple Order API</em> available through the CyberSource Business Center.<p class="note"><strong>Example:</strong> In the preceding screenshot, you can determine that Decision Manager rejected the order due to a fraud score result that may be above your ignore threshold based on risk factor codes that include phone inconsistencies and high account usage.</p></li>
+								</ol>
+							</li>
+							
+							<li>If you think the order is fraudulent, click <strong>Cancel Order</strong>. Otherwise, click <strong>Accept Order</strong>.</li>
 							</ol>
                             
 							<p>You can also use the Decision Manager website to accept or cancel orders pending review. If you update an order through the Decision Manager website, you see the update in Mozu in accordance with the order synchronization interval you set in the configuration settings.</p>
@@ -243,17 +271,17 @@
 							<p>If you want to add to the rules that Decision Manager uses to screen an order for fraud risk, use the Decision Manager website to modify the existing rules or create new custom rules. To help you build custom rules, you can map Mozu fields, such as email address and payment types, to available merchant-defined data fields in Decision Manager. Afterwards, you can associate the MDD fielsd with custom fields in Decision Manager and use the custom fields in your fraud detection rules. To map these fields:</p>
 							<ol>
 								<li>Log in to Mozu Admin.</li>
-                                <li>On the Mozu Admin top bar, select <b>Settings</b> > <b>Applications</b>.</li>
-                                <li>Click <b>CyberSource Decision Manager</b>.</li>
-                                <li>Click the <b>Configuration</b> link to open configuration settings.</li>
-                                <li>Open the <b>Custom Mapping</b> tab.</li>
-                                <li>Select the <b>Merchant ID</b> that corresponds to the CyberSource account you want to set up the mappings for.</li>
-                                <li>Click <b>Add Custom Mapping</b>.<br><img src="mapping.png" class="img-mozu"><br>
+                                <li>On the Mozu Admin top bar, select <strong>Settings</strong> > <strong>Applications</strong>.</li>
+                                <li>Click <strong>CyberSource Decision Manager</strong>.</li>
+                                <li>Click the <strong>Configuration</strong> link to open configuration settings.</li>
+                                <li>Open the <strong>Custom Mapping</strong> tab.</li>
+                                <li>Select the <strong>Merchant ID</strong> that corresponds to the CyberSource account you want to set up the mappings for.</li>
+                                <li>Click <strong>Add Custom Mapping</strong>.<br><img src="mapping.png" class="img-mozu"><br>
                                 	<ol>
-                                		<li>Using the <b>Domain</b> drop-down menu, select the type of Mozu data you want to map to Decision Manager.</li>
-                                		<li>Select the <b>Mozu Data</b> that you want to map to Decision Manager. If the Mozu data is already mapped, Mozu does not display it in the drop-down.</li>
+                                		<li>Using the <strong>Domain</strong> drop-down menu, select the type of Mozu data you want to map to Decision Manager.</li>
+                                		<li>Select the <strong>Mozu Data</strong> that you want to map to Decision Manager. If the Mozu data is already mapped, Mozu does not display it in the drop-down.</li>
                                 		<li>Select which merchant-defined data field you want to map the data to. If the MDD field is already in use, Mozu does not display it in the drop-down.</li>
-                                		<li>Click <b>Save</b>.</li>
+                                		<li>Click <strong>Save</strong>.</li>
                                 	</ol>
                                 	</li>
                                 	<li>After you create a mapping, log in to your Decision Manager account and associate a custom field with a mapped MDD field. You create this association in order to use the custom field within a rule (because rules don't access MDD fields directly). For example, in Mozu you may have mapped a shopper's email address to MDD 7. If this is the case, you should map a custom field in Decision Manager to MDD 7 and name it "Email". In this way, the data you map from Mozu is accessible for use in Decision Manager rules via the custom field.</li>
