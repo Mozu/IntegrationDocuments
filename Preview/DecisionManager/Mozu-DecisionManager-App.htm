@@ -129,7 +129,7 @@
                                 </li>
                                 <li><a href="#use">Use the App</a>
                                 	<ul class="nav nav-stacked">
-                                		<li><a href="#orders">Flagged Orders</a></li>
+                                		<li><a href="#orders">Process Orders</a></li>
                                 		<li><a href="#rules">Custom Mapping</a></li>
                                 	</ul>
                                 </li>
@@ -219,12 +219,27 @@
                         <section id="use">
 						<h2>Use the App</h2>
 						<ul>
-						<li><a href="#orders">Handling Orders Flagged for Further Review</a>
+						<li><a href="#orders">Process Orders that are Pending Review</a>
                                 </li>
 								<li><a href="#rules">Map Mozu Fields to Custom Fraud Detection Rules</a>
 								</li></ul>
-                            <h2 id="orders">Handling Orders Flagged for Further Review</h2>
-                            <p>When Decision Manager screens orders it receives from Mozu, it attaches one of the following validation results to the order: accept, review, or reject. If you enabled synching by setting an <strong>Order Synch Frequency</strong> on the app configuration page, the validation result has the following impact on the order status in Mozu:
+                            <h2 id="orders">Process Orders that are Pending Review</h2>
+                            <p>When a Mozu order is sent to Decision Manager, the status of the order in Mozu changes to <span style="font-family: Courier New"><strong>Pending Review</strong></span>. Decision Manager screens the order and attaches one of the following validation results: accept, review, or reject. If the validation result is review, further action is required in Decision Manager to either accept or reject the order.</p>
+                            <h3>Find Orders in Decision Manager</h3>
+
+                            <p>In Decision Manager, Mozu orders appear with their Mozu order number as the Merchant Reference Number. This makes it easy for users to locate the order in Decision Manager.</p>
+                            <ol>
+                            	<li>Log in to Decision Manager and navigate to <strong>Case Management</strong> > <strong>Case Search</strong> in the left navigation menu. <img src="dm-case-mgmt-menu.png" class="img-mozu"></li>
+                            	<li>Use the <strong>Search Parameters</strong> to locate the order(S) that need processing. If you know the order number, you can search for it explicitly using the <strong>Field and value</strong> search. <img src="dm-search-params.png" class="img-mozu"></li>
+                            	<li>(Optional) If your search returns multiple results, click the order number in the <strong>Results</strong> table to view the Case Management Details.</li>
+                            	<li>Review the order. Note that the Case Management Details list the order number as the <strong>Merchant Ref Number</strong>. <img src="dm-case-details.png" class="img-mozu"></li> 
+                            	<li>Process the order in Decision Manager as you normally would.</li>
+                            </ol>
+							
+							<h3>Update Order Status in Mozu</h3>
+							<p>Whether or not you need to manually process orders in <span style="font-family: Courier New"><strong>Pending Review</strong></span> depends on how you <a href="#configmozu">configured the Decision Manager app</a>.</p>
+							<h3>Auto-Update Order Status</h3>
+							<p>If you enabled synching by setting an <strong>Order Synch Frequency</strong> on the app configuration page, the Decision Manager validation result automatically updates the Mozu order status as follows:</p>
                             	<table class="table table-hover">
                             		<thead>
                             			<tr>
@@ -247,7 +262,9 @@
                             		</tr>
                             		</tbody>
                             	</table>
-                            <p>If you do not enable synching, all orders sent to Decision Manager remain in <span style="font-family: Courier New"><strong>Pending Review</strong></span> until you manually process them in Mozu Admin. Complete the following steps to process an order marked <span style="font-family: Courier New"><strong>Pending Review</strong></span> in Mozu Admin:</p>
+                            <h3>Manually Process Orders in Mozu</h3>
+
+						<p>If you did not enable synching, all orders sent to Decision Manager remain in <span style="font-family: Courier New"><strong>Pending Review</strong></span> until you manually process them in Mozu Admin:</p>
 							<ol>
 							<li>In Mozu Admin, open the <strong>Orders</strong> module.</li>
 							<li>Locate the order and click the row to open the Orders editor.</li>
