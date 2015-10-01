@@ -1,8 +1,9 @@
-﻿<html >
-    <head><title>Channel Advisor by Mozu</title>
+﻿<!DOCTYPE html>
+<html>
+    <head><title>ChannelAdvisor Application by Mozu Configuration Guide</title>
         <meta name="author" content="Mozu" />
-        <meta name="description" content="User content for Channel Advisor by Mozu" />
-        <meta name="keywords" content="Channel Advisor,Mozu" />
+        <meta name="description" content="User content for Channel Advisor Application by Mozu" />
+        <meta name="keywords" content="ChannelAdvisor,Mozu" />
 		<link rel="shortcut icon" href="http://www.mozu.com/favicon.ico" />
 		
 		<!-- Required for Scrollspy -->
@@ -12,7 +13,7 @@
 		<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 		
 		<!-- Mozu CSS developed by Mozu Docs -->
-		<link href="mozu-splash-bootswatch.css" rel="stylesheet" type="text/css" />	
+		<link href="mozu-bootswatch.css" rel="stylesheet" type="text/css" />	
 		
 		<!-- Scrollspy active link script -->
 		<script>
@@ -92,41 +93,196 @@
 		</script>
 	</head>
     <body>
-		<div class="container-full">
-			<div class="landing-heading">
-				<div class="landing-heading__content">
-					<h1>Coming soon, a new Channel Advisor App by Mozu!</h1>
-					<h2>Watch for updates and information for integrating Channel Advisor with Mozu!</h2>
-					
-				
-					
-				</div>
-			</div>
-			<div class="landing-method-theme"></div>
+	<div id="main">
+	<div class="container">
+		<!-- Top Nav - Mozu -->
+			<nav class="navbar navbar-default navbar-fixed-top">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                        </button> <a href="#"><img src="logo-m-red-medium.png" style="margin-top:3px;"/></a></div>
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav navbar-right">
+							<li><a href="versionhistory.html"><span>Version History</span></a></li>
+							<li><a href="//developer.mozu.com/learn/mozu-concepts"><span>Mozu Concepts</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
 			
-		</div>	
-		
-		<!-- Footer -->
+		<!--Side Navigation TOC -->
+		<div class="row">
+		<div class="landing-title">
+			<h1>ChannelAdvisor Application by Mozu Configuration Guide</h1>	
+		</div>
+			<div class="col-md-3">
+                <nav class="bs-docs-sidebar">
+                    <ul class="nav nav-stacked">
+                        <div class="side-heading">Table of Contents</div>
+                        <li><a href="#intro">Welcome to the ChannelAdvisor Application by Mozu</a></li>
+                        <li><a href="#install">Install the App</a></li>
+                        <li><a href="#configapp">Configure the App</a>
+                           	<ul class="nav nav-stacked">
+                           		<li><a href="#configreq">Configuration Requirements</a></li>
+                          		<li><a href="#authorizeca">Authorize Your CA Account</a></li>
+                           		<li><a href="#mapmarketplaces">Map Sites to Marketplaces</a></li>
+                           		<li><a href="#mapattributes">Map Product Attributes</a></li>
+                           	</ul>
+                        </li>
+                        <li><a href="#enable">Enable the App</a></li>
+                        <li><a href="#use">Use the App</a>
+                             <ul class="nav nav-stacked">
+                             	<li><a href="#forcesync">Force Sync</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+                    
+            <div class="col-md-9 content" >
+                <!-- Documentation content -->
+				<section id="intro">
+                            <h2>Welcome to the ChannelAdvisor Application by Mozu</h2>
+                            <p><a href="http://www.channeladvisor.com/" target="_blank">ChannelAdvisor</a> is powerful, cloud-based eCommerce software that connects retailers and manufacturers to multiple online sales channels, including Amazon, Google, eBay, and more. The ChannelAdvisor Application by Mozu syncs your <a href="http://www.mozu.com" target="_blank">Mozu</a> products, orders, and customers with any number of third-party marketplaces to optimize sell-through and customer reach. You can map your Mozu sites to different online marketplaces to take advantage of alternative sales channels and clear out excess inventory.</p>
+
+                            <p>Application Features:</p>
+                            <ul>
+                            	<li>Map sites on your Mozu tenant to one or many ChannelAdvisor marketplaces.</li>
+                            	<li>Map one or many Mozu locations to your ChannelAdvisor Distribution Center to manage inventory across platforms.</li>
+                            	<li>Schedule regular order imports from ChannelAdvisor to ensure timely fulfillment.</li>
+                            	<li>Map your Mozu attributes (standard and custom) to the ChannelAdvisor attributes of your choice.</li>
+                            	<li>Force sync data as needed for real-time updates.</li>
+                            	
+                            </ul>
+                        </section>
+                        <section id="install">
+                            <h2>Install the ChannelAdvisor Application on Your Tenant</h2>
+                            <p>The ChannelAdvisor Application by Mozu is provided free of charge on <a href="https://github.com/Mozu/ChannelAdvisor" target="_blank">GitHub</a>. Clone the Mozu/ChannelAdvisor repository and use the provided gradle script to build the application. Refer to the readme file included with the GitHub repository for more information about building and installing the ChannelAdvisor application.</p> 
+                            <div class="panel panel-info">
+							<div class="panel-heading"><strong>Note:</strong> Contact Mozu Support if you cannot access the Mozu/ChannelAdvisor repository on GitHub.</div>
+						</div>
+                            
+							
+             
+                       
+                        </section>
+                        <section id="configapp">
+                            <h2>Configure the Application</h2>
+
+							<h3 id="configreq">Configuration Requirements</h3>
+							 <p>Review the following requirements to ensure you have everything you need to be successful, then complete the steps in this section:</p>
+                            <ul>
+                                <li>The ChannelAdivsor Application must be installed on your tenant. Refer to the <a href="https://github.com/Mozu/ChannelAdvisor/blob/master/README.md" target="_blank">Readme</a> file on GitHub for preqrequisites to installing the application.</li>
+								<li>You must have a ChannelAdvisor developer account.
+								</li>
+								<li>You must be a ChannelAdvisor <a href="http://www.channeladvisor.com/partners/partner-program-overview/" target="_blank">partner.</a></li>
+                            </ul>
+                            
+							<h3 id="configdialog">Launch the App Configuration Settings</h3>
+
+							<ol>
+								<li>On the Mozu Admin top bar, select <strong>Settings</strong> > <strong>Applications</strong>.</li>
+								<li>In the <strong>Applications</strong> list, click <strong>Channel Advisor R5</strong>.</li>
+								<li>Click the <strong>Configuration</strong> link to open configuration settings.</li>
+							</ol>
+
+							<p>The remainder of this section describes actions you complete on tabs of the configuration settings dialog.</p>
+
+							<h2 id="authorizeca">Authorize Your ChannelAdvisor Account</h2>
+							<p>The ChannelAdvisor Applicaton uses your ChannelAdvisor Profile ID to link Mozu and ChannelAdvisor. You can get this ID from </p>
+							<ol>
+								<li>In the app configuration settings dialog, go to the <strong>Authorization</strong> tab.</li>
+								<li>Enter your <strong>ChannelAdvisor Profile Id</strong> in the text box. If you don't know your ID, you can get it from the ChannelAdvisor <strong>Account Dashboard</strong>:
+								<ol><li>Log in to ChannelAdvisor.</li> 
+								<li>From the menu on the top right, select the ChannelAdvisor account you want to authorize: <img src="select-account.png" class="img-mozu"></li>
+								<li>From the top bar of the <strong>Account Dashboard</strong>, select <strong>My Account</strong> > <strong>Company Setup</strong>. The <strong>Profile ID</strong> appears at the top of your <strong>Company Information</strong>.</li></ol></li>
+								<li>Wait for ChannelAdvisor to approve the authorization. Once it is approved, you can continue with configuration.</li>
+							</ol>
+
+							<h2 id="mapmarketplaces">Map Your Mozu Sites to ChannelAdvisor Marketplaces</h2>
+							<p>You can map each site on your Mozu tenant to a separate marketplaces in ChannelAdvisor, and you can map a single site to multiple marketplaces:</p> 
+							<ol>
+								<li>In the app configuration settings dialog, go to the <strong>Product</strong> tab and click <strong>Marketplaces</strong>. Every site on your Mozu tenant appears in the <strong>Select Marketplace</strong> list.</li>
+								<li>In the <strong>Channel Advisor Marketplace</strong> column, enter the name of the marketplace to map to the corresponding <strong>Mozu Site</strong>. The textbox uses type-ahead to suggest marketplaces, and displays all standard ChannelAdvisor marketplaces. You can also enter a custom marketplace name if you have specified one in ChannelAdvisor.
+								<div class="panel panel-info">
+							<div class="panel-heading"><strong>Note:</strong> The marketplace you select must be a valid, configured marketplace in ChannelAdvisor.</div></li> 
+							<li>(Optional) To map the same Mozu site to additional marketplaces, use a comma and a space to separate each marketplace name.</li>
+							<li>When you are done mapping marketplaces, click <strong>Save</strong>. Any sites you do not map to marketplaces do not send or recieve data from ChannelAdvisor.</li>
+															</ol>
+																					
+
+							<h2 id="mapattributes">Map Product Attributes</h3>
+							<p>While Mozu and ChannelAdvisor share many similar product attributes, each platform contains certain attributes that the other does not, and both platforms allow you to create custom attributes. Therefore, it is important to configure your product mappings <em>before</em> you export products from Mozu to ChannelAdvisor.</p> 
+							
+							<ol>
+							
+							<li>In the app configuration settings dialog, go to the <strong>Product</strong> tab and click <strong>Attributes</strong>.</li>
+							<li>Select the site you want to map from the drop-down menu. A mapping table with three columns appears:
+								<img src="map-attributes.png" class="img-mozu">
+							
+						Certain standard mappings are pre-populated, but you can change them to anything you want. Note that all products in ChannelAdvisor must have a <strong>Title</strong> and a <strong>SKU</strong>.</li>
+							<li>For each Mozu attribute you want to send to ChannelAdvisor, enter a mapping in the <strong>Mapping CA Attribute</strong> column. The textbox suggests standard ChannelAdvisor attributes, but you can also enter any custom attributes you have created. Just make sure the name you enter matches the attribute name in ChannelAdvisor exactly.
+								<p class="note"><strong>Note:</strong> You are not required to map every Mozu attribute to ChannelAdvisor. You can leave a field empty if you do not require that data on other marketplaces.</li>
+							<li>Click <strong>Save</strong>.</li>
+							<li>Repeat this procedure for each site you mapped to a marketplace in ChannelAdvisor. You can map the same Mozu attributes to different ChannelAdvisor attributes for different Mozu sites.</li>
+							</ol>
+
+							<h2 id="locations">Map Locations for ChannelAdvisor Inventory</h2>
+							<p>To ensure timely fulfillment, ChannelAdvisor must know current inventory levels for your Mozu products. The ChannelAdvisor Application handles this by mapping Mozu locations to ChannelAdvisor Distribution Centers so that both systems are updated when order information is processed. You can map multiple Mozu locations to a single ChannelAdvisor Distribution Center. ChannelAdvisor uses the combined inventory or all mapped Mozu locations as its total available inventory.</p>
+							<ol>
+								<li>In the app configuration settings dialog, go to the <strong>Product</strong> tab and click <strong>Location</strong>.</li>
+								<li>Select the Mozu locations you want to use for ChannelAdvisor inventory.</li>
+								<li>Enter the code for the ChannelAdvisor Distribution Center you want to use for your Mozu inventory. All your Mozu products must map to a single Distribution Center in ChannelAdvisor.</li>
+								<li>Click <strong>Save</strong>.</li>
+							</ol>
+<p>Inventory is synchronized every time you import orders from Channel Advisor and process them in Mozu.</p>
+
+                        </section>
+
+                        <section id="enable">
+                            <h2>Enable the App</h2>
+                            <p>Complete the following steps to enable the ChannelAdvisor Application by Mozu:</p>
+                            <ol>
+                            	<li>On the Mozu Admin top bar, select <strong>Settings</strong> > <strong>Applications</strong>.</li>
+								<li>Click <strong>Channel Advisor R5</strong>.</li>
+								<li>Click <strong>Enable App</strong>.</li>
+							</ol>
+							<p>Congratulations! You can now use sell your Mozu products on third-party marketplaces through ChannelAdvisor.</p>
+                        </section>
+                        
+                        <section id="use">
+						
+						<h2>Use the App</h2>
+				
+                            <h2 id="forcesync">Force Sync</h2>
+                            <p>Use the configuration page of the Mozu Import-Export Application to schedule exports of IT data about your site. You can also view your export history.</p>
+							
+						
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer -->
         <footer class="footer">
             <div class="container">
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="footer__logo">
-                            <a href="http://www.mozu.com" target="_blank"><img src="http://www.mozu.com/sites/all/themes/mozu_aurora/logo.png" style="padding-top:7px;"/></a>
-                        </div>
-                    </div>
-                    <div class="col-md-6 text-center">
-                        
-                    </div>
-                    <div class="col-md-3">
-                        <p class="pull-right footer__icons"><a href="https://twitter.com/MozuCommerce"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-twitter"></i></button></a><a href="http://www.mozu.com/ecommerce-app-center" target="_blank"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-code-fork"></i></button></a><a href="http://www.mozu.com/contact"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-comments-o"></i></button></a><a href="http://www.mozu.com/contact"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-copyright"></i></button></a></a>
-                        </p>
-                    </div>
+                <div class="pull-left footer__logo">
+                    <a href="http://www.mozu.com" target="_blank"><img src="http://www.mozu.com/sites/all/themes/mozu_aurora/logo.png" style="padding-top:7px;"/></a>
+                </div>
+                <div class="pull-right footer__icons" style="padding-right:40px;">
+					<a href="http://www.mozu.com/ecommerce-app-center" target="_blank"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-code-fork"></i></button></a><a href="http://www.mozu.com/contact"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-comments-o"></i></button></a><a href="http://www.mozu.com/contact"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-copyright"></i></button></a>
                 </div>
             </div>
         </footer>
 		
-		<script>
+	<!-- Back to top -->
+	<div class="scroll-top-wrapper ">
+    <span class="scroll-top-inner">
+        <i class="fa fa-2x fa-arrow-circle-up"></i>
+    </span>
+	</div>
+	<!-- Back to top - show hide -->
+	<script>
  
 	$(function(){
 	 
