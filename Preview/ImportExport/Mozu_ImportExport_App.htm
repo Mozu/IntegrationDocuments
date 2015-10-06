@@ -302,7 +302,7 @@
 					<p>After adding and editing data in the <a href="#templatefiles">template files</a>, you can import the data back into Mozu.</p>
 				
 						<div class="panel panel-info">
-							<div class="panel-heading"><strong>Note:</strong> Importing data that matches existing data in Mozu <strong>overwrites the existing data</strong>. This is intended behavior, and necessary for batch updating.</div>
+							<div class="panel-heading"><strong>Note:</strong> Importing data that matches existing data in Mozu <strong>overwrites the existing data</strong>. This is intended behavior, and necessary for batch updating.<br><br>Be sure that every column in a template file contains valid data before you import the file. If you do not want to update the data in a column that is not <a href="#required">required</a>, remove that column before importing the file. Importing blank columns will overwrite any data for the corresponding properties with NULL values.</div>
 						</div>
 					<ol>
 					<li><a href="#launchtool">Launch</a> the Mozu Import/Export Tool.</li>
@@ -492,7 +492,7 @@
 					  </tr>
 					  <tr>
 						<td>IsProperty </td>
-						<td>Specifies whether the attribute type is Property. A Property is a product detail that a user cannot configure, such as brand or material.</td>
+						<td>Specifies whether the attribute type is Property. A Property is a product detail that a customer cannot configure, such as brand or material.</td>
 						<td>A Boolean value, specified as <code>Yes</code> or <code>No</code>. If IsProperty is <code>Yes</code>, IsExtra and IsOption must be <code>No</code>.</td>
 						<td>Yes</td>
 					  </tr>
@@ -786,7 +786,7 @@
 					  <tr>
 						<td>CategoryCode</td>
 						<td>The unique identifier for the category. You use the CategoryCode to map categories to catalogs, discounts, and other categories.</td>
-						<td>Any number. This value must be unique among all categories on your site.<br><br><strong>Note:</strong> This code does not have to map to the ID Mozu generates for categories created in Mozu Admin. This codem must simply be unique to the category and must match across all sheets that refer to the category.</td>
+						<td>Any number. This value must be unique among all categories on your site.<br><br><strong>Note:</strong> This code does not have to map to the ID Mozu generates for categories created in Mozu Admin. This code must simply be unique to the category and must match across all sheets that refer to the category.</td>
 						<td>Yes</td>
 					  </tr>
 					  <tr>
@@ -1435,11 +1435,11 @@
 					
 					<h3 id="productimages">ProductImages Sheet</h3>
 					<p>Corresponding REST API Resource: <a href="http://developer.mozu.com/content/api/APIResources/commerce/commerce.catalog/commerce.catalog.storefront.products.htm" target="_blank">commerce/catalog/storefront/products</a></p>
-					<p>Required With: <a href="#products">Products</a>, <a href="#productcatalogs">ProductCatalogs</a>, <a href="#productoptions">ProductOptions</a>, <a href="#productextras">ProductExtras</a></p>
+					<p>Required With: <a href="#products">Products</a>, <a href="#productcatalogs">ProductCatalogs</a>, <a href="#productoptions">ProductOptions</a>, <a href="#productextras">ProductExtras</a>, <a href="#productbundles">ProductBundles</a></p>
 					<p>This sheet maps images and videos to product codes so you can use the media on the product pages of your storefront. A single product code can have multiple images and videos associated with it.</p> 
 					<p>The URL for each image or video file must be on a server accessible by Mozu. You can use the ImagePath column to upload files to your Mozu tenant. </p>
 					<div class="panel panel-info">
-							<div class="panel-heading"><strong>Tip:</strong> Because images and videos can be large files, uploading them can add significant time to an import operation. If you are updating products and know that you do not need to add or change media, remove all data from the non-required columns prior to importing the file.</div>
+							<div class="panel-heading"><strong>Tip:</strong> Because images and videos can be large files, uploading them can add significant time to an import operation. If you are updating products and know that you do not need to add or change media, remove the non-required columns prior to importing the file.</div>
 						</div>
 					<table class="table table-hover">
 					<thead>
@@ -1478,7 +1478,7 @@
 						<td>AltText</td>
 						<td>The plain text that appears when the customer hovers over the file, or that appears in place of the file if the file does not load.</td>
 						<td>Any alphanumeric string. This string should not include any special characters or HTML.</td>
-						<td>No</td>
+						<td>Yes</td>
 					  </tr>
 					  <tr>
 						<td>ImageUrl</td>
