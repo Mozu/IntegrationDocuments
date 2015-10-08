@@ -136,7 +136,8 @@
                         <li><a href="#enable">Enable the App</a></li>
                         <li><a href="#use">Use the App</a>
                              <ul class="nav nav-stacked">
-                             	<li><a href="#forcesync">Force Sync</a></li>
+                             	<li><a href="#forcesync">Force Sync Orders</a></li>
+                             	<li><a href="#returns">Returns and Refunds</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -231,41 +232,46 @@
 							</ol>
 
 							<h2 id="maplocations">Map Locations for ChannelAdvisor Inventory</h2>
-							<p>To ensure timely fulfillment, ChannelAdvisor must know current inventory levels for your Mozu products. The ChannelAdvisor Application maps your Mozu locations to a ChannelAdvisor Distribution Center so that both systems are updated when order information is processed. You can map multiple Mozu locations to a single ChannelAdvisor Distribution Center. ChannelAdvisor uses the combined inventory of all mapped Mozu locations as its total available inventory in the Distribution Center.</p>
+							<p>To ensure correct product details and timely fulfillment, ChannelAdvisor must know inventory levels for your Mozu products. The ChannelAdvisor Application maps your Mozu locations to a ChannelAdvisor Distribution Center so that both systems are updated when order information is processed. You can map multiple Mozu locations to a single ChannelAdvisor Distribution Center. ChannelAdvisor uses the combined inventory of all mapped Mozu locations as its total available inventory in the Distribution Center.</p>
 							<div class="panel panel-info">
-							<div class="panel-heading"><strong>Note:</strong> If a third-party marketplace, such as Amazon or eBay, is handling both processing and fulfillment, you must manually track your inventory levels, because these sites do not update inventory. To avoid overselling product, Mozu strongly recommends creating a ChannelAdvisor-specific location for these marketplaces and only mapping your ChannelAdvisor inventory to that location.</div></div>
+							<div class="panel-heading"><strong>Tip:</strong> You can create a ChannelAdvisor-specific location in Mozu to keep product reserved for ChannelAdvisor separate from the rest of your Mozu inventory. </div></div>
 							<ol>
 								<li>In the app configuration settings dialog, go to the <strong>Product</strong> tab and click <strong>Location</strong>.</li>
 								<li>Select the Mozu locations you want to use for ChannelAdvisor inventory.</li>
 								<li>Enter the code for the ChannelAdvisor Distribution Center you want to use for your Mozu inventory. All your Mozu products must map to a single Distribution Center in ChannelAdvisor.</li>
 								<li>Click <strong>Save</strong>.</li>
+								<li>(Optional) If you are selling through multiple channels, be sure to allocate your inventory in ChannelAdvisor. Refer to the ChannelAdvisor <a href="https://ssc.channeladvisor.com" target="_blank">Strategy &amp; Support Center</a> for more information about allocating inventory in ChannelAdvisor.</li>
 							</ol>
-<p>Inventory is synchronized every time you import orders from ChannelAdvisor and process them in Mozu.</p>
+<p>Inventory is synchronized between ChannelAdvisor and Mozu every time you <a href="#configureorders">import orders</a> to Mozu.</p>
 
 
 					
 						<h2 id="configureorders">Configure Order Imports</h2>
-						<p>While you can both process and fulfill orders through ChannelAdvisor, best practice is to import orders from ChannelAdvisor to Mozu and handle fulfillment from your Mozu sites. Handling all parts of the order process on the Mozu side minimizes the potential for inventory or fulfillment issues.</p>
+						<p>You can process and fulfill orders placed through ChannelAdvisor channels from either ChannelAdvisor or Mozu, or you can allow a third-party, such as Amazon, to handle all fulfillment.</p>
+<div class="panel panel-info">
+							<div class="panel-heading"><strong>Note:</strong>&nbsp;<a href="#returns">Returns</a> from ChannelAdvisor channels must be processed in ChannelAdvisor.</div></div>
+						<p>Regardless of where you plan to process orders, you must periodically import orders from ChannelAdvisor to Mozu to ensure inventory remains synchronized across both platforms.</p>
 						
 						<h3 id="channelstosites">Map Sales Channels to Mozu Sites</h3>
 						<ol>
 								<li>In the app configuration settings dialog, go to the <strong>Order</strong> tab and click <strong>Marketplaces</strong>.</li>
-								<li>Enable the <strong>Import Orders from ChannelAdvisor</strong> checkbox and specify the frequency with which you want to import orders to Mozu.<div class="panel panel-info" style="margin-bottom: 0">
-							<div class="panel-heading" style="margin-bottom: 0"><strong>Tip:</strong> You can also <a href="#forcesync">manually import orders</a> from the <strong>Synchronization</strong> tab.</div></div></li>
-								<li>In the mapping table, find each <strong>Channel</strong> you are using to sell products in ChannelAdvisor and select the <strong>Mozu Site</strong> that you want to process orders through for that channel. You can map multiple channels to the same site.
+								<li>Enable the <strong>Import Orders from ChannelAdvisor</strong> checkbox and specify the frequency with which you want to import orders to Mozu.</li>
+								<li>In the mapping table, find each <strong>Channel</strong> you are using in ChannelAdvisor and select the <strong>Mozu Site</strong> that you want to map to that channel. You can map multiple channels to the same site, and you do not need to map channels you are not using.
 									<div class="panel panel-info" style="margin-bottom: 0">
 							<div class="panel-heading" style="margin-bottom: 0"><strong>Note:</strong> The mapping table contains all the standard ChannelAdvisor marketplaces. If you do not see the channel you are using, use the <strong>UNKOWN</strong> channel to map data.</div></div></li>
 									<li>Be sure to map the <strong>UNKOWN</strong> channel to a Mozu site, in case an order comes in without channel information.</li>
 								<li>Click <strong>Save</strong>.</li>
 							</ol>
 							<h3 id="shippingmethods">Map Shipping Methods</h3>
+							<p>If you plan to process and fulfill orders from Mozu, you must map the shipping methods that ChannelAdvisor supports to the shipping methods you offer from your Mozu storefronts:</p>
 							<ol>
 								<li>In the app configuration settings dialog, go to the <strong>Order</strong> tab and click <strong>Marketplaces</strong>. The mapping table shows all standard <strong>ChannelAdvisor Shipping Carrier/Method</strong> options.</li>
 								<li>For each option you offer to customers through ChannelAdvisor, select a corresponding <strong>Mozu Shiping Carrier/Method</strong>. The methods do not have to match exactly across sites, and you do not have to map every possible ChannelAdvisor method. However, you should map the <strong>Default</strong> ChannelAdvisor setting so it can act as a catch-all if a customer selects a shipping method you don't support.
 									<img src="default-shipping.png" class="img-mozu"></li>
 								<li>Click <strong>Save</strong>.</li>
 							</ol>
-
+<div class="panel panel-info" style="margin-bottom: 0">
+							<div class="panel-heading" style="margin-bottom: 0"><strong>Tip:</strong> You can also <a href="#forcesync">manually import orders</a> from the <strong>Synchronization</strong> tab.</div></div>
 							<h2 id="synchronize">Export Initial Data to ChannelAdvisor</h2>
 							<p>After you have configured all your mappings, you are ready to export product and inventory data to ChannelAdvisor.</p>
 							<div class="panel panel-info">
@@ -290,7 +296,7 @@
                         <section id="use">
 						
 						<h2>Use the App</h2>
-							<p>After you have completed all the app configuration settings and enabled the app, you do not have to take any additional steps to use the app. If you have configured automatic order imports, Mozu receives ChannelAdvisor orders just as it does orders through your Mozu sites. Simply process these as you would standard Mozu orders.</p>
+							<p>After you have completed all the app configuration settings and enabled the app, you do not have to take any additional steps to use the app. If you have configured automatic order imports, Mozu receives ChannelAdvisor orders at the frequency you specified when you configured the import. If you are processing orders through Mozu, you can handle these orders as you would any other order.</p><p>If you are processing orders through ChannelAdvisor, an order is re-imported each time a status change occurs so that you have record of the order in Mozu.</p>
 
                             <h3 id="forcesync">Force Sync Orders</h3>
                             <p>If you are not automatically synching orders from ChannelAdvisor, or if you want to sync data in between scheduled imports, you can force a sync from the app configuration settings dialog:</p>
@@ -299,7 +305,9 @@
 								<li>Click <strong>Import Orders</strong>. The status table updates to show the new job. If the job encounters any errors, you can click the <strong>Errors</strong> link to view a log describing the issues that occurred.</li> 
 								<li>Go to the <strong>Orders</strong> console in Mozu Admin to process the orders.</li></ol>
 							
-						
+							<h3 id="returns">Returns and Refunds</h3>
+							<p>The ChannelAdvisor Application does not import returns and refunds on orders placed through ChannelAdvisor. You must process all returns and refunds through ChannelAdvisor and manually update your Mozu inventory and order information.</p>
+							<p>Alternatively, you can modify the ChannelAdvisor Application source code to import these orders. Note that due to the structure of the ChannelAdvisor SOAP API, doing so can impact the performance of the application when you import orders.</p>
                         </section>
                     </div>
                 </div>
