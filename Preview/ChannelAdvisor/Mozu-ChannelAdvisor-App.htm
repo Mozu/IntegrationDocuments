@@ -164,6 +164,8 @@
                             	<li>Schedules regular order imports from ChannelAdvisor to ensure timely fulfillment.</li>
                             	
                             </ul>
+
+
                         </section>
                         <section id="install">
                             <h2>Install the ChannelAdvisor Application on Your Tenant</h2>
@@ -229,21 +231,49 @@
 							<li>In the app configuration settings dialog, go to the <strong>Product</strong> tab and click <strong>Attributes</strong>.</li>
 							<li>Select the site you want to map from the drop-down menu. A mapping table with three columns appears:
 								<img src="map-attributes.png" class="img-mozu">Certain standard mappings are pre-populated, but you can change them to anything you want.</li>
-							<li>For each Mozu attribute you want to send to ChannelAdvisor, enter a mapping in the <strong>Mapping CA Attribute</strong> column. The textbox suggests standard ChannelAdvisor attributes, but you can also enter any custom attributes you have created. For custom attributes:
-							<ul> 
-								<li>The name you enter must match the attribute name in ChannelAdvisor exactly. If you enter an attribute name that does <em>not</em> currently exist in ChannelAdvisor, the app creates a new custom attribute with that name when you <a href="#synchronize">export your initial data</a>.</li>
-									<li>When sending attribute data to ChannelAdvisor, the application only sends numbers or strings. If you map a list attribute in Mozu to an attribute in ChannelAdvisor, the app sends the number or string contained in the list item the customer selects. The app does not support multiple selections for a list attribute.</li></ul>
+							<li>For each Mozu attribute you want to send to ChannelAdvisor, enter a mapping in the <strong>Mapping CA Attribute</strong> column. The textbox suggests standard ChannelAdvisor attributes, but you can also enter any custom attributes you have created. If you enter an attribute name that does <em>not</em> currently exist in ChannelAdvisor, the ChannelAdvisor Application creates a new custom attribute with that name when you <a href="#synchronize">export your initial data</a>.
 								<div class="panel panel-info" style="margin-bottom:0">
 							<div class="panel-heading"><strong>Note:</strong> You are not required to map every Mozu attribute to ChannelAdvisor. You can leave a field empty if you do not require that data on other marketplaces. Note that all products in ChannelAdvisor must have a <strong>Title</strong> and a <strong>SKU</strong>.</div></div></li>
 							<li>Click <strong>Save</strong>.</li>
 							<li>Repeat this procedure for each site you mapped to a marketplace in ChannelAdvisor. You can map the same Mozu attributes to different ChannelAdvisor attributes for different Mozu sites.</li>
 							</ol>
+							<h3>Mozu Input Types</h3>
+						<p>When sending property or custom attribute data from Mozu to ChannelAdvisor, the ChannelAdvisor Application only sends data as numbers or strings. The following table describes how data from different input types is sent to ChannelAdvisor: 
+									</li></ul>
+							<table class="table table-hover">
+										<thead>
+											<tr>
+											<th>Mozu Input Type</th>
+											<th>Data Transmitted</th>
+										</tr>
+										</thead>
+										<tr>
+											<td>List</td>
+											<td>A string or number representing the list item the customer selects. The app can only send a single value. Lists that support multiple selections are not supported.</td>
+										</tr>
+										<tr>
+											<td>Text Area</td>
+											<td>A string.</td>
+										</tr>
+										<tr>
+											<td>Text Box</td>
+											<td>A string.</td>
+										</tr>
+										<tr>
+											<td>Yes/No (Boolean)</td>
+											<td>A string of type Yes/No or True/False.</td>
+										</tr>
+										<tr>
+											<td>Date</td>
+											<td>Not supported.</td>
+										</tr>
+									</table>
 
 							<h2 id="maplocations">Map Locations for ChannelAdvisor Inventory</h2>
-							<p>To ensure correct product details and timely fulfillment, ChannelAdvisor must know inventory levels for your Mozu products. The ChannelAdvisor Application maps your Mozu locations to a ChannelAdvisor Distribution Center so that both systems are updated when order information is processed.</p> 
+							<p>To ensure correct product details and timely fulfillment, ChannelAdvisor must know inventory levels for your Mozu products. The ChannelAdvisor Application maps your Mozu locations to a ChannelAdvisor Distribution Center so that both systems are updated when order information is processed. Mozu remains the system of record for products, inventory, and orders.</p> 
 							<div class="panel panel-info">
 							<div class="panel-heading"><strong>Tip:</strong> To ensure you have enough inventory to fulfill ChannelAdvisor orders, it is a good idea to set up a ChannelAdvisor-specific location in Mozu that reserves products for the channels. For example, a customer may place an order from Amazon that does not appear in Mozu for a few hours. Creating an Amazon-specific location can prevent you from accidentally overselling product by having the same inventory appear in both Amazon and on your Mozu sites.</div></div>
-							<p>The ChannelAdvisor Application assumes that Mozu is the application of record for products and inventory. For example, the app does not import new products from ChannelAdvisor to Mozu. It only sends products from Mozu to ChannelAdvisor.</p>
+							
 							<ol>
 								<li>In the app configuration settings dialog, go to the <strong>Product</strong> tab and click <strong>Location</strong>.</li>
 								<li>Select the Mozu location(s) you want to use for ChannelAdvisor inventory. ChannelAdvisor uses the combined inventory of all mapped Mozu locations as its total available inventory.</li>
@@ -253,7 +283,9 @@
 							</ol>
 <p>Any time inventory changes in Mozu, the ChannelAdvisor Application automatically sends updates to ChannelAdvisor. However, when an order is placed via ChannelAdvisor, the corresponding inventory is not reserved in Mozu until the <a href="#configureorders">order is imported</a>.</p>
 
-
+<div class="panel panel-info">
+							<div class="panel-heading"><strong>Note:</strong> Mozu is the system of record for products, inventory, and orders. For example, the app does not import new products from ChannelAdvisor to Mozu. It only sends products from Mozu to ChannelAdvisor.</div>
+						</div>
 					
 						<h2 id="configureorders">Configure Order Imports</h2>
 						<p>You can process and fulfill orders placed through ChannelAdvisor channels from either ChannelAdvisor or Mozu, or you can allow a third-party, such as Amazon, to handle all fulfillment.</p>
