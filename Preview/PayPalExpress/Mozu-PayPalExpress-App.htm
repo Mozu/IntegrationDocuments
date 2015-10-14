@@ -1,0 +1,272 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="15" MadCap:lastHeight="488" MadCap:lastWidth="1168">
+    <head><title>PayPal Express Integration for Mozu</title>
+        <meta name="author" content="Mozu" />
+        <meta name="description" content="User content for PayPal Express Integration for Mozu" />
+        <meta name="keywords" content="PayPal,PayPal Express,Pay Pal,Mozu" />
+		<link rel="shortcut icon" href="http://www.mozu.com/favicon.ico" />
+		
+		<!-- Required for Scrollspy -->
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/scrollspy.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/affix.js"></script>
+		<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+		
+		<!-- Mozu CSS developed by Mozu Docs -->
+		<link href="mozu-bootswatch.css" rel="stylesheet" type="text/css" />	
+		
+		<!-- Scrollspy active link script -->
+		<script>
+		$( document ).ready(function() {
+		$('body').scrollspy({
+			target: '.bs-docs-sidebar',
+			offset: 20
+		});
+		});        
+		</script>
+		
+		<!-- Anchor Ease Script -->
+		<script>
+		 $(function() {
+			  $('a[href*=#]:not([href=#])').click(function() {
+				if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') 
+			&& location.hostname == this.hostname) {
+
+				  var target = $(this.hash);
+				  target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+				  if (target.length) {
+					$('html,body').animate({
+					  scrollTop: target.offset().top - 75 //offsets for fixed header
+					}, 1000);
+					return false;
+				  }
+				}
+			  });
+			  //Executed on page load with URL containing an anchor tag.
+			  if($(location.href.split("#")[1])) {
+				  var target = $('#'+location.href.split("#")[1]);
+				  if (target.length) {
+					$('html,body').animate({
+					  scrollTop: target.offset().top - 75 //offset height of header here too.
+					}, 1000);
+					return false;
+				  }
+				}
+		});
+		</script>
+		
+		<!-- Affix Javascript -->
+		
+		<script>$(function(){
+ 
+			var stickyElement = '.bs-docs-sidebar', 
+			bottomElement = '.footer'; 
+			
+			if($( stickyElement ).length){
+			$( stickyElement ).each(function(){
+		   
+			var fromTop = $( this ).offset().top,
+		   
+			fromBottom = $( document ).height()-($( this ).offset().top + $( this ).outerHeight()),
+			
+			stopOn = $( document ).height()-( $( bottomElement ).offset().top)+($( this ).outerHeight() - $( this ).height());
+			
+			if( (fromBottom-stopOn) > 200 ){
+			
+			$( this ).css('width', $( this ).width()).css('top', 0).css('position', '');
+			
+			$( this ).affix({
+			offset: {
+			
+			top: fromTop,
+			
+			bottom: stopOn
+			}
+			
+			}).on('affix.bs.affix', function(){ $( this ).css('top', 0).css('position', ''); });
+			}
+			
+			$( window ).trigger('scroll');
+			});
+			}
+		});
+		</script>
+	</head>
+    <body>
+	<div id="main">
+	<div class="container">
+		<!-- Top Nav - Mozu -->
+			<nav class="navbar navbar-default navbar-fixed-top">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                        </button> <a href="#"><img src="logo-m-red-medium.png" style="margin-top:3px;"/></a></div>
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav navbar-right">
+						<li><a href="versionhistory.html"><span>Version History</span></a></li>
+							<li><a href="//developer.mozu.com/learn/mozu-concepts"><span>Mozu Concepts</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+			
+		<!--Side Navigation TOC -->
+		<div class="row">
+		<div class="landing-title">
+			<h1>PayPal Express Configuration Guide</h1>	
+		</div>
+			<div class="col-md-3" >
+				<nav class="bs-docs-sidebar" >
+					<ul class="nav nav-stacked" >
+						<div class="side-heading">Table of Contents</div>
+							<li><a href="#intro">Welcome to PayPal Express and Mozu</a></li>
+							<li><a href="#install">Install the App</a></li>
+							<li><a href="#theme">Update Your Theme</a></li>							
+							<li><a href="#configapp">Configure the App</a></li>
+					</ul>
+				</nav>
+			</div>
+                    
+            <div class="col-md-9 content" >
+                <!-- Documentation content -->
+				<section id="intro">
+					<h2>Welcome to PayPal Express and Mozu</h2>
+					
+					<p>PayPal is one of the world's largest digital payment processors, serving over 169 million customers in more than 200 markets. The PayPal Express Integration for Mozu enables you to easily add PayPal's Express Checkout functionality to your existing Mozu payment options.</p>
+<div class="panel panel-info">
+							<div class="panel-heading"><strong>Note:</strong> The PayPal Express for Mozu Integration requires that your site be updated to the <a href="https://github.com/Mozu/core-theme" target="_blank">Mozu Core 8</a> theme.</div>
+						</div>
+
+
+					 <p><strong>Application Features:</strong></p>
+                            <ul>
+                            	<li>Adds PayPal as an additional payment option to your shopping cart and checkout pages.</li>
+                            	<li>Connects Mozu to your existing PayPal merchant account.</li>
+                            	<li>Allows customers to expedite purchasing by clicking through a simple PayPal dialog.</li>
+                            	<li>Imports all necessary order information back into Mozu for payment capture and fulfillment.</li>
+                            	<li>Works in conjuction with all other payment gateways, including Pay with Amazon.</li>
+                            </ul>
+				</section>
+				<section id="install">
+					<h2>Install the PayPal Express Integration for Mozu on Your Tenant</h2>
+
+					<p>Mozu offers two options for acquiring the PayPal Express Integrations:</p>
+					<ol>
+						<li>Purchase the PayPal Express Certified Code Action from Mozu. A Mozu sales or professional services representative will install the application on your tenant.</li>
+						<li>Build the application from the Mozu-provided code on <a href="https://github.com/Mozu/PayPal-Express" target="_blank">GitHub</a> and install it to Mozu Dev Center. This option requires that you have Arc.js enabled on your tenant. Contact your sales or professional services representative for more information about enabling Arc.js.</li>
+					</ol>
+				</section>
+
+				<section id="theme">				
+                        <h2>Update Your Mozu Theme</h2>
+						
+						<p>Installing and configuring the PayPal Express app enables PayPal Express functionality in Mozu Admin. However, to enable PayPal functionality on your storefront so that customers can use is, you must also merge theme changes to enable the PayPal workflow:</p>
+
+						<ol>
+							<li>Confirm that your site has been updated to use the Mozu Core 8 Theme. You can find the latest version of the <a href="https://github.com/Mozu/core-theme" target="_blank">Mozu Core</a> theme on GitHub.</li>
+							<li>Navigate to the <a href="https://github.com/Mozu/PayPalExpress-Theme" target="_blank">PayPalExpress-Theme</a> repository on GitHub.</li>
+							<li>Review and apply the changes made in our sample implementation to your own theme.<div class="panel panel-info">
+							<div class="panel-heading"><strong>Tip:</strong> To see the differences between the sample implementation and your own theme, open the command line and run the <code>git diff</code> command, using the paths for the themes to be diffed.</div>
+						</div></li>
+						</ol>
+
+						<p>For more information on working with themes, including modifying, uploading, installing, and applying a theme to your site, refer to the <a href="http://developer.mozu.com/learn/theme-development/quickstart" target="_blank">Theme Development Quickstart</a>.</p>
+                        				
+				</section>
+				<section id="configapp">				
+                        <h2>Configure the Application in Mozu Admin</h2>
+						<p>Now that your Pay with Amazon application is installed, go to your Mozu Admin tools to configure the integration.</p>
+
+						<ol>
+							<li>Go to <strong>Settings</strong> &gt; <strong>Payment &amp; Checkout</strong>.</li>
+							<li>Check the <strong>PayByAmazon</strong> checkbox. Once checked, the various configuration fields appear.</li>
+							<li>Select the Amazon environment you wish to use. Note that this selection has nothing to do with Mozu production or sandbox environments; this option selects the Amazon environment.
+								<ul>
+									<li>Select <strong>Sandbox</strong> if you wish to use Amazon’s sandbox environment for testing your Pay with Amazon integration.</li>
+									<li>Select <strong>Production</strong> to use a working Amazon environment that processes payments.</li>
+								</ul>
+							</li>
+							<li>Obtain the below values from Amazon Seller Central (<a href="https://sellercentral.amazon.com/">https://sellercentral.amazon.com/</a>):
+								<ul>
+									<li>Seller ID</li>
+									<li>Client ID</li>
+									<li>Applicaton ID</li>
+									<li>AWS Access Key</li>
+									<li>AWS Secret</li>
+								</ul>
+							</li>
+							<li>Select an AWS region.</li>
+							<li>Select an order processing method:
+								<ul>
+									<li>Authorize and Capture on Order Placement: This method authorizes and captures payment when an order is placed.</li>
+									<li>Authorize on Order Placement and Capture on Order Shipment: This method authorizes a payment when an order is placed, but does not capture that payment until the order has shipped.</li>
+								</ul>
+							</li>
+							<li>Click <strong>Save</strong> to save your Pay with Amazon settings.</li>
+						</ol>                        				
+				</section>
+				
+						</div>
+                    </div>
+                </div>
+           </div>
+		</div>
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="pull-left footer__logo">
+                            <a href="http://www.mozu.com" target="_blank"><img src="http://www.mozu.com/sites/all/themes/mozu_aurora/logo.png" style="padding-top:7px;"/></a>
+                </div>
+                <div class="pull-right footer__icons" style="padding-right:40px;">
+				<a href="http://www.mozu.com/ecommerce-app-center" target="_blank"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-code-fork"></i></button></a><a href="http://www.mozu.com/contact"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-comments-o"></i></button></a><a href="http://www.mozu.com/contact"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-copyright"></i></button></a>
+                </div>
+            </div>
+        </footer>
+		
+	<!-- Back to top -->
+	<div class="scroll-top-wrapper ">
+    <span class="scroll-top-inner">
+        <i class="fa fa-2x fa-arrow-circle-up"></i>
+    </span>
+	</div>
+	<!-- Back to top - show hide -->
+	<script>
+ 
+	$(function(){
+	 
+		$(document).on( 'scroll', function(){
+	 
+			if ($(window).scrollTop() > 100) {
+				$('.scroll-top-wrapper').addClass('show');
+			} else {
+				$('.scroll-top-wrapper').removeClass('show');
+			}
+		});
+	});
+	</script>
+	<!-- Back to top - to top -->
+	<script>
+ 
+	$(function(){
+	 
+		$(document).on( 'scroll', function(){
+	 
+			if ($(window).scrollTop() > 100) {
+				$('.scroll-top-wrapper').addClass('show');
+			} else {
+				$('.scroll-top-wrapper').removeClass('show');
+			}
+		});
+	 
+		$('.scroll-top-wrapper').on('click', scrollToTop);
+	});
+	 
+	function scrollToTop() {
+		verticalOffset = typeof(verticalOffset) != 'undefined' ? verticalOffset : 0;
+		element = $('body');
+		offset = element.offset();
+		offsetTop = offset.top;
+		$('html, body').animate({scrollTop: offsetTop}, 500, 'linear');
+	}
+	</script>
+</html>
