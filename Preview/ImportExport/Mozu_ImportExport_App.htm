@@ -2,7 +2,7 @@
 <html>
     <head><title>Import Export Tool by Mozu</title>
         <meta name="author" content="Mozu" />
-        <meta name="description" content="Guide to the Import Export Tool" />
+        <meta name="description" content="User content for the Mozu Import/Export Tool" />
         <meta name="keywords" content="Import,Export,Mozu" />
 		<link rel="shortcut icon" href="http://www.mozu.com/favicon.ico" />
 		
@@ -104,7 +104,7 @@
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav navbar-right">
 						<li><a href="versionhistory.html"><span>Version History</span></a></li>
-							<li><a href="//developer.mozu.com/learn/mozu-concepts"><span>Mozu Concepts</span></a></li>
+							<li><a href="http://developer.mozu.com/content/learn/Introduction.htm"><span>Mozu Dev Center</span></a></li>
                         </ul>
                     </div>
                 </div>
@@ -114,7 +114,7 @@
 		<div class="container">
 		<div class="row">
 		<div class="landing-title">
-			<h1>Mozu Import/Export Tool Guide </h1>	
+			<h1>Mozu Import/Export Tool Guide</h1>	
 		</div>
 			<div class="col-md-3" style="margin-top: 60px;">
 				<nav class="bs-docs-sidebar" >
@@ -407,7 +407,7 @@
 					<p>If you have questions or concerns specific to your data, please contact your Mozu integration and implementation associates.</p>
 					
 					<h3 id="attributes">Attributes Sheet</h3>
-					<p>Corresponding REST API Resource: <a href="http://developer.mozu.com/content/api/APIResources/commerce/commerce.catalog/commerce.catalog.admin.attributedefinition.attributes.htm" target="_blank">commerce/catalog/admin/attributedefinition/attributes</a></p>
+					<p>Corresponding REST API Resource: <a href="http://developer.mozu.com/content/api/APIResources/commerce/catalog.admin.attributedefinition/attributes.htm" target="_blank">commerce/catalog/admin/attributedefinition/attributes</a></p>
 					<p>Required With: <a href="#attributevalues">AttributeValues</a></p>
 					<p>Product attributes are the variable properties that define a product. Attributes can be options (such as size or color), properties (such as the brand of the product), or extras (such as custom printing or warranties). Because many products share common attributes, you define general attributes before you apply them to specific products.</p>
 					
@@ -532,7 +532,7 @@
 					</table>
 					
 					<h3 id="attributevalues">AttributeValues Sheet</h3>
-					<p>Corresponding REST API Resource: <a href="http://developer.mozu.com/content/api/APIResources/commerce/commerce.catalog/commerce.catalog.admin.attributedefinition.attributes.htm" target="_blank">commerce/catalog/admin/attributedefinition/attributes</a></p>
+					<p>Corresponding REST API Resource: <a href="http://developer.mozu.com/content/api/APIResources/commerce/catalog.admin.attributedefinition/attributes.htm" target="_blank">commerce/catalog/admin/attributedefinition/attributes</a></p>
 					<p>Required With: <a href="#attributes">Attributes</a></p>
 					<p>Attribute values define what customers see for a given attribute. A single attribute can have multiple values. For example, if an attribute has an InputType of <code>List</code> in the <a href="#attributes">Attributes</a> sheet, every item in the list is a value of the attribute. Attribute values are mapped to attrtibutes by the AttributeCode.</p>
 					<table class="table table-hover">
@@ -580,9 +580,9 @@
 
 					
 					<h3 id="producttypes">ProductTypes Sheet</h3>
-					<p>Corresponding REST API Resource: <a href="http://developer.mozu.com/content/api/APIResources/commerce/commerce.catalog/commerce.catalog.admin.attributedefinition.producttypes.htm" target="_blank">commerce/catalog/admin/attributedefinition/producttypes</a></p>
-					<p>Required With: <a href="#productypeattributes">ProductTypeAttributes</a>, <a href="#producttypeattributevalues">ProductTypeAttributeValues</a></p>
-					<p>In Mozu, a product type is a template of settings and attributes you create for a specific set of products. Every product in your catalog has a single product type associated with it. The ProductTypes sheet simply specifies the usage type(s) and master catalog for the product type. You specify details for product types on the <a href="#productypeattributes">ProductTypeAttributes</a> and <a href="#producttypeattributevalues">ProductTypeAttributeValues</a> sheets.</p>
+					<p>Corresponding REST API Resource: <a href="http://developer.mozu.com/content/api/APIResources/commerce/catalog.admin.attributedefinition/producttypes.htm" target="_blank">commerce/catalog/admin/attributedefinition/producttypes</a></p>
+					<p>Required With: <a href="#producttypeattributes">ProductTypeAttributes</a>, <a href="#producttypeattributevalues">ProductTypeAttributeValues</a></p>
+					<p>In Mozu, a product type is a template of settings and attributes you create for a specific set of products. Every product in your catalog has a single product type associated with it. The ProductTypes sheet simply specifies the usage type(s) and master catalog for the product type. You specify details for product types on the <a href="#producttypeattributes">ProductTypeAttributes</a> and <a href="#producttypeattributevalues">ProductTypeAttributeValues</a> sheets.</p>
 
 					<div class="panel panel-info" id="required">
 							<div class="panel-heading"><strong>Note:</strong> A single product type can support multiple usage types. For example, a shirt can be Configurable and a Component of a larger Bundle.</div>
@@ -649,9 +649,9 @@
 					</table>
 					
 					<h3 id="producttypeattributes">ProductTypeAttributes Sheet</h3>
-					<p>Corresponding REST API Resource: <a href="http://developer.mozu.com/content/api/APIResources/commerce/commerce.catalog/commerce.catalog.admin.attributedefinition.producttypes.htm" target="_blank">commerce/catalog/admin/attributedefinition/producttypes</a></p>
-					<p>Required With: <a href="#productypes">ProductTypes</a>, <a href="#producttypeattributevalues">ProductTypeAttributeValues</a></p>
-					<p>In Mozu, attributes are linked to products at the product type level. The ProductTypeAttributes sheet ties the attributes you define on the <a href="#attributes">Attributes</a> and <a href="#attributevalues">AttributeValues</a> sheets to the product types you define in the <a href="#productypes">ProductTypes</a> sheet. You must define your attributes, either on the Attributes sheet or from Mozu itself, before you can connect them to product types. Multiple product types can share the same attributes.</p>
+					<p>Corresponding REST API Resource: <a href="http://developer.mozu.com/content/api/APIResources/commerce/catalog.admin.attributedefinition/producttypes.htm" target="_blank">commerce/catalog/admin/attributedefinition/producttypes</a></p>
+					<p>Required With: <a href="#producttypes">ProductTypes</a>, <a href="#producttypeattributevalues">ProductTypeAttributeValues</a></p>
+					<p>In Mozu, attributes are linked to products at the product type level. The ProductTypeAttributes sheet ties the attributes you define on the <a href="#attributes">Attributes</a> and <a href="#attributevalues">AttributeValues</a> sheets to the product types you define in the <a href="#producttypes">ProductTypes</a> sheet. You must define your attributes, either on the Attributes sheet or from Mozu itself, before you can connect them to product types. Multiple product types can share the same attributes.</p>
 					<table class="table table-hover">
 					<thead>
 					  <tr>
@@ -670,7 +670,7 @@
 					  <tr>
 						<td>ProductType</td>
 						<td>The name of the product type.</td>
-						<td>Any string. This value must match the ProductType value on the <a href="#productypes">ProductTypes</a> sheet.</td>
+						<td>Any string. This value must match the ProductType value on the <a href="#producttypes">ProductTypes</a> sheet.</td>
 						<td>Yes</td>
 					  </tr>
 					  <tr>
@@ -722,8 +722,8 @@
 					</table>
 					
 					<h3 id="producttypeattributevalues">ProductTypeAttributeValues Sheet</h3>
-					<p>Corresponding REST API Resource: <a href="http://developer.mozu.com/content/api/APIResources/commerce/commerce.catalog/commerce.catalog.admin.attributedefinition.producttypes.htm" target="_blank">commerce/catalog/admin/attributedefinition/producttypes</a></p>
-					<p>Required With: <a href="#productypes">ProductTypes</a>, <a href="#producttypeattributes">ProductTypeAttributes</a></p>
+					<p>Corresponding REST API Resource: <a href="http://developer.mozu.com/content/api/APIResources/commerce/catalog.admin.attributedefinition/producttypes.htm" target="_blank">commerce/catalog/admin/attributedefinition/producttypes</a></p>
+					<p>Required With: <a href="#producttypes">ProductTypes</a>, <a href="#producttypeattributes">ProductTypeAttributes</a></p>
 					<p>The attribute values you specify for a given product type define what users and customers see for that product type. These values might differ from the values defined on the <a href="#attributevalues">AttributeValues</a> sheet. For example, your store might include a line of shirts that are only available in sizes Small, Medium, and Large. However, your <code>Size</code> attribute from the AttributeValues sheet has possible values of <code>XS</code>, <code>S</code>, <code>M</code>, <code>L</code>, and <code>XL</code>. You can still use your <code>Size</code> attribute for the shirts by giving them their own ProductType and only enabling the three relevant values for <code>Size</code> on this sheet.</p>
 					<table class="table table-hover">
 					<thead>
@@ -737,7 +737,7 @@
 					<tbody>
 					<tr>
 						<td>ProductType</td>
-						<td>The name of the product type. This value must match the ProductType value on the <a href="#productypes">ProductTypes</a> and <a href="#producttypeattributes">ProductTypeAttributes</a> sheets.</td>
+						<td>The name of the product type. This value must match the ProductType value on the <a href="#producttypes">ProductTypes</a> and <a href="#producttypeattributes">ProductTypeAttributes</a> sheets.</td>
 						<td>Any string.</td>
 						<td>Yes</td>
 					  </tr>
@@ -764,7 +764,7 @@
 					</table>
 
 					<h3 id="categories">Categories Sheet</h3>
-					<p>Corresponding REST API Resource: <a href="http://developer.mozu.com/content/api/APIResources/commerce/commerce.catalog/commerce.catalog.admin.categories.htm" target="_blank">commerce/catalog/admin/categories</a></p>
+					<p>Corresponding REST API Resource: <a href="http://developer.mozu.com/content/api/APIResources/commerce/catalog.admin/categories.htm" target="_blank">commerce/catalog/admin/categories</a></p>
 					<p>Required With: NA</p>
 					<p>Product categories group similar items so that you can display them together in sections on your site. Categories help you create faceted navigation for your customers. For example, Women's Apparel can be its own category as well as a parent cateogry of Shirts, Pants, and Dresses. Categories map to catalogs, and you can define them on the master catalog or only on a specific sub-catalog. A single product can belong to multiple categories.</p>
 					<table class="table table-hover">
@@ -854,7 +854,7 @@
 					</table>
 					
 					<h3 id="products">Products Sheet</h3>
-					<p>Corresponding REST API Resource: <a href="http://developer.mozu.com/content/api/APIResources/commerce/commerce.catalog/commerce.catalog.admin.products.htm" target="_blank">commerce/catalog/admin/products</a></p>
+					<p>Corresponding REST API Resource: <a href="http://developer.mozu.com/content/api/APIResources/commerce/catalog.admin/products.htm" target="_blank">commerce/catalog/admin/products</a></p>
 					<p>Required With: <a href="#productcatalogs">ProductCatalogs</a>, <a href="#productoptions">ProductOptions</a>, <a href="#productextras">ProductExtras</a>, <a href="#productbundles">ProductBundles</a>, <a href="#productimages">ProductImages</a> </p>
 					<p>Once you have created attributes, product types, and categories, you can add products to your store. Do not try to add products to your store before building out the catalog infrastructure that the previous tabs describe. Your products will be missing required data and the import will not work. However, once your catalog infrastructure is set, you can fill out just the product-related sheets when you are adding or updating product data.</p>
 					<div class="panel panel-info">
@@ -1098,7 +1098,7 @@
 					</table>
 					
 					<h3 id="productcatalogs">ProductCatalogs Sheet</h3>
-					<p>Corresponding REST API Resource: <a href="http://developer.mozu.com/content/api/APIResources/commerce/commerce.catalog/commerce.catalog.admin.products.htm" target="_blank">commerce/catalog/admin/products</a></p>
+					<p>Corresponding REST API Resource: <a href="http://developer.mozu.com/content/api/APIResources/commerce/catalog.admin/products.htm" target="_blank">commerce/catalog/admin/products</a></p>
 					<p>Required With: <a href="#products">Products</a>, <a href="#productoptions">ProductOptions</a>, <a href="#productextras">ProductExtras</a>, <a href="#productbundles">ProductBundles</a>, <a href="#productimages">ProductImages</a> </p>
 					<p>This sheet maps products to catalogs within a master catalog. The ProductCode and ProductName must match the product definition in the master catalog, or as specified on the <a href="#products">Products</a> sheet. All other data can differ from the master catalog. For example, in a specific sub-catalog, a product could belong to different categories, have different prices and costs, use different SEO content, and so on.</p>
 					<table class="table table-hover">
@@ -1114,13 +1114,13 @@
 					<tr>
 						<td>CatalogName</td>
 						<td>The name of the catalog that includes the product. To add a product to multiple catalogs, create a new row for each catalog.</td>
-						<td>A string matching any valid catalog name. This should be a sub-catalog. Products are mapped to a master catalog when they are created, or on the <a href="#Products">Products</a> sheet.</td>
+						<td>A string matching any valid catalog name. This should be a sub-catalog. Products are mapped to a master catalog when they are created, or on the <a href="#products">Products</a> sheet.</td>
 						<td>Yes</td>
 					  </tr>
 					  <tr>
 						<td>ProductCode</td>
 						<td>The unique identifier for the product. You use this code throughout Mozu to refer to the product.</td>
-						<td>Any number that is unique among all product codes in the master catalog. This value must match the ProductCode in the master catalog, or on <a href="#Products">Products</a> sheet.</td>
+						<td>Any number that is unique among all product codes in the master catalog. This value must match the ProductCode in the master catalog, or on <a href="#products">Products</a> sheet.</td>
 						<td>Yes</td>
 					  </tr>
 					  <tr>
@@ -1132,55 +1132,55 @@
 					  <tr>
 						<td>ProductName</td>
 						<td>The name of the product.</td>
-						<td>Any string. This value must match the ProductName in the master catalog, or on <a href="#Products">Products</a> sheet.</td>
+						<td>Any string. This value must match the ProductName in the master catalog, or on <a href="#products">Products</a> sheet.</td>
 						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>ISOCurrencyCode</td>
 						<td>The ISO three character currency code used to decide the currency in which to show the price of the product.</td>
-						<td>A three-character ISO currency code. For example, <code>USD</code>.<br><br>This value overrides the ISOCurrencyCode on the <a href="#Products">Products</a> sheet.</td>
+						<td>A three-character ISO currency code. For example, <code>USD</code>.<br><br>This value overrides the ISOCurrencyCode on the <a href="#products">Products</a> sheet.</td>
 						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>Price</td>
 						<td>The unit price for the product if no sale or discount is applied.</td>
-						<td>Any decimal value.<br><br>This value overrides the Price on the <a href="#Products">Products</a> sheet.</td>
+						<td>Any decimal value.<br><br>This value overrides the Price on the <a href="#products">Products</a> sheet.</td>
 						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>SalePrice</td>
 						<td>The sale price for the product. If set, this value overrides the Price.</td>
-						<td>Any decimal value.<br><br>This value overrides the SalePrice on the <a href="#Products">Products</a> sheet.</td>
+						<td>Any decimal value.<br><br>This value overrides the SalePrice on the <a href="#products">Products</a> sheet.</td>
 						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>Cost</td>
 						<td>The cost of the product to the merchant.</td>
-						<td>Any decimal value.<br><br>This value overrides the Cost on the <a href="#Products">Products</a> sheet.</td>
+						<td>Any decimal value.<br><br>This value overrides the Cost on the <a href="#products">Products</a> sheet.</td>
 						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>MSRP</td>
 						<td>The manufacturers suggested retail price for the product. </td>
-						<td>Any decimal value.<br><br>This value overrides the MSRP on the <a href="#Products">Products</a> sheet.</td>
+						<td>Any decimal value.<br><br>This value overrides the MSRP on the <a href="#products">Products</a> sheet.</td>
 						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>MAP</td>
 						<td>The MAP, or minimum advertised price for the product, as specified by the product supplier. If MAP pricing is in effect, this value overrides all other prices you specify for the product. However, you can still apply a discount to a product with MAP pricing.</td>
-						<td>Any decimal value.<br><br>This value overrides the MAP on the <a href="#Products">Products</a> sheet.</td>
+						<td>Any decimal value.<br><br>This value overrides the MAP on the <a href="#products">Products</a> sheet.</td>
 						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>MAPEffectiveStartDate</td>
 						<td>The effective start date for MAP pricing. Mozu ignores the MAP value if this date is in the future.</td>
-						<td>A date and time in UTC format. If this value is empty and the MAPEffectiveEndDate is set and has not yet passed, the MAP price applies.<br><br>This value overrides the MAPEffectiveStartDate on the <a href="#Products">Products</a> sheet.</td>
+						<td>A date and time in UTC format. If this value is empty and the MAPEffectiveEndDate is set and has not yet passed, the MAP price applies.<br><br>This value overrides the MAPEffectiveStartDate on the <a href="#products">Products</a> sheet.</td>
 						<td>No</td>
 					  </tr>
 					  <tr>
 						<td>MAPEffectiveEndDate</td>
 						<td>The effective end date for MAP pricing. Mozu ignores the MAP value if this date has passed.</td>
-						<td>A date and time in UTC format. If MAPEffectiveStartDate is specified and this value is empty, the MAP price applies indefinitely.<br><br>This value overrides the MAPEffectiveEndDate on the <a href="#Products">Products</a> sheet.</td>
+						<td>A date and time in UTC format. If MAPEffectiveStartDate is specified and this value is empty, the MAP price applies indefinitely.<br><br>This value overrides the MAPEffectiveEndDate on the <a href="#products">Products</a> sheet.</td>
 						<td>No</td>
 					  <tr>
 						<td>ProductShortDescription</td>
@@ -1228,8 +1228,9 @@
 					</table>
 					
 					<h3 id="productoptions">ProductOptions Sheet</h3>
-					<p>Corresponding REST API Resource: <a href="http://developer.mozu.com/content/api/APIResources/commerce/commerce.catalog/commerce.catalog.admin.products.htm" target="_blank">commerce/catalog/admin/products</a></p>
+					<p>Corresponding REST API Resource: <a href="http://developer.mozu.com/content/api/APIResources/commerce/catalog.admin/products.htm" target="_blank">commerce/catalog/admin/products</a></p>
 					<p>Required With: <a href="#products">Products</a>, <a href="#productcatalogs">ProductCatalogs</a>, <a href="#productextras">ProductExtras</a>, <a href="#productbundles">ProductBundles</a>, <a href="#productimages">ProductImages</a> </p>
+					<p>The sheet defines the options, such as different sizes or colors, that a customer can select for a product. Every product option creates a variation of the base product.</p>
 					<div class="panel panel-info">
 							<div class="panel-heading"><strong>Note:</strong> In addition to the columns described in the following table, the ProductOptions sheet includes columns for all the attributes you create that can be options on a product (IsOption is <code>Yes</code> on the <a href="#attributes">Attributes</a> sheet).</div>
 						</div>
@@ -1252,8 +1253,8 @@
 					  <tr>
 					  <tr>
 						<td>ProductCode</td>
-						<td>The unique identifier for the product. You use this code throughout Mozu to refer to the product.</td>
-						<td>Any number that is unique among all product codes in the master catalog. This value must match the ProductCode in the master catalog, or on the <a href="#Products">Products</a> sheet.</td>
+						<td>The unique identifier for the base product. You use this code throughout Mozu to refer to the product.</td>
+						<td>Any number that is unique among all product codes in the master catalog. This value must match the ProductCode in the master catalog, or on the <a href="#products">Products</a> sheet.</td>
 						<td>Yes</td>
 					  </tr>
 					  <tr>
@@ -1266,7 +1267,7 @@
 						<td>Enabled</td>
 						<td>Specifies whether the option is enabled for the product. If <code>No</code>, the option does not appear for customers to select. The default is <code>No</code></td>
 						<td>A Boolean value, specified as <code>Yes</code> or <code>No</code>.<br><br>
-							As a best practice, set this option to <code>No</code> only if a product option is permanently unavailable. Enable ManageStock on the <a href="#Products">Products</a> sheet to handle a temporary inventory shortage.</td>
+							As a best practice, set this option to <code>No</code> only if a product option is permanently unavailable. Enable ManageStock on the <a href="#products">Products</a> sheet to handle a temporary inventory shortage.</td>
 						<td>Yes</td>
 					  <tr>
 						<td>ExtraPrice</td>
@@ -1320,7 +1321,7 @@
 					</table>
 					
 					<h3 id="productextras">ProductExtras Sheet</h3>
-					<p>Corresponding REST API Resource: <a href="http://developer.mozu.com/content/api/APIResources/commerce/commerce.catalog/commerce.catalog.admin.products.htm" target="_blank">commerce/catalog/admin/products</a></p>
+					<p>Corresponding REST API Resource: <a href="http://developer.mozu.com/content/api/APIResources/commerce/catalog.admin/products.htm" target="_blank">commerce/catalog/admin/products</a></p>
 					<p>Required With: <a href="#products">Products</a>, <a href="#productcatalogs">ProductCatalogs</a>, <a href="#productoptions">ProductOptions</a>, <a href="#productbundles">ProductBundles</a>, <a href="#productimages">ProductImages</a> </p>
 					<p>This sheet defines the extras, such as monograms, warranties, and so on, that a customer can add to a product. Each product code can have multiple extras.</p>
 
@@ -1343,7 +1344,7 @@
 					  <tr>
 						<td>ProductCode</td>
 						<td>The unique identifier for the product. You use this code throughout Mozu to refer to the product.</td>
-						<td>Any number that is unique among all product codes in the master catalog. This value must match the ProductCode in the master catalog, or on the <a href="#Products">Products</a> sheet.</td>
+						<td>Any number that is unique among all product codes in the master catalog. This value must match the ProductCode in the master catalog, or on the <a href="#products">Products</a> sheet.</td>
 						<td>Yes</td>
 					  </tr>
 					  <tr>
@@ -1392,7 +1393,7 @@
 					</table>
 					
 					<h3 id="productbundles">ProductBundles Sheet</h3>
-					<p>Corresponding REST API Resource: <a href="http://developer.mozu.com/content/api/APIResources/commerce/commerce.catalog/commerce.catalog.admin.products.htm" target="_blank">commerce/catalog/admin/products</a></p>
+					<p>Corresponding REST API Resource: <a href="http://developer.mozu.com/content/api/APIResources/commerce/catalog.admin/products.htm" target="_blank">commerce/catalog/admin/products</a></p>
 					<p>Required With: <a href="#products">Products</a>, <a href="#productcatalogs">ProductCatalogs</a>, <a href="#productoptions">ProductOptions</a>, <a href="#productextras">ProductExtras</a>, <a href="#productimages">ProductImages</a> </p>
 					<p>This sheet defines products that are bundles, or collections of other products.</p>
 
@@ -1409,13 +1410,13 @@
 					 <tr>
 						<td>ProductCode</td>
 						<td>The unique identifier for the product bundle.<br><br>This is the code for the bundle itself, not for individual products in the bundle.</td>
-						<td>Any number that is unique among all product codes in the master catalog. This value must match the ProductCode in the master catalog, or on the <a href="#Products">Products</a> sheet.</td>
+						<td>Any number that is unique among all product codes in the master catalog. This value must match the ProductCode in the master catalog, or on the <a href="#products">Products</a> sheet.</td>
 						<td>Yes</td>
 					  </tr>
 					  <tr>
 						<td>Code</td>
 						<td>The unique identifier for a product within the bundle. If the bundle contains multiple products, each component product Code is specified on a separate row in this sheet.</td>
-						<td>Any number that is unique among all product codes in the master catalog. This value must match a ProductCode in the master catalog, or on the <a href="#Products">Products</a> sheet.</td>
+						<td>Any number that is unique among all product codes in the master catalog. This value must match a ProductCode in the master catalog, or on the <a href="#products">Products</a> sheet.</td>
 						<td>Yes</td>
 					  </tr>
 					  <tr>
@@ -1434,7 +1435,7 @@
 					</table>
 					
 					<h3 id="productimages">ProductImages Sheet</h3>
-					<p>Corresponding REST API Resource: <a href="http://developer.mozu.com/content/api/APIResources/commerce/commerce.catalog/commerce.catalog.storefront.products.htm" target="_blank">commerce/catalog/storefront/products</a></p>
+					<p>Corresponding REST API Resource: <a href="http://developer.mozu.com/content/api/APIResources/commerce/catalog.storefront/products.htm" target="_blank">commerce/catalog/storefront/products</a></p>
 					<p>Required With: <a href="#products">Products</a>, <a href="#productcatalogs">ProductCatalogs</a>, <a href="#productoptions">ProductOptions</a>, <a href="#productextras">ProductExtras</a>, <a href="#productbundles">ProductBundles</a></p>
 					<p>This sheet maps images and videos to product codes so you can use the media on the product pages of your storefront. A single product code can have multiple images and videos associated with it.</p> 
 					<p>The URL for each image or video file must be on a server accessible by Mozu. You can use the ImagePath column to upload files to your Mozu tenant. </p>
@@ -1452,7 +1453,7 @@
 					  <tr>
 						<td>ProductCode</td>
 						<td>The unique identifier for the product. You use this code throughout Mozu to refer to the product.</td>
-						<td>Any number that is unique among all product codes in the master catalog. This value must match the ProductCode in the master catalog, or on the <a href="#Products">Products</a> sheet.</td>
+						<td>Any number that is unique among all product codes in the master catalog. This value must match the ProductCode in the master catalog, or on the <a href="#products">Products</a> sheet.</td>
 						<td>Yes</td>
 					  </tr>
 					  <tr>
@@ -1508,7 +1509,7 @@
 					</table>
 					
 					<h3 id="locationinventory">LocationInventory Sheet</h3>
-					<p>Corresponding REST API Resource: <a href="http://developer.mozu.com/content/api/APIResources/commerce/commerce.catalog/commerce.catalog.admin.locationinventory.htm" target="_blank">commerce/catalog/admin/locationinventory</a></p>
+					<p>Corresponding REST API Resource: <a href="http://developer.mozu.com/content/api/APIResources/commerce/catalog.admin/locationinventory.htm" target="_blank">commerce/catalog/admin/locationinventory</a></p>
 					<p>Required With: NA</p>
 					<p>This sheet describes inventory levels on a per-location basis. Locations in Mozu can be either warehouses or brick and mortar businesses with stock on-hand. This sheet associates product codes and quantities with the locations.</p>
 						<div class="panel panel-info">
@@ -1533,7 +1534,7 @@
 					  <tr>
 						<td>ProductCode</td>
 						<td>The unique identifier for the product. You use this code throughout Mozu to refer to the product.</td>
-						<td>Any number that is unique among all product codes in the master catalog. This value must match the ProductCode in the master catalog, or on the <a href="#Products">Products</a> sheet. The product also must have ManageStock set to <code>Yes</code> on the Products sheet.</td>
+						<td>Any number that is unique among all product codes in the master catalog. This value must match the ProductCode in the master catalog, or on the <a href="#products">Products</a> sheet. The product also must have ManageStock set to <code>Yes</code> on the Products sheet.</td>
 						<td>Yes</td>
 					  </tr>
 					  <tr>
@@ -1570,11 +1571,11 @@
 					</table>
 					
 					<h3 id="discounts">Discounts Sheet</h3>
-					<p>Corresponding REST API Resource: <a href="http://developer.mozu.com/content/api/APIResources/commerce/commerce.catalog/commerce.catalog.admin.discounts.htm" target="_blank">commerce/catalog/admin/discounts</a></p>
+					<p>Corresponding REST API Resource: <a href="http://developer.mozu.com/content/api/APIResources/commerce/catalog.admin/discounts.htm" target="_blank">commerce/catalog/admin/discounts</a></p>
 					<p>Required With: NA</p>
 					<p>This sheet defines discounts that can apply to products, product categories, or orders. A discount can be a specified amount off the price, a percentage off the price, or free shipping. You also can create coupon codes that customers can use to redeem the discount.</p>
 					<div class="panel panel-info">
-							<div class="panel-heading"><strong>Tip:</strong> If you want to batch create or update coupon codes, contact your sales or professional services representative for information about the <a href="http://mozu.github.io/IntegrationDocuments/ImportExportApplication/Mozu_ImportExport_App.htm">Mozu Import-Export Application</a>.</div>
+							<div class="panel-heading"><strong>Tip:</strong> If you want to batch create or update coupon codes, contact your sales or professional services representative for information about the <a href="http://mozu.github.io/IntegrationDocuments/MozuImportExportApplication/Mozu-ImportExport-App.htm" target="_blank">Mozu Import-Export Application</a>.</div>
 						</div>
 					<table class="table table-hover">
 					<thead>
@@ -1751,7 +1752,7 @@
 					<p>If you have questions or concerns specific to your data, please contact your Mozu integration and implementation associates.</p>
 					
 					<h3 id="customeraccounts">CustomerAccounts Sheet</h3>
-					<p>Corresponding REST API Resource: <a href="http://developer.mozu.com/content/api/APIResources/commerce/commerce.customer/commerce.customer.accounts.htm" target="_blank">commerce/customer/accounts</a></p>
+					<p>Corresponding REST API Resource: <a href="http://developer.mozu.com/content/api/APIResources/commerce/customer/accounts.htm" target="_blank">commerce/customer/accounts</a></p>
 					<p>Required With: <a href="#customercontacts">CustomerContacts</a></p>
 					<p>This sheet defines customers account within Mozu. Customer accounts can be registered shopper accounts or guest accounts. Registered accounts are created through a registration event, typically completed by the customer. Guest accounts are created when a customer chooses not to register. Guest accounts still have account IDs and associated data necessary to fulfill orders.</p> 
 					<p>Depending on your installed apps, added options and entries, the columns in the template may differ.</p>
@@ -1786,7 +1787,7 @@
 					  <tr>
 						<td>Email</td>
 						<td>The email address associated with the account.</td>
-						<td>Any string. The email address must be unique across all registered customer accounts. A customer cannot create two separate registered accounts linked to the same email address. However, customers who check out as guests can use the same email address any number of times.</td>
+						<td>Any string. The email address should be unique across all registered customer accounts. A Mozu customer cannot create two separate registered accounts linked to the same email address. However, for import operations, you can use the same email address any number of times, provided it is associated with a unique AccountID each time. Also, customers who check out as guests can use the same email address any number of times.</td>
 						<td>No</td>
 					  </tr>
 					  <tr>
@@ -1890,6 +1891,8 @@
 					</table>
 					
 					<h3 id="customercontacts">CustomerContacts Sheet</h3>
+					<p>Corresponding REST API Resource: <a href="http://developer.mozu.com/content/api/APIResources/commerce/customer.accounts/contacts.htm" target="_blank">commerce/customer/accounts/contacts</a></p>
+					<p>Required With: <a href="#customeraccounts">CustomerAccounts</a></p>
 					<p>This sheet defines the contacts for customer accounts. Contacts include such information as telephone numbers, shipping and billing addresses, and so on. A single customer account can have multiple contacts associated with it.</p>
 					<table class="table table-hover">
 					<thead>
@@ -2056,7 +2059,7 @@
 					<p>If you have questions or concerns specific to your data, please contact your Mozu integration and implementation associates.</p>
 					
 					<h3 id="orders">Orders Sheet</h3>
-					<p>Corresponding REST API Resource: <a href="http://developer.mozu.com/content/api/APIResources/commerce/commerce.orders/commerce.orders.htm" target="_blank">commerce/orders</a></p>
+					<p>Corresponding REST API Resource: <a href="http://developer.mozu.com/content/api/APIResources/commerce/orders/orders.htm" target="_blank">commerce/orders</a></p>
 					<p>This sheet describes high-level details about orders, including who placed them, the current status, the sub-total, shipping status and location, and so on. The actual products included in an order are described on the <a href="#orderlineitems">Order Line Items</a> sheet.</p>
 					<table class="table table-hover">
 					<thead>
@@ -2342,7 +2345,7 @@
 				</table>
 
 <h3 id="orderlineitems">Order Line Items Sheet</h3>
-					<p>Corresponding REST API Resource: <a href="http://developer.mozu.com/content/api/APIResources/commerce/commerce.orders/commerce.orders.htm" target="_blank">commerce/orders</a></p>
+					<p>Corresponding REST API Resource: <a href="http://developer.mozu.com/content/api/APIResources/commerce/orders/orders.htm" target="_blank">commerce/orders</a></p>
 					<p>This sheet describes the line items or products included in each order, including the quantity requested, the subtotal, any discounts, and so on. If an order contains multiple items, each item is a new line in the sheet.</p>
 					<table class="table table-hover">
 					<thead>
