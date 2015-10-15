@@ -104,7 +104,7 @@
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav navbar-right">
 							<li><a href="versionhistory.html"><span>Version History</span></a></li>
-							<li><a href="//developer.mozu.com/learn/mozu-concepts"><span>Mozu Concepts</span></a></li>
+							<li><a href="http://developer.mozu.com/content/learn/Introduction.htm"><span>Mozu Dev Center</span></a></li>
                         </ul>
                     </div>
                 </div>
@@ -137,7 +137,12 @@
                         <li><a href="#use">Use the App</a>
                              <ul class="nav nav-stacked">
                              	<li><a href="#forcesync">Force Sync Orders</a></li>
+                             	<li><a href="#ki">Known Issues</a>
+                             		<ul class="nav nav-stacked">
                              	<li><a href="#returns">Returns and Refunds</a></li>
+                             	<li><a href="#creditcards">Credit Cards and Payment Capture</a></li>
+                             </ul>
+                             	</li>
                             </ul>
                         </li>
                     </ul>
@@ -351,10 +356,19 @@
 								<li>In the app configuration settings dialog, go to the <strong>Synchronization</strong> tab.</li>
 								<li>Click <strong>Import Orders</strong>. The status table updates to show the new job. If the job encounters any errors, you can click the <strong>Errors</strong> link to view a log describing the issues that occurred.</li> 
 								<li>Go to the <strong>Orders</strong> console in Mozu Admin to process the orders.</li></ol>
+						
 							
-							<h3 id="returns">Returns and Refunds</h3>
+                        </section>
+
+                        <section id="ki">
+                        	<h2>Known Issues and Intended Behaviors</h2>
+                        	<h3 id="returns">Returns and Refunds</h3>
 							<p>The ChannelAdvisor Application does not import returns and refunds on orders placed through ChannelAdvisor. You must process all returns and refunds through ChannelAdvisor and manually update your Mozu inventory and order information.</p>
 							<p>Alternatively, you can modify the ChannelAdvisor Application source code to import these orders. Note that due to the structure of the ChannelAdvisor SOAP API, doing so can impact the performance of the application when you import orders.</p>
+
+							<h3 id="creditcards">Credit Cards and Payment Capture</h3>
+							<p>Many third-party marketplaces, such as Amazon, handle all credit card processing for orders placed through their sites. Mozu is not able to receive the credit card information or capture payment for these purchases.</p> 
+							<p>When you import orders paid by credit card through a third-party marketplace, the ChannelAdvisor Application manually creates a payment in Mozu so that you still have record of the paid order.</p>
                         </section>
                     </div>
                 </div>
