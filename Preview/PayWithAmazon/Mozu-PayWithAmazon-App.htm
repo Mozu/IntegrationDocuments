@@ -152,7 +152,7 @@
 
 					<p>Mozu offers two options for acquiring the Pay with Amazon Integration:</p>
 					<ol>
-						<li>Purchase the Pay with Amazon Certified Code Action from Mozu. A Mozu sales or professional services representative will install the application on your tenant.</li>
+						<li>Install the Pay with Amazon Certified Code Action from Mozu. Contact your Mozu sales or professional services representative to install the application on your tenant.</li>
 						<li>Build the application from the Mozu-provided code on <a href="https://github.com/Mozu/PayWithAmazon" target="_blank">GitHub</a> and install it to Mozu Dev Center. This option requires that you have Arc.js enabled on your tenant. Contact your sales or professional services representative for more information about enabling Arc.js.</li>
 					</ol>
 
@@ -232,7 +232,7 @@
 <h3>Enable Negative Testing on Your Sandbox</h3>
 <ol>
 <li>In Mozu Admin, go to <strong>Settings</strong> > <strong>System Administration</strong> > <strong>Action Management</strong> to display the <a href="http://developer.mozu.com/content/arcjs/JSON.htm" target="_blank">Action Management JSON Editor</a>.</li>
-<li>Under <code>embedded.commerce.payments.action.performPaymentInteraction</code> action, add the configuration to enable Auth &amp; Capture decline testing:</li>
+<li>Under the <code>embedded.commerce.payments.action.performPaymentInteraction</code> action, add the following configuration to enable Auth &amp; Capture decline testing:</li>
 <pre class="prettyprint" xml:space="preserve">
 {
             "actionId": "embedded.commerce.payments.action.performPaymentInteraction",
@@ -240,7 +240,7 @@
                 {
                     "customFunctions": [
                         {
-                            "applicationKey": "<app key>",
+                            "applicationKey": "&lt;YOUR APPLICATION KEY&gt;",
                             "functionId": "embedded.commerce.payments.action.performPaymentInteraction",
                             "enabled": true,
                             "configuration" : { "payment" : {  "declineCapture": true, "declineAuth" : true } }
