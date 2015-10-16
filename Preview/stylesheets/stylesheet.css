@@ -236,6 +236,9 @@ table {
   text-align: left;
  }
 
+ table.borderless {border: 0px;
+ }
+
 th {
   font-family: 'Lucida Grande', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   padding: 10px;

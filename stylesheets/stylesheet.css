@@ -236,6 +236,10 @@ table {
   text-align: left;
  }
 
+table.borderless {
+  border: 0px;
+ }
+
 th {
   font-family: 'Lucida Grande', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   padding: 10px;
@@ -246,6 +250,10 @@ th {
 td {
   padding: 10px;
   border: 1px solid #373737;
+ }
+ 
+ td.borderless {
+  border: 0px;
  }
 
 form {
