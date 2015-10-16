@@ -232,7 +232,7 @@
 <h3>Enable Negative Testing on Your Sandbox</h3>
 <ol>
 <li>In Mozu Admin, go to <strong>Settings</strong> > <strong>System Administration</strong> > <strong>Action Management</strong> to display the <a href="http://developer.mozu.com/content/arcjs/JSON.htm" target="_blank">Action Management JSON Editor</a>.</li>
-<li>Under <code>configurations</code>, add the following to enable Auth &amp; Capture decline testing:</li>
+<li>Under <code>embedded.commerce.payments.action.performPaymentInteraction</code> action, add the configuration to enable Auth &amp; Capture decline testing:</li>
 <pre class="prettyprint" xml:space="preserve">
 {
             "actionId": "embedded.commerce.payments.action.performPaymentInteraction",
