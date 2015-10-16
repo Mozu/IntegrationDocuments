@@ -234,14 +234,21 @@
 <li>In Mozu Admin, go to <strong>Settings</strong> > <strong>System Administration</strong> > <strong>Action Management</strong> to display the <a href="http://developer.mozu.com/content/arcjs/JSON.htm" target="_blank">Action Management JSON Editor</a>.</li>
 <li>Under <code>configurations</code>, add the following to enable Auth &amp; Capture decline testing:</li>
 <pre class="prettyprint" xml:space="preserve">
-“configurations” : {
-	"configuration": {
-     		"payment": {
-        		"declineAuth": true,
-            		"declineCapture": true
-                	    }
-                  	  }                              
-		   }
+{
+            "actionId": "embedded.commerce.payments.action.performPaymentInteraction",
+            "contexts": [
+                {
+                    "customFunctions": [
+                        {
+                            "applicationKey": "<app key>",
+                            "functionId": "embedded.commerce.payments.action.performPaymentInteraction",
+                            "enabled": true,
+                            "configuration" : { "payment" : {  "declineCapture": true, "declineAuth" : true } }
+                        }
+                    ]
+                }
+            ]
+        }
 </pre>
 				</section>
 						</div>
