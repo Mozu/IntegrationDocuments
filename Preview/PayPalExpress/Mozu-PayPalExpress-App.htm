@@ -170,30 +170,26 @@
 						</div></li>
 						</ol>
 
-						<p>For more information on working with themes, including modifying, uploading, installing, and applying a theme to your site, refer to the <a href="http://developer.mozu.com/learn/theme-development/quickstart" target="_blank">Theme Development Quickstart</a>.</p>
+						<p>For more information on working with themes, including modifying, uploading, installing, and applying a theme to your site, refer to the <a href="http://developer.mozu.com/content/learn/themedev/quickstart/create-your-first-theme.htm" target="_blank">Theme Development Quickstart</a>.</p>
                         				
 				</section>
 				<section id="configapp">				
                         <h2>Configure the Application in Mozu Admin</h2>
-						<p>Now that your Pay with Amazon application is installed, go to your Mozu Admin tools to configure the integration.</p>
+						<p>After you the PayPal Express application is installed, you must configure your Payment Settings in Mozu Admin to connect Mozu with your PayPal account.</p>
 
 						<ol>
-							<li>Go to <strong>Settings</strong> &gt; <strong>Payment &amp; Checkout</strong>.</li>
-							<li>Check the <strong>PayByAmazon</strong> checkbox. Once checked, the various configuration fields appear.</li>
-							<li>Select the Amazon environment you wish to use. Note that this selection has nothing to do with Mozu production or sandbox environments; this option selects the Amazon environment.
+							<li>In Mozu Admin, go to <strong>Settings</strong> &gt; <strong>Payment &amp; Checkout</strong>.</li>
+							<li>Check the <strong>PayPalExpress2</strong> checkbox to display the PayPal configuration fields:
+								<img src="ppe-payment-settings.png" class="img-mozu"></li>
+							<li>Select the PayPal <strong>Environment</strong> you want to use. Select <strong>Sandbox</strong> if to use PayPal's sandbox environment for testing your PayPal Express integration. Select <strong>Production</strong> to use a working PayPal environment that processes payments.</li>
+							<li>Enter the <strong>User Name</strong> and <strong>Password</strong> for your PayPal merchant account.</li>
+							<li>Enter the <strong>Signature</strong>. You can get this information from PayPal:
 								<ul>
-									<li>Select <strong>Sandbox</strong> if you wish to use Amazon’s sandbox environment for testing your Pay with Amazon integration.</li>
-									<li>Select <strong>Production</strong> to use a working Amazon environment that processes payments.</li>
-								</ul>
-							</li>
-							<li>Obtain the below values from Amazon Seller Central (<a href="https://sellercentral.amazon.com/">https://sellercentral.amazon.com/</a>):
-								<ul>
-									<li>Seller ID</li>
-									<li>Client ID</li>
-									<li>Applicaton ID</li>
-									<li>AWS Access Key</li>
-									<li>AWS Secret</li>
-								</ul>
+									<li>Log in to paypal.com with your merchant account.</li>
+									<li>On the <strong>My Account</strong> tab, select <strong>Profile</strong> > <strong>My Selling Tools</strong>.</li>
+									<li>In the <strong>Selling online</strong> section, locate <strong>API access</strong> and click <strong>Update</strong>.</li>
+								</ul></li>
+								
 							</li>
 							<li>Select an AWS region.</li>
 							<li>Select an order processing method:
