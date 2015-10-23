@@ -153,7 +153,7 @@
 						</ul>
 				</section>
 				<section id="install">
-					<h2 >Install Kount Application by Mozu on Your Tenant</h2>
+					<h2 >Install the Kount Application by Mozu on Your Tenant</h2>
                         <p>After purchasing the Kount Application by Mozu, call your sales or professional services representative and request installation on your tenant. Mozu staff will install the app to your tenant, making it available for further configuration and usage in your storefront.</p>
                         
                         
@@ -170,21 +170,21 @@
                             <li>You must have the Kount Application by Mozu installed into your tenant.</li>
                             <li>You must have an active <a href="http://www.kount.com/" target="_blank">Kount</a> account.</li>
 							<li>You must obtain your merchant ID from your Kount account. This ID may be designated as Volusion (the ID number) when accessing your account.</li>
-							<li>You must obtain the Kount API key associated with your Kount account. This key provides the required authentication for Mozu to send and receive data from Kount.</li>
+							<li>You must obtain a Kount API key associated with your Kount account. This key provides the required authentication for Mozu to send and receive data from Kount, and must have both RIS and API permissions in Kount.</li>
                             <li>You must create and configure your fraud score and purchasing rules in Kount.</li>
 							<li>You must have access to modify and update your storefront theme.</li>
                         </ul>
 						<div id="configacct">
 						<h3 >Configure Kount Account Settings</h3></div>
                         <ol>
-                            <li>On the Mozu Admin top bar, select <b>Settings</b> &gt; <b>Applications</b>.</li>
-                            <li>Click <b>Kount</b>.</li>
-                            <li>Click the <b>Configuration</b> link to open configuration settings.</li>
-                            <li>Open the <b>Account Settings</b> tab.<br><img src="kount-acctsettings.png" class="img-mozu"/></li>
-							<li>Enter your Kount <b>Merchant ID</b>.</li>
-							<li>Enter your Kount <b>API key</b>.</li>
-							<li>(Optional) Enable <b>Enable Kount validation threshold</b> to set a price threshold below which orders are not screened by Kount. For example, you may want Kount to only screen orders over $10 for fraud.</li>
-							<li>Click <b>Save</b>. This step connects Mozu to your Kount account.</li>
+                            <li>On the Mozu Admin top bar, select <strong>Settings</strong> &gt; <strong>Applications</strong>.</li>
+                            <li>Click <strong>Kount</strong>.</li>
+                            <li>Click the <strong>Configuration</strong> link to open configuration settings.</li>
+                            <li>Open the <strong>Account Settings</strong> tab.<br><img src="kount-acctsettings.png" class="img-mozu"/></li>
+							<li>Enter your Kount <strong>Merchant ID</strong>.</li>
+							<li>Enter your Kount <strong>API Key</strong>. To find or generate this key in Kount, navigate to <strong>Admin</strong> > <strong>API Keys</strong>: <img src="kount-admin-apikeys.png" class="img-mozu"> The key you use must have both <strong>RIS</strong> and <strong>API</strong> permissions. You can configure key permissions when you create the key: <img src="kount-create-apikey.png" class="img-mozu"></li> 
+							<li>(Optional) Enable <strong>Enable Kount validation threshold</strong> to set a price threshold below which orders are not screened by Kount. For example, you may want Kount to only screen orders over $10 for fraud.</li>
+							<li>Click <strong>Save</strong>. This step connects Mozu to your Kount account.</li>
 							<li>Copy the URL provided on the Account Settings tab, for example: <i>https://sample.site.mozu.com/KountExt</i>. This URL directs the Kount widget to send order data to the Kount Web Console (where data collection occurs). Save this link for the next step of configuration.</li>
 							
                         </ol>
@@ -197,9 +197,9 @@
                     <h2 >Enable the Kount Application by Mozu</h2>
 					<p>After configuration, enable the Kount Application in Mozu to apply its functionality to your tenant:</p>
                         <ol>
-                            <li>On the Mozu Admin top bar, select <b>Settings</b> &gt; <b>Applications</b>.</li>
-                            <li>Click <b>Kount</b>.</li>
-                            <li>Click <b>Enable App</b> on the Kount page.</li>
+                            <li>On the Mozu Admin top bar, select <strong>Settings</strong> &gt; <strong>Applications</strong>.</li>
+                            <li>Click <strong>Kount</strong>.</li>
+                            <li>Click <strong>Enable App</strong> on the Kount page.</li>
                         </ol>
 				</section>
 				<section id="use">
@@ -212,13 +212,13 @@
 					<p>While we highly recommend performing all order review and reporting directly through Mozu, you can use Kount services and sync any actions back into Mozu. Kount provides fraud score reviewing, management, and in-depth reports for purchases made through Mozu storefronts. You can review and approve the order within Kount, add history content, and update addresses. ENS syncs this data back into Mozu within a minute of entered changes.</p>
 					<p>Specific data changed within Kount syncs to Mozu including edits to the content, history, shipping and billing addresses, and state changes such as from review (R) to approve (A). If you change the state of an order in Kount, additional processes enact in Mozu when synced as if you had made that change directly in Mozu. </p>
                         <ol>
-                            <li>In your Kount account site, select Fraud Control tab and select <b>Websites</b>.</br>
+                            <li>In your Kount account site, select Fraud Control tab and select <strong>Websites</strong>.</br>
 							<img src="kount-admin1.png" class="img-mozu"/></li>
-                            <li>You will have a “DEFAULT” website available in the list. You can edit this website using the gear icon. Select <b>Edit</b>. </br>
+                            <li>You will have a “DEFAULT” website available in the list. You can edit this website using the gear icon. Select <strong>Edit</strong>. </br>
 							<img src="kount-admin2.png" class="img-mozu"/></li></li>
-                            <li>Select Website Enabled and ENS Enabled as <b>Yes</b>.</li>
+                            <li>Select Website Enabled and ENS Enabled as <strong>Yes</strong>.</li>
 							<li>For the Merchant ENS URL, enter <font face="Courier New">https://integrations2-{su}.mozu.com/Kount2/ens/{tenantId}</font>, where <font face="Courier New">{su}</font> is the scale unit (sb, tp1, tp2, tp3, tp4, etc.). A Mozu support representative can help you identify the scale unit and the correct URL to use for your sandbox and production needs. An example of a Merchant ENS URL is <font face="Courier New">https://integrations2-tp1.mozu.com/Kount2/ens/12345</font>.</li>
-							<li>Click <b>Update Website</b>.</li>
+							<li>Click <strong>Update Website</strong>.</li>
                         </ol>
 				</section>
 				
