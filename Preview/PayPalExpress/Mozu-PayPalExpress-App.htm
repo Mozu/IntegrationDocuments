@@ -132,8 +132,8 @@
 				</section>
 
 		<ul class="nav nav-tabs">
-                	<li class="active"><a data-toggle="tab" href="#config">Configuration Guide</a></li>
-                	<li><a data-toggle="tab" href="#tech">Technical Specs &amp; Tests</a></li>
+                	<li class="active"><a data-toggle="tab" href="#config"><strong>Configuration Guide</strong></a></li>
+                	<li class="inactive"><a data-toggle="tab" href="#tech"><strong>Technical Specs &amp; Tests</strong></a></li>
                 </ul>
 
                 <div class="tab-content">
@@ -271,36 +271,8 @@
 				<p>The PayPal Express Integration for Mozu leverages the Arc.js framework to communicate with PayPal using the <a href="https://developer.paypal.com/docs/classic/api/NVPAPIOverview/" target="_blank">PayPal Name-Value Pair API</a>. You can leverage features from both Mozu and PayPal to test the functionality of the app before publishing it to your live site(s).
 				</p>
 				
-				<h2>Payment Code Actions</h2>
-
-				<p>The following are the actions for which <code>embedded.commerce.payments.action.performPaymentInteraction</code> is invoked:</p>
-				<ul>
-					<li>CreatePayment</li>
-					<li>AuthorizePayment</li>
-					<li>CapturePayment</li>
-					<li>CreditPayment</li>
-					<li>DeclinePayment</li>
-					<li>Rollback</li>
-					<li>VoidPayment</li>
-				</ul>
-				<p>After the payment interaction has been processed, one of the following states can be passed back to the system:</p>
-
-				<ul>
-					<li>Authorized</li>
-					<li>Captured</li>
-					<li>Declined</li>
-					<li>Failed (set this state to terminate payment flow)</li>
-					<li>Voided</li>
-					<li>Credited</li>
-					<li>New</li>
-					<li>RolledBack</li>
-				</ul>
-
-				<h3>Enable Detailed Logging on Arc.js Actions</h3>
-				<ol>
-					<li>In Mozu Admin, go to <strong>Settings</strong> > <strong>System Administration</strong> > <strong>Action Management</strong> to display the <a href="http://developer.mozu.com/content/arcjs/JSON.htm" target="_blank">Action Management JSON Editor</a>.</li>
-					<li>Change <code>defaultLogLevel</code> to <code>"info"</code>.</li>
-				</ol>
+				
+				
 
 				<h2>PayPal Operations</h2>
 
@@ -352,7 +324,11 @@
 				}]
 				</pre>
 
-
+				<h3>Enable Detailed Logging on Arc.js Actions</h3>
+				<ol>
+					<li>In Mozu Admin, go to <strong>Settings</strong> > <strong>System Administration</strong> > <strong>Action Management</strong> to display the <a href="http://developer.mozu.com/content/arcjs/JSON.htm" target="_blank">Action Management JSON Editor</a>.</li>
+					<li>Change <code>defaultLogLevel</code> to <code>"info"</code>.</li>
+				</ol>
 				
 			</section>
 		</div>
