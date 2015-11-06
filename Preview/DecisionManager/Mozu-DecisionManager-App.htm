@@ -313,14 +313,13 @@
                         </section>
                         <section id="use">
 
-                        	 For example, if you set an order threshold of $80, and an order of $150 is charged as $90 via credit card and $60 via PayPal Express, only the $90 credit card payment is sent to Decision Manager for screening. However, if you encounter the same scenario
-
 						<h2>Use the App</h2>
 						<p>Once you have installed, configured, and enabled the Mozu CyberSource Decision Manager Application, the app automatically begins sending Mozu orders to Decision Manager for fraud detection. The amount of work you must do to process orders depends on your app configuration. For example, in the most streamlined scenario (you enabled both an <strong>Order Synch Frequency</strong> and <strong>Cancel Order When Rejected in DM</strong>), you only have to process orders in Decision Manager.</p>
                             
-  
+  							<p class="panel-tip"><strong>Tip:</strong> Refer to the <a href="#updateorder">Application Logic</a> section at the end of this document for a diagram of the order status change process.</p>
                             <p>When a Mozu order is sent to Decision Manager, the status of the order in Mozu changes to <span style="font-family: Courier New"><strong>Pending Review</strong></span>. Decision Manager screens the order and attaches one of the following validation results: accept, review, or reject. If the validation result is review, further action is required in Decision Manager to either accept or reject the order.</p>
                             
+
                             <h2 id="processordersdm">Process Orders in Decision Manager</h2>
 
                             <p>In Decision Manager, Mozu orders appear with their Mozu order number as the Merchant Reference Number. This makes it easy for users to locate the order in Decision Manager:</p>
@@ -334,9 +333,12 @@
 							<h2 id="processordersmozu">Process Orders in Mozu</h2>
 
 							 <h3 id="autoorderprocess">Automatic Order Processing</h3>
-							<p>If you set an <strong>Order Synch Frequency</strong> when you <a href="#configapp">configured the app</a>, the status of orders that are <span style="font-family: Courier New"><strong>Pending Review</strong></span> in Mozu is automatically updated the first time orders sync after a state change in Decision Manager. If you <em>did not</em> set up order synching, you must <a href="#manualorderprocess">manually process the order in Mozu</a> to change its status.</p>
+							<p>All Mozu orders are set to <span style="font-family: Courier New"><strong>Pending Review</strong></span> when they are sent to Decision Manager. If you <a href="#orderconfig">configured order synching</a>, the Decision Manager App automatically updates the order status after a Decision Manager result is received.</p>
+							<p>Additionally, if the order was manually reviewed in Decision Manager, the reviewer name and comments from Decision Manager appear in the Orders module in Mozu Admin, on the <strong>Order Details</strong> tab:</p>
+                           		<img src="dm-reviewer-comments.png" class="img-mozu">
+							<p>If you <em>did not</em> set up order synching, you must <a href="#manualorderprocess">manually process the order in Mozu</a> to change its status.</p>
 							<p>The basic status mapping for auto updates is as follows:</p>
-                            	<table class="table table-hover">
+                            	<table class="table table-bordered" style="max-width:60%;">
                             		<thead>
                             			<tr>
                             			<th>Decision Manager Validation Result</th>
@@ -358,24 +360,29 @@
                             		</tr>
                             		</tbody>
                             	</table>
-                            	<p id="autocancel"><sup>1</sup> If you enabled <strong>Cancel Order When Rejected in DM</strong> in the app Configuration settings, an order that is rejected in Decision Manager is automatically moved to Cancelled in Mozu. If you <em>did not</em> enable <strong>Cancel Order When Rejected in DM</strong>, an order that is rejected in Decision Manager remains in Pending Review in Mozu until you manually change the order status in Mozu.</p>
-                            	<p class="panel-note"><strong>Note:</strong> These status mappings apply regardless of whether the state change in Decision Manager is triggered manually by a fraud reviewer or automatically by a rule.</p>
+                            	<p id="autocancel" style="font-size:90%;"><sup>1</sup> If you enabled <strong>Cancel Order When Rejected in DM</strong> in the app Configuration settings, an order that is rejected in Decision Manager is automatically moved to Cancelled in Mozu. If you <em>did not</em> enable <strong>Cancel Order When Rejected in DM</strong>, an order that is rejected in Decision Manager remains in Pending Review in Mozu until you manually change the order status in Mozu.</p>
+                            	<p>These status mappings apply regardless of whether the state change in Decision Manager is triggered manually by a fraud reviewer or automatically by a rule.</p>
+                           		<p class="panel-tip"><strong>Tip:</strong> Refer to the <a href="#updateorder">Application Logic</a> section at the end of this document for a diagram how order status is mapped from Decision Manager to Mozu.</p>
 
-                           
 							<h3 id="manualorderprocess">Manual Order Processing</h3>
 							<p>If you <em>did not</em> enable order synching, all orders sent to Decision Manager remain in <span style="font-family: Courier New"><strong>Pending Review</strong></span> until you manually process them in Mozu Admin:</p>
 							<ol>
 							<li>In Mozu Admin, open the <strong>Orders</strong> module.</li>
 							<li>Locate the order and click the row to open the Orders editor.</li>
-							<li>Under <strong>Attributes</strong>, use the <strong>Decision Manager Fraud Results</strong> to review the reasons the order is pending review.
+							<li>On the <strong>Order Details</strong> tab, locate <strong>Attributes</strong>.</li>
+							<li>Use the <strong>Decision Manager Fraud Results</strong> to review the reasons the order is pending review.
 							
 							<br><img src="dmresults.png" class="img-mozu">
 								<ol>
 								<li>Note whether Decision Manager accepted, rejected, or marked the order for further review.</li>
-								<li>Consider fraud risk information such as the fraud score result (<strong>afsResult</strong>), risk factor codes (<strong>afsFactorCode</strong>), and reason code (<strong>ReasonCode</strong>). For help interpreting all the values listed in the Decision Manager results, refer to the <em>Decision Manager Developer Guide: Using the Simple Order API</em> available through the CyberSource Business Center.<p class="note"><strong>Example:</strong> In the preceding screenshot, you can determine that Decision Manager rejected the order due to a fraud score result that may be above your ignore threshold based on risk factor codes that include phone inconsistencies and high account usage.</p></li>
+								<li>Consider fraud risk information such as the fraud score result (<strong>afsResult</strong>), risk factor codes (<strong>afsFactorCode</strong>), and reason code (<strong>ReasonCode</strong>). For example, in the preceding screenshot, you can determine that Decision Manager rejected the order due to a fraud score result that may be above your ignore threshold based on risk factor codes that include phone inconsistencies and high account usage.
+								<br><span class="panel-note"><strong>Tip:</strong> For help interpreting all the values listed in the Decision Manager results, refer to the <em>Decision Manager Developer Guide: Using the Simple Order API</em> available through the CyberSource Business Center.</span></li>
 								</ol>
+
 							</li>
 							
+
+							</li>
 							<li>If you think the order is fraudulent, click <strong>Cancel Order</strong>. Otherwise, click <strong>Accept Order</strong>.</li>
 							</ol>
                             
