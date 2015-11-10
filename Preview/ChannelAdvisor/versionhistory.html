@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+    <head><title>Version History</title>
+        <meta name="author" content="Mozu" />
+        <meta name="description" content="App version history for ChannelAdvisor Application by Mozu." />
+        <meta name="keywords" content="Mozu, ChannelAdvisor, ChannelAdvisor Integration, ChannelAdvisor Connector, ChannelAdvisor App" />
+		<link rel="shortcut icon" href="http://www.mozu.com/favicon.ico" />
+		
+		<!-- Required for Scrollspy -->
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/scrollspy.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/affix.js"></script>
+		<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+		
+		<!-- Mozu CSS developed by Mozu Docs -->
+		<link href="mozu-bootswatch.css" rel="stylesheet" type="text/css" />	
+		
+		<!-- Scrollspy active link script -->
+		<script>
+		$( document ).ready(function() {
+		$('body').scrollspy({
+			target: '.bs-docs-sidebar',
+			offset: 20
+		});
+		});        
+		</script>
+		
+		<!-- Anchor Ease Script -->
+		<script>
+		 $(function() {
+			  $('a[href*=#]:not([href=#])').click(function() {
+				if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') 
+			&& location.hostname == this.hostname) {
+
+				  var target = $(this.hash);
+				  target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+				  if (target.length) {
+					$('html,body').animate({
+					  scrollTop: target.offset().top - 75 //offsets for fixed header
+					}, 1000);
+					return false;
+				  }
+				}
+			  });
+			  //Executed on page load with URL containing an anchor tag.
+			  if($(location.href.split("#")[1])) {
+				  var target = $('#'+location.href.split("#")[1]);
+				  if (target.length) {
+					$('html,body').animate({
+					  scrollTop: target.offset().top - 75 //offset height of header here too.
+					}, 1000);
+					return false;
+				  }
+				}
+		});
+		</script>
+		
+		<!-- Affix Javascript -->
+		
+		<script>$(function(){
+ 
+			var stickyElement = '.bs-docs-sidebar', 
+			bottomElement = '.footer'; 
+			
+			if($( stickyElement ).length){
+			$( stickyElement ).each(function(){
+		   
+			var fromTop = $( this ).offset().top,
+		   
+			fromBottom = $( document ).height()-($( this ).offset().top + $( this ).outerHeight()),
+			
+			stopOn = $( document ).height()-( $( bottomElement ).offset().top)+($( this ).outerHeight() - $( this ).height());
+			
+			if( (fromBottom-stopOn) > 200 ){
+			
+			$( this ).css('width', $( this ).width()).css('top', 0).css('position', '');
+			
+			$( this ).affix({
+			offset: {
+			
+			top: fromTop,
+			
+			bottom: stopOn
+			}
+			
+			}).on('affix.bs.affix', function(){ $( this ).css('top', 0).css('position', ''); });
+			}
+			
+			$( window ).trigger('scroll');
+			});
+			}
+		});
+		</script>
+	</head>
+    <body>
+	<div id="main">
+	<div class="container">
+		<!-- Top Nav - Mozu -->
+			<nav class="navbar navbar-default navbar-fixed-top">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                        </button> <a href="#"><img src="logo-m-red-medium.png" style="margin-top:3px;"/></a></div>
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav navbar-right">
+						<li><a href="Mozu-ChannelAdvisor-App.htm"><span>App Documentation</span></a></li>
+							<li><a href="http://developer.mozu.com/content/learn/Introduction.htm"><span>Mozu Dev Center</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+			
+		<!--Side Navigation TOC -->
+		<div class="row">
+		<div class="landing-title">
+			<h1>ChannelAdvisor Application by Mozu Version History</h1>	
+		</div>
+			<div class="col-md-3" >
+				<nav class="bs-docs-sidebar" >
+					<ul class="nav nav-stacked" >
+						<div class="side-heading">Table of Contents</div>
+							<li><a href="#Oct2015">October 2015</a></li>
+							<li><a href="#Jan2015">January 2015</a></li>
+					</ul>
+				</nav>
+			</div>
+                    
+            <div class="col-md-9 content" >
+                <!-- Documentation content -->
+				
+				<section id="Oct2015">
+					<h2>October, 2015</h2>
+					<p>Thanks for using the ChannelAdvisor Application by Mozu! Here's what new in this version:</p>
+					<ul>
+								<li>The application is now provided free of charge on GitHub. Clone the <a href="https://github.com/Mozu/ChannelAdvisor" target="_blank">Mozu/ChannelAdvisor</a> repository and use the provided gradle script to build the application.
+									<span class="panel-note"><strong>Note:</strong> Contact <a href="mailto:support@mozu.com">Mozu Support</a> if you cannot access the Mozu/ChannelAdvisor repository on GitHub.</span>
+								</li>
+								<li>The new <a href="Mozu-ChannelAdvisor-App.htm">ChannelAdivsor Application by Mozu Configuration Guide</a> is now available to guide you through installing, enabling, configuring, and using the application.</li>
+					</ul>
+				</section>
+
+				<section id="Jan2015">
+					<h2>January, 2015</h2>
+					<p>Initial release of the ChannelAdvisor Application by Mozu! This application syncs your Mozu products, orders, and customers with any number of third-party marketplaces to optimize sell-through and customer reach. It enables you to:</p>
+					<ul>
+						<li>Map sites on your Mozu tenant to one or many ChannelAdvisor marketplaces.</li>
+						<li>Map one or many Mozu locations to your ChannelAdvisor Distribution Center to manage inventory across platforms.</li>
+						<li>Automatically send the following data to ChannelAdvisor whenever changes are made in Mozu:
+							<ul>
+								<li>Product creates, updates, or deletes</li>
+								<li>Inventory changes</li>
+								<li>Order status changes</li>
+							</ul>
+						</li>
+						<li>Schedule regular order imports from ChannelAdvisor to ensure timely fulfillment.</li>
+					</ul>
+				</section>
+				
+						</div>
+                    </div>
+                </div>
+           </div>
+		</div>
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="footer__logo">
+                            <a href="http://www.mozu.com" target="_blank"><img src="http://www.mozu.com/sites/all/themes/mozu_aurora/logo.png" style="padding-top:7px;"/></a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 text-center">
+                        
+                    </div>
+                    <div class="col-md-3">
+                        <p class="pull-right footer__icons" style="padding-right:40px;"><a href="http://www.mozu.com/contact"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-comments-o"></i></button></a><a href="http://www.mozu.com/contact"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-copyright"></i></button></a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+		
+	<!-- Back to top -->
+	<div class="scroll-top-wrapper ">
+    <span class="scroll-top-inner">
+        <i class="fa fa-2x fa-arrow-circle-up"></i>
+    </span>
+	</div>
+	<!-- Back to top - show hide -->
+	<script>
+ 
+	$(function(){
+	 
+		$(document).on( 'scroll', function(){
+	 
+			if ($(window).scrollTop() > 100) {
+				$('.scroll-top-wrapper').addClass('show');
+			} else {
+				$('.scroll-top-wrapper').removeClass('show');
+			}
+		});
+	});
+	</script>
+	<!-- Back to top - to top -->
+	<script>
+ 
+	$(function(){
+	 
+		$(document).on( 'scroll', function(){
+	 
+			if ($(window).scrollTop() > 100) {
+				$('.scroll-top-wrapper').addClass('show');
+			} else {
+				$('.scroll-top-wrapper').removeClass('show');
+			}
+		});
+	 
+		$('.scroll-top-wrapper').on('click', scrollToTop);
+	});
+	 
+	function scrollToTop() {
+		verticalOffset = typeof(verticalOffset) != 'undefined' ? verticalOffset : 0;
+		element = $('body');
+		offset = element.offset();
+		offsetTop = offset.top;
+		$('html, body').animate({scrollTop: offsetTop}, 500, 'linear');
+	}
+	</script>
+    </body>
+</html>
