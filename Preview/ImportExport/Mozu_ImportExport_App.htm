@@ -226,9 +226,7 @@
 						<h2 id="useapp">Use the App</h2>
 					<p>The Mozu Import/Export Tool uses specifically formatted <a href="#templatefiles">template files</a> to organize your Mozu data. You can download sample templates from the Import/Export Tool, or you can export existing data to get a properly formatted file.</p>
 					<p>Every time you export data, the templates update to include new data you have added since the previous export. They also display new columns for any new custom attributes you have added. When you edit a file and re-import it, changes to existing data overwrite the old data in Mozu and new data is added.</p>
-<div class="panel panel-info">
-							<div class="panel-heading"><strong>Note:</strong> You do not have to update all your Mozu data every time you re-import. Removing rows that reference items you do not want to edit both protects your existing data and expedites the import operation.<br><br>Keep in mind that changes to global data such as attributes affects every item that references the data, even if the item is not explicitly included in the import.</div>
-						</div>
+					<p class="panel-note"><strong>Note:</strong> You do not have to update all your Mozu data every time you re-import. Removing rows that reference items you do not want to edit both protects your existing data and expedites the import operation.<br><br>Keep in mind that changes to global data such as attributes affects every item that references the data, even if the item is not explicitly included in the import.</p>
 
 						 <p>This process provides a seamless cycle for batch processing multiple entries, so you can break up your data import or update into smaller, more manageable jobs.</p>
 										<p><img src="export-import-roadmap1.png" class="img-mozu" />
@@ -258,9 +256,7 @@
 						<li>Orders*</li>
 						<li>Products</li>
 					</ol>
-					<div class="panel panel-info">
-						<div class="panel-heading"><strong>Note:</strong> Importing orders is a complex process and must be done via the Mozu API. Mozu strongly recommends contacting your professional services representative if you want to import orders from a previous eCommerce solution to Mozu.</div>
-					</div>
+					<p class="panel-note"><strong>Note:</strong> Importing orders is a complex process and must be done via the Mozu API. Mozu strongly recommends contacting your professional services representative if you want to import orders from a previous eCommerce solution to Mozu.</p>
 					
 
 					<h2 id="launchtool">Launch the Import/Export Tool</h2>
@@ -277,9 +273,7 @@
                      <section id="exportexcel">
 					<h2>Export Data</h2>
 					<p>Once you have <a href="#preparetenant">prepared your tenant</a>, you are ready to export data from Mozu. Even if you have not added real data yet, exporting is the recommended way to get the template files. Performing an export ensures that you are aware of all existing data, and that all your data attributes are reflected in the templates. </p>
-						<div class="panel panel-info">
-							<div class="panel-heading"><strong>Tip:</strong> You also can use exports as a form of data backup. Note that importing back-up data that matches existing Mozu data <em>will</em> overwrite the existing data.</div>
-						</div>
+						<p class="panel-tip"><strong>Tip:</strong> You also can use exports as a form of data backup. Note that importing back-up data that matches existing Mozu data <em>will</em> overwrite the existing data.</p>
 					<ol>
 					<li><a href="#launchtool">Launch</a> the Mozu Import/Export Tool.</li>
 					<li>Select the <strong>Export</strong> tab.</li>
@@ -291,9 +285,7 @@
 					<li>(Optional) Select the <strong>Jobs</strong> tab to view all scheduled jobs. You can schedule up to 5 jobs at a time.</li>
 					<li>When the export is complete, go to the <strong>Downloads</strong> tab to <a href="#downloadfiles">download the file</a>.</li>
 					</ol>
-					<div class="panel panel-info">
-							<div class="panel-heading"><strong>Tip:</strong> Refer to the <a href="#templatefiles">Template Files</a> section of this document for help understanding the data in your export files.</div>
-						</div>
+					<p class="panel-tip"><strong>Tip:</strong> Refer to the <a href="#templatefiles">Template Files</a> section of this document for help understanding the data in your export files.</p>
 					<p>When the job is complete (or if it fails), you can go to the <strong>Job Logs</strong> tab to <a href="#viewlogs">view and download information</a> about the job. </p>
 				</section>
                        
@@ -301,9 +293,7 @@
 					<h2>Import Data</h2>
 					<p>After adding and editing data in the <a href="#templatefiles">template files</a>, you can import the data back into Mozu.</p>
 				
-						<div class="panel panel-info">
-							<div class="panel-heading"><strong>Note:</strong> Importing data that matches existing data in Mozu <strong>overwrites the existing data</strong>. This is intended behavior, and necessary for batch updating.<br><br>Be sure that every column in a template file contains valid data before you import the file. If you do not want to update the data in a column that is not <a href="#required">required</a>, remove that column before importing the file. Importing blank columns will overwrite any data for the corresponding properties with NULL values.</div>
-						</div>
+						<p class="panel-note"><strong>Note:</strong> Importing data that matches existing data in Mozu <strong>overwrites the existing data</strong>. This is intended behavior, and necessary for batch updating.<br><br>Be sure that every column in a template file contains valid data before you import the file. If you do not want to update the data in a column that is not <a href="#required">required</a>, remove that column before importing the file. Importing blank columns will overwrite any data for the corresponding properties with NULL values.</p>
 					<ol>
 					<li><a href="#launchtool">Launch</a> the Mozu Import/Export Tool.</li>
 					<li>Select the <strong>Import</strong> tab.</li>
@@ -322,9 +312,7 @@
 					<section id="downloadfiles">
 					<h2>Downloading Files</h2>
 					<p>The <strong>Downloads</strong> tab lists all the files you have imported or exported in the past 3 days. You can click the <strong>Download</strong> link in the <strong>Action</strong> column to download a copy of a file.</p>
-					<div class="panel panel-info">
-							<div class="panel-heading"><strong>Note:</strong> Files older than 3 days are deleted for storage reasons. Be sure to download any files you want to keep.</div>
-						</div>
+					<p class="panel-note"><strong>Note:</strong> Files older than 3 days are deleted for storage reasons. Be sure to download any files you want to keep.</p>
 					<img src="downloads.png" class="img-mozu"/>
 					<p class="text-info"><i>The Downloads tab lists both imported and exported files.</i></p>
 				</section>
@@ -377,9 +365,7 @@
 							<li><a href="#orderstemplate">Orders</a></li>
 						</ul>
 						<p>You can export all three of these data sets, but you can only import Products and Contacts.</p> 
-						<div class="panel panel-info">
-							<div class="panel-heading"><strong>Note:</strong> Importing orders is a complex process and must be done via the Mozu API. Mozu strongly recommends contacting your professional services representative if you want to import orders from a previous eCommerce solution to Mozu.</div>
-						</div>
+						<p class="panel-note"><strong>Note:</strong> Importing orders is a complex process and must be done via the Mozu API. Mozu strongly recommends contacting your professional services representative if you want to import orders from a previous eCommerce solution to Mozu.</p>
 						
 						<p>The Import/Export template files are simply Excel files with columns that map to properties and attributes within Mozu. You can map every column in a template file to a member of the Mozu API. In most cases, you can also find a corresponding field in Mozu Admin. This is why it is useful to have a good understanding of your catalog architecture (and how that architecture appears in Mozu Admin) before trying to work with these files.</p>
 <p><img src="excel-template-contacts.png" class="img-mozu"/></p>
@@ -395,14 +381,10 @@
 					<h2>Products Template</h2>
 					<p>The Products template is the largest of the import/export template files, and is likely the one you will use the most. Together, the sheets of the Products template represent your entire catalog structure for all the sites on your tenant. You can use this template to add or update master catalogs, sub-catalogs, product types, product attributes and options, images, inventory, and discounts. If you are preparing your initial data import for a new Mozu tenant, import contacts <em>before</em> you import products.</p>
 					<p>As you work with this file, you will enter information about a single product across multiple sheets. Mozu uses a combination of IDs, codes, names, and catalog information to make the proper data connections. For example, most sheets require a ProductCode to bind the data the sheet contains to the correct product.</p>
-					<div class="panel panel-info">
-							<div class="panel-heading"><strong>Tip:</strong> You do not have to enter all data for every sheet in the template every time you import data. However, some sheets do have dependencies on others within the template. Required pairings are noted for each sheet.</div>
-						</div>
+					<p class="panel-tip"><strong>Tip:</strong> You do not have to enter all data for every sheet in the template every time you import data. However, some sheets do have dependencies on others within the template. Required pairings are noted for each sheet.</p>
 					<p>Each of the following sections describes a sheet in the Products template. For each sheet, we define each column, describe valid values for the column, and indicate whether it is required or optional. The sheets in the file appear in the order in which you create product data in Mozu. First you create your attributes, then you create your product types, and so on. For additional context about the process of building out a catalog, log in to Mozu Admin and refer to the <a href="https://www.mozu.com/docs/admin/help/Catalog/Catalogs_Overview.htm">Catalog Overview</a> in the Admin Help.</p>
 					
-					<div class="panel panel-info" id="required">
-							<div class="panel-heading"><strong>Note:</strong> In the following tables, a <strong>Required</strong> value of <strong>No</strong> indicates the column is not required for a successful import operation. Some values are not required for an import, but <em>are</em> required Mozu data. For example, you do not have to specify the InputType of an attribute every time you modify the attribute, but all attributes must have an InputType to be valid in Mozu.</div>
-							</div>
+					<p class="panel-note" id="required"><strong>Note:</strong> In the following tables, a <strong>Required</strong> value of <strong>No</strong> indicates the column is not required for a successful import operation. Some values are not required for an import, but <em>are</em> required Mozu data. For example, you do not have to specify the InputType of an attribute every time you modify the attribute, but all attributes must have an InputType to be valid in Mozu.</p>
 
 					<p>If you have questions or concerns specific to your data, please contact your Mozu integration and implementation associates.</p>
 					
@@ -584,9 +566,7 @@
 					<p>Required With: <a href="#producttypeattributes">ProductTypeAttributes</a>, <a href="#producttypeattributevalues">ProductTypeAttributeValues</a></p>
 					<p>In Mozu, a product type is a template of settings and attributes you create for a specific set of products. Every product in your catalog has a single product type associated with it. The ProductTypes sheet simply specifies the usage type(s) and master catalog for the product type. You specify details for product types on the <a href="#producttypeattributes">ProductTypeAttributes</a> and <a href="#producttypeattributevalues">ProductTypeAttributeValues</a> sheets.</p>
 
-					<div class="panel panel-info" id="required">
-							<div class="panel-heading"><strong>Note:</strong> A single product type can support multiple usage types. For example, a shirt can be Configurable and a Component of a larger Bundle.</div>
-							</div>
+					<p class="panel-note"><strong>Note:</strong> A single product type can support multiple usage types. For example, a shirt can be Configurable and a Component of a larger Bundle.</p>
 					<table class="table table-hover">
 					<thead>
 					  <tr>
@@ -863,9 +843,7 @@
 					<p>Corresponding REST API Resource: <a href="http://developer.mozu.com/content/api/APIResources/commerce/catalog.admin/products.htm" target="_blank">commerce/catalog/admin/products</a></p>
 					<p>Required With: <a href="#productcatalogs">ProductCatalogs</a>, <a href="#productoptions">ProductOptions</a>, <a href="#productextras">ProductExtras</a>, <a href="#productbundles">ProductBundles</a>, <a href="#productimages">ProductImages</a> </p>
 					<p>Once you have created attributes, product types, and categories, you can add products to your store. Do not try to add products to your store before building out the catalog infrastructure that the previous tabs describe. Your products will be missing required data and the import will not work. However, once your catalog infrastructure is set, you can fill out just the product-related sheets when you are adding or updating product data.</p>
-					<div class="panel panel-info">
-							<div class="panel-heading"><strong>Note:</strong> In addition to the columns described in the following table, the Products sheet includes columns for all the attributes you create. To apply an attribute to a product, enter a valid value for the attribute in that attribute column. Leave the attribute empty if you do not want to apply it to the product.<br><br>If you are creating new attributes in the same import that you are adding them to products, you can add the attribute code to the end of this sheet as a column header.</div>
-						</div>
+					<p class="panel-note"><strong>Note:</strong> In addition to the columns described in the following table, the Products sheet includes columns for all the attributes you create. To apply an attribute to a product, enter a valid value for the attribute in that attribute column. Leave the attribute empty if you do not want to apply it to the product.<br><br>If you are creating new attributes in the same import that you are adding them to products, you can add the attribute code to the end of this sheet as a column header.</p>
 					<table class="table table-hover">
 					<thead>
 					  <tr>
@@ -1237,9 +1215,7 @@
 					<p>Corresponding REST API Resource: <a href="http://developer.mozu.com/content/api/APIResources/commerce/catalog.admin/products.htm" target="_blank">commerce/catalog/admin/products</a></p>
 					<p>Required With: <a href="#products">Products</a>, <a href="#productcatalogs">ProductCatalogs</a>, <a href="#productextras">ProductExtras</a>, <a href="#productbundles">ProductBundles</a>, <a href="#productimages">ProductImages</a> </p>
 					<p>The sheet defines the options, such as different sizes or colors, that a customer can select for a product. Every product option creates a variation of the base product.</p>
-					<div class="panel panel-info">
-							<div class="panel-heading"><strong>Note:</strong> In addition to the columns described in the following table, the ProductOptions sheet includes columns for all the attributes you create that can be options on a product (IsOption is <code>Yes</code> on the <a href="#attributes">Attributes</a> sheet).</div>
-						</div>
+					<p class="panel-note"><strong>Note:</strong> In addition to the columns described in the following table, the ProductOptions sheet includes columns for all the attributes you create that can be options on a product (IsOption is <code>Yes</code> on the <a href="#attributes">Attributes</a> sheet).</p>
 					<table class="table table-hover">
 					<thead>
 					  <tr>
@@ -1445,11 +1421,16 @@
 					<p>Required With: <a href="#products">Products</a>, <a href="#productcatalogs">ProductCatalogs</a>, <a href="#productoptions">ProductOptions</a>, <a href="#productextras">ProductExtras</a>, <a href="#productbundles">ProductBundles</a></p>
 					<p>This sheet maps images and videos to product codes so you can use the media on the product pages of your storefront. A single product code can have multiple images and videos associated with it.</p> 
 					<p>The URL for each image or video file must be on a server accessible by Mozu. You can use the ImagePath column to upload files to your Mozu tenant. </p>
-					<div class="panel panel-info">
-							<div class="panel-heading"><strong>Tip:</strong> Because images and videos can be large files, uploading them can add significant time to an import operation. If you are updating products and know that you do not need to add or change media, remove the non-required columns prior to importing the file.</div>
-						</div>
+					<p class="panel-tip"><strong>Tip:</strong> Because images and videos can be large files, uploading them can add significant time to an import operation. If you are updating products and know that you do not need to add or change media, remove the non-required columns prior to importing the file.</p>
 					<table class="table table-hover">
 					<thead>
+					  <tr>
+						<th>Column Name</th>
+						<th>Description</th>
+						<th>Valid Values</th>
+						<th>Required<a href="#required">*</a></th>
+					  </tr>
+					</thead>
 					<tr>
 						<td>MasterCatalogName</td>
 						<td>The name of the master catalog that includes the product.</td>
@@ -1518,9 +1499,8 @@
 					<p>Corresponding REST API Resource: <a href="http://developer.mozu.com/content/api/APIResources/commerce/catalog.admin/locationinventory.htm" target="_blank">commerce/catalog/admin/locationinventory</a></p>
 					<p>Required With: NA</p>
 					<p>This sheet describes inventory levels on a per-location basis. Locations in Mozu can be either warehouses or brick and mortar businesses with stock on-hand. This sheet associates product codes and quantities with the locations.</p>
-						<div class="panel panel-info">
-							<div class="panel-heading"><strong>Note:</strong> You cannot use this sheet to create locations. Create your locations in Mozu before you try to import new or updated inventory.</div>
-						</div>
+						<p class="panel-note"><strong>Note:</strong> You cannot use this sheet to create locations. Create your locations in Mozu before you try to import new or updated inventory.
+						</p>
 					<table class="table table-hover">
 					<thead>
 					  <tr>
@@ -1580,9 +1560,8 @@
 					<p>Corresponding REST API Resource: <a href="http://developer.mozu.com/content/api/APIResources/commerce/catalog.admin/discounts.htm" target="_blank">commerce/catalog/admin/discounts</a></p>
 					<p>Required With: NA</p>
 					<p>This sheet defines discounts that can apply to products, product categories, or orders. A discount can be a specified amount off the price, a percentage off the price, or free shipping. You also can create coupon codes that customers can use to redeem the discount.</p>
-					<div class="panel panel-info">
-							<div class="panel-heading"><strong>Tip:</strong> If you want to batch create or update coupon codes, contact your sales or professional services representative for information about the <a href="http://mozu.github.io/IntegrationDocuments/MozuImportExportApplication/Mozu-ImportExport-App.htm" target="_blank">Mozu Import-Export Application</a>.</div>
-						</div>
+					<p class="panel-tip"><strong>Tip:</strong> If you want to batch create or update coupon codes, contact your sales or professional services representative for information about the <a href="http://mozu.github.io/IntegrationDocuments/MozuImportExportApplication/Mozu-ImportExport-App.htm" target="_blank">Mozu Import-Export Application</a>.</p>
+
 					<table class="table table-hover">
 					<thead>
 					  <tr>
@@ -1752,9 +1731,7 @@
 					<h2>Contacts Template</h2>
 					<p>The Contacts template describes your customer accounts and contact information. This data is used to manage orders, subscribed messages, promotional emails, newsletters, and so on. If you are preparing your initial data import for a new Mozu tenant, import contacts <em>first</em>.</p>
 					<p>Each of the following sections describes a sheet in the Contacts template. For each sheet, we define each column, describe valid values for the column, and indicate whether it is required or optional. The sheets in the file appear in the order in which you create product data in Mozu. </p>
-						<div class="panel panel-info">
-							<div class="panel-heading" id="contacts-required"><strong>Note:</strong> In the following tables, a <strong>Required</strong> value of <strong>No</strong> indicates the column is not required for a successful import operation. Some values are not required for an import, but are required Mozu data. For example, you do not have to specify a customer's FirstName every time you modify the customer account, but all customer accounts require a FirstName when they are created.</div>
-						</div>
+						<p class="panel-note" id="contacts-required"><strong>Note:</strong> In the following tables, a <strong>Required</strong> value of <strong>No</strong> indicates the column is not required for a successful import operation. Some values are not required for an import, but are required Mozu data. For example, you do not have to specify a customer's FirstName every time you modify the customer account, but all customer accounts require a FirstName when they are created.</p>
 					<p>If you have questions or concerns specific to your data, please contact your Mozu integration and implementation associates.</p>
 					
 					<h3 id="customeraccounts">CustomerAccounts Sheet</h3>
@@ -1996,6 +1973,7 @@
 								<li><code>Commercial</code></li>
 								<li><code>None</code></li>
 							</ul></td>
+							<td>No</td>
 					  </tr>
 					  <tr>
 						<td>Address1</td>
@@ -2058,9 +2036,7 @@
 				<section id="orderstemplate">
 					<h2>Orders Template</h2>
 					<p>The Orders template describes orders in your system, including their current status, the account that placed them, their total value, where they are shipped, the products they contain, and so on.</p>
-						<div class="panel panel-info">
-							<div class="panel-heading" id="contacts-required"><strong>Note:</strong> You cannot import orders through the Mozu Import/Export Tool. Importing orders is a complex process and must be done via the Mozu API. Mozu strongly recommends contacting your professional services representative if you want to import orders from a previous eCommerce solution to Mozu.</div>
-						</div>
+						<p class="panel-note"><strong>Note:</strong> You cannot import orders through the Mozu Import/Export Tool. Importing orders is a complex process and must be done via the Mozu API. Mozu strongly recommends contacting your professional services representative if you want to import orders from a previous eCommerce solution to Mozu.</p>
 					<p>Each of the following sections describes a sheet in the Orders template. For each sheet, we define each column and describe possible values for the column. Because you cannot import an Orders template, we do not specify whether a column is required.</p>
 					<p>If you have questions or concerns specific to your data, please contact your Mozu integration and implementation associates.</p>
 					

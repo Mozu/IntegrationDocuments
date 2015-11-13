@@ -4423,6 +4423,32 @@ a.list-group-item-danger.active:focus {
 	border-bottom-right-radius: 0px;
 	border-bottom-left-radius: 0px;
 }
+.panel-note {
+    padding: 10px 15px;
+    color: #3a87ad;
+	background-color: #d9edf7;
+	border-color: #bce8f1;
+    margin: 20px 0px 20px 0px;
+    display: block;
+}
+
+.panel-tip {
+    padding: 10px 15px;
+    color: #468847;
+	background-color: #dff0d8;
+	border-color: #d6e9c6;
+    margin: 20px 0px 20px 0px;
+    display: block;
+}
+
+.panel-warning {
+    padding: 10px 15px;
+    color: #c09853;
+	background-color: #fcf8e3;
+	border-color: #fbeed5;
+    margin: 20px 0px 20px 0px;
+    display: block;
+}
 .panel > .list-group {
 	margin-bottom: 0;
 }
