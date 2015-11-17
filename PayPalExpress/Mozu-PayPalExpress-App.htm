@@ -1,0 +1,476 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head><title>PayPal Express Certified Mozu Application Configuration Guide</title>
+        <meta name="author" content="Mozu" />
+        <meta name="description" content="User content for PayPal Express Certified Mozu Application" />
+        <meta name="keywords" content="PayPal,PayPal Express,Pay Pal,Mozu" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+		<link rel="shortcut icon" href="http://www.mozu.com/favicon.ico" />
+		
+		<!-- Required for Scrollspy -->
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/scrollspy.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/affix.js"></script>
+		<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+		<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?skin=sunburst">
+        </script>
+		<!-- Mozu CSS developed by Mozu Docs -->
+		<link href="mozu-bootswatch.css" rel="stylesheet" type="text/css" />	
+		
+		<!-- Scrollspy active link script -->
+		<script>
+		$( document ).ready(function() {
+		$('body').scrollspy({
+			target: '.bs-docs-sidebar',
+			offset: 20
+		});
+		});        
+		</script>
+		
+		
+		
+		<!-- Affix Javascript -->
+		
+		<script>$(function(){
+ 
+			var stickyElement = '.bs-docs-sidebar', 
+			bottomElement = '.footer'; 
+			
+			if($( stickyElement ).length){
+			$( stickyElement ).each(function(){
+		   
+			var fromTop = $( this ).offset().top,
+		   
+			fromBottom = $( document ).height()-($( this ).offset().top + $( this ).outerHeight()),
+			
+			stopOn = $( document ).height()-( $( bottomElement ).offset().top)+($( this ).outerHeight() - $( this ).height());
+			
+			if( (fromBottom-stopOn) > 200 ){
+			
+			$( this ).css('width', $( this ).width()).css('top', 0).css('position', '');
+			
+			$( this ).affix({
+			offset: {
+			
+			top: fromTop,
+			
+			bottom: stopOn
+			}
+			
+			}).on('affix.bs.affix', function(){ $( this ).css('top', 0).css('position', ''); });
+			}
+			
+			$( window ).trigger('scroll');
+			});
+			}
+		});
+		</script>
+	</head>
+    <body>
+	<div id="main">
+		<!-- Top Nav - Mozu -->
+			<nav class="navbar navbar-default navbar-fixed-top">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                        </button> <a href="#"><img src="logo-m-red-medium.png" style="margin-top:3px;" alt="Return to top"/></a></div>
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav navbar-right">
+						<li><a href="versionhistory.html"><span>Version History</span></a></li>
+							<li><a href="http://developer.mozu.com/content/learn/Introduction.htm"><span>Mozu Dev Center</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+			
+		<!--Side Navigation TOC -->
+	<div class="container">
+
+		<div class="row">
+			<div class="landing-title">
+			<h1>PayPal Express Certified Mozu Application Configuration Guide</h1>	
+			</div>
+			    
+      <div class="col-md-3" >
+        <nav class="bs-docs-sidebar" >
+          <div class="side-heading">Table of Contents</div>
+          <ul class="nav nav-stacked" >
+            <li><a href="#intro">Welcome to PayPal Express and Mozu</a></li>
+            <li><a href="#overview">Setup Overview</a></li>
+            <li><a href="#install">Install the App</a></li>
+            <li><a href="#theme">Update Your Theme</a></li>             
+            <li><a href="#configapp">Configure the App</a></li>
+            <li><a href="#enable">Enable the App</a>
+            <li><a href="#useapp">Use the App</a>
+              <ul class="nav nav-stacked">
+                <li><a href="#cart">Pay from Cart</a></li>
+                <li><a href="#checkout">Pay from Checkout</a></li>
+                <li><a href="#authandcapture">Auth and Capture</a></li>
+                <li><a href="#returns">Returns</a></li>
+                <li><a href="#declines">Declines</a></li>
+              </ul></li>
+            <li><a href="#related">Related Links</a></li>
+          </ul>
+        </nav>
+      </div>
+                    
+            <div class="col-md-9 content" >
+                <!-- Documentation content -->
+
+				<section id="intro">
+					<h2>Welcome to PayPal Express and Mozu</h2>
+					
+					<p>PayPal is one of the world's largest digital payment processors, serving over 169 million customers in more than 200 markets. The PayPal Express Certified Mozu Application enables you to easily add PayPal's Express Checkout functionality to your existing Mozu payment options.</p>
+
+					 <p><strong>Application Features:</strong></p>
+                            <ul>
+                            	<li>Enables PayPal Express Checkout on both shopping cart and checkout pages. Customers with a PayPal account can check out directly from the cart.</li>
+                            	<li>Securely connects Mozu to your existing PayPal merchant account through your PayPal Merchant ID and API Signature.</li>
+                            	<li>Communicates necessary order and shipping information between both systems.</li>
+                            	<li>Allows for separate authorization and capture. Authorize payments on customer order and capture later through Mozu.</li>
+                            	<li>Imports all necessary order information back into Mozu for payment capture, fulfillment, and order history.</li>
+                            	<li>Can be enabled alongside any other payment providers or gateways, including Pay with Amazon and Visa Checkout.</li>
+                            </ul>
+				</section>
+			<section id="overview">
+				<h2>Setup Overview</h2>
+				<p>The following steps are required before you can use PayPal Express Checkout on your site(s):</p>
+				<ol>
+					<li><a href="#install">Install</a> the PayPal Express Application on your tenant.</li>
+					<li><a href="#theme">Update</a> your Mozu theme.</li>
+					<li><a href="#configapp">Configure</a> PayPal Express on your <strong>Payment &amp; Settings</strong> page.</li>
+					<li><a href="#enable">Enable</a> the app.</li>
+				</ol>
+			</section>
+		<ul class="nav nav-tabs">
+                	<li class="active"><a data-toggle="tab" href="#config"><strong>Configuration Guide</strong></a></li>
+                	<li class="inactive"><a data-toggle="tab" href="#tech"><strong>Technical Specs &amp; Tests</strong></a></li>
+                </ul>
+
+                <div class="tab-content">
+                <div id="config" class="tab-pane fade in active">
+				
+				
+			
+				<section id="install">
+					<h2>Install the PayPal Express Application on Your Tenant</h2>
+
+					<p>Mozu offers two options for adding PayPal Express Checkout functionality to your tenant:</p>
+					<ol>
+						<li><strong>(Recommended)</strong> Contact your Mozu sales or professional services representative to install the PayPal Express Certified Mozu Application on your tenant.</li>
+						<li>Build the application from the Mozu-provided code on <a href="https://github.com/Mozu/PayPal-Express" target="_blank">GitHub</a> and install it to Mozu Dev Center. This option requires that you have Arc.js enabled on your tenant. Contact your sales or professional services representative for more information about enabling Arc.js.</li>
+					</ol>
+				</section>
+
+				<section id="theme">				
+                        <h2>Update Your Mozu Theme</h2>
+						
+						<p>Installing and configuring the PayPal Express app enables PayPal Express functionality in Mozu Admin. However, you still must enable PayPal functionality on your storefront so that customers can use it. To do this, merge the PayPal Express theme changes to enable the PayPal workflow:</p>
+
+						<ol>
+							<li>Go to the <a href="https://github.com/Mozu/PayPalExpress-Theme" target="_blank">PayPalExpress-Theme</a> repository on GitHub. The master repository contains the full Mozu Core 9 theme with only the necessary additions and modifications for PayPal Express. <strong>(Core 8, 7, or 6)</strong> Branches of this template are also available for Mozu <a href="https://github.com/Mozu/PayPalExpress-Theme/tree/Core8" target="_blank">Core 8</a>, <a href="https://github.com/Mozu/PayPalExpress-Theme/tree/core7" target="_blank">Core 7</a>, and <a href="https://github.com/Mozu/PayPalExpress-Theme/tree/core6" target="_blank">Core 6</a>.</li>
+							<li>Review and apply the changes made in our sample implementation to your own theme.<span class="panel-tip"><strong>Tip:</strong> To see the differences between the sample implementation and your own theme, open the command line and run the <code>git diff</code> command, using the paths for the themes to be diffed.</span></li>
+						</ol>
+
+						<p>For more information on working with themes, including modifying, uploading, installing, and applying a theme to your site, refer to the <a href="http://developer.mozu.com/content/learn/themedev/quickstart/create-your-first-theme.htm" target="_blank">Theme Development Quickstart</a>.</p>
+                        				
+				</section>
+				<section id="configapp">				
+                        <h2>Configure the Application in Mozu Admin</h2>
+						<p>After the PayPal Express application is installed, you must configure your Payment Settings in Mozu Admin to connect Mozu with your PayPal account:</p>
+
+						<ol>
+							<li>In Mozu Admin, go to <strong>Settings</strong> &gt; <strong>Payment &amp; Checkout</strong>.</li>
+							<li>Check the <strong>PayPalExpress2</strong> checkbox to display the PayPal configuration fields:
+								<img src="ppe-payment-settings.png" class="img-mozu" alt="PayPal Express configuration on the Payment and Settings page.">
+							<span class="panel-note"><strong>Note:</strong> If you were previously using the built-in PayPal option in Mozu Admin (deprecated in the Mozu November 2015 Service Update), you must disable that functionality to configure PayPal Express.</span>
+						</li>
+							<li>Select the PayPal <strong>Environment</strong> you want to use:
+								<ul>
+									<li>Select <strong>Sandbox</strong> to use PayPal's sandbox environment for testing your PayPal Express integration.</li>
+									<li>Select <strong>Production</strong> to use a working PayPal environment that processes payments.</li>
+								</ul>
+							</li>
+							<li>Enter the <strong>User Name</strong> and <strong>Password</strong> for your PayPal merchant account.</li>
+							<li>Enter your PayPal API <strong>Signature</strong>. To find your API signature in PayPal:
+								<ol>
+									<li>Log in to <a href="www.paypal.com" target="_blank">paypal.com</a> with your merchant account.</li>
+									<li>On the <strong>My Account</strong> tab, select <strong>Profile</strong> > <strong>My Selling Tools</strong>.
+										<img src="ppe-selling-tools.png" class="img-mozu" alt="My Selling Tools in PayPal Profile menu"></li>
+									<li>In the <strong>Selling online</strong> section, locate <strong>API access</strong> and click <strong>Update</strong>.</li>
+									<li>Click <strong>View API Signature</strong> under <strong>NVP/SOAP API integration</strong>.</li>
+								</ol>
+							</li>
+								
+							<li>Enter your PayPal <strong>Merchant account ID</strong>. To find your ID:
+							<ol>
+									<li>Log in to <a href="www.paypal.com" target="_blank">paypal.com</a> with your merchant account.</li>
+									<li>On the <strong>My Account</strong> tab, select <strong>Profile</strong> > <strong>My Business Info</strong>.</li>
+									<li>Your <strong>Merchant account ID</strong> appears near the bottom of the list.</li>
+								</ol>
+							</li>
+							<li>Select an <strong>Order Processing</strong> method:
+							<ul>
+							<li><strong>Authorize and Capture on Order Placement</strong> both authorizes AND captures payment when an order is placed.</li>
+							 <li><strong>Authorize on Order Placement and Capture on Order Shipment</strong> authorizes a payment when an order is placed, but does not capture that payment until you manually click the <strong>Capture</strong> button from the <strong>Orders</strong> module in Mozu Admin. (Typically, you capture payment when you ship an order.)</li>
+							</ul></li>
+							<li>Click <strong>Save</strong> to save your PayPal Express settings.</li>
+						</ol>                        				
+				</section>
+				<section id="enable">
+					<h2>Enable the App</h2>
+					<p>After configuration, enable the PayPal Express Application in Mozu to apply its functionality to your tenant:</p>
+					<ol>
+						<li>On the Mozu Admin top bar, select <strong>Settings</strong> > <strong>Applications</strong>.</li>
+						<li>Select the PayPal Express Application.</li>
+						<li>Click <strong>Enable App</strong> on the app page.</li>
+					</ol>
+				</section>
+				<section id="useapp">
+					<h2>Use the App</h2>
+					<p>After you have installed the app and merged the theme changes, <strong>Check out with PayPal</strong> buttons appear on the cart and checkout pages of your Mozu site.</p>
+					<h3 id="cart">Pay with Paypal from the Cart Page</h3>
+					<p>With PayPal Express enabled, your customers see a PayPal button from the Cart page of your site. Complete the following steps to test the user experience:</p>
+						<figure>
+						<img src="ppe-cart.png" class="img-mozu-center" alt="PayPal Express button on the Cart page">
+						<figcaption>Sample Cart page as it appears to a customer.</figcaption>
+					</figure>
+					<ol>
+						<li>Click the <strong>Checkout with PayPal</strong> button to launch a modal browser window for PayPal.</li>
+						<li>Create or log in to your PayPal account. Because you are testing the buyer's experience, this should be a different account than your merchant account. You can also choose to remember your account info so you can skip the log-in process for future purchases.</li>
+						<li>Select your preferred payment method and shipping address from the options saved in your PayPal account.<div class="panel panel-info" style="margin-bottom:0">
+							<div class="panel-heading"><strong>Note:</strong> If you have a balance or credit in your PayPal account, PayPal requires you to use all of the balance before it allows you to select a different payment method.</div>
+							</div></li>
+						 <li>Click <strong>Continue</strong> to return to the Mozu Checkout page. The shipping information from PayPal appears in Mozu, and a PayPal logo appears in the <strong>Payment Information</strong> section.</li> 
+						 	<li>(Optional) Apply coupons or make changes. You can change any of the information on the Checkout page up until the time you click <strong>Place Order</strong>. Mozu automatically updates PayPal with any changes made through the Checkout page before the order is placed.</li>
+						 	<li>Click <strong>Place Order</strong>. Mozu adds any shipping, fees, and taxes to the total charged to your PayPal account, and removes any amount covered by discounts or gift cards.</li>
+						 </ol>
+						
+					<h3 id="checkout">Pay with PayPal from the Checkout Page</h3>
+					<p>A customer who chooses <strong>Proceed To Checkout</strong> from the Cart page can still check out with PayPal. Complete the following steps to test the user experience:</p>
+					<ol>
+						<li>On the Checkout page, enter your <strong>Shipping Information</strong> and select your <strong>Shipping Method</strong>.</li>
+						<li>(Optional) Apply any coupons, gift cards, or store credits.</li>
+						<li>Under <strong>Payment Information</strong> click the <strong>Check out with PayPal</strong> button:
+						<figure>
+					<img src="ppe-checkout.png" class="img-mozu-center" alt="PayPal Express button on the Checkout page"><figcaption>Sample Checkout page as it appears to a customer.</figcaption>
+					</figure></li>
+						<li>In the browser window that appears, log in to your PayPal account. Because you are testing the buyer's experience, this should be a different account than your merchant account. Mozu automatically sends the shipping address you entered to PayPal, and the full order amount (including shipping, taxes, and discounts) is reflected in the order total.</li>
+						<li>Select your preferred payment method.</li>
+						<li>Click <strong>Continue</strong> to return to the Mozu Checkout page.</li>
+						<li>Click <strong>Place Order</strong> to complete the order.</li>
+					</ol>
+					
+					<h3 id="authandcapture">Payment Authorization and Capture</h3>
+					<p>Depending on the <strong>Order Processing</strong> method you chose when you configured the app, when a customer clicks <strong>Place Order</strong> on a Mozu Checkout page, Mozu either just authorizes the order or authorizes the order AND captures payment.</p>
+					<div class="panel panel-info">
+						<div class="panel-heading"><strong>Note:</strong> Regardless of when you capture payment, Mozu strongly recommends you always capture payment from Mozu. If you capture payment from your PayPal merchant account, you must then handle any refunds or returns from PayPal, which can throw off your Mozu order history.</div>
+					</div>
+					<p>The order appears in the <strong>Orders</strong> module in Mozu admin. Note the following details from the <strong>Payments</strong> tab:</p>
+					<figure>
+						<img src="ppe-order.png" class="img-mozu-center" style="max-width:90%" alt="Figure 1: Sample PayPal order as it appears in Mozu"><figcaption>Figure 1: A sample PayPal Express order in Mozu. 
+						</figcaption>
+						
+							<table class="table table-bordered" style="font-size:90%; max-width:80%; margin-left:auto;
+	margin-right:auto;">
+							<thead>
+								<th>Caption</th>
+								<th>Description</th>
+							</thead>
+							<tr>
+								<td><strong>1</strong></td>
+								<td>The Order Number in Mozu matches the Invoice ID in PayPal.</td>
+							</tr>
+							<tr>
+								<td><strong>2</strong></td>
+								<td>The payment Method indicates a payment type of PayPal Express.</td>
+							</tr>
+							<tr>
+								<td><strong>3</strong></td>
+								<td>The Transaction History entry for the payment authorization:
+									<ul>
+										<li><strong>3a</strong> - The Transaction ID for the authorization. Transaction IDs always match between Mozu and PayPal.</li>
+										<li><strong>3b</strong> - The Response Message for the authorization. This includes the PayPal CorrelationID for the transaction. If you need to contact PayPal Merchant Technical Aupport about a specific transaction, you can provide this ID to find the transaction.</li>
+									</ul></td>
+							</tr>
+							<tr>
+								<td><strong>4</strong></td>
+								<td>The Transaction History entry for the payment authorization.<ul>
+										<li><strong>4a</strong> - The Transaction ID for the payment capture.</li>
+										<li><strong>4b</strong> - The Response Message and PayPal CorrelationID for the payment capture transaction.</li>
+									</ul></td>
+							</tr>
+						</table>
+					</figure>
+
+					<figure>
+						<img src="ppe-paypal-order.png" class="img-mozu-center" alt="Figure 2: Same order as it appears in PayPal">
+						<figcaption>Figure 2: The Transaction Details page for the payment authorization from the same order in PayPal.</figcaption>
+					</figure>
+					<h3 id="returns">Returns</h3>
+					<p>If you return or credit a payment in Mozu, the credit appears as a PayPal credit in the customer's PayPal account.</p>
+					<h3 id="declines">Declines</h3>
+					<p>The PayPal Express Application does not process declines. If you decline a payment in Mozu, you must also manually decline the payment in PayPal.</p>
+				</section>
+		</div>
+
+        <div id="tech" class="tab-pane fade">
+			<section id="arcjs">
+
+				
+		
+				<h2>Technical Specs &amp; Tests</h2>
+				
+				<p>The PayPal Express Application leverages the Arc.js framework to communicate with PayPal using the <a href="https://developer.paypal.com/docs/classic/api/NVPAPIOverview/" target="_blank">PayPal Name-Value Pair API</a>. You can leverage features from both Mozu and PayPal to test the functionality of the app before publishing it to your live site(s).
+				</p>
+				
+				
+				
+
+				<h2>PayPal Operations</h2>
+
+				<p>The PayPal Express Application sends the following API requests to PayPal, as needed:</p>
+				<ul>
+					<li>SetExpressCheckout</li>
+					<li>GetExpressCheckoutDetails</li>
+					<li>DoExpressCheckoutPayment</li>
+					<li>DoCapture</li>
+					<li>RefundTransaction</li>
+					<li>DoVoid</li>
+				</ul>
+				
+
+				<h2>Negative Test the App</h2>
+				<p>You can use the flexibility of Arc.js and the error codes that PayPal exposes through their API to negative test your application and ensure it throws errors as expected.</p>
+				<h3>Enable Negative Testing on Your PayPal Sandbox</h3>
+					
+				<ol>
+					<li>Go to the <a href="https://developer.paypal.com/" target="_blank">PayPal Developer</a> page and log in with your merchant credentials.</li>
+					<li>Click <strong>Dashboard</strong> to go to your account dashboard.</li>
+					<li>Under <strong>Sandbox</strong>, click <strong>Accounts</strong>.</li>
+					<li>Expand the email address for the test account you want to use and click <strong>Profile</strong>:<img src="ppe-paypal-expand-account.png" class="img-mozu" alt="Accessing your account profile in PayPal"></li>
+					<li>On the <strong>Settings</strong> tab, turn on negative testing:<img src="ppe-paypal-negtest.png" class="img-mozu" alt="Enabling negative testing in PayPal"></li>
+					</ol>
+
+					<h3>Example: Force Error 10001 in a Negative Test</h3>
+
+					<p>The code in this sample triggers <a href="https://developer.paypal.com/docs/classic/api/errorcodes/" target="_blank">PayPal Error code</a> 10001 on SetExpressCheckout. Because the test is amount-related, 10001 is converted to 100.01.</p>
+
+					<p class="panel-tip"><strong>Tip:</strong> Refer to the PayPal help topic <a href="https://developer.paypal.com/docs/classic/lifecycle/sb_error-conditions/">Testing Error Conditions with Negative Testing</a> for more information about how to trigger PayPal errors.</p>
+
+					<ol>
+					<li>In Mozu Admin, go to <strong>Settings</strong> > <strong>System Administration</strong> > <strong>Action Management</strong> to display the <a href="http://developer.mozu.com/content/arcjs/JSON.htm" target="_blank">Action Management JSON Editor</a>.</li>
+					<li>Add the following code to the <code>configurations</code> array:</li>
+				</ol>
+
+<pre class="prettyprint" xml:space="preserve">
+	"configurations": [{
+	    "configuration" : {
+	            "paypal" : {
+		               "setExpressCheckout" : {"maxAmount" : "100.01"},
+		                "getExpressCheckoutDetails" : {"token" : "10004"},
+		                "authorization" : {"amount" : "100.01"},
+		                "capture" : {"amount" : "100.01"},
+		                "void" : {"authorizationId": "10623"},
+		                "refund" : {"amount" : "100.01"}
+	                       	}    
+                           }    
+					}]
+				</pre>
+
+				<h3>Enable Detailed Logging on Arc.js Actions</h3>
+				<p>If you have Arc.js fully enabled on your Mozu developer account, you can view log files of all the code actions that have executed on your tenant.</p>
+				<ol>
+					<li>In Mozu Admin, go to <strong>Settings</strong> > <strong>System Administration</strong> > <strong>Action Management</strong> to display the <a href="http://developer.mozu.com/content/arcjs/JSON.htm" target="_blank">Action Management JSON Editor</a>.</li>
+					<li>Change <code>defaultLogLevel</code> to <code>"info"</code>.</li>
+					<li>In the Dev Center console, go to <strong>Logs</strong> > <strong>Action Logs</strong>.</li>
+					<li>Select your tenant and click <strong>Search</strong> to see the actions.</li>
+				</ol>
+				
+			</section>
+		</div>
+	</div>
+
+			<section id="related">
+			<h2>Related Links</h2>
+			<p>The following resources provide additional information on topics related to this app:</p>
+			<h3>PayPal Help</h3>
+			<ul>
+			<li><a href="https://developer.paypal.com/docs" target="_blank">PayPal Developer Documentation</a></li>
+			<li><a href="https://www.paypal.com/selfhelp/home" target="_blank">PayPal General Help</a></li>
+		</ul>
+		<h3>GitHub</h3>
+		<ul>
+			<li><a href="https://github.com/Mozu/PayPalExpress-Theme" target="_blank">PayPalExpress-Theme Integration</a></li>	
+			<li><a href="https://github.com/Mozu/PayPal-Express" target="_blank">PayPal-Express Arc.js App</a></li>
+			<li><a href="https://help.github.com/articles/comparing-commits-across-time/" target="_blank">Comparing commits across time</a></li>
+			</ul>
+			<h3>Mozu Documentation</h3>
+			<ul>
+			<li><a href="http://developer.mozu.com/content/learn/themedev/quickstart/create-your-first-theme.htm" target="_blank">Mozu Theme Development Quickstart</a></li>
+			</ul>
+			</section>
+						</div>
+                    </div>
+                </div>
+           </div>
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="pull-left footer__logo">
+                            <a href="http://www.mozu.com" target="_blank"><img src="http://www.mozu.com/sites/all/themes/mozu_aurora/logo.png" style="padding-top:7px;" alt="Mozu Logo"/></a>
+                </div>
+                <div class="pull-right footer__icons" style="padding-right:40px;">
+				<a href="http://www.mozu.com/ecommerce-app-center" target="_blank"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-code-fork"></i></button></a><a href="http://www.mozu.com/contact"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-comments-o"></i></button></a><a href="http://www.mozu.com/contact"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-copyright"></i></button></a>
+                </div>
+            </div>
+        </footer>
+		
+	<!-- Back to top -->
+	<div class="scroll-top-wrapper ">
+    <span class="scroll-top-inner">
+        <i class="fa fa-2x fa-arrow-circle-up"></i>
+    </span>
+	</div>
+	<!-- Back to top - show hide -->
+	<script>
+ 
+	$(function(){
+	 
+		$(document).on( 'scroll', function(){
+	 
+			if ($(window).scrollTop() > 100) {
+				$('.scroll-top-wrapper').addClass('show');
+			} else {
+				$('.scroll-top-wrapper').removeClass('show');
+			}
+		});
+	});
+	</script>
+	<!-- Back to top - to top -->
+	<script>
+ 
+	$(function(){
+	 
+		$(document).on( 'scroll', function(){
+	 
+			if ($(window).scrollTop() > 100) {
+				$('.scroll-top-wrapper').addClass('show');
+			} else {
+				$('.scroll-top-wrapper').removeClass('show');
+			}
+		});
+	 
+		$('.scroll-top-wrapper').on('click', scrollToTop);
+	});
+	 
+	function scrollToTop() {
+		verticalOffset = typeof(verticalOffset) != 'undefined' ? verticalOffset : 0;
+		element = $('body');
+		offset = element.offset();
+		offsetTop = offset.top;
+		$('html, body').animate({scrollTop: offsetTop}, 500, 'linear');
+	}
+	</script>
+</html>
