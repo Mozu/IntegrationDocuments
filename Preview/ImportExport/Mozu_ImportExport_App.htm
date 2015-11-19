@@ -272,8 +272,8 @@
 												 
                      <section id="exportexcel">
 					<h2>Export Data</h2>
-					<p>Once you have <a href="#preparetenant">prepared your tenant</a>, you are ready to export data from Mozu. Even if you have not added real data yet, exporting is the recommended way to get the template files. Performing an export ensures that you are aware of all existing data, and that all your data attributes are reflected in the templates. </p>
-						<p class="panel-tip"><strong>Tip:</strong> You also can use exports as a form of data backup. Note that importing back-up data that matches existing Mozu data <em>will</em> overwrite the existing data.</p>
+					<p>Once you have <a href="#preparetenant">prepared your tenant</a>, you are ready to export data from Mozu. Even if you have not added real data yet, exporting is the recommended way to get the template files. Performing an export ensures that you are aware of all existing data, and that all your data attributes are reflected in the templates. You also can use exports as a form of data backup. Note that importing back-up data that matches existing Mozu data <em>will</em> overwrite the existing data.</p>
+						<p class="panel-note"><strong>Note:</strong> The Import/Export Tool only exports products that are live on your site(s). Products in a draft or staged state do not get exported. If you make edits to an existing product but do not push them live, the Import/Export Tool exports the old live data for that product.</p>
 					<ol>
 					<li><a href="#launchtool">Launch</a> the Mozu Import/Export Tool.</li>
 					<li>Select the <strong>Export</strong> tab.</li>
@@ -788,6 +788,26 @@
 						<td>Yes</td>
 					  </tr>
 					  <tr>
+						<td>CategoryType</td>
+						<td>The type of the category.</td>
+						<td>A string matching one of the following:
+							<ul>
+								<li><code>Static</code></li>
+								<li><code>DynamicPreComputed</code></li>
+								<li><code>DynamicRealTime</code></li>
+							</ul>
+							<br>
+							<strong>Note:</strong> You cannot change the CategoryType of an existing category.	
+						</td>
+						<td>No</td>
+					  </tr>
+					  <tr>
+						<td>Expression</td>
+						<td>The expression that controls the product membership of the dynamic category. This column only applies when CategoryType is <code>DynamicPreComputed</code> or <code>DynamicRealTime</code>.</td>
+						<td>A string that is a valid <a href="http://developer.mozu.com/content/api/APIResources/StandardFeatures/Dynamic_Category_Expressions.htm" target="_blank">dynamic category expression</a>.</td>
+						<td>No</td>
+					  </tr>
+					  <tr>
 						<td>IsDisplayed</td>
 						<td>Specifies whether the category is visible to customers on the storefront.</td>
 						<td>A Boolean value, specified as <code>Yes</code> or <code>No</code>.</td>
@@ -948,7 +968,7 @@
 					  </tr>
 					  <tr>
 						<td>RestrictDiscount</td>
-						<td>Specifies whether discounts are restricted on the product. If code>Yes</code>, the system cannot apply any discounts to the product.</td>
+						<td>Specifies whether discounts are restricted on the product. If <code>Yes</code>, the system cannot apply any discounts to the product.</td>
 						<td>A Boolean value, specified as <code>Yes</code> or <code>No</code>.</td>
 						<td>No</td>
 					  </tr>
