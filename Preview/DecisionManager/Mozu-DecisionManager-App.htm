@@ -251,7 +251,8 @@
 							</tr>
 							<tr>
 								<td><span id="config6"><strong>6</strong></span></td>
-								<td><strong>Select Payment Type</strong>&#8212;Specifies the payment types to check for fraud in Decision Manager. Mozu sends ONLY the payment types you select to Decision Manager.<span class="panel-note"><strong>Note:</strong> If you select multiple payment types, Mozu sends only the largest selected payment type applied to a given order to Decision Manager for screening.</span></td>
+								<td><strong>Select Payment Type</strong>&#8212;Specifies the payment types to check for fraud in Decision Manager. Mozu sends ONLY the payment types you select to Decision Manager. If you select multiple payment types, Mozu sends only the <em>largest</em> selected payment type applied to a given order to Decision Manager for screening.
+									<span class="panel-note"><strong>Note:</strong> The <strong>Paypal Express</strong> payment type is only supported for the legacy version of Mozu PayPal, implemented through Mozu Core 8 and earlier. If you are implementing PayPal support through the PayPal Express Certified Mozu Application, Decision Manager does not check PayPal payments for potential fraud. CyberSource's current tooling requires a billing address with every order. PayPal Express obscures billing information for security reasons, so Mozu cannot provide it to CyberSource.</span></td>
 							</tr>
 							<tr>
 								<td><strong>7</strong></td>
