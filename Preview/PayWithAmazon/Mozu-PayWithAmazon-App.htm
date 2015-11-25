@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="15" MadCap:lastHeight="488" MadCap:lastWidth="1168">
-    <head><title>Pay with Amazon by Mozu</title>
+    <head><title>Pay with Amazon Certified Mozu Application Configuration Guide</title>
         <meta name="author" content="Mozu" />
-        <meta name="description" content="User content for Pay with Amazon Integration for Mozu" />
+        <meta name="description" content="User content for Pay with Amazon Certified Mozu Application" />
         <meta name="keywords" content="Pay with Amazon, Amazon, Mozu" />
 		<link rel="shortcut icon" href="http://www.mozu.com/favicon.ico" />
 		
@@ -26,35 +26,7 @@
 		});        
 		</script>
 		
-		<!-- Anchor Ease Script -->
-		<script>
-		 $(function() {
-			  $('a[href*=#]:not([href=#])').click(function() {
-				if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') 
-			&& location.hostname == this.hostname) {
 
-				  var target = $(this.hash);
-				  target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-				  if (target.length) {
-					$('html,body').animate({
-					  scrollTop: target.offset().top - 75 //offsets for fixed header
-					}, 1000);
-					return false;
-				  }
-				}
-			  });
-			  //Executed on page load with URL containing an anchor tag.
-			  if($(location.href.split("#")[1])) {
-				  var target = $('#'+location.href.split("#")[1]);
-				  if (target.length) {
-					$('html,body').animate({
-					  scrollTop: target.offset().top - 75 //offset height of header here too.
-					}, 1000);
-					return false;
-				  }
-				}
-		});
-		</script>
 		
 		<!-- Affix Javascript -->
 		
@@ -114,17 +86,28 @@
 		<!--Side Navigation TOC -->
 		<div class="row">
 		<div class="landing-title">
-			<h1>Pay with Amazon Configuration Guide</h1>	
+			<h1>Pay with Amazon Certified Mozu Application Configuration Guide</h1>	
 		</div>
 			<div class="col-md-3" >
 				<nav class="bs-docs-sidebar" >
 					<ul class="nav nav-stacked" >
 						<div class="side-heading">Table of Contents</div>
 							<li><a href="#intro">Welcome to Pay with Amazon and Mozu</a></li>
-							<li><a href="#install">Install Pay with Amazon</a></li>
-							<li><a href="#theme">Update Theme</a></li>							
-							<li><a href="#configapp">Configure the App</a></li>
-							<li><a href="#arcjs">Build and Test Your Arc.js App</a></li>
+           					<li><a href="#overview">Setup Overview</a></li>
+            				<li><a href="#install">Install the App</a></li>
+            				<li><a href="#theme">Update Your Theme</a></li>             
+            				<li><a href="#configapp">Configure the App</a></li>
+							<li><a href="#enable">Enable the App</a>
+            <li><a href="#useapp">Use the App</a>
+              <ul class="nav nav-stacked">
+                <li><a href="#cart">Pay from Cart</a></li>
+                <li><a href="#checkout">Pay from Checkout</a></li>
+                <li><a href="#authandcapture">Auth and Capture</a></li>
+                <li><a href="#gateway">Payment Gateway</a></li>
+                <li><a href="#returns">Returns</a></li>
+                <li><a href="#declines">Declines</a></li>
+              </ul></li>
+            <li><a href="#related">Related Links</a></li>
 					</ul>
 				</nav>
 			</div>
@@ -134,55 +117,76 @@
 				<section id="intro">
 					<h2>Welcome to Pay with Amazon and Mozu</h2>
 					
-					<p>Amazon Payments is a service that provides you with the ability to send payments for goods or services by using the payment methods already associated with your Amazon.com account. To make a payment, you can use a credit card, bank account, or Amazon Payments Account balance.
-					</p>
-					<div class="panel panel-info">
-						<div class="panel-heading"><strong>Note:</strong> The Pay with Amazon Integration for Mozu requires that your site be updated to the <a href="https://github.com/Mozu/core-theme" target="_blank">Mozu Core 8</a> theme.</div>
-						</div>
+					<p>Amazon Payments is a service that allows customers to send payments for goods or services by using the payment methods already associated with their Amazon.com account. With the Pay with Amazon Certified Mozu Application and accompanying theme upgrade, you can add Pay with Amazon buttons directly to your cart and checkout pages. This app enables your customers to take advantage of a one-click checkout experience while still processing payments through your preferred payment gateway.</p>
 					
 					<p><strong>Application Features:</strong></p>
                             <ul>
-                            	<li>Adds Amazon Payments as an additional payment option to your shopping cart and checkout pages.</li>
+                            	<li>Enables Pay with Amazon on both shopping cart and checkout pages. Customers with an Amazon.com account can check out directly from the cart.</li>
                             	<li>Connects Mozu to your existing Amazon merchant account.</li>
+                            	<li>Communicates necessary order and shipping information between both systems.</li>
+                            	<li>Imports all necessary order information back into Mozu for payment capture, fulfillment, and order history.</li>
+								<li>Can be enabled alongside any other payment providers or gateways, including PayPal Express and Visa Checkout.</li>
                             	</ul> 
-
 				</section>
-				<section id="install">
-					<h2>Install the Pay with Amazon Integration for Mozu on Your Tenant</h2>
 
-					<p>Mozu offers two options for acquiring the Pay with Amazon Integration:</p>
-					<ol>
-						<li>Install the Pay with Amazon Certified Code Action from Mozu. Contact your Mozu sales or professional services representative to install the application on your tenant.</li>
-						<li>Build the application from the Mozu-provided code on <a href="https://github.com/Mozu/PayWithAmazon" target="_blank">GitHub</a> and install it to Mozu Dev Center. This option requires that you have Arc.js enabled on your tenant. Contact your sales or professional services representative for more information about enabling Arc.js.</li>
-					</ol>
+			<section id="overview">
+				<h2>Setup Overview</h2>
+				<p>The following steps are required before you can use Pay with Amazon on your site(s):</p>
+				<ol>
+					<li><a href="#install">Install</a> the Pay with Amazon Application on your tenant.</li>
+					<li><a href="#theme">Update</a> your Mozu theme.</li>
+					<li><a href="#configapp">Configure</a> Pay with Amazon on your <strong>Payment &amp; Settings</strong> page.</li>
+					<li><a href="#enable">Enable</a> the app.</li>
+				</ol>
+			</section>
+		<ul class="nav nav-tabs">
+                	<li class="active"><a data-toggle="tab" href="#config"><strong>Configuration Guide</strong></a></li>
+                	<li class="inactive"><a data-toggle="tab" href="#tech"><strong>Technical Specs &amp; Tests</strong></a></li>
+                </ul>
 
+                <div class="tab-content">
+                <div id="config" class="tab-pane fade in active">
+
+			<section id="install">
+					<h2>Install the Pay with Amazon Certified Mozu Application on Your Tenant</h2>
+
+					<p>Contact your Mozu sales or professional services representative to install the Pay with Amazon Certified Mozu Application on your tenant.</p>
 				</section>
 
 
 				<section id="theme">				
                         <h2>Update Your Mozu Theme</h2>
 						
-						<p>Installing and configuring the Pay with Amazon app enables Amazon Payments functionality in Mozu Admin. However, to enable Amazon functionality on your storefront so that customers can use is, you must also merge theme changes to enable the Amazon workflow:</p>
+						<p>Installing and configuring the Pay with Amazon app enables you to accept payments via Amazon Payments. However, you still must enable Pay with Amazon functionality on your storefront so that customers can use it. To do this, merge the Pay with Amazon theme changes to enable the Amazon workflow:</p>
 
 						<ol>
-							<li>Confirm that your site has been updated to use the Mozu Core 8 Theme. You can find the latest version of the <a href="https://github.com/Mozu/core-theme" target="_blank">Mozu Core</a> theme on GitHub.</li>
-							<li>Navigate to the <a href="https://github.com/Mozu/PayWithAmazon-Theme" target="_blank">PayWithAmazon-Theme</a> repository on GitHub.</li>
-							<li>Review and apply the changes made in our sample implementation to your own theme.<div class="panel panel-info">
-							<div class="panel-heading"><strong>Tip:</strong> To see the differences between the sample implementation and your own theme, open the command line and run the <code>git diff</code> command, using the paths for the themes to be diffed.</div>
-						</div></li>
+							<li>Go to the <a href="https://github.com/Mozu/PayWithAmazon-Theme" target="_blank">PayWithAmazon-Theme</a> repository on GitHub. The master repository contains the full Mozu Core 9 theme, with the necessary additions and modifications for Pay with Amazon. A branch of this repo is also available for Mozu <a href="https://github.com/Mozu/PayWithAmazon-Theme/tree/Core8" target="_blank">Core 8</a>. </li>
+							<li>Review and apply the changes made in our sample implementation to your own theme.
+								<span class="panel-tip"><strong>Tip:</strong> If your own theme implementation is on GitHub, you can open the command line and run the <code>git diff</code> command to see the differences between the sample implementation and your own theme.</span></li>
+								<li>Run Grunt to build the theme.</li>
+								<li>Upload the resulting ZIP file to Mozu Dev Center.</li>
+								<li>Install the updated theme to the sandbox you're working in.</li>
+								<li>In Mozu Admin, go to <strong>SiteBuilder</strong> > <strong>Themes</strong>, right-click the new theme, and click <strong>Apply</strong>.</li>
 						</ol>
 
 						<p>For more information on working with themes, including modifying, uploading, installing, and applying a theme to your site, refer to the <a href="http://developer.mozu.com/learn/theme-development/quickstart" target="_blank">Theme Development Quickstart</a>.</p>
                         				
 				</section>
 
-				<section id="configapp">				
+				<section id="configapp">
+						<h2>Configuration Requirements</h2>
+						<ul>
+							<li>You must have an active Amazon Payments account.</li>
+							<li>You must have your Amazon Seller ID, Client ID, and MWS Auth Token.<span class="panel-tip"><strong>Tip:</strong> You can find these keys by logging in to Amazon Seller Central and navigating to <a href="https://sellercentral.amazon.com/hz/me/integration/details">Integration > MWS Access Key</a>.</li>
+						</ul>
+
                         <h2>Configure the Application in Mozu Admin</h2>
-						<p>Installing the Pay with Amazon integration adds several Amazon-specific configuration settings to your <strong>Payment &amp; Checkout</strong> options in Mozu Admin.</p>
+						<p>After the Pay with Amazon application is installed, you must configure your Payment Settings in Mozu Admin to connect Mozu with your Amazon Seller account:</p>
 
 						<ol>
 							<li>In Mozu Admin, go to <strong>Settings</strong> &gt; <strong>Payment &amp; Checkout</strong>.</li>
-							<li>Check the <strong>PayWithAmazon</strong> checkbox to display the configuration fields.</li>
+							<li>Check the <strong>PayWithAmazon</strong> checkbox to display the configuration fields:
+								<img src="pwa-config.png" class="img-mozu"></li>
 							<li>Select the Amazon environment you wish to use:
 					
 								<ul>
@@ -197,12 +201,10 @@
 								<ul>
 									<li><strong>Seller ID</strong></li>
 									<li><strong>Client ID</strong></li>
-									<li><strong>Applicaton ID</strong></li>
-									<li><strong>AWS Access Key</strong></li>
-									<li><strong>AWS Secret</strong></li>
+									<li><strong>MWS Auth Token</strong></li>
 								</ul>
 							</li>
-							<li>Select an <strong>AWS Region</strong>.</li>
+							<li>Select an <strong>AWS Region</strong>.
 							<li>Select an <strong>Order Processing</strong> method:
 								<ul>
 									<li><strong>Authorize and Capture on Order Placement</strong>&#8212;Authorize AND capture payment when an order is placed.</li>
@@ -210,24 +212,151 @@
 								</ul>
 							</li>
 							<li>Click <strong>Save</strong> to save your Pay with Amazon settings.</li>
-						</ol>                        				
+						</ol>    
+
+						<h2>Whitelist Your Mozu Site(s) in Amazon Seller Central</h2>                    		
+						<p>To enable users to log-in to Amazon from your Mozu site(s), you must add each of your Mozu site URLs as <strong>Allowed JavaScript Origins</strong> in Amazon:</p>		
+						<ol>
+							<li>Log in to your Amazon Seller Central account.</li>
+							<li>In the drop-down menu to the left of the <strong>Search</strong> field, select <strong>Login with Amazon</strong>.</li>
+							<li>In the <strong>Applications</strong> list on the left of the page, select your <strong>Pay with Amazon</strong> application.
+								<span class="panel-note"><strong>Note:</strong> If the app does not appear in your <strong>Applications</strong> list, click the <strong>Register new application</strong> button and fill out the required fields.</span></li>
+								<li>Scroll down to <strong>Web Settings</strong> and click <strong>Edit</strong>.</li>
+								<li>Enter the secure (HTTPS) URL for your Mozu site.</li>
+								<li>(Optional) Click <strong>Add Another</strong> to add additional site URLs.</li>
+								<li>Click <strong>Save</strong>.</li>
+						</ol>
 				</section>
 				
+				<section id="enable">
+					<h2>Enable the App</h2>
+					<p>After configuration, enable the Pay with Amazon Application in Mozu to apply its functionality to your tenant:</p>
+					<ol>
+						<li>On the Mozu Admin top bar, select <strong>Settings</strong> > <strong>Applications</strong>.</li>
+						<li>Select the Pay with Amazon Application.</li>
+						<li>Click <strong>Enable App</strong> on the app page.</li>
+					</ol>
+				</section>
+
+					<section id="useapp">
+					<h2>Use the App</h2>
+					<p>After you have installed the app and merged the theme changes, <strong>Pay with Amazon</strong> buttons appear on the cart and checkout pages of your Mozu site.</p>
+					<h3 id="cart">Pay with Amazon from the Cart Page</h3>
+					<p>With Pay with Amazon enabled, your customers see a Pay with Amazon button from the Cart page of your site. Complete the following steps to test the user experience:</p>
+						<figure>
+						<img src="pwa-cart.png" class="img-mozu-center" alt="PayPal Express button on the Cart page">
+						<figcaption>Sample Cart page as it appears to a customer.</figcaption>
+					</figure>
+					<p class="panel-note"><strong>Note:</strong> The <strong>Pay with Amazon</strong> button in this example has a label indicating you are interacting with a Sandbox environment in Amazon Seller Central. You can switch between Amazon Production and Sandbox environments on the <strong>Settings</strong> > <strong>Payment &amp; Checkout</strong> page.</p>
+					<ol>
+						<li>Click the <strong>Pay with Amazon</strong> button to launch a modal browser window for Pay with Amazon.</li>
+						<li>Create or log in to your Amazon account. Because you are testing the customer's experience, this should be a different account than your merchant account. You can also choose to remember your account info so you can skip the log-in process for future purchases.</li>
+						<li>On the <strong>Shipping &amp; Billing Summary</strong> page, select your preferred shipping address and payment method and from the options saved in your Amazon account. You also can add a new address from this page. <img src="pwa-shipbillsummary.png" class="img-mozu-center"></li>
+						 <li>Click <strong>Continue</strong> to go to the Mozu Checkout page. The shipping information from PayPal appears in Mozu, and a PayPal logo appears in the <strong>Payment Information</strong> section.
+						 	<img src="pwa-checkout-fromcart.png" class="img-mozu-center"></li> 
+						 	<li>(Optional) Apply coupons or make changes. You can change any of the information on the Checkout page up until the time you click <strong>Place Order</strong>. Mozu automatically updates Amazon with any changes made through the Checkout page before the order is placed.</li>
+						 	<li>Click <strong>Place Order</strong>. Mozu adds any shipping, fees, and taxes to the total charged to your Amazon account, and removes any amount covered by discounts or gift cards.</li>
+						 </ol>
+						
+					<h3 id="checkout">Pay with Amazon from the Checkout Page</h3>
+					<p>A customer who chooses <strong>Checkout</strong> from the Cart page can still check out with Amazon. Complete the following steps to test the user experience:</p>
+					<ol>
+						<li>On the Checkout page, select your <strong>Shipping Method</strong>. <span class="panel-note"><strong>Note:</strong> Mozu cannot change the addresses associated with an Amazon account. Any changes to the shipping or billing addresses on the Checkout page will be ignored.</span></li>
+						<li>(Optional) Apply any coupons, gift cards, or store credits.</li>
+						<li>Under <strong>Payment Information</strong> click the <strong>Pay with Amazon</strong> button:
+						<figure>
+					<img src="pwa-checkout.png" class="img-mozu-center" alt="PayPal Express button on the Checkout page"><figcaption>Sample Checkout page as it appears to a customer.</figcaption>
+					</figure> If you are not already logged in to your Amazon account, a browser window appears and prompts you to log in.</li>
+						<li>On the <strong>Shipping &amp; Billing Summary</strong> page, select your preferred shipping address and payment method and from the options saved in your Amazon account.</li>
+						<li>Select your preferred payment method.</li>
+						<li>Click <strong>Continue</strong> to return to the Mozu Checkout page.</li>
+						<li>Click <strong>Place Order</strong> to complete the order.</li>
+					</ol>
+					
+					<h3 id="authandcapture">Payment Authorization and Capture</h3>
+					<p>Depending on the <strong>Order Processing</strong> method you chose when you configured the app, when a customer clicks <strong>Place Order</strong> on a Mozu Checkout page, Mozu either just authorizes the order or authorizes the order AND captures payment.</p>
+
+					<p>The order appears in the <strong>Orders</strong> module in Mozu Admin. The following images show how information on the order <strong>Payments</strong> tab maps to the Amazon <strong>Payment Details</strong>:</p>
+					<figure>
+						<img src="pwa-orderdetails.png" class="img-mozu-center" style="max-width:90%" alt="Figure 1: Sample Pay with Amazon order as it appears in Mozu"><figcaption>Figure 1: A sample Pay with Amazon order in Mozu. 
+						</figcaption>
+						
+							<table class="table table-bordered" style="font-size:90%; max-width:80%; margin-left:auto;
+	margin-right:auto;">
+							<thead>
+								<th>Caption</th>
+								<th>Description</th>
+							</thead>
+							<tr>
+								<td><strong>1</strong></td>
+								<td>The Order Number in Mozu matches the Seller Order ID in PayPal.</td>
+							</tr>
+							<tr>
+								<td><strong>2</strong></td>
+								<td>The Billing Address appears as NA in Mozu, because Mozu does not get that information from Amazon. However, the Shipping Address, including the buyer name and email address, match in both systems.</td>
+							</tr>
+							<tr>
+								<td><strong>3</strong></td>
+								<td>The payment Method indicates this is a Pay with Amazon transaction.</td>
+							</tr>
+							<tr>
+								<td><strong>4</strong></td>
+								<td>The Reference ID in Mozu matches the Amazon Reference ID. You can copy and paste this ID into the Search box on the Amazon Manage Transactions page to find the order in Amazon.</td>
+							</tr>
+							<tr>
+								<td><strong>5</strong></td>
+								<td>The Authorization ID in Mozu matches the Seller Reference ID in Amazon.</td>
+							</tr>
+							<tr>
+								<td><strong>6</strong></td>
+								<td>The Transaction History entry for the payment authorization.<ul>
+										<li><strong>6a</strong> - The Transaction ID for the payment authorization matches in both systems.</li>
+									</ul></td>
+									<tr>
+								<td><strong>7</strong></td>
+								<td>The Transaction History entry for the payment capture.<ul>
+										<li><strong>7a</strong> - The Transaction ID for the payment capture matches in both systems.</li>
+									</ul>
+									<span class="panel-note"><strong>Note:</strong> Amazon inverts the order in which the transactions appear.</span></td>
+							</tr>
+						</table>
+					</figure>
+
+					<figure>
+						<img src="pwa-amazon-details.png" class="img-mozu-center" alt="Figure 2: Same order as it appears in PayPal">
+						<figcaption>Figure 2: The Payment Details page for the same order in Amazon.</figcaption>
+					</figure>
+
+					<h3 id="gateway">Payment Gateway</h3>	
+					<p>Amazon Payments acts as a wallet for customers' payment methods. The actual payments are still processed by the Payment Gateway for your Mozu site.
+					<h3 id="returns">Returns</h3>
+					<p>If you return or credit a payment in Mozu, the credit appears as a credit in the customer's Pay with Amazon account.</p>
+					
+					<h3 id="declines">Declines</h3>
+					<p>The Pay with Amazon Application does not process declines. If you decline a payment in Mozu, you must also manually decline the payment in Amazon.</p>
+				</section>
+			</div>
+			<div id="tech" class="tab-pane fade">
+
 				<section id="arcjs">
 
-				<h2>Build and Test Your Arc.js App</h2>
-<div class="panel panel-info" style="margin-bottom:0">
-						<div class="panel-heading"><strong>Note:</strong> The following sections only apply if you have Arc.js enabled and are integrating this application in-house. Contact your Mozu representative to enable Arc.js on your tenant. If you installed the Pay with Amazon Certified Code Action from Mozu, you can disregard the remainder of this document.</div></div>
-<h3 id="buildapp">Build Your Arc.js App</h3>
-<p>Mozu provides sample code on GitHub for that you can clone, modify, and upload to your own version of a Pay with Amazon application. Mozu also provides a variety of open-sourced tools that help you quickly and easily complete this process. Refer to the readme in the <a href="https://github.com/Mozu/PayWithAmazon" target="_blank">Mozu/PayWithAmazon</a> repository for instructions on cloning, modifying, and installing the sample application.</p>
+				<h2>Technical Specs &amp; Tests</h2>
+
+						
+	<p>The Pay with Amazon Application leverages the Arc.js framework to communicate with Amazon using the <a href="https://developer.amazonservices.com/" target="_blank">Amazon Marketplace Web Service (MWS)</a>. You can leverage features from both Mozu and Amazon to test the functionality of the app before publishing it to your live site(s).
+				</p>
+				
 
 <h3 id="testapp">Test Your Arc.js App</h3>
 <p>Testing any app is always a best practice, and is necessary if you have made any modifications to the sample code provided on GitHub.</p>
-<h3>Enable Detailed Logging</h3>
-<ol>
-	<li>In Mozu Admin, go to <strong>Settings</strong> > <strong>System Administration</strong> > <strong>Action Management</strong> to display the <a href="http://developer.mozu.com/content/arcjs/JSON.htm" target="_blank">Action Management JSON Editor</a>.</li>
-<li>Change <code>defaultLogLevel</code> to <code>"info"</code>.</li>
-</ol>
+<h3>Enable Detailed Logging on Arc.js Actions</h3>
+				<p>If you have Arc.js fully enabled on your Mozu developer account, you can view log files of all the code actions that have executed on your tenant.</p>
+				<ol>
+					<li>In Mozu Admin, go to <strong>Settings</strong> > <strong>System Administration</strong> > <strong>Action Management</strong> to display the <a href="http://developer.mozu.com/content/arcjs/JSON.htm" target="_blank">Action Management JSON Editor</a>.</li>
+					<li>Change <code>defaultLogLevel</code> to <code>"info"</code>.</li>
+					<li>In the Dev Center console, go to <strong>Logs</strong> > <strong>Action Logs</strong>.</li>
+					<li>Select your tenant and click <strong>Search</strong> to see the actions.</li>
+				</ol>
 
 <h3>Enable Negative Testing on Your Sandbox</h3>
 <ol>
@@ -251,6 +380,26 @@
         }
 </pre>
 				</section>
+			</div>
+						<section id="related">
+			<h2>Related Links</h2>
+			<p>The following resources provide additional information on topics related to this app:</p>
+			<h3>Amazon Help</h3>
+			<ul>
+			<li><a href="https://developer.amazonservices.com/" target="_blank">Amazon Marketplace Web Service</a></li>
+			<li><a href="https://sellercentral.amazon.com/gp/help/home.html" target="_blank">Amazon Payments Help</a></li>
+		</ul>
+		<h3>GitHub</h3>
+		<ul>
+			<li><a href="https://github.com/Mozu/PayWithAmazon-Theme" target="_blank">PayWithAmazon-Theme Integration</a></li>	
+			<li><a href="https://github.com/Mozu/PayWithAmazon" target="_blank">Pay with Amazon App</a></li>
+			<li><a href="https://help.github.com/articles/comparing-commits-across-time/" target="_blank">Comparing commits across time</a></li>
+			</ul>
+			<h3>Mozu Documentation</h3>
+			<ul>
+			<li><a href="http://developer.mozu.com/content/learn/themedev/quickstart/create-your-first-theme.htm" target="_blank">Mozu Theme Development Quickstart</a></li>
+			</ul>
+			</section>
 						</div>
                     </div>
                 </div>
