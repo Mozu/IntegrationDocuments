@@ -135,6 +135,7 @@
                                 		<li><a href="#rules">Create Custom Rules</a></li>
                                 	</ul></a>
                                 </li>
+                                <li><a href="#widget">Add the Widget</a></li>
                                 <li><a href="#enable">Enable the App</a>
                                 </li>
                                 <li><a href="#use">Use the App</a>
@@ -149,6 +150,7 @@
                                 		<li><a href="#updateorder">Update Order Status?</a></li>
                                 	</ul>
                                 </li>
+                                <li><a href="#related">Related Links</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -159,7 +161,7 @@
                             <h2>Welcome to Decision Manager and Mozu</h2>
                             <p>CyberSource's <a href="http://www.cybersource.com/products/fraud_management/decision_manager/" target="_blank">Decision Manager</a> provides a fraud protection platform that features the World's Largest Fraud Detection Radar as well as a flexible rules engine that lets you customize rules to suit your business case. With Decision Manager, you can screen orders for risk in an effort to prevent fraud.</p>
                             <p>The <a href="http://www.mozu.com" target="_blank">Mozu</a> CyberSource Decision Manager Application integrates your Decision Manager account with your Mozu site so that orders you receive on your site are automatically screened by Decision Manager. Orders receive a fraud score and a validation result from Decision Manager that Mozu uses to either accept, reject, or flag an order for further review.</p>
-							<p>Application Features:</p>
+							<h3>Application Features:</h3>
                             <ul>
 								<li>Automatically sends information about submitted orders to Decision Manager, including the shopper's browser type, IP address, device type, billing information, etc.</li>
 								<li>Validates orders against your Decision Manager rules to determine a fraud score and validation result.</li>
@@ -301,6 +303,30 @@
 							 <p>For more information on creating custom rules and fields in Decision Manager, refer to the <em>Decision Manager User Guide</em> available through the CyberSource Business Center.</p>
 							
                         </section>
+
+                        <section id="widget">
+                        	<h2>Add the Decision Manager Device Fingerprint Widget to Your Theme</h2>
+                        	<p>For each fraud screen it performs, Decision Manager requires a device fingerprint that helps identify the computer or device from which an order originates. You must add the Decision Manager Widget, available in GitHub (<a href="https://github.com/Mozu/Integration-DecisionManagerWidget" target="_blank">Mozu/Integration-DecisionManagerWidget</a>), to the checkout page of your Mozu site(s) to capture each customer’s device fingerprint and send it to Decision Manager.</p>
+
+                        	<h3>Update Your Theme</h3>
+							<ol>	
+								<li>Clone or download the <a href="https://github.com/Mozu/Integration-DecisionManagerWidget" target="_blank">GitHub repository</a>.</li>
+								<li>Add or merge the files listed above.</li>
+								<li>Run Grunt to build the theme.</li>
+								<li>Upload the resulting ZIP file to Mozu Dev Center.</li>
+								<li>Install the updated theme to the sandbox you’re working in.</li>
+								<li>In Mozu Admin, go to <strong>SiteBuilder</strong> > <strong>Themes</strong>, right-click the new theme, and click <strong>Apply</strong>.</li>
+							</ol>
+
+							<h3>Add the Widget to Your Checkout Page</h3>
+							<ol>
+								<li>In Mozu Admin, go to <strong>SiteBuilder</strong> > <strong>Editor</strong>.</li>
+								<li>In the Site tree, navigate to <strong>Templates</strong> > <strong>Checkout</strong>.</li>
+								<li>Click the <strong>Widgets</strong> button at the top of the editor.</li>
+								<li>Drag the <strong>DecisionManager Device Fingerprint</strong> widget to any dropzone on the checkout page. The widget is not visible to customers, so placement on the page is not important.</li>
+							</ol>
+                        </section>
+
                         <section id="enable">
                             <h2>Enable the App</h2>
                             <p>After configuration, enable the Mozu CyberSource Decision Manager Application in Mozu to apply its functionality to your tenant.</p>
@@ -414,6 +440,19 @@
 <img src="dm-order-decision-tree.png" class="img-mozu-center" style="max-width:100%;">
 </figure>
 </section>
+<section id="related">
+					<h2>Related Links</h2>
+
+					<h3>GitHub</h3>
+					<ul>
+						<li><a href="https://github.com/Mozu/Integration-DecisionManagerWidget" target="_blank">Mozu/Integration-DecisionManagerWidget</a></li>
+					</ul>
+
+					<h3>Mozu Documentation</h3>
+					<ul>
+						<li><a href="http://developer.mozu.com/content/learn/themedev/quickstart/create-your-first-theme.htm" target="_blank">Mozu Theme Development Quickstart</a></li>
+					</ul>
+				</section>
                     </div>
                 </div>
             </div>
