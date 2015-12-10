@@ -124,14 +124,17 @@
 							<li><a href="#configapp">Configure the App</a>
 								<ul class="nav nav-stacked">
 									<li><a href="#configreq">Requirements</a></li>
-									<li><a href="#configacct">Configure the App in Mozu</a></li>
-									<li><a href="#configwidget">Configure the ShipWorks Software</a></li>
+									<li><a href="#configacct">Configure Account Settings in Mozu</a></li>
+									<li><a href="#configdownloads">Configure Downloads to ShipWorks</a></li>
+									<li><a href="#configstoresw">Configure Your Store in ShipWorks</a></li>
 								</ul>
 							</li>
 							<li><a href="#enable">Enable the App</a></li>
 							<li><a href="#useapp">Use the App</a>
 							<ul class="nav nav-stacked">
 									<li><a href="#manage">Manage Orders</a></li>
+									<li><a href="#download">Download Frequency</a></li>
+									<li><a href="#upload">Upload Frequency</a></li>
 									<li><a href="#multiple">Capture Additional Order Details</a></li>
 								</ul>
 							
@@ -148,9 +151,10 @@
 					<p>The ShipWorks Application by <a href="http://www.mozu.com">Mozu</a> integrates your Mozu tenant with your ShipWorks account. If you already use ShipWorks for order management and fulfillment, you can use this app to download order data from Mozu, fulfill orders from ShipWorks as usual, and automatically upload order status and tracking back into Mozu to keep both systems in sync.</p>
 					 <h3>Application Features</h3>
                         <ul>
-                            <li>Syncs your Mozu tenant with your ShipWorks account.</li> 
-                            <li>Periodically downloads all orders with a status of &quot;Processing&quot; to ShipWorks.<ul><li><strong>Note:</strong> You can configure download frequency in ShipWorks. Mozu recommends a 15-minute interval.</li></ul></li>
-							<li>Sends upates to Mozu when an order ships and sets the order status in Mozu to &quot;Closed&quot;.</li>
+                            <li>Syncs your Mozu site(s) with your ShipWorks account.</li> 
+                            <li>Periodically downloads orders from Mozu to ShipWorks.</li>
+                            <li>Allows you to configure downloads by filtering by order and payment status.</li>
+							<li>Sends updates to Mozu when an order ships and updates the order status.</li>
 						</ul>
 				</section>
 				<section id="install">
@@ -162,14 +166,10 @@
                             	<li>Click the app icon.</li>
                             	<li>On the app page, click <strong>Install Now</strong>.</li>
                             </ol>
-                       
-
-                        
 				</section>
 				
 				<section id="configapp">				
                     <h2>Configure the Application</h2>
-						<p>To integrate ShipWorks services with Mozu, confirm your system meets the configuration requirements, then complete the steps in this section.</p>
 
 
 					<h3 id="configreq">Configuration Requirements</h3>
@@ -180,27 +180,40 @@
                             <li>You must have an active <a href="http://www.ShipWorks.com/">ShipWorks</a> account, with access to modify and update your store settings in ShipWorks.</li>
                         </ul>
 						
-						<h3 id="configacct">Configure the App in Mozu</h3>
+						<h3 id="configacct">Configure Account Settings in Mozu</h3>
                         <ol>
-                            <li>In the Mozu Admin top bar, select <strong>Settings&#0187;Applications</strong>.</li>
-                            <li>Double-click <strong>ShipWorks</strong>.</li>
-                            <li>Click the <strong>Configuration</strong> link to open the configuration settings for the app.</li>
+                            <li>In Mozu Admin, go to <strong>Settings</strong> > <strong>Applications</strong>.</li>
+                            <li>Click <strong>ShipWorks</strong>.</li>
+                            <li>Click the <strong>Configuration</strong> link to open the app configuration dialog.</li>
                             <li>On the <strong>Account</strong> tab, enter a short (6 characters max) <strong>User Name</strong> for the app to use. This name is just an identifier for the application, and does not have to match your login credentials for ShipWorks.</li>
 							<li>Click <strong>Generate Password</strong>. A new unique password appears below the user name.</li>
-							<li>Leave the configuration settings open. You will use information from this dialog in the next section.</li>
+							<li>Leave the configuration dialog open. You will use it in the next section.</li>
 							<img src="shipworks-settingtab.png" class="img-mozu" />
                         </ol>
+
+                        <h3 id="configdownloads">Configure Downloads to ShipWorks</h3>
+                        <p>The ShipWorks Application allows you to customize how frequently order information is sent from Mozu to ShipWorks by specifying filters based on order and payment status:</p>
+                        <ol>
+                        	<li>In the configuration dialog, go to the <strong>Preferences</strong> tab.</li>
+                        	<li>Specify the <strong>Order Status</strong> filters. The default is to download orders to ShipWorks when they move to <strong>Accepted</strong>, <strong>Processing</strong>, or <strong>Submitted</strong>, but you can choose any or none of the available options. Mozu does not download orders that move to Complete, because complete orders have already shipped. <span class="panel-note"><strong>Note:</strong> If you do not specify an <strong>Order Status</strong> filter, all orders are downloaded to ShipWorks when they meet the <strong>Payment Status</strong> conditions.</span></li>
+                        	<li>Specify the <strong>Payment Status</strong> filters. The default is to download orders to ShipWorks when they move to <strong>Paid</strong>.<span class="panel-note"><strong>Note:</strong> If you do not specify a <strong>Payment Status</strong> filter, all orders are downloaded to ShipWorks when they move to <strong>Paid</strong>, unless you select <strong>Ignore Payment Status</strong>.</span></li>
+                        	<li>Specify whether to <strong>Send Bundle components as separate Line Items</strong>. If you select this option, you can edit the individual items in a product bundle in ShipWorks.</li>
+                        	<li>Click <strong>Save</strong>.</li>
+                        </ol>
+                        <p class="panel-tip"><strong>Tip:</strong> If you deselect all possible download filters AND select <strong>Ignore Payment Status</strong>, the ShipWorks Application downloads orders according to the <strong>Order Status</strong> filter defaults (Accepted/Processing/Submitted). If you no longer want to send any orders to ShipWorks, disable downloads for your Mozu store in ShipWorks.</p>
+
                         
-						<h3 id="configwidget">Configure the ShipWorks Software</h3>
-                        <p>You can now use the User Name, generated Password, and Module Url from Mozu to connect ShipWorks to the app.</p>
+						<h3 id="configstoresw">Configure Your Store in ShipWorks</h3>
+                        <p>You can now use the User Name, generated Password, and Module URL from Mozu to connect ShipWorks to your Mozu site(s):</p>
                         <ol>
                             <li>Open ShipWorks.</li>
-                            <li>Add a new store.
+                            <li>Select <strong>Manage</strong> > <strong>Stores</strong> and click <strong>Add Store</strong>.
                            <img src="sw-manage-stores.png" class="img-mozu" /></li>
-                            <li>Depending on your ShipWorks software version, select <strong>Mozu</strong> or <strong>Generic - Module</strong> and click <strong>Next</strong>.<img src="sw-setup-dialog.png" class="img-mozu" /></li>
-							<li>Copy the <strong>User Name</strong>, <strong>Password</strong>, and <strong>Module Url</strong> from the app configuration settings in Mozu.</li>
-							<li>Click <strong>Next</strong>. ShipWorks establishes a connection to Mozu through the ShipWorks Application app, retrieving the name and address of your Mozu store.</li>
+                            <li>Select <strong>Generic - Module</strong> and click <strong>Next</strong>.<img src="sw-setup-dialog.png" class="img-mozu" /></li>
+							<li>On the <strong>Store Setup</strong> page, paste the <strong>User Name</strong>, <strong>Password</strong>, and <strong>Module URL</strong> from the app configuration dialog in Mozu.</li>
+							<li>Click <strong>Next</strong>. ShipWorks establishes a connection to Mozu through the ShipWorks Application, retrieving the name and address of your Mozu store.</li>
                             <li>Complete the remaining steps of the <strong>ShipWorks Setup</strong>.</li>
+                            <li>(Optional) Repeat these steps for each Mozu site you want to add as a store in ShipWorks.</li>
 						</ol>
 				</section>
 
@@ -208,8 +221,8 @@
                             <h2>Enable the App</h2>
                             <p>After configuration, enable the ShipWorks Application for Mozu to apply its functionality to your tenant.</p>
                             <ol>
-                                <li>On the Mozu Admin top bar, select <strong>Settings&#0187;Applications</strong>.</li>
-                                <li>Click <strong>ShipWorks</strong>.</li>
+                                <li>In Mozu Admin, go to <strong>Settings</strong> > <strong>Applications</strong>.</li>
+                            <li>Click <strong>ShipWorks</strong>.</li>
                                 <li>Click <strong>Enable App</strong>.</li>
                             </ol>
                             
@@ -220,61 +233,79 @@
 					<h2>Use the App</h2>
 					<ul>
 						<li><a href="#manage">Manage Orders</a></li>
+						<li><a href="#download">Download Frequency</a></li>
+						<li><a href="#upload">Upload Frequency</a></li>
 						<li><a href="#multiple">Capture Additional Order Details</a></li>
 					</ul>
                     <h3 id="manage">Manage Orders</h3>
-						<p>The ShipWorks Application is designed to download all Mozu orders with a status of &quot;Processing&quot; to your ShipWorks software. In Mozu, an order moves from &quot;Accepted&quot; to &quot;Processing&quot; when:</p>
+						<p>Once you configure and enable the ShipWorks Application, the app and ShipWorks handle most of the order management process. The amount of order processing you must do in Mozu depends on how you configure your order download filters.</p>
+
+						<p>If you use the default filters set on the <strong>Preferences</strong> tab of the app configuration dialog, Mozu sends orders to ShipWorks when the following state changes occur:</p>
+
 						<ul>
-							<li>Payment is captured</li>
+							<li>Order Status changes to <strong>Submitted</strong> (a customer has completed the checkout process and defined billing and shipping information).</li>
+							<li>Order Status changes to <strong>Accepted</strong> (the order has passed Mozu's internal validation process).</li>
+							<li>Order Status changes to <strong>Processing</strong> (payment has been captured or the order was at least partially fulfilled).</li>
+							<li>Payment Status changes to <strong>Paid</strong> (payment has been captured).</li>
 						</ul>
-                        <p>OR</p>
-                        <ul>
-                            <li>An order is partially or fully fulfilled</li>
-                        </ul>
-                        <p>The basic process for managing orders is as follows:</p>
-                        <ol>
-                        	<li><strong>Set Order Status in Mozu</strong>&mdash;Since you are using ShipWorks for order fulfillment, you must capture payments on &quot;Accepted&quot; orders in Mozu before you can download them to ShipWorks. (<strong>Note:</strong> While it is possible to force an order to &quot;Processing&quot; by manipulating payment, we do not recommend doing so until you have validated the payment method.)</li>
-						<li><strong>Download Orders to ShipWorks</strong>&mdash;You can configure ShipWorks to automatically download &quot;Processing&quot; orders (recommended) by creating an action in ShipWorks. You also can manually download orders by clicking <strong>Download</strong> on the <strong>Home</strong> ribbon. For any download, ShipWorks only captures orders that have become available since the previous download.</li>
-						<li><strong>Process Orders in ShipWorks</strong>&mdash;Once an order has been downloaded, you can process it using any desired ShipWorks functionality. The order will not change in Mozu until you mark the order as &quot;Shipped&quot; in ShipWorks. At that point, Mozu syncs the order data, updates the Order Status to &quot;Completed&quot; and adds a tracking number for the shipment.</li>
-						</ol>
+
+						<p class="panel-note"><strong>Note:</strong> The ShipWorks Application does not download Complete orders, because complete orders have already shipped. Complete orders will still show a <strong>Store Status</strong> of <strong>Processing</strong> in ShipWorks.</p>
+
+						<p>The most common workflow is to allow Mozu to validate an order, fulfill the order from ShipWorks, and capture payment in Mozu. Using at least these default download filters minimizes the risk of orders getting out of sync between ShipWorks and Mozu.</p>
+
+					<h3 id="download">Download Frequency</h3>
+
+					<p>ShipWorks checks Mozu for new downloads at the time interval you specified when you configured your store in ShipWorks. You can change this download frequency in the <strong>Store Settings</strong> dialog in ShipWorks:</p>
+
+				<ol>
+					<li>Go to <strong>Manage</strong> > <strong>Stores</strong>.</li>
+					<li>Select your store and click <strong>Edit</strong>.</li>
+					<li>Go to the <strong>Store Settings</strong> tab.</li>
+					<li>Use the <strong>Downloading</strong> settings to change your download frequency.</li>
+				</ol>
+
+				<p class="panel-tip"><strong>Tip:</strong> You can manually download orders at any time by clicking the <strong>Download</strong> button on the <strong>Home</strong> tab in ShipWorks.</p>
+
+					<h3 id="upload">Upload Frequency</h3>
+					<p>When you create a store in ShipWorks, ShipWorks automatically creates an action to upload shipment details when the shipment is processed. After you ship an order in ShipWorks, you can go to the <strong>Orders</strong> module in Mozu Admin to confirm that the <strong>Fulfillment Status</strong> is <strong>Fulfilled</strong>. Select the order and go to the <strong>Fulfillment</strong> tab on the <strong>Order Details</strong> page to see the fulfillment timestamp and tracking number from ShipWorks. The next section describes how to configure ShipWorks to send more order details to Mozu.</p>
+					<p class="panel-tip"><strong>Tip:</strong> You can manually upload orders at any time by clicking the <strong>Update Online</strong> button on the <strong>Home</strong> tab in ShipWorks.</p>
 
 
 					<h3 id="multiple">Capture Additional Order Details</h3>
 					<p>You can configure ShipWorks to send more detailed packaging information, such as package weights and carrier information, to Mozu. To do this, you must modify the action that sends the updated order info back to Mozu.</p>
-					<p>In the following example, you will update your <strong>Online Update</strong> action in ShipWorks to handle a common scenario: An order that requires multiple packages (and tracking numbers) within the same order.</p>
-					<p><strong>Edit the Online Update Action</strong></p>
+					<p>In the following example, you will update your <strong>Store Update</strong> action in ShipWorks to handle a common scenario: An order that requires multiple packages (and tracking numbers) within the same order.</p>
+					<p><strong>1. Disable the Default Store Update Action for Your Store</p></strong>
 					<ol>
-					<li>In ShipWorks, launch the <strong>Action Manager</strong>.<br/> 
-					<img src="sw-manage-actions.png" class="img-mozu" /></li>
-					<li>Select <strong>Online Update</strong> and click <strong>Edit</strong>. 
-					<br/> <img src="shipworks2.png" class="img-mozu" />
+					<li>In ShipWorks, go to <strong>Manage</strong> > <strong>Actions</strong> to launch the <strong>Action Manager</strong>.</li>
+					<li>Select the <strong>Store Update</strong> action and click <strong>Edit</strong>.
 					</li>
-					<li>Select the <strong>Settings</strong> tab. If the Mozu store is checked in the <strong>Only run the action for these stores</strong> list, uncheck the store checkbox and click <strong>OK</strong>.<br/> <img src="shipworks3.png" class="img-mozu" /></li>
+					<li>Go to the <strong>Settings</strong> tab. If your Mozu store is checked in the <strong>Only run the action for these stores</strong> list, uncheck the checkbox and click <strong>OK</strong>.</li>
+				</ol>
+				<p><strong>2. Create a New Action that Checks if All Shipments are Processed</p></strong>
+				<ol>
 					<li>In the <strong>Action Manager</strong>, click <strong>New Action</strong>.</li>
 					<li>Give the action a meaningful name, such as <strong>Mozu Shipment Update</strong>.</li>
-				</ol>
-				<p><strong>Create A Filter to Check if All Shipments are Processed</strong></p>
-				<ol>
-					<li>Under <strong>When the following occurs</strong>, select <strong>A filter's content changes</strong> from the drop-down menu.</li>
-					<li>In the new drop-down that appears, click the <strong>Create</strong> link under <strong>Quick Filter</strong> to launch the <strong>Filter Editor</strong>. <br/> <img src="sw-filter-editor.png" class="img-mozu" /></li>
+					<li>Under <strong>When the following occurs</strong>, select <strong>A filter's content changes</strong>.</li>
+					<li>In the new drop-down that appears, click the <strong>Create</strong> link under <strong>Quick Filter</strong> to launch the <strong>Filter Editor</strong>.<br><img src="sw-create-filter.png" class="img-mozu"></li>
 					<li>Name the filter. For example: <strong>Mozu Shipment Filter</strong>.</li>
 					<li>Click the <strong>Add Condition</strong> icon (<img src="addcondition.png"  />).</li>
-					<li>Click the <strong>Order Total</strong> link and select <strong>For Every&#0187;Shipment</strong> under <strong>Contents</strong>.<br/> <img src="sw-filter-editor-everyship.png" class="img-mozu" /></li>
+					<li>Click the <strong>Order Total</strong> link and select <strong>For Every</strong> > <strong>Shipment</strong> under <strong>Contents</strong>.<br/> <img src="sw-filter-editor-everyship.png" class="img-mozu" /></li>
 					<li>Click <img src="addcondition.png"  /> next to <strong>If All of the following conditions are met</strong>.</li>
 					<li>Click the <strong>Provider</strong> link and select <strong>Processed Status</strong> under <strong>Shipment</strong>.</li> 
 					<li>From the drop-down menu, select <strong>Processed</strong>.<br/> <img src="shipworks6.png" class="img-mozu" /></li>
 					<li>Click <strong>OK</strong>. You have now created a filter that checks whether every shipment in an order has a status of &quot;Processed&quot;.</li>
 					</ol>
-					<p><strong>Create the Web Request to Send Data to Mozu</strong></p>
+					<p><strong>3. Create the Web Request to Send Data to Mozu</strong></p>
 					<ol>
-					<li>In the <strong>Action Editor</strong>, click <strong>Add Task</strong> and select <strong>Send web request</strong> from the drop-down menu.</li>
+					<li>In the <strong>Action Editor</strong>, click <strong>Add Task</strong> and select <strong>Send web request</strong> under <strong>External</strong>.</li>
 					<li>For <strong>Send the request</strong>, select <strong>Using the results of processing a template</strong> as a <strong>POST</strong> from the drop-down menus.</li>
-					<li>In the <strong>Template</strong> drop-down, expand <strong>System&#0187;Utility</strong> and select <strong>XML Source</strong>.<br/> <img src="sw-web-request.png" class="img-mozu" /></li>
-					<li>For the <strong>Request URL</strong>, enter the <strong>Shipment URL</strong> from the ShipWorks Application configuration page in Mozu.<br/> <img src="shipworks-settingtab.png" class="img-mozu" /></li>
+					<li>In the <strong>Template</strong> drop-down, expand <strong>System</strong> > <strong>Utility</strong> and select <strong>XML Source</strong>.<br/> <img src="sw-web-request.png" class="img-mozu" /></li>
+					<li>For the <strong>Request URL</strong>, enter the <strong>Shipment URL</strong> from the ShipWorks Application configuration dialog in Mozu.<br/> <img src="shipworks-settingtab.png" class="img-mozu" /></li>
 					<li>Select the <strong>Use basic authentication</strong> checkbox.</li>
-					<li>Enter the user name and password from the ShipWorks Application app.<br/> <img src="shipworks9.png" class="img-mozu" /></li>
+					<li>Enter the User Name and Password from the ShipWorks Application.<br/> <img src="sw-template-auth.png" class="img-mozu" /></li>
 					<li>Click <strong>OK</strong> to save.</li>
 					</ol>
+					<p>With this new action, ShipWorks now only uploads orders to Mozu when every line item in the order is processed.</p>
 			</section>
 				
 						</div>
