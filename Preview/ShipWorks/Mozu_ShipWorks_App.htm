@@ -126,7 +126,8 @@
 									<li><a href="#configreq">Requirements</a></li>
 									<li><a href="#configacct">Configure Account Settings in Mozu</a></li>
 									<li><a href="#configdownloads">Configure Downloads to ShipWorks</a></li>
-									<li><a href="#configstoresw">Configure Your Store in ShipWorks</a></li>
+									<li><a href="#configstoresw">Configure Your Store(s) in ShipWorks</a></li>
+									<li><a href="#multistore">Configuring Multiple Stores</a></li>
 								</ul>
 							</li>
 							<li><a href="#enable">Enable the App</a></li>
@@ -155,7 +156,9 @@
                             <li>Periodically downloads orders from Mozu to ShipWorks.</li>
                             <li>Allows you to configure downloads by filtering by order and payment status.</li>
 							<li>Sends updates to Mozu when an order ships and updates the order status.</li>
+							<li>Supports mapping multiple Mozu sites to unique stores in ShipWorks.</li>
 						</ul>
+						<p class="panel-note"><strong>Note:</strong> ShipWorks requires you to purchase a license for each store you create in the ShipWorks software.</p>
 				</section>
 				<section id="install">
 					<h2>Install the Application on Your Tenant</h2>
@@ -178,8 +181,12 @@
                             <li>The ShipWorks Application by Mozu must be installed on your tenant.</li>
 							<li>ShipWorks must be installed on your system.</li>
                             <li>You must have an active <a href="http://www.ShipWorks.com/">ShipWorks</a> account, with access to modify and update your store settings in ShipWorks.</li>
+                            <li>If you are configuring mutliple stores, you must purchase a license for each store in ShipWorks.</li>
                         </ul>
 						
+
+
+
 						<h3 id="configacct">Configure Account Settings in Mozu</h3>
                         <ol>
                             <li>In Mozu Admin, go to <strong>Settings</strong> > <strong>Applications</strong>.</li>
@@ -215,6 +222,11 @@
                             <li>Complete the remaining steps of the <strong>ShipWorks Setup</strong>.</li>
                             <li>(Optional) Repeat these steps for each Mozu site you want to add as a store in ShipWorks.</li>
 						</ol>
+
+						<h3 id="multistore">Configuring Multiple Stores</h3>
+						<p>If you maintain multiple Mozu sites, you can set up multiple stores in ShipWorks to handle shipping and fulfillment for each store. Simply repeat the steps in the previous procedure for each store. The ShipWorks app recognizes each site on your tenant and provides unique Module and Shipment URLs that you can use for each ShipWorks store.</p>
+						<p>You can use the same <strong>User Name</strong> and <strong>Password</strong> to create each store in ShipWorks. Only the store URLs must be unique.</p>
+						<p class="panel-note"><strong>Note:</strong> ShipWorks requires you to purchase a license for each store you create in the ShipWorks software.</p> 
 				</section>
 
 				  <section id="enable">
