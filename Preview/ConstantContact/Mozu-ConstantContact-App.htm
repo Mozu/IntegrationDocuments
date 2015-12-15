@@ -1,9 +1,9 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="15" MadCap:lastHeight="488" MadCap:lastWidth="1168">
-    <head><title>Constant Contact by Mozu</title>
+﻿<!DOCTYPE html>
+<html>
+    <head><title>Constant Contact Application by Mozu Configuration Guide</title>
         <meta name="author" content="Mozu" />
-        <meta name="description" content="User content for Constant Contact by Mozu" />
-        <meta name="keywords" content="Constant Contact,Mozu" />
+        <meta name="description" content="User content for the Constant Contact Application by Mozu" />
+        <meta name="keywords" content="Constant Contact, Mozu" />
 		<link rel="shortcut icon" href="http://www.mozu.com/favicon.ico" />
 		
 		<!-- Required for Scrollspy -->
@@ -13,7 +13,7 @@
 		<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 		
 		<!-- Mozu CSS developed by Mozu Docs -->
-		<link href="mozu-splash-bootswatch.css" rel="stylesheet" type="text/css" />	
+		<link href="mozu-bootswatch.css" rel="stylesheet" type="text/css" />	
 		
 		<!-- Scrollspy active link script -->
 		<script>
@@ -93,40 +93,191 @@
 		</script>
 	</head>
     <body>
-			<div class="landing-heading">
-				<div class="landing-heading__content">
-					<h1>Coming soon, a new Constant Contact App by Mozu!</h1>
-					<h2>Watch for updates and information for integrating Constant Contact with Mozu!</h2>
-					
-				
-					
-				</div>
-			</div>
-			<div class="landing-method-theme"></div>
+	<div id="main">
+	<div class="container">
+		<!-- Top Nav - Mozu -->
+			<nav class="navbar navbar-default navbar-fixed-top">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                        </button> <a href="#"><img src="logo-m-red-medium.png" style="margin-top:3px;"/></a></div>
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav navbar-right">
+							<li><a href="versionhistory.html"><span>Version History</span></a></li>
+							<li><a href="https://www.mozu.com/marketplace/"><span>Mozu App Marketplace</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
 			
-			
-		
-		<!-- Footer -->
+		<!--Side Navigation TOC -->
+		<div class="row">
+		<div class="landing-title">
+			<h1>Constant Contact Application by Mozu Configuration Guide</h1>	
+		</div>
+			<div class="col-md-3">
+                        <nav class="bs-docs-sidebar">
+                            <ul class="nav nav-stacked">
+                                <div class="side-heading">Table of Contents</div>
+                                <li><a href="#intro">Welcome to Constant Contact and Mozu</a>
+                                </li>
+                                <li><a href="#install">Install the App</a>
+                                </li>
+                                <li><a href="#configapp">Configure the App
+                                <ul class="nav nav-stacked">
+                                		<li><a href="#configreq">Requirements</a></li>
+                                		<li><a href="#accessconfig">Open App Config Dialog</a></li>
+                                		<li><a href="#allowaccess">Allow Constant Contact Access</a></li>
+                                		<li><a href="#configcontacts">Configure Contact List</a></li>
+                                		<li><a href="#exportcontacts">Export Mozu Contacts</a></li>
+                                	</ul></a>
+                                </li>
+                                <li><a href="#enable">Enable the App</a>
+                                </li>
+                                <li><a href="#use">Use the App</a>
+                                	<ul class="nav nav-stacked">
+                                		<li><a href="#events">Listening for Events</a></li>
+                                		<li><a href="#syncmtocc">Sync Mozu to Constant Contact</a></li>
+                                		<li><a href="#synccctom">Sync Constant Contact to Mozu</a></li>
+                                	</ul>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    
+            <div class="col-md-9 content" >
+                <!-- Documentation content -->
+				<section id="intro">
+                            <h2>Welcome to Constant Contact and Mozu</h2>
+                            <p><a href="http://www.constantcontact.com/index.jsp" target="_blank">Constant Contact</a> is a leading provider of email marketing services, offering easy-to-use templates, streamlined contact management, and robust campaign analytics. The Constant Contact Application by Mozu integrates Constant Contact as your email marketing provider, sharing contact information between the two systems and enabling you to map customer data to Constant Contact customer attributes.</p>
+							<h3>Application Features:</h3>
+                            <ul>
+                            	<li>Synchronizes contact information and opt-in preferences across Mozu and Constant Contact.</li>
+                            	<li>Maps customer data, social marketing initiatives, and more to Constant Contact customer attributes.</li>
+								<li>Automated campaign creation tied to marketing discounts.</li>
+							</ul>
+                        </section>
+
+                        <section id="install">
+                            <h2>Install the App</h2>
+                            <p>You can install the Constant Contact Application by Mozu directly from the Mozu App Marketplace:</p>
+                            <ol>
+                            	<li>Go to: <a href="https://www.mozu.com/marketplace" target="_blank">www.mozu.com/marketplace</a></li>
+                            	<li>In the <strong>Search</strong> field, enter: Constant Contact</li>
+                            	<li>Click the app icon.</li>
+                            	<li>On the app page, click <strong>Install Now</strong>.</li>
+                            </ol>
+                        </section>
+
+                        <section id="configapp">
+                        	<h2>Configure the App</h2>
+                        	<p>To integrate Constant Contact with Mozu, review the configuration requirements to ensure you have everything you need to be successful before you begin, and then complete the steps in this section.</p>
+
+                        	<h3 id="configreq">Configuration Requirements</h3>
+                        	<ul>
+                        		<li>You must have an active Constant Contact account.</li>
+                        		<li>The Constant Contact Application by Mozu must be installed on your tenant.</li>
+                        	</ul>
+
+                        	<h3 id="accessconfig">Open the App Configuration Settings</h3>
+                            <ol>
+								<li>Log in to Mozu Admin.</li>
+                                <li>On the Mozu Admin top bar, select <strong>Settings</strong> > <strong>Applications</strong>.</li>
+                                <li>Click <strong>Constant Contact Application by Mozu</strong>.</li>
+                                <li>Click the <strong>Configuration</strong> link to open configuration settings.</li>
+                            </ol>
+
+
+                        	<h3 id="allowaccess">Allow Mozu Access to Constant Contact</h3>
+                        	<p>For the app to successfully communicate with Constant Contact, you must allow Mozu access to your Constant Contact account:</p>
+                        	<ol>
+                        		<li>In the Mozu app configuration settings dialog, go to the <strong>Info</strong> tab.</li>
+                        		<li>Click <strong>Login to Constant Contact</strong>.</li>
+                        		<li>Enter your user name and password.</li>
+                        		<li>On the <strong>Allow Access?</strong> page, click <strong>Allow</strong>.</li>
+                        	</ol>
+
+                        	<h3 id="configcontacts">Configure Your Contact List and Email Settings</h3>
+                        	<ol>
+                        		<li>In the Mozu app configuration settings dialog, go to the <strong>Settings</strong> tab.</li>
+                        		<li>Enter a name for your Mozu contact list under <strong>Contact List Name</strong>. This field supports type-ahead completion for any existing lists in your Constant Contact account, or you can create a new list.</li>
+                        		<li>(Optional) If you want to send a welcome email to customers when they opt-in to marketing, select <strong>Send welcome email to customer on signup</strong>.</li>
+                        		<li>Select the email address you want to use for your emails in the <strong>Specify From and ReplyTo email for Campaigns</strong> drop-down.</li>
+                        		<li>Click <strong>Save</strong>. If you created a new contact list, that list now appears as an empty list in Constant Contact.</li>
+                        	</ol>
+
+                        	<h3 id="exportcontacts">Export Your Mozu Contacts to Constant Contact</h3>
+                        	<p>Before you start creating your email campaigns, you must do an initial export of your customers who have opted in to marketing.</p> 
+                        	<p class="panel-note"><strong>Note:</strong> All your new customer entries must originate from Mozu. You cannot create a new customer account from Constant Contact.</p>
+                        	<ol>
+                        		<li>In the Mozu app configuration settings dialog, go to the <strong>Sync</strong> tab.</li>
+                        		<li>Select <strong>To Constant Contact</strong>.</li>
+                        		<li>Click <strong>Sync Contacts</strong>. The job starts running immediately.</li>
+                        		<li>Go to the <strong>Sync Logs</strong> tab and click <strong>Refresh</strong>. The job should appear in the list with a <strong>Status</strong> of RUNNING.</li>
+                        		<li>Wait a few moments and click <strong>Refresh</strong> again. The job now shows a <strong>Status</strong> of COMPLETE, and the <strong>Total Contacts</strong> column shows the number of contacts that were updated.</li>
+                        		<li>(Optional) If any errors occur with the sync, click the number in the <strong>Errors</strong> column to view the error messages. The most common error is an invalidly formatted email address.</li>
+                        	</ol>
+                        </section>
+
+                        <section id="enable">
+                        	<h2>Enable the App</h2>
+                            <p>After configuration, enable the Constant Contact Application in Mozu to apply its functionality to your tenant.</p>
+                            <ol>
+                                <li>On the Mozu Admin top bar, select <strong>Settings</strong> > <strong>Applications</strong>.</li>
+                                <li>Click <strong>Constant Contact Application by Mozu</strong>.</li>
+                                <li>Click <strong>Enable App</strong>.</li>
+                            </ol>
+                            
+							<p>Congratulations! You can now preview Decision Manager functionality on your site.</p>
+                        </section>
+
+                        <section id="use">
+                        	<h2>Use the App</h2>
+                        	<p>Once you have installed, configured, and enabled the Constant Contact Application, you are ready to preview the functionality in Mozu.</p>
+                        	<h3 id="events">Listening for Events</h3>
+                        	<p>The Constant Contact app works by listening for events that fire when a customer account is updated either in Mozu or in Constant Contact. The app recognizes both updates you make in Mozu Admin and updates that customers initiate by creating a new account and opting into marketing.</p> 
+                        	<p>The Constant Contact app syncs the two systems every 30 minutes.</p>
+
+                        	<h3 id="syncmtocc">Sync from Mozu to Constant Contact</h3>
+                        	<p>If you make a change to a customer in Mozu and want to confirm that the app has picked up the change, you can view the event queue in the app configuration settings dialog:</p>
+                        	<ol>
+                        		<li>In the Mozu app configuration settings dialog, go to the <strong>Events</strong> tab.</li>
+                        		<li>If the list is empty, click <strong>Refresh</strong>. Any events that are in the queue to be sent to Constant Contact appear in the events grid.</li>
+                        		<li>When the run time indicated at the top of the tab has passed, click <strong>Refresh</strong> again. The list should empty to indicate that the event has been processed. You can go to the <strong>Sync Logs</strong> tab to see the status of the sync that included the event.</li>
+                        	</ol>
+
+                        	<h3 id="synccctom">Sync from Constant Contact to Mozu</h3>
+                        	<p>The Constant Contact Application listens for events from Constant Contact, but it cannot display the queued events on the <strong>Events</strong> tab. However, the app does still sync these events every 30 minutes, and you can view logs of each sync on the <strong>Sync</strong> tab:</p>
+                        	<ol>
+                        		<li>In the Mozu app configuration settings dialog, go to the <strong>Events</strong> tab.</li>
+                        		<li>Click <strong>From Constant Contact</strong>.</li>
+                        		<li>In the list of sync operations, click <strong>View</strong> in the <strong>Logs</strong> column to see the types of events that were captured in the last sync.</li>
+                        	</ol>
+                        </section>
+                                            </div>
+                </div>
+            </div>
+        </div>
+	 <!-- Footer -->
         <footer class="footer">
             <div class="container">
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="footer__logo">
-                            <a href="http://www.mozu.com" target="_blank"><img src="http://www.mozu.com/sites/all/themes/mozu_aurora/logo.png" style="padding-top:7px;"/></a>
-                        </div>
-                    </div>
-                    <div class="col-md-6 text-center">
-                        
-                    </div>
-                    <div class="col-md-3">
-                        <p class="pull-right footer__icons"><a href="https://twitter.com/MozuCommerce"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-twitter"></i></button></a><a href="http://www.mozu.com/ecommerce-app-center" target="_blank"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-code-fork"></i></button></a><a href="http://www.mozu.com/contact"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-comments-o"></i></button></a><a href="http://www.mozu.com/contact"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-copyright"></i></button></a></a>
-                        </p>
-                    </div>
+                <div class="pull-left footer__logo">
+                    <a href="http://www.mozu.com" target="_blank"><img src="http://www.mozu.com/sites/all/themes/mozu_aurora/logo.png" style="padding-top:7px;"/></a>
+                </div>
+                <div class="pull-right footer__icons" style="padding-right:40px;">
+					<a href="http://www.mozu.com/ecommerce-app-center" target="_blank"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-code-fork"></i></button></a><a href="http://www.mozu.com/contact"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-comments-o"></i></button></a><a href="http://www.mozu.com/contact"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-copyright"></i></button></a>
                 </div>
             </div>
         </footer>
 		
-		<script>
+	<!-- Back to top -->
+	<div class="scroll-top-wrapper ">
+    <span class="scroll-top-inner">
+        <i class="fa fa-2x fa-arrow-circle-up"></i>
+    </span>
+	</div>
+	<!-- Back to top - show hide -->
+	<script>
  
 	$(function(){
 	 
