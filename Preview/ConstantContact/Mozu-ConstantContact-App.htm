@@ -127,7 +127,7 @@
                                 <ul class="nav nav-stacked">
                                 		<li><a href="#configreq">Requirements</a></li>
                                 		<li><a href="#accessconfig">Open App Config Dialog</a></li>
-                                		<li><a href="#allowaccess">Allow Constant Contact Access</a></li>
+                                		<li><a href="#allowaccess">Enable Constant Contact Access</a></li>
                                 		<li><a href="#configcontacts">Configure Contact List</a></li>
                                 		<li><a href="#exportcontacts">Export Mozu Contacts</a></li>
                                 	</ul></a>
@@ -136,10 +136,15 @@
                                 </li>
                                 <li><a href="#use">Use the App</a>
                                 	<ul class="nav nav-stacked">
-                                		<li><a href="#events">Listening for Events</a></li>
-                                		<li><a href="#syncmtocc">Sync Mozu to Constant Contact</a></li>
-                                		<li><a href="#synccctom">Sync Constant Contact to Mozu</a></li>
+                                		<li><a href="#syncmtocc">View Events from Mozu</a></li>
+                                		<li><a href="#synccctom">View Sync Logs from Constant Contact</a></li>
                                 	</ul>
+                                </li>
+                                <li><a href="#applogic">App Logic</a>
+                                	<ul class="nav nav-stacked">
+                                		<li><a href="#events">Updates from Mozu</a></li>
+                                		<li><a href="#updateprocess">Updates from Constant Contact</a></li>
+                                	</ul>	
                                 </li>
                             </ul>
                         </nav>
@@ -149,12 +154,16 @@
                 <!-- Documentation content -->
 				<section id="intro">
                             <h2>Welcome to Constant Contact and Mozu</h2>
+                            
+                            <p><strong>Dev Center Version:</strong> 1.0.0<br>
+                            	<strong>App Version:</strong> 1.19.0</p>
+
                             <p><a href="http://www.constantcontact.com/index.jsp" target="_blank">Constant Contact</a> is a leading provider of email marketing services, offering easy-to-use templates, streamlined contact management, and robust campaign analytics. The Constant Contact Application by Mozu integrates Constant Contact as your email marketing provider, sharing contact information between the two systems and enabling you to map customer data to Constant Contact customer attributes.</p>
 							<h3>Application Features:</h3>
                             <ul>
                             	<li>Synchronizes contact information and opt-in preferences across Mozu and Constant Contact.</li>
-                            	<li>Maps customer data, social marketing initiatives, and more to Constant Contact customer attributes.</li>
-								<li>Automated campaign creation tied to marketing discounts.</li>
+                            	<li>Maps customer name, email, and address to Constant Contact customer attributes.</li>
+								<li>(Optional) Enables Constant Contact to send automated welcome emails to new customers.</li>
 							</ul>
                         </section>
 
@@ -167,6 +176,7 @@
                             	<li>Click the app icon.</li>
                             	<li>On the app page, click <strong>Install Now</strong>.</li>
                             </ol>
+							<p class="panel-note"><strong>Note:</strong> The Constant Contact Application installs and functions on the tenant level. It processes customer marketing updates for all sites on your tenant.</p>
                         </section>
 
                         <section id="configapp">
@@ -188,7 +198,7 @@
                             </ol>
 
 
-                        	<h3 id="allowaccess">Allow Mozu Access to Constant Contact</h3>
+                        	<h3 id="allowaccess">Enable Constant Contact Access</h3>
                         	<p>For the app to successfully communicate with Constant Contact, you must allow Mozu access to your Constant Contact account:</p>
                         	<ol>
                         		<li>In the Mozu app configuration settings dialog, go to the <strong>Info</strong> tab.</li>
@@ -197,11 +207,11 @@
                         		<li>On the <strong>Allow Access?</strong> page, click <strong>Allow</strong>.</li>
                         	</ol>
 
-                        	<h3 id="configcontacts">Configure Your Contact List and Email Settings</h3>
+                        	<h3 id="configcontacts">Configure Your Contact List and Welcome Email Settings</h3>
                         	<ol>
                         		<li>In the Mozu app configuration settings dialog, go to the <strong>Settings</strong> tab.</li>
                         		<li>Enter a name for your Mozu contact list under <strong>Contact List Name</strong>. This field supports type-ahead completion for any existing lists in your Constant Contact account, or you can create a new list.</li>
-                        		<li>(Optional) If you want to send a welcome email to customers when they opt-in to marketing, select <strong>Send welcome email to customer on signup</strong>.</li>
+                        		<li>(Optional) If you want new customers to receive your Constant Contact welcome email when they opt-in to marketing from your Mozu site, select <strong>Send welcome email to customer on signup</strong>.<span class="panel-note"><strong>Note:</strong> If you are using Constant Contact for your welcome email, you must disable the default transactional email set on your Mozu site. Go to the <strong>General Settings</strong> page in Mozu Admin and disable the <strong>Welcome</strong> option under <strong>Notifications</strong> > <strong>Enable Mozu Transactional Emails</strong> > <strong>Shoppers</strong>.</span></li>
                         		<li>Select the email address you want to use for your emails in the <strong>Specify From and ReplyTo email for Campaigns</strong> drop-down.</li>
                         		<li>Click <strong>Save</strong>. If you created a new contact list, that list now appears as an empty list in Constant Contact.</li>
                         	</ol>
@@ -228,32 +238,54 @@
                                 <li>Click <strong>Enable App</strong>.</li>
                             </ol>
                             
-							<p>Congratulations! You can now preview Decision Manager functionality on your site.</p>
+							<p>Congratulations! You can now preview Constant Contact functionality on your tenant.</p> 
+
                         </section>
 
                         <section id="use">
                         	<h2>Use the App</h2>
-                        	<p>Once you have installed, configured, and enabled the Constant Contact Application, you are ready to preview the functionality in Mozu.</p>
-                        	<h3 id="events">Listening for Events</h3>
-                        	<p>The Constant Contact app works by listening for events that fire when a customer account is updated either in Mozu or in Constant Contact. The app recognizes both updates you make in Mozu Admin and updates that customers initiate by creating a new account and opting into marketing.</p> 
-                        	<p>The Constant Contact app syncs the two systems every 30 minutes.</p>
+                        	<p>Once you have installed, configured, and enabled the Constant Contact Application, the app handles all synchronization of contact info without additional action on your part. However, you can always use the configuration settings dialog to check the status of syncs between the two systems.</p>
+                        	
 
-                        	<h3 id="syncmtocc">Sync from Mozu to Constant Contact</h3>
-                        	<p>If you make a change to a customer in Mozu and want to confirm that the app has picked up the change, you can view the event queue in the app configuration settings dialog:</p>
+
+                        	<h3 id="syncmtocc">View Customer Update Events from Mozu</h3>
+                        	<p>The Constant Contact app works by listening for events that fire when a customer account is updated in Mozu. The app recognizes both updates you make in Mozu Admin and updates that customers initiate from your Mozu storefront when they create a new account and opt in to marketing.</p> 
+
+                        	<p>The Constant Contact app syncs Mozu events to Constant Contact every 30 minutes. You can view the event queue in the app configuration settings dialog:</p>
                         	<ol>
                         		<li>In the Mozu app configuration settings dialog, go to the <strong>Events</strong> tab.</li>
-                        		<li>If the list is empty, click <strong>Refresh</strong>. Any events that are in the queue to be sent to Constant Contact appear in the events grid.</li>
-                        		<li>When the run time indicated at the top of the tab has passed, click <strong>Refresh</strong> again. The list should empty to indicate that the event has been processed. You can go to the <strong>Sync Logs</strong> tab to see the status of the sync that included the event.</li>
+                        		<li>If the list is empty, click <strong>Refresh</strong>. Any queued events appear in the events grid.<span class="panel-tip"><strong>Tip:</strong> The <strong>Object Id</strong> in the event queue is the Mozu customer account ID for the customer record that triggered the event.</span>
+                        			<img src="cc-events-queue.png" class="img-mozu"></li>
+                        		<li>When the run time indicated at the top of the tab has passed, click <strong>Refresh</strong> again. The list should empty to indicate that the event has been processed.</li>
                         	</ol>
 
-                        	<h3 id="synccctom">Sync from Constant Contact to Mozu</h3>
-                        	<p>The Constant Contact Application listens for events from Constant Contact, but it cannot display the queued events on the <strong>Events</strong> tab. However, the app does still sync these events every 30 minutes, and you can view logs of each sync on the <strong>Sync</strong> tab:</p>
+
+
+                        	<h3 id="synccctom">View Sync Logs from Constant Contact</h3>
+                        	<p>The Constant Contact Application polls Constant Contact every 30 minutes to check if a customer has unsubscribed from a mailing list. If a customer does unsubscribe, the app updates their Mozu customer account to indicate they no longer opt in to marketing from your store.</p>
+                        	<p class="panel-note"><strong>Note:</strong> If a customer is on multiple mailing lists in Constant Contact and only requests to unsubscribe from a specific list, the app will still propogate the opt-out request to the customer account in Mozu. However, this change will not get pushed back to Constant Contact for any mailing list that is not actively selected on the <strong>Settings</strong> tab of the app configuration dialog.</p> 
+                        	<p>You can view logs of each sync operation on the <strong>Sync</strong> tab:</p>
                         	<ol>
-                        		<li>In the Mozu app configuration settings dialog, go to the <strong>Events</strong> tab.</li>
-                        		<li>Click <strong>From Constant Contact</strong>.</li>
+                        		<li>In the Mozu app configuration settings dialog, go to the <strong>Sync</strong> tab.</li>
+                        		<li>Click <strong>From Constant Contact</strong>.<img src="cc-sync-from-cc.png" class="img-mozu"></li>
                         		<li>In the list of sync operations, click <strong>View</strong> in the <strong>Logs</strong> column to see the types of events that were captured in the last sync.</li>
                         	</ol>
+                        	<p>The following section gives further detail on <a href="#updateprocess">how the app handles updates</a> made in Constant Contact.</p>
+                        	
                         </section>
+                            <section id ="applogic">
+                            <h2>App Logic</h2>
+                            <h3 id="events">Updates from Mozu</h3>
+                        	<p>The Constant Contact app works by listening for events that fire when a customer account is updated in Mozu. The app recognizes both updates you make in Mozu Admin and updates that customers initiate by creating a new account and opting into marketing.</p> 
+
+                        	<p>The Constant Contact app syncs the two systems every 30 minutes.</p>				
+
+                        	<h3 id="updateprocess">Updates from Constant Contact</h3>
+                        	<p>The Constant Contact app only checks to see if a customer has unsubscribed from a mailing list. To avoid potential issues with order fulfillment, it does not process any other changes made to a contact in Constant Contact. If you need to make a modification to a customer's account information, it is a best practice to only do so from Mozu Admin.</p> 
+                        	<p>If a customer updates their own contact info in Constant Contact, such as by updating their email address, any emails you send from Constant Contact will go to the appropriate address. Mozu will not overwrite this change unless you force a new <strong>To Constant Contact</strong> sync from the <strong>Sync</strong> tab.</p>
+                        	<p>If you do force a new <strong>To Constant Contact</strong> sync for a mailing list on which a customer has updated their contact info, that customer will appear twice on that mailing list - once with the old contact info and once with the new info. For this reason, Mozu recommends avoiding a forced sync to Constant Contact after initial app set-up.</p>
+                            </section>
+
                                             </div>
                 </div>
             </div>
