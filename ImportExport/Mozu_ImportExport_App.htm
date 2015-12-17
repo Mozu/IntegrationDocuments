@@ -1,6 +1,6 @@
 ﻿<!DOCTYPE html>
 <html>
-    <head><title>Import Export Tool by Mozu</title>
+    <head><title>Mozu Import/Export Tool</title>
         <meta name="author" content="Mozu" />
         <meta name="description" content="User content for the Mozu Import/Export Tool" />
         <meta name="keywords" content="Import,Export,Mozu" />
@@ -188,10 +188,11 @@
                 <!-- Documentation content -->
 				<section id="intro">
 					<h2>Welcome to the Mozu Import/Export Tool</h2>
+					<p><strong>Dev Center Name:</strong> Mozu Import/Export<br><strong>Dev Center Version:</strong> 1.0.0</p>
 					<p>The Mozu Import/Export Tool helps you import and export the three main types of Mozu data - products, customers, and orders - to and from your Mozu tenant. For new merchants joining the Mozu platform, this tool is a powerful onboarding aid, as it helps you transfer all your existing store data to Mozu without digging into the Mozu API. The tool takes all the inputs you need to get up and running with Mozu and exposes them through easy-to-read template files.</p>
 					<p>For merchants already on the platform, the Mozu Import/Export Tool also greatly simplifies batch updating data by allowing you to export existing data, make the required updates in the template files, and re-import your updated data back into Mozu.</p> 
 					<p>You can also use exports as a form of data back-up, and third-party applications can also use exported data for reporting and administrative functions.</p>
-					<p>Application Features:</p>
+					<h3>Application Features:</h3>
 					<ul>
 						<li>Exports product, customer, and order data to easy-to-read and modify template (Excel) files.</li>
 						<li>Imports product and customer data.</li>
@@ -203,7 +204,7 @@
 				<section id="installapp">				
                         <h2>Install the Mozu Import/Export Tool on Your Tenant</h2>
                         
-                        <p>The Import/Export Tool by Mozu is provided for free. Call your sales or professional services representative or email <a href="mailto:support@mozu.com">support@mozu.com</a> to request installation on your tenant. Mozu staff will install the app to your tenant, making it available for use in Mozu Admin.</p>
+                        <p>The Import/Export Tool by Mozu is provided for free. Call your sales or professional services representative or email <a href="mailto:support@mozu.com">support@mozu.com</a> to request installation on your tenant. Mozu staff will install the app to your tenant, making it available for use in Mozu Dev Center.</p>
 				</section>
 
 				<section id="configapp">
@@ -799,7 +800,7 @@
 							<br>
 							<strong>Note:</strong> You cannot change the CategoryType of an existing category.	
 						</td>
-						<td>No</td>
+						<td>Yes</td>
 					  </tr>
 					  <tr>
 						<td>Expression</td>
@@ -2193,14 +2194,15 @@
 					  		</ul></td>
 					  </tr>		
 					  <tr>
-					  	<td>Payment Type</td>
-					  	<td>The type of payment the customer submitted with the order.</td>
-					  	<td>A string matching one of the following:
-					  		<ul>
-            <li><code>CreditCard</code></li>
-            <li><code>Check</code></li>
-            <li><code>StoreCredit</code></li>
-            <li><code>PaypalExpress</code></li>
+					  	<td>Payments</td>
+					  	<td>Payment information for the order. This column returns the Payment Type, Amount, Status, and Payment Service Transaction ID, separated by dashes (-).
+					  		
+					  	</td>
+					  	<td><ul>
+					  			<li>Payment Type&#8212;A string matching one of the following: <code>CreditCard</code>, <code>Check</code>, <code>StoreCredit</code>, or a third-party payment provider such as PayPal or Amazon.</li>
+					  			<li>Amount&#8212;The total amount of the payment, as a decimal.</li>
+					  			<li>Status&#8212;A string matching one of the following: <code>New</code>, <code>Pending</code>, <code>Authorized</code>, <code>Collected</code>, <code>Credited</code>, <code>Declined</code>, or <code>Voided</code>.</li>
+					  			<li>Payment Service Transaction ID&#8212;The transaction ID supplied by the payment service for this order, as a string.</li>
 					  		</ul></td>
 					  </tr>
 					  <tr>
