@@ -232,7 +232,7 @@
 							<table class="table table-hover" style="max-width:75%; font-size:90%;">
 							<tr>
 								<td><strong>1</strong></td>
-								<td><strong>Organization ID</strong>&#8212;Your Decision Manager <strong>Account ID</strong>.</td>
+								<td><strong>Organization ID</strong>&#8212;Specifies whether to connect to the CyberSource Test Business Center or the Live Business Center. The Test Business Center simulates transactions, and is ideal for testing your app configuration. The Live Business Center processes real transactions. For Test, use: <code>1snn5n9w</code> For Live, use: <code>k8vif92e</code></td>
 							</tr>
 							<tr>
 								<td><strong>2</strong></td>
@@ -255,15 +255,19 @@
 							</tr>
 							<tr>
 								<td><strong>5</strong></td>
-								<td><strong>Cancel Order When Rejected in DM</strong>&#8212;(Optional) If enabled, specifies to automatically cancel orders in Mozu that are rejected by Decision Manager. If not enabled, orders rejected by Decision Manager are set to Pending Review in Mozu.<span class="panel-note"><strong>Note:</strong> Cancelled orders in Mozu cannot be reverted to a non-cancelled state.</span></td>
+								<td><strong>Cancel Order When Rejected in DM</strong>&#8212;(Optional) Specifies to automatically cancel orders in Mozu that are rejected by Decision Manager. If not enabled, orders rejected by Decision Manager are set to Pending Review in Mozu.<span class="panel-note"><strong>Note:</strong> Cancelled orders in Mozu cannot be reverted to a non-cancelled state.</span></td>
 							</tr>
 							<tr>
-								<td><span id="config6"><strong>6</strong></span></td>
+								<td><strong>6</strong></td>
+								<td><strong>Export Order Item Price as 0.00</strong>&#8212;(Optional) Specifies to export orders to Decision Manager with the price for individual line items set to 0.00. The <strong>Order Total</strong> still shows the full price of the order.</td>
+							</tr>
+							<tr>
+								<td><span id="config6"><strong>7</strong></span></td>
 								<td><strong>Select Payment Type</strong>&#8212;Specifies the payment types to check for fraud in Decision Manager. Mozu sends ONLY the payment types you select to Decision Manager. If you select multiple payment types, Mozu sends only the <em>largest</em> selected payment type applied to a given order to Decision Manager for screening.
 									<span class="panel-note"><strong>Note:</strong> The <strong>Paypal Express</strong> payment type is only supported for the legacy version of Mozu PayPal, implemented through Mozu Core 8 and earlier. If you are implementing PayPal support through the PayPal Express Certified Mozu Application, Decision Manager does not check PayPal payments for potential fraud. CyberSource's current tooling requires a billing address with every order. PayPal Express obscures billing information for security reasons, so Mozu cannot provide it to CyberSource.</span></td>
 							</tr>
 							<tr>
-								<td><strong>7</strong></td>
+								<td><strong>8</strong></td>
 								<td><strong>Environment</strong>&#8212;Specifies the Decision Manager environment to use for fraud checking. If you select <strong>Test</strong>, the application sends order information to Decision Manager's test site, where you can evaluate fraud detection rules in a sandbox setting. When you are satisfied with the rules you set in Decision Manager, choose <strong>Production</strong> to enable live fraud detection on your site.</td>
 							</tr>
 						</table>
@@ -284,29 +288,54 @@
 							</tr>
 						</table>
 								
-								  <h3 id="rules">(Optional) Map Mozu Fields to Custom Fraud Detection Rules</h3>
-							<p>If you want to add to the rules that Decision Manager uses to screen an order for fraud risk, use the Decision Manager website to modify the existing rules or create new custom rules. To help you build custom rules, you can map Mozu fields, such as email address and payment types, to available merchant-defined data fields in Decision Manager. Afterwards, you can associate the MDD fields with custom fields in Decision Manager and use the custom fields in your fraud detection rules. To map these fields:</p>
+								  <h2 id="rules">(Optional) Create Custom Rules</h3>
+							<p>If you want to add to the rules that Decision Manager uses to screen an order for fraud risk, you can use the CyberSource Business Center to modify the existing rules or create new custom rules. To help you build custom rules, you can map Mozu fields, such as email address and payment types, to available merchant-defined data (MDD) fields in Decision Manager. Afterwards, you can associate the MDD fields with custom fields in Decision Manager and use the custom fields in your fraud detection rules.</p>
+							<h3 id="mappings">Create Custom Mappings from Mozu</h3>
 							<ol>
-								<li>Log in to Mozu Admin.</li>
-                                <li>On the Mozu Admin top bar, select <strong>Settings</strong> > <strong>Applications</strong>.</li>
-                                <li>Click <strong>CyberSource Decision Manager</strong>.</li>
-                                <li>Click the <strong>Configuration</strong> link to open configuration settings.</li>
-                                <li>Open the <strong>Custom Mapping</strong> tab.</li>
-                                <li>Select the <strong>Merchant ID</strong> that corresponds to the CyberSource account you want to set up the mappings for.</li>
-                                <li>Click <strong>Add Custom Mapping</strong>.<br><img src="mapping.png" class="img-mozu"><br>
+								<li>Open the Decision Manager app configuration settings dialog.</li>
+                                <li>Go to the <strong>Custom Mapping</strong> tab. <span class="panel-note"><strong>Note:</strong> This tab only appears after you configure and save your account information on the <strong>Settings</strong> tab.</span></li>
+                                <li>Select the <strong>Merchant ID</strong> for the CyberSource account you are mapping.</li>
+                                <li>Click <strong>Add Custom Mapping</strong> and fill in the following fields:<br><img src="dm-mapping.png" class="img-mozu"></li>
+                            </ol>    	
+                            <table class="table table-hover" style="max-width:75%; font-size:90%;">
+							<tr>
+								<td><strong>1</strong></td>
+								<td><strong>Merchant ID</strong>&#8212;The Decision Manager <strong>Merchant ID</strong> you selected on the previous page.</td>
+							</tr>
+							<tr>
+								<td><strong>2</strong></td>
+								<td><strong>Domain</strong>&#8212;The type of Mozu data you are mapping. The value you choose determines the options that appear in the <strong>Mozu Data</strong> menu.</td>
+							</tr>
+							<tr>
+								<td><strong>3</strong></td>
+								<td><strong>Mozu Data</strong>&#8212;The specific order or customer data field from Mozu. Once a field is mapped, it no longer appears in the list.</td>
+							</tr>
+							<tr>
+								<td><strong>4</strong></td>
+								<td><strong>CyberSource Data</strong>&#8212;The Decision Manager merchant-defined data field to which you are mapping the <strong>Mozu Data</strong>. Only available fields appear in the list.</td>
+							</tr>
+							<tr>
+								<td><strong>5</strong></td>
+								<td><strong>Include in Offer Details</strong>&#8212;Specifies whether to include the custom mapping as a column in the Decision Manager <strong>Offer Details</strong> table.</td>
+							</tr>
+							<tr>
+								<td><strong>6</strong></td>
+								<td><strong>Offer Detail Value Column</strong>&#8212;Specifies which column in the Decision Manager <strong>Offer Details</strong> table displays the mapped data. If you select <strong>Price</strong>, the mapped data must be a decimal. <strong>SKU</strong> can display any data type.</td>
+							</tr>
+						</table>
+
+                                	<h3 id="dmfields">Create Custom Fields in Decision Manager</h3>
+                                	<p>After you create your mappings in Mozu, you must log in to Decision Manager account and associate a custom field with a mapped merchant-defined data field. Creating this association is necessary because fraud detection rules don't access merchant-defined data fields directly.</p> 
+                                	<p>For example, if you create a mapping in Mozu that assigns a customer's email address to Merchant-Defined Data 7, complete the following steps to create the custom field in Decision Manager:</p> 
                                 	<ol>
-                                		<li>Using the <strong>Domain</strong> drop-down menu, select the type of Mozu data you want to map to Decision Manager.</li>
-                                		<li>Select the <strong>Mozu Data</strong> that you want to map to Decision Manager. If the Mozu data is already mapped, Mozu does not display it in the drop-down.</li>
-                                		<li>Select which merchant-defined data field you want to map the data to. If the MDD field is already in use, Mozu does not display it in the drop-down.</li>
-                                		<li>Click <strong>Save</strong>.</li>
+                                		<li>Log in to the <a href="https://ebc.cybersource.com/ebc/login/Login.do" target="blank">CyberSource  Business Center</a>.</li>
+                                		<li>Go to <strong>Decision Manager</strong> > <strong>Configuration</strong> > <strong>Custom Fields</strong>.</li>
+                                		<li>Click <strong>Add Custom Field</strong>.</li>
+                                		<li>Select <strong>merchant_defined_data7</strong> as the <strong>Order Element</strong> and give the field a logical name, such as <strong>Email</strong>.</li>
+                                		<li>Click <strong>Save</strong> to create the field.</li>
                                 	</ol>
-                                	</li>
-                                	<li>After you create a mapping, log in to your Decision Manager account and associate a custom field with a mapped MDD field. You create this association in order to use the custom field within a rule (because rules don't access MDD fields directly). For example, in Mozu you may have mapped a shopper's email address to MDD 7. If this is the case, you should map a custom field in Decision Manager to MDD 7 and name it "Email". In this way, the data you map from Mozu is accessible for use in Decision Manager rules via the custom field.</li>
-                                	<li>After you complete the previous step, create custom rules in Decision Manager that utilize the custom fields you set up, thereby taking advantage of the data Mozu maps to MDD fields with each screened order.</li>
-							</ol>
 
-
-							 <p>For more information on creating custom rules and fields in Decision Manager, refer to the <em>Decision Manager User Guide</em> available through the CyberSource Business Center.</p>
+							 <p>You can now go to <strong>Configuration</strong> > <strong>Custom Rules</strong> to create a new rule. In the <strong>Rule Conditions</strong>, your custom fields appear in the <strong>Order Element</strong> drop-down. For more information on creating custom rules and fields in Decision Manager, refer to the <em>Decision Manager User Guide</em> available through the CyberSource Business Center.</p>
 							
                         </section>
 
