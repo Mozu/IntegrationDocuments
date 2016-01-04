@@ -251,7 +251,7 @@
 
 							<tr>
 								<td><strong>4</strong></td>
-								<td><strong>Threshold Enabled</strong>&#8212;(Optional) Sets a monetary value below which orders are not sent to Decision Manager. You can use this setting to optimize performance for customers making low-value orders that do not carry significant fraud risk.<span class="panel-note"><strong>Note:</strong> The <strong>Threshold Value</strong> only applies to the largest payment that is an enabled payment type (<a href="#config6">6</a>) for fraud validation. Refer to the <a href="#paytypescenarios">Payment Type Scenarios</a> section at the end of this document for more payment scenario examples.</span></td>
+								<td><strong>Threshold Enabled</strong>&#8212;(Optional) Sets a monetary value below which orders are not sent to Decision Manager. You can use this setting to optimize performance for customers making low-value orders that do not carry significant fraud risk.<span class="panel-note"><strong>Note:</strong> The <strong>Threshold Value</strong> only applies to the largest payment that is an enabled payment type (<a href="#config7">7</a>) for fraud validation. Refer to the <a href="#paytypescenarios">Payment Type Scenarios</a> section at the end of this document for more payment scenario examples.</span></td>
 							</tr>
 							<tr>
 								<td><strong>5</strong></td>
@@ -262,7 +262,7 @@
 								<td><strong>Export Order Item Price as 0.00</strong>&#8212;(Optional) Specifies to export orders to Decision Manager with the price for individual line items set to 0.00. Selecting this option will make the total amount of the order 0.00 in Decision Manager. If you want to zero out line items but still see the full order amount in Decision Manager, you can add the Mozu <strong>Order Total</strong> as a <a href="#create_custom_mappings_from_mozu">custom mapping</a>.</td>
 							</tr>
 							<tr>
-								<td><span id="config6"><strong>7</strong></span></td>
+								<td><span id="config7"><strong>7</strong></span></td>
 								<td><strong>Select Payment Type</strong>&#8212;Specifies the payment types to check for fraud in Decision Manager. Mozu sends ONLY the payment types you select to Decision Manager. If you select multiple payment types, Mozu sends only the <em>largest</em> selected payment type applied to a given order to Decision Manager for screening.
 									<span class="panel-note"><strong>Note:</strong> The <strong>Paypal Express</strong> payment type is only supported for the legacy version of Mozu PayPal, implemented through Mozu Core 8 and earlier. If you are implementing PayPal support through the PayPal Express Certified Mozu Application, Decision Manager does not check PayPal payments for potential fraud. CyberSource's current tooling requires a billing address with every order. PayPal Express obscures billing information for security reasons, so Mozu cannot provide it to CyberSource.</span></td>
 							</tr>
