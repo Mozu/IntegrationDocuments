@@ -259,7 +259,7 @@
 							</tr>
 							<tr>
 								<td><strong>6</strong></td>
-								<td><strong>Export Order Item Price as 0.00</strong>&#8212;(Optional) Specifies to export orders to Decision Manager with the price for individual line items set to 0.00. The <strong>Order Total</strong> still shows the full price of the order.</td>
+								<td><strong>Export Order Item Price as 0.00</strong>&#8212;(Optional) Specifies to export orders to Decision Manager with the price for individual line items set to 0.00. Selecting this option will make the total amount of the order 0.00 in Decision Manager. If you want to zero out line items but still see the full order amount in Decision Manager, you can add the Mozu <strong>Order Total</strong> as a <a href="#create_custom_mappings_from_mozu">custom mapping</a>.</td>
 							</tr>
 							<tr>
 								<td><span id="config6"><strong>7</strong></span></td>
@@ -290,7 +290,7 @@
 								
 								  <h2 id="rules">(Optional) Create Custom Rules</h3>
 							<p>If you want to add to the rules that Decision Manager uses to screen an order for fraud risk, you can use the CyberSource Business Center to modify the existing rules or create new custom rules. To help you build custom rules, you can map Mozu fields, such as email address and payment types, to available merchant-defined data (MDD) fields in Decision Manager. Afterwards, you can associate the MDD fields with custom fields in Decision Manager and use the custom fields in your fraud detection rules.</p>
-							<h3 id="mappings">Create Custom Mappings from Mozu</h3>
+							<h3 id="create_custom_mappings_from_mozu">Create Custom Mappings from Mozu</h3>
 							<ol>
 								<li>Open the Decision Manager app configuration settings dialog.</li>
                                 <li>Go to the <strong>Custom Mapping</strong> tab. <span class="panel-note"><strong>Note:</strong> This tab only appears after you configure and save your account information on the <strong>Settings</strong> tab.</span></li>
