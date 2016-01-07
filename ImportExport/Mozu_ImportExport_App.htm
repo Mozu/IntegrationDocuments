@@ -158,6 +158,7 @@
 									<li><a href="#productimages">ProductImages</a></li>
 									<li><a href="#locationinventory">LocationInventory</a></li>
 									<li><a href="#discounts">Discounts</a></li>
+									<li><a href="#images">Images</a></li>
 								</ul>
 							</li>
 							<li><a href="#contactstemplate">Contacts Template</a>
@@ -857,6 +858,12 @@
 						<td>Any string.</td>
 						<td>No</td>
 					  </tr>
+					  <tr>
+						<td>Images</td>
+						<td>The filename, including type extension, of the image that appears on the category page. This field simply associates an image with a category. Use the <a href="#images">Images</a> sheet to import the actual image file.</td>
+						<td>Any string that is a valid filename.</td>
+						<td>No</td>
+					  </tr>
 					</tbody>
 					</table>
 					
@@ -1440,9 +1447,9 @@
 					<h3 id="productimages">ProductImages Sheet</h3>
 					<p>Corresponding REST API Resource: <a href="http://developer.mozu.com/content/api/APIResources/commerce/catalog.storefront/products.htm" target="_blank">commerce/catalog/storefront/products</a></p>
 					<p>Required With: <a href="#products">Products</a>, <a href="#productcatalogs">ProductCatalogs</a>, <a href="#productoptions">ProductOptions</a>, <a href="#productextras">ProductExtras</a>, <a href="#productbundles">ProductBundles</a></p>
-					<p>This sheet maps images and videos to product codes so you can use the media on the product pages of your storefront. A single product code can have multiple images and videos associated with it.</p> 
-					<p>The URL for each image or video file must be on a server accessible by Mozu. You can use the ImagePath column to upload files to your Mozu tenant. </p>
-					<p class="panel-tip"><strong>Tip:</strong> Because images and videos can be large files, uploading them can add significant time to an import operation. If you are updating products and know that you do not need to add or change media, remove the non-required columns prior to importing the file.</p>
+					<p>This sheet maps images and videos to product codes so you can use the media on the product pages of your storefront. A single product code can have multiple images and videos associated with it.</p>
+					<p><span class="panel-note"><strong>Note:</strong> For import operations, this sheet handles file-mapping only. Use the <a href="#images">Images</a> sheet to upload actual image files to the Mozu CMS.</span></p>  
+					
 					<table class="table table-hover">
 					<thead>
 					  <tr>
@@ -1471,13 +1478,6 @@
 						<td>Yes</td>
 					  </tr>
 					  <tr>
-						<td>LocaleCode</td>
-						<td>The locale code for the image or video content, in standard ISO language-country format. Mozu uses this code to determine whether to display the content to a user.</td>
-						<td>An ISO locale code. For example, <code>en-US</code>.<br><br>
-							Currently, <code>en-US</code> is the only supported value.</td>
-						<td>No</td>
-					  </tr>
-					  <tr>
 						<td>Sequence</td>
 						<td>For products with multiple images or videos, specifies where in the order or all image/video files the one in this row appears on the product page. </td>
 						<td>Any integer.</td>
@@ -1490,26 +1490,14 @@
 						<td>Yes</td>
 					  </tr>
 					  <tr>
-						<td>ImageUrl</td>
-						<td>The full URL path to the image file at a location accessible by Mozu. In most cases, this URL refers to a location on your tenant.</td>
-						<td>Any string that is a valid URL accessible by Mozu.</td>
-						<td>No</td>
-					  </tr>
-					  <tr>
 						<td>ImageLabel</td>
 						<td>The label for the image that appears on the storefont, in the language specified by the LocaleCode.</td>
 						<td>Any string.</td>
 						<td>No</td>
 					  </tr>
 					  <tr>
-						<td>ImagePath</td>
-						<td>The path to a video or image file to upload to you Mozu tenant.</td>
-						<td>Any string that is a valid file path.</td>
-						<td>No</td>
-					  </tr>
-					  <tr>
 						<td>VideoUrl</td>
-						<td>The full URL path to the video file at a location accessible by Mozu. In most cases, this URL refers to a location on your tenant.</td>
+						<td>The full URL path to a video file at a location accessible by Mozu.<br /><br /><strong>Note:</strong> You can only associate external videos with Mozu products. You cannot upload video files to the Mozu CMS.</td>
 						<td>Any string that is a valid URL accessible by Mozu.</td>
 						<td>No</td>
 					  </tr>
@@ -1746,7 +1734,56 @@
 					  </tr>
 					</tbody>
 					</table>
-					
+
+					<h3 id="images">Images Sheet</h3>
+					<p>Corresponding REST API Resources: <a href="http://developer.mozu.com/content/api/APIResources/commerce/catalog.storefront/products.htm" target="_blank">commerce/catalog/storefront/products</a>, <a href="http://developer.mozu.com/content/api/APIResources/commerce/catalog.storefront/categories.htm" target="_blank">commerce/catalog/storefront/categories</a>, <a href="http://developer.mozu.com/content/api/APIResources/content/documentlists/documents.htm" target="_blank">content/documentlists/documents</a>, </p>
+					<p>Required With: NA</p>
+					<p>This sheet describes all the image files that exist in the Mozu database for your tenant. You can use this sheet independent of other sheets to upload new images to your tenant. Use the <a href="#productimages">ProductImages</a> and <a href="#categories">Categories</a> sheets to associate images with specific products or categories.</p>
+					<p class="panel-tip"><strong>Tip:</strong> Because images can be large files, uploading them can add significant time to an import operation. If you are updating products and know that you do not need to add or change media, clear this sheet prior to importing the file.</p>
+
+					<table class="table table-hover">
+					<thead>
+					  <tr>
+						<th>Column Name</th>
+						<th>Description</th>
+						<th>Valid Values</th>
+						<th>Required<a href="#required">*</a></th>
+					  </tr>
+					</thead>
+					<tbody>
+						<tr>
+						<td>MasterCatalogName</td>
+						<td>The name of the master catalog that includes the product or category with which the image is associated.</td>
+						<td>A string matching the name of the master catalog as it appears at <strong>Settings</strong> > <strong>System Administration</strong> > <strong>Catalog and Site Structure</strong> in Mozu Admin.</td>
+						<td>Yes</td>
+					  </tr>
+					<tr>
+						<td>Id</td>
+						<td>The document identifier for the image in the Mozu CMS. You do not need to provide this value for imports unless you are moving an existing image from one tenant to another and you want the image to retain the same ID.</td>
+						<td>A 32 character, case-insensitive, alphanumeric string. You can specify the ID as 32 sequential characters or as groups separated by dashes in the format 8-4-4-4-12. For example: <code>bba0a1a885e2413bb097ceacf7bac366</code> or
+<code>bba0a1a8-85e2-413b-b097-ceacf7bac366</code>.</td>
+						<td>No</td>
+					  </tr>
+					  <tr>
+						<td>Name</td>
+						<td>The filename, including type extension, of the image.</td>
+						<td>Any string that matches a valid image filename.</td>
+						<td>Yes</td>
+					  </tr>
+					  <tr>
+						<td>Tags</td>
+						<td>Tags associated with the image. These tags appear in the <strong>File Manager</strong> in Mozu Admin. You can use them to group and filter your files in Mozu Admin.</td>
+						<td>Any string. You can use commas to separate multiple tags. For example: <code>shoes, wedges</code></td>
+						<td>No</td>
+					  </tr>
+					  <tr>
+						<td>ImageUrl</td>
+						<td>The URL for the image file. For export operations, this is the file location in the Mozu CMS. For import operations, this can be any URL that is accessible to Mozu, such as a Dropbox URL.</td>
+						<td>Any string that is a valid URL accessible by Mozu.</td>
+						<td>Yes</td>
+					  </tr>
+					</tbody>
+				</table>
 				</section>
 				<section id="contactstemplate">
 					<h2>Contacts Template</h2>
