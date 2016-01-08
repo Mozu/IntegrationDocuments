@@ -2229,18 +2229,6 @@
             <li><code>Pending</code></li>
             <li><code>Paid</code></li>
 					  		</ul></td>
-					  </tr>		
-					  <tr>
-					  	<td>Payments</td>
-					  	<td>Payment information for the order. This column returns the Payment Type, Amount, Status, and Payment Service Transaction ID, separated by dashes (-).
-					  		
-					  	</td>
-					  	<td><ul>
-					  			<li>Payment Type&#8212;A string matching one of the following: <code>CreditCard</code>, <code>Check</code>, <code>StoreCredit</code>, or a third-party payment provider such as PayPal or Amazon.</li>
-					  			<li>Amount&#8212;The total amount of the payment, as a decimal.</li>
-					  			<li>Status&#8212;A string matching one of the following: <code>New</code>, <code>Pending</code>, <code>Authorized</code>, <code>Collected</code>, <code>Credited</code>, <code>Declined</code>, or <code>Voided</code>.</li>
-					  			<li>Payment Service Transaction ID&#8212;The transaction ID supplied by the payment service for this order, as a string.</li>
-					  		</ul></td>
 					  </tr>
 					  <tr>
 					  	<td>Return Status</td>
@@ -2451,6 +2439,78 @@
 					  	<td>Total</td>
 					  	<td>The total for the item, including all taxes, fees, and discounts.</td>
 					  	<td>Any decimal value.</td>
+					  </tr>
+					</tbody>
+				</table>
+<h3 id="orderlineitems">Order Payments Sheet</h3>
+					<p>Corresponding REST API Resource: <a href="http://developer.mozu.com/content/api/APIResources/commerce/orders/payments.htm" target="_blank">commerce/orders/payments</a></p>
+					<p>This sheet describes the payments that have been applied to an order. If multiple payments are applied to the same order, each payment appears on a new line in the spreadsheet.</p>
+					<table class="table table-hover">
+					<thead>
+					  <tr>
+						<th>Column Name</th>
+						<th>Description</th>
+						<th>Possible Values</th>
+					  </tr>
+					</thead>
+					<tbody>
+					<tr>
+						<td>Order Number</td>
+						<td>The order number that the customer sees on the storefront when they place the order.</td>
+						<td>Any integer that is unique among all order numbers.</td>
+					  </tr>
+					   <tr>
+						<td>Payment Type</td>
+						<td>The type of payment applied to the order.</td>
+						<td>A string matching one of the following:<ul>
+						<li><code>CreditCard</code></li> 
+							<li><code>Check</code></li> 
+							<li><code>StoreCredit</code></li>
+							<li>A third-party payment provider such as PayPal or Amazon.</li>
+						</ul>
+					</td>
+					  </tr>
+					   <tr>
+						<td>Payment Workflow</td>
+						<td>The workflow in which the payment was processed. For most payment gateways, this will be <code>Mozu</code>.</td>
+						<td>A string matching a supported workflow. For example:
+							<ul>
+								<li><code>Mozu</code></li>
+								<li><code>VisaCheckout</code></li>
+								<li><code>PayPalExpress2</code></li>
+								<li><code>PayWithAmazon</code></li>
+							</ul></td>
+					  </tr>
+					   <tr>
+						<td>Mozu Id</td>
+						<td>The unique identifier for the payment in Mozu. This is the <strong>Authorization ID</strong> that appears for the payment in Mozu Admin.</td>
+						<td>A 32 character, case-insensitive, alphanumeric string.</td>
+					  </tr>
+					  <tr>
+					  	<td>External Reference Id</td>
+					  	<td>The external/third-party transaction ID for this payment. This field is used to store the transaction ID from a digital wallet, such as Visa Checkout. This value appears as the <strong>Reference ID</strong> for the payment in Mozu Admin. </td>
+					  	<td>Any string that is a valid transaction ID from a third-party payment provider.</td>
+					  </tr>
+					  <tr>
+					  	<td>Card Type</td>
+					  	<td>The type of credit card used for a credit card payment.</td>
+					  	<td>A string such as <code>VISA</code> or <code>AMEX</code>.</td>
+					  </tr>
+					  <tr>
+					  	<td>Amount Requested</td>
+					  	<td>The total amount originally requested for this payment.</td>
+					  	<td>Any decimal value.</td>
+					  </tr>
+					 <tr>
+					  	<td>Amount Collected</td>
+					  	<td>The total amount collected for this payment.</td>
+					  	<td>Any decimal value.</td>
+					  </tr>
+					  <tr>
+					  	<td>Transaction History</td>
+					  	<td>Transaction information for the payment. If multiple interaction types (such as authorize and capture) occur for the payment, info for each type appears on a new line in the cell.
+					  		</td>
+					  	<td>A string in the format: [Transaction ID] - [Interaction Type] - [Amount Requested]. For example: <code>2222222222 - Authorized - 53.13</code></td>
 					  </tr>
 					</tbody>
 				</table>
